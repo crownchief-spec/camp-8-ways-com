@@ -270,6 +270,17 @@ p:last-child { margin-bottom: 0; }
 .figure-block { margin: var(--space-lg) 0; }
 .figure-block .img-caption { margin-top: var(--space-xs); font-size: 0.875rem; color: var(--color-text-muted); }
 
+/* 交通與抵達指引頁：入住詳細指引 */
+.section-divider { border: none; border-top: 1px solid var(--color-border); margin: var(--space-xl) 0; }
+.arrival-block { margin: var(--space-lg) 0; }
+.arrival-block h3 { margin-top: 0; margin-bottom: var(--space-md); font-size: 1.125rem; }
+.arrival-block .en-sub { font-weight: 400; color: var(--color-text-muted); font-size: 0.9375rem; }
+.arrival-block .en-text { display: block; margin-top: 0.25em; font-size: 0.875rem; color: var(--color-text-muted); }
+.arrival-block .figure-block { margin: var(--space-md) 0; }
+.arrival-reminder ul { margin-bottom: var(--space-sm); }
+.arrival-contact p { margin-bottom: var(--space-sm); }
+.arrival-wish { margin-top: var(--space-md); padding-top: var(--space-md); border-top: 1px solid var(--color-border); font-style: italic; color: var(--color-forest); }
+
 /* Cards */
 .card-grid { display: grid; gap: var(--space-lg); }
 .card-grid-2 { grid-template-columns: repeat(2, 1fr); }
