@@ -255,6 +255,21 @@ p:last-child { margin-bottom: 0; }
 .img-placeholder.hero-placeholder { min-height: 320px; }
 .img-placeholder.large { min-height: 280px; }
 
+/* Card with image + SEO caption */
+.card-fig { margin: 0; overflow: hidden; }
+.card-fig img { width: 100%; height: auto; object-fit: cover; display: block; }
+.card-fig .img-caption {
+  padding: var(--space-sm) var(--space-lg);
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  background: var(--color-cream-dark);
+  border-top: 1px solid var(--color-border);
+}
+.card .card-fig img { border-radius: var(--radius-lg) var(--radius-lg) 0 0; }
+.card-fig.card .img-caption { border-radius: 0 0 var(--radius-lg) var(--radius-lg); }
+.figure-block { margin: var(--space-lg) 0; }
+.figure-block .img-caption { margin-top: var(--space-xs); font-size: 0.875rem; color: var(--color-text-muted); }
+
 /* Cards */
 .card-grid { display: grid; gap: var(--space-lg); }
 .card-grid-2 { grid-template-columns: repeat(2, 1fr); }
