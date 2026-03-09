@@ -355,6 +355,20 @@ p:last-child { margin-bottom: 0; }
 .arrival-contact p { margin-bottom: var(--space-sm); }
 .arrival-wish { margin-top: var(--space-md); padding-top: var(--space-md); border-top: 1px solid var(--color-border); font-style: italic; color: var(--color-forest); }
 
+/* 入住與抵達詳細指引：每個步驟 = 一組照片 + 說明 */
+.arrival-guide { margin: var(--space-xl) 0; }
+.arrival-step { margin-bottom: var(--space-xl); padding: var(--space-lg) 0; border-bottom: 1px solid var(--color-border); }
+.arrival-step:last-of-type { border-bottom: none; }
+.arrival-step-photo { margin-bottom: var(--space-md); }
+.arrival-step-photo .figure-block { margin: 0; }
+.arrival-step-photo img { width: 100%; height: auto; border-radius: var(--radius); display: block; }
+.arrival-step-body h3 { margin: 0 0 var(--space-sm); font-size: 1.125rem; }
+.arrival-step-body p { margin: 0 0 var(--space-sm); line-height: 1.7; }
+.arrival-step-body p:last-child { margin-bottom: 0; }
+.arrival-step-body .en-text { margin-top: 0.25em; font-size: 0.875rem; color: var(--color-text-muted); }
+.arrival-step-body ul { margin: var(--space-sm) 0; padding-left: 1.25em; }
+.arrival-step-text-only .arrival-step-body { padding: var(--space-md); background: var(--color-bg-alt, #f8f9fa); border-radius: var(--radius); }
+
 /* Cards */
 .card-grid { display: grid; gap: var(--space-lg); }
 .card-grid-2 { grid-template-columns: repeat(2, 1fr); }
