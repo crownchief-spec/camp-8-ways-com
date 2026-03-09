@@ -85,6 +85,7 @@ p:last-child { margin-bottom: 0; }
   text-decoration: none;
   letter-spacing: 0.02em;
 }
+.brand img.brand-logo { display: block; max-height: 44px; width: auto; height: auto; object-fit: contain; vertical-align: middle; }
 .brand:hover { color: var(--color-forest); }
 .menu {
   display: flex;
