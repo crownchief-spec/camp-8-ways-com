@@ -9,13 +9,22 @@
   var navMenu = document.querySelector('.nav-menu');
   if (navToggle && navMenu) {
     navToggle.addEventListener('click', function () {
-      navMenu.classList.toggle('is-open');
-      navToggle.setAttribute('aria-expanded', navMenu.classList.contains('is-open'));
+      var isOpen = navMenu.classList.toggle('is-open');
+      navToggle.setAttribute('aria-expanded', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
     });
     document.addEventListener('click', function (e) {
       if (!navToggle.contains(e.target) && !navMenu.contains(e.target)) {
         navMenu.classList.remove('is-open');
         navToggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+    });
+    navMenu.addEventListener('click', function (e) {
+      if (e.target.closest('a')) {
+        navMenu.classList.remove('is-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
       }
     });
   }

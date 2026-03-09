@@ -8,43 +8,49 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../styles/main.css">
+  <link rel="stylesheet" href="../assets/css/main.css">
 </head>
 <body class="site-wrap">
   <header class="site-header">
     <div class="container">
-      <div class="logo"><a href="../index.html">camp.8-ways.com</a></div>
-      <button type="button" class="nav-toggle" aria-label="開啟選單" aria-expanded="false">選單</button>
-      <nav>
-        <ul class="nav-menu">
-          <li><a href="../index.html">首頁</a></li>
-          <li><a href="../camp-intro.html">露營區介紹</a></li>
-          <li><a href="../balloon-tent.html">熱氣球帳</a></li>
-          <li><a href="../cloud-tent.html">雲朵帳</a></li>
-          <li><a href="../campervan.html">露營車</a></li>
-          <li><a href="../facilities.html">設施介紹</a></li>
-          <li><a href="../location.html">交通與抵達指引</a></li>
-          <li><a href="../faq.html">常見問題</a></li>
-          <li><a href="../booking.html">訂房資訊</a></li>
-          <li class="nav-item-guide">
-            <a href="index.html">露營指南</a>
-            <ul class="submenu">
-              <li><a href="taoyuan-camping.html">桃園露營區推薦</a></li>
-              <li><a href="taoyuan-glamping.html">桃園豪華露營推薦</a></li>
-              <li><a href="yangmei-camping.html">楊梅露營區推薦</a></li>
-              <li><a href="forest-camping.html">桃園森林露營體驗</a></li>
-              <li><a href="dome-glamping.html">圓頂帳篷露營介紹</a></li>
-              <li><a href="campervan-stay.html">桃園露營車住宿推薦</a></li>
-            </ul>
-          </li>
-          <li class="cta"><a href="https://line.me/ti/p/F2MWlK47xD" target="_blank" rel="noopener">加 LINE 預約</a></li>
-        </ul>
+      <nav class="nav" aria-label="主要導覽">
+        <a class="brand" href="../index.html">camp.8-ways.com</a>
+        <button class="mobile-toggle" type="button" data-nav-toggle aria-expanded="false" aria-label="開啟選單">☰</button>
+        <div class="menu" data-nav-menu>
+          <a href="../index.html" class="menu-group menu-group-title">首頁</a>
+          <a href="../camp-intro.html" class="menu-group menu-group-title">露營區介紹</a>
+          <a href="../balloon-tent.html" class="menu-group menu-group-title">熱氣球帳</a>
+          <a href="../cloud-tent.html" class="menu-group menu-group-title">雲朵帳</a>
+          <a href="../campervan.html" class="menu-group menu-group-title">露營車</a>
+          <a href="../facilities.html" class="menu-group menu-group-title">設施介紹</a>
+          <a href="../location.html" class="menu-group menu-group-title">交通與抵達指引</a>
+          <a href="../faq.html" class="menu-group menu-group-title">常見問題</a>
+          <a href="../booking.html" class="menu-group menu-group-title">訂房資訊</a>
+          <div class="dropdown menu-group">
+            <button type="button" aria-expanded="false" class="menu-group-title">露營指南 ▾</button>
+            <div class="dropdown-panel">
+              <a href="taoyuan-camping.html">桃園露營區推薦</a>
+              <a href="taoyuan-glamping.html">桃園豪華露營推薦</a>
+              <a href="yangmei-camping.html">楊梅露營區推薦</a>
+              <a href="forest-camping.html">桃園森林露營體驗</a>
+              <a href="dome-glamping.html">圓頂帳篷露營介紹</a>
+              <a href="campervan-stay.html">桃園露營車住宿推薦</a>
+            </div>
+          </div>
+          <a class="btn btn-primary nav-cta" href="https://line.me/ti/p/F2MWlK47xD" target="_blank" rel="noopener">加 LINE 預約</a>
+        </div>
       </nav>
     </div>
   </header>
 
   <main class="main">
-    <section class="hero">
+    <section class="hero hero-with-video">
+      <div class="hero-media" aria-hidden="true">
+        <video autoplay muted loop playsinline preload="metadata" poster="../assets/images/index/taoyuan-glamping-exclusive-grass-100ping.jpg">
+          <source src="../assets/video/hero/hero-forest-aerial.mp4" type="video/mp4">
+        </video>
+        <div class="hero-media-overlay"></div>
+      </div>
       <div class="container">
         <h1>桃園豪華露營推薦｜比住飯店更接近自然，比傳統露營更舒服</h1>
         <p class="hero-sub">豪華露營的魅力，在於不需要犧牲舒適，也能親近自然。</p>
@@ -104,6 +110,6 @@
     <div class="footer-bottom container">© camp.8-ways.com 桃園森林豪華露營區</div>
   </footer>
 
-  <script src="../scripts/main.js"></script>
+  <script src="../assets/js/main.js"></script>
 </body>
 </html>

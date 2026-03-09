@@ -8,43 +8,49 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body class="site-wrap">
   <header class="site-header">
     <div class="container">
-      <div class="logo"><a href="index.html">camp.8-ways.com</a></div>
-      <button type="button" class="nav-toggle" aria-label="開啟選單" aria-expanded="false">選單</button>
-      <nav>
-        <ul class="nav-menu">
-          <li><a href="index.html">首頁</a></li>
-          <li><a href="camp-intro.html">露營區介紹</a></li>
-          <li><a href="balloon-tent.html">熱氣球帳</a></li>
-          <li><a href="cloud-tent.html">雲朵帳</a></li>
-          <li><a href="campervan.html">露營車</a></li>
-          <li><a href="facilities.html">設施介紹</a></li>
-          <li><a href="location.html">交通與抵達指引</a></li>
-          <li><a href="faq.html">常見問題</a></li>
-          <li><a href="booking.html">訂房資訊</a></li>
-          <li class="nav-item-guide">
-            <a href="guide/index.html">露營指南</a>
-            <ul class="submenu">
-              <li><a href="guide/taoyuan-camping.html">桃園露營區推薦</a></li>
-              <li><a href="guide/taoyuan-glamping.html">桃園豪華露營推薦</a></li>
-              <li><a href="guide/yangmei-camping.html">楊梅露營區推薦</a></li>
-              <li><a href="guide/forest-camping.html">桃園森林露營體驗</a></li>
-              <li><a href="guide/dome-glamping.html">圓頂帳篷露營介紹</a></li>
-              <li><a href="guide/campervan-stay.html">桃園露營車住宿推薦</a></li>
-            </ul>
-          </li>
-          <li class="cta"><a href="https://line.me/ti/p/F2MWlK47xD" target="_blank" rel="noopener">加 LINE 預約</a></li>
-        </ul>
+      <nav class="nav" aria-label="主要導覽">
+        <a class="brand" href="index.html">camp.8-ways.com</a>
+        <button class="mobile-toggle" type="button" data-nav-toggle aria-expanded="false" aria-label="開啟選單">☰</button>
+        <div class="menu" data-nav-menu>
+          <a href="index.html" class="menu-group menu-group-title">首頁</a>
+          <a href="camp-intro.html" class="menu-group menu-group-title">露營區介紹</a>
+          <a href="balloon-tent.html" class="menu-group menu-group-title">熱氣球帳</a>
+          <a href="cloud-tent.html" class="menu-group menu-group-title">雲朵帳</a>
+          <a href="campervan.html" class="menu-group menu-group-title">露營車</a>
+          <a href="facilities.html" class="menu-group menu-group-title">設施介紹</a>
+          <a href="location.html" class="menu-group menu-group-title">交通與抵達指引</a>
+          <a href="faq.html" class="menu-group menu-group-title">常見問題</a>
+          <a href="booking.html" class="menu-group menu-group-title">訂房資訊</a>
+          <div class="dropdown menu-group">
+            <button type="button" aria-expanded="false" class="menu-group-title">露營指南 ▾</button>
+            <div class="dropdown-panel">
+              <a href="guide/taoyuan-camping.html">桃園露營區推薦</a>
+              <a href="guide/taoyuan-glamping.html">桃園豪華露營推薦</a>
+              <a href="guide/yangmei-camping.html">楊梅露營區推薦</a>
+              <a href="guide/forest-camping.html">桃園森林露營體驗</a>
+              <a href="guide/dome-glamping.html">圓頂帳篷露營介紹</a>
+              <a href="guide/campervan-stay.html">桃園露營車住宿推薦</a>
+            </div>
+          </div>
+          <a class="btn btn-primary nav-cta" href="https://line.me/ti/p/F2MWlK47xD" target="_blank" rel="noopener">加 LINE 預約</a>
+        </div>
       </nav>
     </div>
   </header>
 
   <main class="main">
-    <section class="hero">
+    <section class="hero hero-with-video">
+      <div class="hero-media" aria-hidden="true">
+        <video autoplay muted loop playsinline preload="metadata" poster="assets/images/location/taoyuan-yangmei-location-traffic-map.jpg">
+          <source src="assets/video/hero/hero-forest-aerial.mp4" type="video/mp4">
+        </video>
+        <div class="hero-media-overlay"></div>
+      </div>
       <div class="container">
         <h1>交通便利，轉個彎就慢下來</h1>
         <p class="hero-sub">位於桃園楊梅，從城市出發不需太久，就能進入森林的安靜節奏。</p>
@@ -59,7 +65,7 @@
           <a href="https://maps.app.goo.gl/566TxSN277v1hwW56?g_st=ic" class="btn btn-outline-dark" target="_blank" rel="noopener">立即導航</a>
         </div>
         <figure class="figure-block">
-          <img src="images/location/taoyuan-yangmei-location-traffic-map.jpg" width="1600" height="1067" alt="桃園楊梅露營區 周邊與交通示意圖 楊梅露營區 桃園露營推薦 交通與抵達指引" title="桃園楊梅・露營區周邊與交通示意圖｜#楊梅露營區 #桃園楊梅">
+          <img src="assets/images/location/taoyuan-yangmei-location-traffic-map.jpg" width="1600" height="1067" alt="桃園楊梅露營區 周邊與交通示意圖 楊梅露營區 桃園露營推薦 交通與抵達指引" title="桃園楊梅・露營區周邊與交通示意圖｜#楊梅露營區 #桃園楊梅">
           <figcaption class="img-caption">桃園楊梅露營區周邊與交通示意｜#楊梅露營區 #桃園楊梅 #桃園露營區 #私人露營區 #桃園豪華露營</figcaption>
         </figure>
 
@@ -71,7 +77,7 @@
         <div class="arrival-block">
           <h3>2. 停車位置 <span class="en-sub">Parking Area</span></h3>
           <figure class="figure-block">
-            <img src="images/location/location-parking-area-blue-box.jpg" width="1600" height="1067" alt="桃園楊梅露營區 停車位置 藍色框框標示 交通與抵達指引" title="停車位置・請停放在藍色框框標示區域">
+            <img src="assets/images/location/location-parking-area-blue-box.jpg" width="1600" height="1067" alt="桃園楊梅露營區 停車位置 藍色框框標示 交通與抵達指引" title="停車位置・請停放在藍色框框標示區域">
             <figcaption class="img-caption">請將車輛停放在圖片中藍色框框標示的區域。此區域為專屬停車空間，請勿停放在其他草地或坡道上。</figcaption>
           </figure>
           <p>請將車輛停放在圖片中藍色框框標示的區域。<br><span class="en-text">Please park your vehicle in the area marked with the blue box in the photo.</span></p>
@@ -83,7 +89,7 @@
         <div class="arrival-block">
           <h3>3. 取鑰匙方式 <span class="en-sub">Key Collection</span></h3>
           <figure class="figure-block">
-            <img src="images/location/location-key-collection-mailbox.jpg" width="1600" height="1067" alt="揪好森 取鑰匙 白色信箱 密碼 交通與抵達指引" title="取鑰匙方式・白色信箱 密碼 010">
+            <img src="assets/images/location/location-key-collection-mailbox.jpg" width="1600" height="1067" alt="揪好森 取鑰匙 白色信箱 密碼 交通與抵達指引" title="取鑰匙方式・白色信箱 密碼 010">
             <figcaption class="img-caption">鑰匙放在白色信箱內，密碼 010。信箱旁備有小推車可協助搬運行李上坡。</figcaption>
           </figure>
           <p>鑰匙放在白色信箱內，請輸入密碼：<strong>010</strong>。<br><span class="en-text">The key is inside the white mailbox. Password: 010</span></p>
@@ -95,7 +101,7 @@
         <div class="arrival-block">
           <h3>4. 可使用空間 <span class="en-sub">Your Private Area</span></h3>
           <figure class="figure-block">
-            <img src="images/location/location-private-area-red-box.jpg" width="1600" height="1067" alt="揪好森 專屬使用空間 紅色框框 圓頂帳篷 草地 戶外座位 交通與抵達指引" title="您的專屬使用空間・紅色框框標示區域">
+            <img src="assets/images/location/location-private-area-red-box.jpg" width="1600" height="1067" alt="揪好森 專屬使用空間 紅色框框 圓頂帳篷 草地 戶外座位 交通與抵達指引" title="您的專屬使用空間・紅色框框標示區域">
             <figcaption class="img-caption">圖中紅色框框標示的區域為您本次入住的專屬使用空間。</figcaption>
           </figure>
           <p>圖中紅色框框標示的區域為您本次入住的專屬使用空間，包含：</p>
@@ -112,7 +118,7 @@
         <div class="arrival-block">
           <h3>5. 廚房與烤肉設備 <span class="en-sub">Kitchen and BBQ Area</span></h3>
           <figure class="figure-block">
-            <img src="images/location/location-kitchen-bbq-area.jpg" width="1600" height="1067" alt="揪好森 小木屋廚房 烤肉 微波爐 烤箱 卡式爐 交通與抵達指引" title="廚房與烤肉設備・小木屋廚房・火爐">
+            <img src="assets/images/location/location-kitchen-bbq-area.jpg" width="1600" height="1067" alt="揪好森 小木屋廚房 烤肉 微波爐 烤箱 卡式爐 交通與抵達指引" title="廚房與烤肉設備・小木屋廚房・火爐">
             <figcaption class="img-caption">小木屋廚房櫃內備有基本廚具；前方火爐可使用木炭烤肉，使用後請確認完全熄火。</figcaption>
           </figure>
           <p>小木屋廚房櫃內備有基本廚具設備，包括：<strong>微波爐、烤箱、卡式瓦斯爐</strong>。<br><span class="en-text">Inside the kitchen cabinets, you will find basic cooking equipment, including: Microwave, Oven, Portable gas stove</span></p>
@@ -124,7 +130,7 @@
         <div class="arrival-block">
           <h3>6. 沙發床使用說明 <span class="en-sub">Sofa Bed Instructions</span></h3>
           <figure class="figure-block">
-            <img src="images/location/location-sofa-bed-support-orange.jpg" width="1600" height="1067" alt="揪好森 沙發床 支撐 小桌子 橘色框框 交通與抵達指引" title="沙發床展開後請以小桌子支撐・參考橘色框框標示">
+            <img src="assets/images/location/location-sofa-bed-support-orange.jpg" width="1600" height="1067" alt="揪好森 沙發床 支撐 小桌子 橘色框框 交通與抵達指引" title="沙發床展開後請以小桌子支撐・參考橘色框框標示">
             <figcaption class="img-caption">沙發床展開後請在床頭與床尾底下各放置一張小桌子支撐，支撐位置請參考圖片中橘色框框標示區域。</figcaption>
           </figure>
           <p>沙發床展開後，請在床頭與床尾底下各放置一張小桌子支撐。支撐位置請參考圖片中橘色框框標示區域。<br><span class="en-text">After opening the sofa bed, please place one small table underneath the head and one underneath the foot of the bed for support. Refer to the orange highlighted area in the photo for correct placement.</span></p>
@@ -262,6 +268,6 @@
     <div class="footer-bottom container">© camp.8-ways.com 桃園森林豪華露營區</div>
   </footer>
 
-  <script src="scripts/main.js"></script>
+  <script src="assets/js/main.js"></script>
 </body>
 </html>
