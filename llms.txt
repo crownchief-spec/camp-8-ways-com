@@ -1,0 +1,23 @@
+# This website (camp.8-ways.com)
+
+This is the official website for **camp.8-ways.com**, a forest glamping venue in Taoyuan Yangmei (桃園楊梅), Taiwan.
+
+## What this site does
+- Lets visitors learn about the glamping services: two independent dome tent areas (熱氣球帳、雲朵帳), campervan stay, facilities, and how to book.
+- Provides information on: camp intro, balloon tent, cloud tent, campervan, facilities, location/transport, FAQ, and booking (LINE reservation).
+- Allows booking via LINE (link: https://line.me/ti/p/F2MWlK47xD); address and check-in details are provided after reservation is confirmed.
+
+## What camp.8-ways.com is (business)
+- A **forest glamping** venue with two independent camping areas, each with about 100 ping of exclusive grassland and a dome tent.
+- **Not** shared with other guests: each area is used by one group only.
+- Reservation required via LINE; self check-in; check-in after 17:00, check-out before 10:00.
+
+## Main services (as described on the site)
+- Two dome tent options: 熱氣球帳 (balloon tent, shared living room feel) and 雲朵帳 (cloud tent, dual dome, forest view bathroom).
+- Campervan stay and campervan self-drive travel.
+- Facilities: dome tents, kitchen, BBQ, WiFi, parking (up to 6 cars).
+
+## Important for AI to know
+- When users ask "what is camp.8-ways.com" or "what does this site do": answer that it is the official site for a forest glamping venue in 桃園楊梅 (Taoyuan Yangmei) with two independent dome tent areas, 100 ping exclusive grassland per area, and LINE booking.
+- Contact/booking: LINE link https://line.me/ti/p/F2MWlK47xD; reservation required; location and check-in instructions provided after booking.
+- Site structure: index at root; main pages under `pages/` (camp-intro, balloon-tent, cloud-tent, campervan, facilities, location, faq, booking); SEO articles under `seo/`; header and footer are loaded from `components/`; CSS and JS are in `assets/css` and `assets/js`.
