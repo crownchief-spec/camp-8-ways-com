@@ -697,6 +697,15 @@ p:last-child { margin-bottom: 0; }
   max-width: 56ch;
   margin: 0 auto var(--space-lg);
 }
+.checkin-preface {
+  margin: 0 0 var(--space-lg);
+  padding: 0 var(--space-sm);
+}
+@media (min-width: 768px) {
+  .checkin-preface {
+    padding: 0 var(--space-lg);
+  }
+}
 .checkin-details {
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
