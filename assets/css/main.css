@@ -697,8 +697,16 @@ p:last-child { margin-bottom: 0; }
   max-width: 56ch;
   margin: 0 auto var(--space-lg);
 }
+.checkin-preface-section {
+  padding: var(--space-2xl) 0;
+  background: var(--color-cream-dark);
+  scroll-margin-top: calc(var(--header-height) + 16px);
+}
+.checkin-preface-section .container {
+  max-width: var(--container);
+}
 .checkin-preface {
-  margin: 0 0 var(--space-lg);
+  margin: 0;
   padding: 0 var(--space-sm);
 }
 @media (min-width: 768px) {
