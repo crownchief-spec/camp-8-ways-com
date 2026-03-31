@@ -593,7 +593,38 @@ p:last-child { margin-bottom: 0; }
 }
 .story-body p:last-child { margin-bottom: 0; }
 .gallery-strip .section-title { margin-bottom: var(--space-lg); }
-.facilities-bath.equipment .container { max-width: 860px; }
+/* 設施與衛浴：雙欄卡片，手機兩列較密集 */
+.facilities-bath.equipment .container {
+  max-width: 860px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md) var(--space-xl);
+  align-items: start;
+}
+.facilities-bath.equipment h2 {
+  grid-column: 1 / -1;
+  margin-bottom: var(--space-md);
+}
+.facilities-bath .equipment-group + .equipment-group {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+.facilities-bath .equipment-group {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  background: #fff;
+  box-shadow: var(--shadow);
+  min-width: 0;
+}
+.facilities-bath .equipment-group ul {
+  columns: 1;
+  padding-left: 1.15rem;
+}
+.facilities-bath .equipment-group li {
+  margin-bottom: 0.35rem;
+}
 .feature-intro-wrap { padding-top: calc(var(--space-2xl) + 0.5rem); }
 .feature-intro .container {
   max-width: 780px;
@@ -764,6 +795,30 @@ footer a:hover { color: #ffffff; }
   .feature-intro .container { padding: var(--space-lg); }
   .feature-intro p { max-width: 100%; }
   .equipment-group ul { columns: 1; }
+  .facilities-bath.equipment .container {
+    gap: var(--space-sm) var(--space-sm);
+    row-gap: var(--space-sm);
+    column-gap: 0.65rem;
+  }
+  .facilities-bath .equipment-group {
+    padding: var(--space-sm) 0.65rem;
+  }
+  .facilities-bath .equipment-group h3 {
+    font-size: 0.9375rem;
+    margin-bottom: 0.35rem;
+    line-height: 1.35;
+  }
+  .facilities-bath .equipment-group ul {
+    font-size: 0.8125rem;
+    line-height: 1.45;
+    padding-left: 1rem;
+  }
+  .facilities-bath .equipment-group li {
+    margin-bottom: 0.22rem;
+  }
+  .facilities-bath.equipment h2 {
+    margin-bottom: var(--space-sm);
+  }
   .highlight-grid { grid-template-columns: 1fr; }
   .story-block .story-split {
     grid-template-columns: 1fr;
