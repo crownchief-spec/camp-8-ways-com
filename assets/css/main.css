@@ -679,7 +679,7 @@ p:last-child { margin-bottom: 0; }
   scroll-margin-top: calc(var(--header-height) + 16px);
 }
 .checkin-entry .container {
-  max-width: 860px;
+  max-width: var(--container);
   background: #fff;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
@@ -722,12 +722,21 @@ p:last-child { margin-bottom: 0; }
   border-top: 1px solid var(--color-border);
 }
 .checkin-content-full {
-  padding: var(--space-md) var(--space-md) var(--space-lg);
+  padding: var(--space-md) var(--space-sm) var(--space-lg);
   max-height: min(85vh, 1200px);
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 }
 .checkin-content-full .arrival-guide { margin-top: 0; }
+@media (min-width: 768px) {
+  .checkin-content-full {
+    padding-left: var(--space-lg);
+    padding-right: var(--space-lg);
+  }
+  .checkin-content-full .arrival-step {
+    padding: var(--space-md) var(--space-md);
+  }
+}
 .checkin-item {
   padding: var(--space-md) 0;
   border-bottom: 1px solid var(--color-border);
