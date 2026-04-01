@@ -592,6 +592,23 @@ p:last-child { margin-bottom: 0; }
   max-width: 48ch;
 }
 .story-body p:last-child { margin-bottom: 0; }
+.page-balloon-tent .section {
+  padding-top: var(--space-xl);
+  padding-bottom: var(--space-xl);
+}
+.page-balloon-tent .highlight-card {
+  padding: var(--space-md);
+}
+.page-balloon-tent .story-block .story-split {
+  gap: var(--space-lg);
+}
+.page-balloon-tent .story-body p {
+  margin-bottom: var(--space-sm);
+}
+.page-balloon-tent .figure-block {
+  margin-top: var(--space-md);
+  margin-bottom: var(--space-md);
+}
 .gallery-strip .section-title { margin-bottom: var(--space-lg); }
 /* 設施與衛浴：雙欄卡片，手機兩列較密集 */
 .facilities-bath.equipment .container {
@@ -853,6 +870,10 @@ footer a:hover { color: #ffffff; }
     margin-bottom: var(--space-sm);
   }
   .highlight-grid { grid-template-columns: 1fr; }
+  .highlight-summary-mobile-2col .highlight-grid { grid-template-columns: repeat(2, 1fr); }
+  .highlight-summary-mobile-2col .highlight-card { padding: var(--space-md); }
+  .highlight-summary-mobile-2col .highlight-card h3 { font-size: 0.95rem; }
+  .highlight-summary-mobile-2col .highlight-card p { font-size: 0.8125rem; line-height: 1.5; }
   .story-block .story-split {
     grid-template-columns: 1fr;
     gap: var(--space-lg);
