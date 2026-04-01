@@ -707,11 +707,18 @@ p:last-child { margin-bottom: 0; }
 }
 .checkin-preface {
   margin: 0;
-  padding: 0 var(--space-sm);
+  padding: 0;
+}
+.checkin-preface .arrival-step {
+  margin-bottom: var(--space-sm);
+  padding: var(--space-sm);
+}
+.checkin-preface .arrival-step:last-child {
+  margin-bottom: var(--space-md);
 }
 @media (min-width: 768px) {
   .checkin-preface {
-    padding: 0 var(--space-lg);
+    padding: 0;
   }
 }
 .checkin-details {
