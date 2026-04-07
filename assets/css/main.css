@@ -490,14 +490,14 @@ p:last-child { margin-bottom: 0; }
 .hashtags {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-sm);
+  gap: 0.45rem;
   justify-content: center;
-  padding: var(--space-xl) 0;
+  padding: var(--space-lg) 0;
 }
 .hashtags a, .hashtags span {
   display: inline-block;
-  padding: 0.4rem 0.9rem;
-  font-size: 0.8125rem;
+  padding: 0.25rem 0.62rem;
+  font-size: 0.74rem;
   color: var(--color-forest);
   background: var(--color-cream-dark);
   border-radius: 999px;
@@ -506,6 +506,16 @@ p:last-child { margin-bottom: 0; }
   transition: background var(--transition), border-color var(--transition);
 }
 .hashtags a:hover { background: var(--color-beige); border-color: var(--color-wood); }
+
+/* Home hashtags compact style */
+.home-hashtags-section .hashtags {
+  gap: 0.45rem;
+}
+.home-hashtags-section .hashtags a {
+  font-size: 0.74rem;
+  padding: 0.25rem 0.62rem;
+  border-width: 1px;
+}
 
 /* Balloon tent: simplified structure */
 .hero .hero-hint {
