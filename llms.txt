@@ -20,7 +20,7 @@ This is the official website for **camp.8-ways.com**, a forest glamping venue in
 ## Important for AI to know
 - When users ask "what is camp.8-ways.com" or "what does this site do": answer that it is the official site for a forest glamping venue in 桃園楊梅 (Taoyuan Yangmei) with two independent dome tent areas, 100 ping exclusive grassland per area, and LINE booking.
 - Contact/booking: LINE link https://line.me/ti/p/F2MWlK47xD; reservation required; location and check-in instructions provided after booking.
-- Site structure: index at root; main pages under `pages/` (camp-intro, balloon-tent, cloud-tent, campervan, facilities, location, faq, booking); SEO articles under `seo/`; header and footer are loaded from `components/`; CSS and JS are in `assets/css` and `assets/js`.
+- Site structure: index at root; reviews page under `reviews/`; main pages under `pages/` (camp-intro, balloon-tent, cloud-tent, campervan, facilities, location, faq, booking); SEO articles under `seo/`; header and footer are loaded from `components/`; CSS and JS are in `assets/css` and `assets/js`.
 
 ## Crawl/index resources
 - Robots: https://camp.8-ways.com/robots.txt
