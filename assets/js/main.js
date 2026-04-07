@@ -80,6 +80,32 @@
     });
   }
 
+  function initFooterReviews(){
+    const bubblesWrap = document.querySelector(".footer-review-bubbles");
+    if(!bubblesWrap) return;
+
+    const reviewPool = [
+      "一區一組不被打擾，整晚聊天超放鬆。",
+      "草地很大又乾淨，孩子活動空間很夠。",
+      "帳篷舒適好睡，早上醒來心情超好。",
+      "離市區不遠，開車抵達真的很方便。",
+      "朋友聚會很剛好，氣氛輕鬆又自在。",
+      "環境安靜有隱私，拍照每個角度都美。",
+      "設備整理得很完整，新手也能輕鬆玩。",
+      "包場感受很明顯，不會和陌生人擠在一起。"
+    ];
+
+    const picked = reviewPool
+      .map(text => ({ text, sort: Math.random() }))
+      .sort((a, b) => a.sort - b.sort)
+      .slice(0, 3)
+      .map(item => item.text);
+
+    bubblesWrap.innerHTML = picked
+      .map(text => `<div class="review-bubble">${text}</div>`)
+      .join("");
+  }
+
   document.addEventListener("DOMContentLoaded", async ()=>{
     try{
       await loadComponent("site-header", base + "components/header.html");
@@ -87,6 +113,7 @@
       wireNav();
       heroVideoFallback();
       initSmoothScroll();
+      initFooterReviews();
     }catch(err){
       console.warn(err);
     }
