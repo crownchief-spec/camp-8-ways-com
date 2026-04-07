@@ -725,6 +725,37 @@ p:last-child { margin-bottom: 0; }
   padding-top: var(--space-xl);
   padding-bottom: var(--space-xl);
 }
+.site-footer .home-reviews-section .card-grid-3 {
+  grid-template-columns: 1fr;
+  gap: 0.85rem;
+  max-width: 980px;
+  margin: 0 auto;
+}
+.site-footer .home-reviews-section .card {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  align-items: stretch;
+  overflow: hidden;
+}
+.site-footer .home-reviews-section .card-fig {
+  height: 100%;
+}
+.site-footer .home-reviews-section .card-fig img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.site-footer .home-reviews-section .card-body {
+  padding: 0.85rem 0.95rem;
+  display: flex;
+  align-items: center;
+}
+.site-footer .home-reviews-section .card-body p {
+  color: var(--color-text);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 0;
+}
 
 .checkin-entry {
   padding: var(--space-2xl) 0;
@@ -956,7 +987,8 @@ footer a:hover { color: #ffffff; }
     grid-template-columns: 1fr;
     gap: 0.65rem;
   }
-  .home-reviews-section .card {
+  .home-reviews-section .card,
+  .site-footer .home-reviews-section .card {
     display: grid;
     grid-template-columns: 120px 1fr;
     align-items: stretch;
