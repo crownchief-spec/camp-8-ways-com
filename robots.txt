@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://camp.8-ways.com/sitemap.xml
+LLM: https://camp.8-ways.com/llms.txt

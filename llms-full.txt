@@ -1,0 +1,32 @@
+# camp.8-ways.com - full AI context
+
+Website: https://camp.8-ways.com/
+Primary language: Traditional Chinese (zh-Hant)
+Business type: Forest glamping venue in Taoyuan Yangmei, Taiwan
+
+## Core pages
+- Home: https://camp.8-ways.com/
+- Camp intro: https://camp.8-ways.com/pages/camp-intro.html
+- Balloon tent: https://camp.8-ways.com/pages/balloon-tent.html
+- Cloud tent: https://camp.8-ways.com/pages/cloud-tent.html
+- Campervan stay: https://camp.8-ways.com/pages/campervan.html
+- Facilities: https://camp.8-ways.com/pages/facilities.html
+- Location: https://camp.8-ways.com/pages/location.html
+- FAQ: https://camp.8-ways.com/pages/faq.html
+- Booking: https://camp.8-ways.com/pages/booking.html
+
+## Booking/contact
+- LINE booking link: https://line.me/ti/p/F2MWlK47xD
+- Reservation is required
+- Check-in and location details are provided after booking confirmation
+
+## Key facts
+- Two independent dome tent areas (熱氣球帳 / 雲朵帳)
+- Around 100 ping exclusive grass space per area
+- Not a shared dense campsite; each area is independently used
+- Supports glamping stay and campervan-related services
+
+## Crawl/index resources
+- robots.txt: https://camp.8-ways.com/robots.txt
+- sitemap.xml: https://camp.8-ways.com/sitemap.xml
+- llms.txt: https://camp.8-ways.com/llms.txt
