@@ -81,28 +81,37 @@
   }
 
   function initFooterReviews(){
-    const bubblesWrap = document.querySelector(".footer-review-bubbles");
-    if(!bubblesWrap) return;
+    const reviewsGrid = document.querySelector(".footer-reviews-grid");
+    if(!reviewsGrid) return;
 
     const reviewPool = [
-      "一區一組不被打擾，整晚聊天超放鬆。",
-      "草地很大又乾淨，孩子活動空間很夠。",
-      "帳篷舒適好睡，早上醒來心情超好。",
-      "離市區不遠，開車抵達真的很方便。",
-      "朋友聚會很剛好，氣氛輕鬆又自在。",
-      "環境安靜有隱私，拍照每個角度都美。",
-      "設備整理得很完整，新手也能輕鬆玩。",
-      "包場感受很明顯，不會和陌生人擠在一起。"
+      { quote: "一區一組不被打擾，整晚聊天超放鬆。", author: "柔柔", source: "Google 評價" },
+      { quote: "草地很大又乾淨，孩子活動空間很夠。", author: "Jason", source: "Facebook 留言" },
+      { quote: "帳篷舒適好睡，早上醒來心情超好。", author: "Nina", source: "Google 評價" },
+      { quote: "離市區不遠，開車抵達真的很方便。", author: "Vicky", source: "Google 評價" },
+      { quote: "朋友聚會很剛好，氣氛輕鬆又自在。", author: "Tina", source: "IG 私訊回饋" },
+      { quote: "環境安靜有隱私，拍照每個角度都美。", author: "Claire", source: "Google 評價" },
+      { quote: "設備整理得很完整，新手也能輕鬆玩。", author: "阿哲", source: "Facebook 留言" },
+      { quote: "包場感受很明顯，不會和陌生人擠在一起。", author: "Mina", source: "Google 評價" }
     ];
 
     const picked = reviewPool
-      .map(text => ({ text, sort: Math.random() }))
+      .map(item => ({ ...item, sort: Math.random() }))
       .sort((a, b) => a.sort - b.sort)
       .slice(0, 3)
-      .map(item => item.text);
+      .map(({ quote, author, source }) => ({ quote, author, source }));
 
-    bubblesWrap.innerHTML = picked
-      .map(text => `<div class="review-bubble">${text}</div>`)
+    reviewsGrid.innerHTML = picked
+      .map(item => `
+        <article class="footer-review-card">
+          <div class="footer-review-rating">★★★★★</div>
+          <p class="footer-review-quote">${item.quote}</p>
+          <div class="footer-review-meta">
+            <span class="footer-review-author">${item.author}</span>
+            <span class="footer-review-source">${item.source}</span>
+          </div>
+        </article>
+      `)
       .join("");
   }
 
