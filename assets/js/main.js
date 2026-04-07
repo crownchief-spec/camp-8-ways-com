@@ -85,14 +85,14 @@
     if(!reviewsGrid) return;
 
     const reviewPool = [
-      { quote: "一區一組不被打擾，整晚聊天超放鬆。", author: "柔柔", source: "Google 評價" },
-      { quote: "草地很大又乾淨，孩子活動空間很夠。", author: "Jason", source: "Facebook 留言" },
-      { quote: "帳篷舒適好睡，早上醒來心情超好。", author: "Nina", source: "Google 評價" },
-      { quote: "離市區不遠，開車抵達真的很方便。", author: "Vicky", source: "Google 評價" },
-      { quote: "朋友聚會很剛好，氣氛輕鬆又自在。", author: "Tina", source: "IG 私訊回饋" },
-      { quote: "環境安靜有隱私，拍照每個角度都美。", author: "Claire", source: "Google 評價" },
-      { quote: "設備整理得很完整，新手也能輕鬆玩。", author: "阿哲", source: "Facebook 留言" },
-      { quote: "包場感受很明顯，不會和陌生人擠在一起。", author: "Mina", source: "Google 評價" }
+      { quote: "一區一組的包場感受非常明顯，從傍晚到深夜都能自在聊天，不用擔心被陌生人打擾。", author: "柔柔", source: "Google 評價" },
+      { quote: "草地空間比想像中更大也很乾淨，孩子可以放心跑跳，大人也能在旁邊輕鬆休息與拍照。", author: "Jason", source: "Facebook 留言" },
+      { quote: "帳篷內外整理得很舒服，床鋪好睡、動線清楚，隔天醒來還是會想再多待一下。", author: "Nina", source: "Google 評價" },
+      { quote: "從市區開車過來很順也不會太遠，採買補給方便，卻又能立刻切換到安靜的森林節奏。", author: "Vicky", source: "Google 評價" },
+      { quote: "和朋友一起來聚會很剛好，白天草地活動、晚上聊天吃東西，整體氣氛輕鬆又自在。", author: "Tina", source: "IG 私訊回饋" },
+      { quote: "環境安靜而且有隱私，拍照角度很多元，白天和夜晚都能拍出不同感覺的森林氛圍。", author: "Claire", source: "Google 評價" },
+      { quote: "設備準備得很完整，第一次來露營也不會手忙腳亂，整體體驗對新手非常友善。", author: "阿哲", source: "Facebook 留言" },
+      { quote: "最喜歡的是不需要和陌生人共用場地，整段住宿都能和家人慢慢相處、節奏很舒服。", author: "Mina", source: "Google 評價" }
     ];
 
     const picked = reviewPool
