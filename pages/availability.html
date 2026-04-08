@@ -55,7 +55,7 @@
       </div>
       <div class="container">
         <h1>查看檔期</h1>
-        <p class="hero-sub">以下為營區日曆中與房型相關的行程整理，供預約前參考。</p>
+        <p class="hero-sub">本月與次月檔期一覽。實際訂房請以 LINE 確認為準。</p>
         <div class="hero-actions">
           <div class="booking-actions">
             <a href="https://line.me/ti/p/F2MWlK47xD" class="btn btn-primary" target="_blank" rel="noopener">加 LINE 預約</a>
@@ -65,23 +65,10 @@
       </div>
     </section>
 
-    <section class="section">
-      <div class="container content-block">
-        <h2>如何解讀這份檔期表</h2>
-        <p>本站從同步的 Google 日曆讀取行程，並依標題或說明文字自動分類：</p>
-        <ul>
-          <li>行程中出現「<strong>熱氣球</strong>」→ 標示為<strong>熱氣球房</strong>有預約／相關行程</li>
-          <li>出現「<strong>雲朵</strong>」→ <strong>雲朵房</strong></li>
-          <li>出現「<strong>露營車</strong>」→ <strong>露營車</strong></li>
-        </ul>
-        <p class="mb-0">此表僅供參考，實際空房與訂房仍以 LINE 與營主回覆為準。</p>
-      </div>
-    </section>
-
     <section class="section section-alt">
-      <div class="container content-block">
+      <div class="container availability-page-inner">
         <div id="availability-app" data-ics-url="../data/calendar-basic.ics">
-          <p data-availability-status class="availability-status"></p>
+          <p data-availability-status class="availability-status" aria-live="polite"></p>
           <div data-availability-error class="availability-error" style="display: none;" role="alert"></div>
           <div data-availability-table></div>
         </div>

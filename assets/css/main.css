@@ -428,11 +428,17 @@ p:last-child { margin-bottom: 0; }
   margin-top: 0;
 }
 
-/* 查看檔期頁：日曆表格 */
+/* 查看檔期頁：月曆 */
+.availability-page-inner {
+  width: min(960px, 100%);
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
 .availability-status {
   margin: 0 0 var(--space-md);
   font-size: 0.9375rem;
   color: var(--color-text-muted);
+  text-align: center;
 }
 .availability-error {
   padding: var(--space-sm) var(--space-md);
@@ -446,59 +452,123 @@ p:last-child { margin-bottom: 0; }
   font-size: 0.8125rem;
   word-break: break-all;
 }
-.availability-empty {
-  margin: 0;
-  color: var(--color-text-muted);
-  font-size: 0.9375rem;
+.availability-calendars {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
 }
-.availability-table-wrap {
-  overflow-x: auto;
-  margin-top: var(--space-sm);
-  border-radius: var(--radius);
+.availability-month-title {
+  margin: 0 0 var(--space-sm);
+  font-size: 1.25rem;
+  text-align: center;
+  color: var(--color-forest-dark);
+}
+.availability-cal {
   border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
   background: #fff;
+  box-shadow: var(--shadow);
 }
-.availability-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.875rem;
+.availability-cal-head,
+.availability-cal-body {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
 }
-.availability-table th,
-.availability-table td {
-  padding: 0.65rem 0.85rem;
-  text-align: left;
-  vertical-align: top;
-  border-bottom: 1px solid var(--color-border);
-}
-.availability-table th {
+.availability-cal-head {
   background: var(--color-cream-dark);
+  font-size: 0.8125rem;
   font-weight: 600;
   color: var(--color-forest-dark);
-  white-space: nowrap;
 }
-.availability-table tbody tr:last-child td {
+.availability-cal-headcell {
+  padding: 0.5rem 0.2rem;
+  text-align: center;
+  border-bottom: 1px solid var(--color-border);
+}
+.availability-cal-body {
+  font-size: 0.68rem;
+}
+.availability-cal-cell {
+  min-height: 5.5rem;
+  border-right: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  padding: 0.35rem 0.28rem 0.45rem;
+  vertical-align: top;
+}
+.availability-cal-body .availability-cal-cell:nth-child(7n) {
+  border-right: none;
+}
+.availability-cal-body > .availability-cal-cell:nth-last-child(-n + 7) {
   border-bottom: none;
 }
-.availability-tag {
-  display: inline-block;
-  padding: 0.15rem 0.5rem;
-  margin: 0.15rem 0.35rem 0.15rem 0;
-  border-radius: 4px;
-  font-size: 0.75rem;
+.availability-cal-cell--pad {
+  min-height: 2.75rem;
+  background: rgba(245, 241, 235, 0.65);
+  padding: 0.35rem;
+}
+.availability-cal-cell--pad .availability-cal-daynum {
+  color: #a0a0a0;
   font-weight: 500;
-  white-space: nowrap;
 }
-.availability-tag--balloon {
-  background: #e3f2fd;
-  color: #1565c0;
+.availability-cal-daynum {
+  display: block;
+  font-weight: 600;
+  font-size: 0.78rem;
+  margin-bottom: 0.2rem;
+  color: var(--color-forest-dark);
 }
-.availability-tag--cloud {
-  background: #e8eaf6;
-  color: #3949ab;
+.availability-cal-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 0.08rem;
 }
-.availability-tag--rv {
-  background: #efebe9;
-  color: #5d4037;
+.availability-day-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.2rem;
+  line-height: 1.38;
+}
+.availability-day-label {
+  flex-shrink: 0;
+  color: inherit;
+  opacity: 0.9;
+}
+.availability-day-line--free {
+  color: #b8b8b8;
+  font-weight: 400;
+}
+.availability-day-line--free .availability-day-val {
+  color: #c4c4c4;
+  font-weight: 400;
+}
+.availability-day-line--busy {
+  color: var(--color-text);
+  font-weight: 600;
+}
+.availability-day-line--busy .availability-day-val {
+  color: var(--color-forest-dark);
+}
+.availability-cal-cell--today {
+  box-shadow: inset 0 0 0 2px var(--color-forest);
+  position: relative;
+  z-index: 1;
+}
+.availability-cal-cell--past:not(.availability-cal-cell--pad) {
+  opacity: 0.78;
+}
+@media (max-width: 640px) {
+  .availability-cal-body {
+    font-size: 0.62rem;
+  }
+  .availability-cal-cell {
+    min-height: 4.75rem;
+    padding: 0.28rem 0.18rem 0.35rem;
+  }
+  .availability-cal-daynum {
+    font-size: 0.72rem;
+  }
 }
 
 /* ========== Sections ========== */

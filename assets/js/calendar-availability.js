@@ -1,6 +1,7 @@
 /**
- * 讀取站內同步的 Google Calendar iCal（.ics），依標題與說明文字判斷房型：
+ * 讀取站內 Google Calendar iCal（.ics），依標題與說明內部分類（不對外顯示原文）：
  * 含「熱氣球」→ 熱氣球房｜含「雲朵」→ 雲朵房｜含「露營車」→ 露營車
+ * 僅以月曆呈現每日：有人／沒人、已出租／未出租。
  */
 (function () {
   function unfoldIcs(text) {
@@ -57,31 +58,10 @@
   function classifyTags(summary, description) {
     var text = (summary || "") + "\n" + (description || "");
     var tags = [];
-    if (text.indexOf("熱氣球") !== -1) tags.push({ id: "balloon", label: "熱氣球房" });
-    if (text.indexOf("雲朵") !== -1) tags.push({ id: "cloud", label: "雲朵房" });
-    if (text.indexOf("露營車") !== -1) tags.push({ id: "rv", label: "露營車" });
+    if (text.indexOf("熱氣球") !== -1) tags.push("balloon");
+    if (text.indexOf("雲朵") !== -1) tags.push("cloud");
+    if (text.indexOf("露營車") !== -1) tags.push("rv");
     return tags;
-  }
-
-  function formatRange(start, end, isAllDay) {
-    if (!start) return "—";
-    var opts = { year: "numeric", month: "numeric", day: "numeric" };
-    if (!isAllDay && end && start.getTime() !== end.getTime()) {
-      return (
-        start.toLocaleString("zh-TW", opts) +
-        " — " +
-        end.toLocaleString("zh-TW", { month: "numeric", day: "numeric", hour: "2-digit", minute: "2-digit" })
-      );
-    }
-    if (isAllDay && end) {
-      var endIncl = new Date(end.getTime());
-      endIncl.setDate(endIncl.getDate() - 1);
-      if (start.toDateString() === endIncl.toDateString()) {
-        return start.toLocaleDateString("zh-TW", opts);
-      }
-      return start.toLocaleDateString("zh-TW", opts) + " — " + endIncl.toLocaleDateString("zh-TW", opts) + "（跨日）";
-    }
-    return start.toLocaleString("zh-TW", opts);
   }
 
   function parseEvents(icsText) {
@@ -107,12 +87,10 @@
       }
 
       events.push({
-        summary: summary.replace(/\\,/g, ",").replace(/\\n/g, " "),
         tags: tags,
         start: dtStart,
         end: dtEnd,
-        isAllDay: isAllDay,
-        uid: props.UID ? props.UID.value : ""
+        isAllDay: isAllDay
       });
     }
     return events;
@@ -120,55 +98,189 @@
 
   function filterWindow(events) {
     var now = new Date();
-    var past = new Date(now.getTime());
-    past.setDate(past.getDate() - 120);
-    var future = new Date(now.getTime());
-    future.setDate(future.getDate() + 600);
+    var past = new Date(now.getFullYear(), now.getMonth() - 2, 1);
+    var future = new Date(now.getFullYear(), now.getMonth() + 5, 1);
     return events.filter(function (ev) {
-      return ev.end >= past && ev.start <= future;
+      return ev.end > past && ev.start < future;
     });
   }
 
-  function sortByStartAsc(a, b) {
-    return a.start - b.start;
+  function eventOverlapsLocalDay(ev, y, m, day) {
+    var dayStart = new Date(y, m, day, 0, 0, 0, 0);
+    var dayEnd = new Date(y, m, day + 1, 0, 0, 0, 0);
+    return ev.end > dayStart && ev.start < dayEnd;
   }
 
-  function renderTable(container, events) {
-    if (!events.length) {
-      container.innerHTML = "<p class=\"availability-empty\">目前區間內沒有符合關鍵字的行程，或日曆尚未同步。</p>";
-      return;
+  function dayStatusForRoom(events, y, m, day, roomId) {
+    for (var i = 0; i < events.length; i++) {
+      var ev = events[i];
+      if (ev.tags.indexOf(roomId) === -1) continue;
+      if (eventOverlapsLocalDay(ev, y, m, day)) return true;
     }
-    var rows = events
-      .sort(sortByStartAsc)
-      .map(function (ev) {
-        var tagHtml = ev.tags
-          .map(function (t) {
-            return "<span class=\"availability-tag availability-tag--" + t.id + "\">" + t.label + "</span>";
-          })
-          .join(" ");
-        return (
-          "<tr><td>" +
-          formatRange(ev.start, ev.end, ev.isAllDay) +
-          "</td><td>" +
-          tagHtml +
-          "</td><td>" +
-          escapeHtml(ev.summary) +
-          "</td></tr>"
-        );
+    return false;
+  }
+
+  function buildMonthCells(year, month) {
+    var first = new Date(year, month, 1);
+    var pad = first.getDay();
+    var dim = new Date(year, month + 1, 0).getDate();
+    var cells = [];
+    var i;
+    var pm = month - 1;
+    var py = year;
+    if (pm < 0) {
+      pm = 11;
+      py--;
+    }
+    var pDim = new Date(py, pm + 1, 0).getDate();
+    for (i = 0; i < pad; i++) {
+      cells.push({ y: py, m: pm, d: pDim - pad + i + 1, inMonth: false });
+    }
+    for (var d = 1; d <= dim; d++) {
+      cells.push({ y: year, m: month, d: d, inMonth: true });
+    }
+    var nd = 1;
+    var nm = month + 1;
+    var ny = year;
+    if (nm > 11) {
+      nm = 0;
+      ny++;
+    }
+    while (cells.length % 7 !== 0) {
+      cells.push({ y: ny, m: nm, d: nd++, inMonth: false });
+    }
+    return cells;
+  }
+
+  function isSameLocalDate(a, y, m, d) {
+    return a.getFullYear() === y && a.getMonth() === m && a.getDate() === d;
+  }
+
+  function renderDayLines(y, m, d, events, inMonth) {
+    var balloon = dayStatusForRoom(events, y, m, d, "balloon");
+    var cloud = dayStatusForRoom(events, y, m, d, "cloud");
+    var rv = dayStatusForRoom(events, y, m, d, "rv");
+
+    if (!inMonth) {
+      return (
+        '<div class="availability-cal-cell availability-cal-cell--pad">' +
+        '<span class="availability-cal-daynum">' +
+        d +
+        "</span>" +
+        "</div>"
+      );
+    }
+
+    var now = new Date();
+    var isToday = isSameLocalDate(now, y, m, d);
+    var todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    var cellDate = new Date(y, m, d);
+    var isPast = cellDate < todayStart;
+
+    var cls = "availability-cal-cell";
+    if (isToday) cls += " availability-cal-cell--today";
+    if (isPast) cls += " availability-cal-cell--past";
+
+    function line(label, booked, mode) {
+      var isFree = !booked;
+      var rowCls = "availability-day-line";
+      if (isFree) rowCls += " availability-day-line--free";
+      else rowCls += " availability-day-line--busy";
+      var val =
+        mode === "rv"
+          ? booked
+            ? "已出租"
+            : "未出租"
+          : booked
+            ? "有人"
+            : "沒人";
+      return (
+        '<div class="' +
+        rowCls +
+        '"><span class="availability-day-label">' +
+        label +
+        '</span><span class="availability-day-val">' +
+        val +
+        "</span></div>"
+      );
+    }
+
+    return (
+      '<div class="' +
+      cls +
+      '">' +
+      '<span class="availability-cal-daynum">' +
+      d +
+      "</span>" +
+      '<div class="availability-cal-lines">' +
+      line("熱氣球房", balloon, "tent") +
+      line("雲朵房", cloud, "tent") +
+      line("露營車", rv, "rv") +
+      "</div>" +
+      "</div>"
+    );
+  }
+
+  function renderOneMonth(year, month, events) {
+    var title =
+      year +
+      " 年 " +
+      (month + 1) +
+      " 月";
+    var cells = buildMonthCells(year, month);
+    var head = ["日", "一", "二", "三", "四", "五", "六"];
+    var headHtml = head
+      .map(function (h) {
+        return '<div class="availability-cal-headcell">' + h + "</div>";
       })
       .join("");
-    container.innerHTML =
-      "<div class=\"availability-table-wrap\"><table class=\"availability-table\"><thead><tr><th>日期／時間</th><th>房型</th><th>行程標題</th></tr></thead><tbody>" +
-      rows +
-      "</tbody></table></div>";
+    var body = cells
+      .map(function (cell) {
+        return renderDayLines(cell.y, cell.m, cell.d, events, cell.inMonth);
+      })
+      .join("");
+    return (
+      '<div class="availability-month">' +
+      '<h3 class="availability-month-title">' +
+      title +
+      "</h3>" +
+      '<div class="availability-cal">' +
+      '<div class="availability-cal-head">' +
+      headHtml +
+      "</div>" +
+      '<div class="availability-cal-body">' +
+      body +
+      "</div>" +
+      "</div>" +
+      "</div>"
+    );
   }
 
-  function escapeHtml(s) {
-    return String(s)
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/\"/g, "&quot;");
+  function filterEventsForTwoMonths(events, y0, m0) {
+    var rangeStart = new Date(y0, m0, 1, 0, 0, 0, 0);
+    var rangeEnd = new Date(y0, m0 + 2, 1, 0, 0, 0, 0);
+    return events.filter(function (ev) {
+      return ev.end > rangeStart && ev.start < rangeEnd;
+    });
+  }
+
+  function renderCalendars(container, events) {
+    var now = new Date();
+    var y = now.getFullYear();
+    var m = now.getMonth();
+    var y2 = y;
+    var m2 = m + 1;
+    if (m2 > 11) {
+      m2 = 0;
+      y2++;
+    }
+    var scoped = filterEventsForTwoMonths(events, y, m);
+    var html =
+      '<div class="availability-calendars">' +
+      renderOneMonth(y, m, scoped) +
+      renderOneMonth(y2, m2, scoped) +
+      "</div>";
+    container.innerHTML = html;
   }
 
   function init() {
@@ -179,7 +291,7 @@
     var tableMount = root.querySelector("[data-availability-table]");
     var icsUrl = root.getAttribute("data-ics-url") || "../data/calendar-basic.ics";
 
-    statusEl.textContent = "載入日曆資料中…";
+    statusEl.textContent = "載入中…";
     errEl.style.display = "none";
     errEl.textContent = "";
 
@@ -189,19 +301,15 @@
         return r.text();
       })
       .then(function (text) {
-        var all = parseEvents(text);
-        var filtered = filterWindow(all);
-        statusEl.textContent =
-          "共 " +
-          filtered.length +
-          " 筆與露營區房型相關的行程（已依日期篩選）。實際訂房請以 LINE 確認為準。";
-        renderTable(tableMount, filtered);
+        var all = filterWindow(parseEvents(text));
+        statusEl.textContent = "";
+        renderCalendars(tableMount, all);
       })
       .catch(function (e) {
         statusEl.textContent = "";
         errEl.style.display = "block";
         errEl.innerHTML =
-          "無法載入日曆檔案。若您剛更新過專案，請確認已部署 <code>data/calendar-basic.ics</code>，或請營主執行 <code>scripts/sync-calendar-ics.sh</code> 後再上架。";
+          "無法載入檔期資料。請稍後再試，或請營主確認網站已部署日曆檔案。";
         console.warn(e);
       });
   }
