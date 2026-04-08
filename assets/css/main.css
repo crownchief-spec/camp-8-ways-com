@@ -379,6 +379,128 @@ p:last-child { margin-bottom: 0; }
   transform: translateY(-1px);
 }
 
+/* 預約按鈕旁「查看檔期」小按鈕 */
+.booking-actions {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.65rem;
+}
+.btn-availability {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.45rem 0.85rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  border-radius: var(--radius);
+  border: 1px solid var(--color-forest);
+  background: transparent;
+  color: var(--color-forest);
+  text-decoration: none;
+  font-family: inherit;
+  transition: background var(--transition), color var(--transition), border-color var(--transition);
+}
+.btn-availability:hover {
+  background: var(--color-forest);
+  color: var(--color-cream);
+}
+.hero .btn-availability,
+.cta-block .btn-availability {
+  color: var(--color-cream);
+  border-color: rgba(255, 255, 255, 0.55);
+}
+.hero .btn-availability:hover,
+.cta-block .btn-availability:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--color-cream);
+}
+.site-footer .btn-availability {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.45);
+}
+.site-footer .btn-availability:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
+.cta-block .booking-actions {
+  justify-content: center;
+  margin-top: 0;
+}
+
+/* 查看檔期頁：日曆表格 */
+.availability-status {
+  margin: 0 0 var(--space-md);
+  font-size: 0.9375rem;
+  color: var(--color-text-muted);
+}
+.availability-error {
+  padding: var(--space-sm) var(--space-md);
+  background: #fff5f5;
+  border: 1px solid rgba(176, 0, 32, 0.2);
+  border-radius: var(--radius);
+  font-size: 0.875rem;
+  color: #8a1538;
+}
+.availability-error code {
+  font-size: 0.8125rem;
+  word-break: break-all;
+}
+.availability-empty {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 0.9375rem;
+}
+.availability-table-wrap {
+  overflow-x: auto;
+  margin-top: var(--space-sm);
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border);
+  background: #fff;
+}
+.availability-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+.availability-table th,
+.availability-table td {
+  padding: 0.65rem 0.85rem;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--color-border);
+}
+.availability-table th {
+  background: var(--color-cream-dark);
+  font-weight: 600;
+  color: var(--color-forest-dark);
+  white-space: nowrap;
+}
+.availability-table tbody tr:last-child td {
+  border-bottom: none;
+}
+.availability-tag {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  margin: 0.15rem 0.35rem 0.15rem 0;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.availability-tag--balloon {
+  background: #e3f2fd;
+  color: #1565c0;
+}
+.availability-tag--cloud {
+  background: #e8eaf6;
+  color: #3949ab;
+}
+.availability-tag--rv {
+  background: #efebe9;
+  color: #5d4037;
+}
+
 /* ========== Sections ========== */
 .section {
   padding: var(--space-2xl) 0;
