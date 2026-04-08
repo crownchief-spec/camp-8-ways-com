@@ -309,7 +309,7 @@
         statusEl.textContent = "";
         errEl.style.display = "block";
         errEl.innerHTML =
-          "無法載入檔期資料。請稍後再試，或請營主確認網站已部署日曆檔案。";
+          "無法載入空房資料。請稍後再試，或請營主確認網站已部署日曆檔案。";
         console.warn(e);
       });
   }

@@ -14,7 +14,7 @@ Business type: Forest glamping venue in Taoyuan Yangmei, Taiwan
 - Location: https://camp.8-ways.com/pages/location.html
 - FAQ: https://camp.8-ways.com/pages/faq.html
 - Booking: https://camp.8-ways.com/pages/booking.html
-- Availability (calendar reference): https://camp.8-ways.com/pages/availability.html
+- 查詢空房 (calendar room availability): https://camp.8-ways.com/pages/availability.html
 - Reviews: https://camp.8-ways.com/reviews/
 
 ## Booking/contact

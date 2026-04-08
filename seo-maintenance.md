@@ -16,7 +16,7 @@
 | `pages/facilities.html` | `/pages/facilities.html` | 設施介紹｜舒適與自然並存的露營設施｜camp.8-ways.com | 圓頂帳篷、廚房、衛浴、草地空間、WiFi、停車。讓森林露營更輕鬆自在的設施配置說明。 | `https://camp.8-ways.com/pages/facilities.html` | `../assets/images/index/taoyuan-glamping-exclusive-grass-100ping.jpg` | `https://camp.8-ways.com/assets/images/index/taoyuan-yangmei-glamping-site-layout-three-level-forest-platform.jpg` | `WebPage (TODO)` | no |
 | `pages/location.html` | `/pages/location.html` | 交通與抵達指引｜桃園楊梅・轉個彎就慢下來｜camp.8-ways.com | 桃園楊梅露營區交通與抵達指引，埔心車站附近。交流道、賣場約8分鐘車程。免費停車一帳篷可停2台，Google Maps 導航。 | `https://camp.8-ways.com/pages/location.html` | `../assets/images/location/taoyuan-yangmei-location-traffic-map.jpg` | `https://camp.8-ways.com/assets/images/location/taoyuan-yangmei-location-traffic-map.jpg` | `WebPage (TODO)` | no |
 | `pages/booking.html` | `/pages/booking.html` | 訂房與入住資訊｜LINE 預約・自助入住｜camp.8-ways.com | 加 LINE 預約，入住當日提供地址、導航、停車與取鑰匙方式。入住 17:00 後、退房 10:00 前。 | `https://camp.8-ways.com/pages/booking.html` | `../assets/images/index/taoyuan-glamping-exclusive-grass-100ping.jpg` | `https://camp.8-ways.com/assets/images/location/location-key-collection-mailbox.jpg` | `WebPage (TODO)` | no |
-| `pages/availability.html` | `/pages/availability.html` | 查看檔期｜房型預約參考｜camp.8-ways.com | 依 Google 日曆同步顯示熱氣球房、雲朵房、露營車相關檔期參考。實際訂房請以 LINE 確認為準。 | `https://camp.8-ways.com/pages/availability.html` | `../assets/images/index/taoyuan-glamping-exclusive-grass-100ping.jpg` | `https://camp.8-ways.com/assets/images/index/taoyuan-glamping-exclusive-grass-100ping.jpg` | `WebPage` | no |
+| `pages/availability.html` | `/pages/availability.html` | 查詢空房｜房型預約參考｜camp.8-ways.com | 依 Google 日曆同步顯示熱氣球房、雲朵房、露營車空房狀態參考。實際訂房請以 LINE 確認為準。 | `https://camp.8-ways.com/pages/availability.html` | `../assets/images/index/taoyuan-glamping-exclusive-grass-100ping.jpg` | `https://camp.8-ways.com/assets/images/index/taoyuan-glamping-exclusive-grass-100ping.jpg` | `WebPage` | no |
 | `pages/faq.html` | `/pages/faq.html` | 常見問題 FAQ｜入住前你可能想知道的事｜camp.8-ways.com | 自助入住、停車、設備、寵物、烤肉、WiFi、入住退房時間與住宿規則，一次整理。 | `https://camp.8-ways.com/pages/faq.html` | `N/A` | `https://camp.8-ways.com/assets/images/location/location-private-area-red-box.jpg` | `FAQPage (TODO)` | no |
 | `reviews/index.html` | `/reviews/` | 揪好森旅人真實評價｜森林系包場體驗、家庭聚會與好友旅行回饋 | 真實入住旅人的回饋分享。從少人數包場、森林中的放鬆感，到熱氣球房拍照、家庭聚會與好友旅行體驗，看看大家怎麼說揪好森。 | `https://camp.8-ways.com/reviews/` | `../assets/images/reviews/review-forest-secret-small-group-private-glamping.jpg` | `https://camp.8-ways.com/assets/images/reviews/review-forest-secret-small-group-private-glamping.jpg` | `CollectionPage (TODO)` | no |
 | `seo/index.html` | `/seo/` | 旅遊露營指南｜桃園露營・豪華露營・森林露營｜camp.8-ways.com | 整理桃園露營區、桃園豪華露營、楊梅露營區、森林露營體驗與圓頂帳篷露營等主題，幫助旅人規劃理想的露營旅行。 | `https://camp.8-ways.com/seo/` | `../../assets/images/location/taoyuan-yangmei-location-traffic-map.jpg` | `https://camp.8-ways.com/assets/images/location/taoyuan-yangmei-location-traffic-map.jpg` | `WebPage (TODO)` | no |
@@ -28,8 +28,8 @@
 | `seo/campervan-stay.html` | `/seo/campervan-stay.html` | 桃園露營車住宿推薦｜露營之外，另一種更自由的旅居方式｜camp.8-ways.com | 桃園露營車住宿推薦：定點住宿與自駕旅行。露營車不只是一晚住宿，而是把移動與生活結合的旅行方式。 | `https://camp.8-ways.com/seo/campervan-stay.html` | `../../assets/images/index/taoyuan-glamping-exclusive-grass-100ping.jpg` | `https://camp.8-ways.com/assets/images/campervan/taoyuan-glamping-campsite-view.jpg` | `Article (TODO)` | no |
 | `404.html` | `/404.html` | 找不到頁面｜揪好森 Joyforest | 抱歉，這個頁面不存在。你可以返回首頁，繼續查看揪好森 Joyforest 的森林包場豪華露營資訊。 | `https://camp.8-ways.com/404.html` | `N/A` | `https://camp.8-ways.com/assets/images/index/taoyuan-glamping-exclusive-grass-100ping.jpg` | `WebPage` | yes |
 
-## 檔期日曆資料
-- 公開頁面 `pages/availability.html` 以 `fetch` 讀取站內 `data/calendar-basic.ics`（同源，避免 CORS）。
+## 空房日曆資料
+- 公開頁面 `pages/availability.html`（查詢空房）以 `fetch` 讀取站內 `data/calendar-basic.ics`（同源，避免 CORS）。
 - 更新方式：在可連線環境執行 `bash scripts/sync-calendar-ics.sh`，將 Google Calendar 的 `basic.ics` 下載覆寫至 `data/calendar-basic.ics` 後一併部署。
 
 ## TODO 欄位

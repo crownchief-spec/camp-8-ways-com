@@ -4,7 +4,7 @@ This is the official website for **camp.8-ways.com**, a forest glamping venue in
 
 ## What this site does
 - Lets visitors learn about the glamping services: two independent dome tent areas (熱氣球房、雲朵房), campervan stay, facilities, and how to book.
-- Provides information on: camp intro, balloon tent, cloud tent, campervan, facilities, location/transport, FAQ, booking (LINE reservation), and calendar-based availability reference (`/pages/availability.html`, data from synced `data/calendar-basic.ics`).
+- Provides information on: camp intro, balloon tent, cloud tent, campervan, facilities, location/transport, FAQ, booking (LINE reservation), and a calendar-based room availability page 查詢空房 (`/pages/availability.html`, data from synced `data/calendar-basic.ics`).
 - Allows booking via LINE (link: https://line.me/ti/p/F2MWlK47xD); address and check-in details are provided after reservation is confirmed.
 
 ## What camp.8-ways.com is (business)

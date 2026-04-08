@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# 從 Google Calendar 私有 iCal 網址下載 .ics 至站內 data/，供「查看檔期」頁面讀取。
+# 從 Google Calendar 私有 iCal 網址下載 .ics 至站內 data/，供「查詢空房」頁面讀取。
 # 部署前或定期執行：bash scripts/sync-calendar-ics.sh
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
