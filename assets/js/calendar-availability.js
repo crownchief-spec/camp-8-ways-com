@@ -128,9 +128,10 @@
     return false;
   }
 
+  /** 一週自週一開始（欄位 0＝週一 … 欄位 6＝週日） */
   function buildMonthCells(year, month) {
     var first = new Date(year, month, 1);
-    var pad = first.getDay();
+    var pad = (first.getDay() + 6) % 7;
     var dim = new Date(year, month + 1, 0).getDate();
     var cells = [];
     var i;
@@ -260,7 +261,7 @@
   function renderOneMonth(year, month, events, api) {
     var title = year + " 年 " + (month + 1) + " 月";
     var cells = buildMonthCells(year, month);
-    var head = ["日", "一", "二", "三", "四", "五", "六"];
+    var head = ["一", "二", "三", "四", "五", "六", "日"];
     var headHtml = head
       .map(function (h) {
         return '<div class="availability-cal-headcell">' + h + "</div>";
