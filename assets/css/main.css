@@ -520,16 +520,16 @@ p:last-child { margin-bottom: 0; }
   flex-shrink: 0;
 }
 .availability-legend-swatch--balloon {
-  background: linear-gradient(145deg, #d4a574 0%, #b8895e 100%);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  background: linear-gradient(145deg, #6d8b72 0%, #4f6b54 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 .availability-legend-swatch--cloud {
   background: linear-gradient(145deg, #9eb4c4 0%, #7d96a8 100%);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 .availability-legend-swatch--rv {
-  background: linear-gradient(145deg, #6d8b72 0%, #4f6b54 100%);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  background: linear-gradient(145deg, #d4a574 0%, #b8895e 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
 }
 .availability-legend-note {
   margin: var(--space-sm) 0 0;
@@ -649,13 +649,13 @@ p:last-child { margin-bottom: 0; }
   flex-shrink: 0;
 }
 .availability-booking-row--balloon .availability-booking-swatch {
-  background: linear-gradient(180deg, #d4a574 0%, #b8895e 100%);
+  background: linear-gradient(180deg, #6d8b72 0%, #4f6b54 100%);
 }
 .availability-booking-row--cloud .availability-booking-swatch {
   background: linear-gradient(180deg, #9eb4c4 0%, #7d96a8 100%);
 }
 .availability-booking-row--rv .availability-booking-swatch {
-  background: linear-gradient(180deg, #6d8b72 0%, #4f6b54 100%);
+  background: linear-gradient(180deg, #d4a574 0%, #b8895e 100%);
 }
 .availability-booking-text {
   display: flex;
@@ -665,7 +665,7 @@ p:last-child { margin-bottom: 0; }
   min-width: 0;
 }
 .availability-booking-row--balloon .availability-booking-name {
-  color: #6b5340;
+  color: #3d5240;
   font-weight: 600;
 }
 .availability-booking-row--cloud .availability-booking-name {
@@ -673,7 +673,7 @@ p:last-child { margin-bottom: 0; }
   font-weight: 600;
 }
 .availability-booking-row--rv .availability-booking-name {
-  color: #3d5240;
+  color: #6b5340;
   font-weight: 600;
 }
 .availability-booking-status {
