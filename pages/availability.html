@@ -69,6 +69,24 @@
     <section class="section section-alt">
       <div class="container availability-page-inner">
         <div id="availability-app" data-ics-url="../data/calendar-basic.ics">
+          <div class="availability-legend-wrap">
+            <p class="availability-legend-lead">圖例：色塊與標示代表該資源當日有預訂紀錄</p>
+            <ul class="availability-legend" role="list">
+              <li>
+                <span class="availability-legend-swatch availability-legend-swatch--balloon" aria-hidden="true"></span>
+                <span>熱氣球房</span>
+              </li>
+              <li>
+                <span class="availability-legend-swatch availability-legend-swatch--cloud" aria-hidden="true"></span>
+                <span>雲朵房</span>
+              </li>
+              <li>
+                <span class="availability-legend-swatch availability-legend-swatch--rv" aria-hidden="true"></span>
+                <span>露營車</span>
+              </li>
+            </ul>
+            <p class="availability-legend-note">未出現標示之日期，僅表示此表未列出預訂；實際空房與訂房請以 LINE 確認為準。</p>
+          </div>
           <p data-availability-status class="availability-status" aria-live="polite"></p>
           <div data-availability-error class="availability-error" style="display: none;" role="alert"></div>
           <div data-availability-table></div>

@@ -1,9 +1,16 @@
 /**
  * 讀取站內 Google Calendar iCal（.ics），依標題與說明內部分類（不對外顯示原文）：
  * 含「熱氣球」→ 熱氣球房｜含「雲朵」→ 雲朵房｜含「露營車」→ 露營車
- * 僅以月曆呈現每日：有人／沒人、已出租／未出租。
+ * 月曆僅在有預訂的日期顯示該資源列；空檔日期只顯示日期的數字。
  */
 (function () {
+  /** 與 CSS .availability-booking-row--* 對應；新增第四種資源時請同步 CSS 與 classifyTags */
+  var ROOM_ORDER = [
+    { id: "balloon", label: "熱氣球房", css: "balloon" },
+    { id: "cloud", label: "雲朵房", css: "cloud" },
+    { id: "rv", label: "露營車", css: "rv" }
+  ];
+
   function unfoldIcs(text) {
     return text.replace(/\r\n/g, "\n").replace(/\n[\t ]/g, "");
   }
@@ -156,11 +163,23 @@
     return a.getFullYear() === y && a.getMonth() === m && a.getDate() === d;
   }
 
-  function renderDayLines(y, m, d, events, inMonth) {
-    var balloon = dayStatusForRoom(events, y, m, d, "balloon");
-    var cloud = dayStatusForRoom(events, y, m, d, "cloud");
-    var rv = dayStatusForRoom(events, y, m, d, "rv");
+  function renderBookingRow(roomCss, label) {
+    return (
+      '<div class="availability-booking-row availability-booking-row--' +
+      roomCss +
+      '">' +
+      '<span class="availability-booking-swatch" aria-hidden="true"></span>' +
+      '<span class="availability-booking-text">' +
+      '<span class="availability-booking-name">' +
+      label +
+      "</span>" +
+      '<span class="availability-booking-status">已預訂</span>' +
+      "</span>" +
+      "</div>"
+    );
+  }
 
+  function renderDayLines(y, m, d, events, inMonth) {
     if (!inMonth) {
       return (
         '<div class="availability-cal-cell availability-cal-cell--pad">' +
@@ -169,6 +188,17 @@
         "</span>" +
         "</div>"
       );
+    }
+
+    var rowsHtml = "";
+    var hasAny = false;
+    var ri;
+    for (ri = 0; ri < ROOM_ORDER.length; ri++) {
+      var room = ROOM_ORDER[ri];
+      if (dayStatusForRoom(events, y, m, d, room.id)) {
+        hasAny = true;
+        rowsHtml += renderBookingRow(room.css, room.label);
+      }
     }
 
     var now = new Date();
@@ -180,30 +210,11 @@
     var cls = "availability-cal-cell";
     if (isToday) cls += " availability-cal-cell--today";
     if (isPast) cls += " availability-cal-cell--past";
+    if (hasAny) cls += " availability-cal-cell--booked";
 
-    function line(label, booked, mode) {
-      var isFree = !booked;
-      var rowCls = "availability-day-line";
-      if (isFree) rowCls += " availability-day-line--free";
-      else rowCls += " availability-day-line--busy";
-      var val =
-        mode === "rv"
-          ? booked
-            ? "已出租"
-            : "未出租"
-          : booked
-            ? "有人"
-            : "沒人";
-      return (
-        '<div class="' +
-        rowCls +
-        '"><span class="availability-day-label">' +
-        label +
-        '</span><span class="availability-day-val">' +
-        val +
-        "</span></div>"
-      );
-    }
+    var linesWrap = rowsHtml
+      ? '<div class="availability-cal-lines">' + rowsHtml + "</div>"
+      : "";
 
     return (
       '<div class="' +
@@ -212,21 +223,13 @@
       '<span class="availability-cal-daynum">' +
       d +
       "</span>" +
-      '<div class="availability-cal-lines">' +
-      line("熱氣球房", balloon, "tent") +
-      line("雲朵房", cloud, "tent") +
-      line("露營車", rv, "rv") +
-      "</div>" +
+      linesWrap +
       "</div>"
     );
   }
 
   function renderOneMonth(year, month, events) {
-    var title =
-      year +
-      " 年 " +
-      (month + 1) +
-      " 月";
+    var title = year + " 年 " + (month + 1) + " 月";
     var cells = buildMonthCells(year, month);
     var head = ["日", "一", "二", "三", "四", "五", "六"];
     var headHtml = head

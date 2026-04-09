@@ -475,11 +475,68 @@ p:last-child { margin-bottom: 0; }
   margin-top: 0;
 }
 
-/* 查詢空房頁：月曆 */
+/* 查詢空房頁：月曆（空檔留白；有預訂才顯示色塊＋資源名） */
 .availability-page-inner {
   width: min(960px, 100%);
   margin: 0 auto;
   padding: 0 var(--space-md);
+}
+/* 三資源色票（柔和、與森林系品牌調和） */
+.availability-legend-wrap {
+  margin-bottom: var(--space-lg);
+  padding: var(--space-md) var(--space-lg);
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+}
+.availability-legend-lead {
+  margin: 0 0 var(--space-sm);
+  font-size: 0.9375rem;
+  color: var(--color-text-muted);
+  text-align: center;
+}
+.availability-legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-md) var(--space-xl);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.availability-legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--color-forest-dark);
+}
+.availability-legend-swatch {
+  width: 0.65rem;
+  height: 0.65rem;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+.availability-legend-swatch--balloon {
+  background: linear-gradient(145deg, #d4a574 0%, #b8895e 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+.availability-legend-swatch--cloud {
+  background: linear-gradient(145deg, #9eb4c4 0%, #7d96a8 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+.availability-legend-swatch--rv {
+  background: linear-gradient(145deg, #6d8b72 0%, #4f6b54 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+.availability-legend-note {
+  margin: var(--space-sm) 0 0;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: var(--color-text-muted);
+  text-align: center;
 }
 .availability-status {
   margin: 0 0 var(--space-md);
@@ -509,6 +566,7 @@ p:last-child { margin-bottom: 0; }
   font-size: 1.25rem;
   text-align: center;
   color: var(--color-forest-dark);
+  font-weight: 600;
 }
 .availability-cal {
   border: 1px solid var(--color-border);
@@ -534,14 +592,19 @@ p:last-child { margin-bottom: 0; }
   border-bottom: 1px solid var(--color-border);
 }
 .availability-cal-body {
-  font-size: 0.68rem;
+  font-size: 0.75rem;
 }
 .availability-cal-cell {
-  min-height: 5.5rem;
+  min-height: 3.1rem;
   border-right: 1px solid var(--color-border);
   border-bottom: 1px solid var(--color-border);
-  padding: 0.35rem 0.28rem 0.45rem;
+  padding: 0.4rem 0.3rem 0.45rem;
   vertical-align: top;
+  background: #fff;
+}
+.availability-cal-cell--booked {
+  min-height: 4.25rem;
+  background: #fcfaf7;
 }
 .availability-cal-body .availability-cal-cell:nth-child(7n) {
   border-right: none;
@@ -550,52 +613,74 @@ p:last-child { margin-bottom: 0; }
   border-bottom: none;
 }
 .availability-cal-cell--pad {
-  min-height: 2.75rem;
-  background: rgba(245, 241, 235, 0.65);
+  min-height: 2.5rem;
+  background: rgba(245, 241, 235, 0.55);
   padding: 0.35rem;
 }
 .availability-cal-cell--pad .availability-cal-daynum {
-  color: #a0a0a0;
+  color: #b0b0b0;
   font-weight: 500;
 }
 .availability-cal-daynum {
   display: block;
   font-weight: 600;
-  font-size: 0.78rem;
-  margin-bottom: 0.2rem;
+  font-size: 0.8125rem;
+  margin-bottom: 0.15rem;
   color: var(--color-forest-dark);
+  line-height: 1.2;
 }
 .availability-cal-lines {
   display: flex;
   flex-direction: column;
-  gap: 0.08rem;
+  gap: 0.35rem;
+  margin-top: 0.2rem;
 }
-.availability-day-line {
+.availability-booking-row {
   display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 0.2rem;
-  line-height: 1.38;
+  align-items: flex-start;
+  gap: 0.35rem;
+  line-height: 1.35;
 }
-.availability-day-label {
+.availability-booking-swatch {
+  width: 0.45rem;
+  min-height: 1.35rem;
+  margin-top: 0.12rem;
+  border-radius: 2px;
   flex-shrink: 0;
-  color: inherit;
-  opacity: 0.9;
 }
-.availability-day-line--free {
-  color: #b8b8b8;
-  font-weight: 400;
+.availability-booking-row--balloon .availability-booking-swatch {
+  background: linear-gradient(180deg, #d4a574 0%, #b8895e 100%);
 }
-.availability-day-line--free .availability-day-val {
-  color: #c4c4c4;
-  font-weight: 400;
+.availability-booking-row--cloud .availability-booking-swatch {
+  background: linear-gradient(180deg, #9eb4c4 0%, #7d96a8 100%);
 }
-.availability-day-line--busy {
-  color: var(--color-text);
+.availability-booking-row--rv .availability-booking-swatch {
+  background: linear-gradient(180deg, #6d8b72 0%, #4f6b54 100%);
+}
+.availability-booking-text {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.2rem 0.35rem;
+  min-width: 0;
+}
+.availability-booking-row--balloon .availability-booking-name {
+  color: #6b5340;
   font-weight: 600;
 }
-.availability-day-line--busy .availability-day-val {
-  color: var(--color-forest-dark);
+.availability-booking-row--cloud .availability-booking-name {
+  color: #4a5c6a;
+  font-weight: 600;
+}
+.availability-booking-row--rv .availability-booking-name {
+  color: #3d5240;
+  font-weight: 600;
+}
+.availability-booking-status {
+  font-size: 0.68em;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  letter-spacing: 0.02em;
 }
 .availability-cal-cell--today {
   box-shadow: inset 0 0 0 2px var(--color-forest);
@@ -603,18 +688,39 @@ p:last-child { margin-bottom: 0; }
   z-index: 1;
 }
 .availability-cal-cell--past:not(.availability-cal-cell--pad) {
-  opacity: 0.78;
+  opacity: 0.82;
 }
 @media (max-width: 640px) {
+  .availability-legend {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
   .availability-cal-body {
-    font-size: 0.62rem;
+    font-size: 0.65rem;
   }
   .availability-cal-cell {
-    min-height: 4.75rem;
-    padding: 0.28rem 0.18rem 0.35rem;
+    min-height: 2.85rem;
+    padding: 0.3rem 0.15rem 0.35rem;
+  }
+  .availability-cal-cell--booked {
+    min-height: 3.6rem;
   }
   .availability-cal-daynum {
-    font-size: 0.72rem;
+    font-size: 0.75rem;
+  }
+  .availability-cal-lines {
+    gap: 0.28rem;
+  }
+  .availability-booking-name {
+    font-size: 0.95em;
+  }
+  .availability-booking-status {
+    display: none;
+  }
+  .availability-booking-swatch {
+    min-height: 1.15rem;
+    width: 0.38rem;
   }
 }
 
