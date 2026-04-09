@@ -1,0 +1,12 @@
+{
+  "name": "camp-8-ways-com",
+  "private": true,
+  "scripts": {
+    "build:calendar-pricing": "esbuild src/bundle/campCalendarPricing.ts --bundle --format=iife --outfile=assets/js/camp-calendar-pricing.js",
+    "build": "npm run build:calendar-pricing"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0",
+    "typescript": "^5.7.0"
+  }
+}

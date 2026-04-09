@@ -55,7 +55,7 @@
       </div>
       <div class="container">
         <h1>查詢空房</h1>
-        <p class="hero-sub">本月與次月空房狀況一覽。實際訂房請以 LINE 確認為準。</p>
+        <p class="hero-sub">依日曆顯示空房與參考價格（自本月起至最後一筆未來預訂所在月份）。實際訂房請以 LINE 確認為準。</p>
         <div class="hero-actions">
           <div class="btn-line-avail btn-line-avail--primary" role="group" aria-label="加 LINE 預約或訂房說明">
             <a href="https://line.me/ti/p/F2MWlK47xD" class="btn-line-avail__line" target="_blank" rel="noopener">加 LINE 預約</a>
@@ -70,7 +70,7 @@
       <div class="container availability-page-inner">
         <div id="availability-app" data-ics-url="../data/calendar-basic.ics">
           <div class="availability-legend-wrap">
-            <p class="availability-legend-lead">圖例：色塊與標示代表該資源當日有預訂紀錄</p>
+            <p class="availability-legend-lead">圖例：色塊代表房型；「已預訂」為該入住夜已有預訂；未預訂則顯示參考價（露營車未預訂不顯示價格）</p>
             <ul class="availability-legend" role="list">
               <li>
                 <span class="availability-legend-swatch availability-legend-swatch--balloon" aria-hidden="true"></span>
@@ -85,7 +85,7 @@
                 <span>露營車</span>
               </li>
             </ul>
-            <p class="availability-legend-note">未出現標示之日期，僅表示此表未列出預訂；實際空房與訂房請以 LINE 確認為準。</p>
+            <p class="availability-legend-note">價格為參考；國定連假依營主設定之規則換算。實際空房、總價與訂房條件請以 LINE 確認為準。</p>
           </div>
           <p data-availability-status class="availability-status" aria-live="polite"></p>
           <div data-availability-error class="availability-error" style="display: none;" role="alert"></div>
@@ -109,6 +109,7 @@
 
   <div id="site-footer"></div>
   <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/camp-calendar-pricing.js"></script>
   <script src="../assets/js/calendar-availability.js"></script>
 </body>
 </html>

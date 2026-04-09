@@ -1,10 +1,10 @@
 /**
  * 讀取站內 Google Calendar iCal（.ics），依標題與說明內部分類（不對外顯示原文）：
  * 含「熱氣球」→ 熱氣球房｜含「雲朵」→ 雲朵房｜含「露營車」→ 露營車
- * 月曆僅在有預訂的日期顯示該資源列；空檔日期只顯示日期的數字。
+ *
+ * 價格／連假規則由 assets/js/camp-calendar-pricing.js（TypeScript 編譯）提供 window.CampCalendarPricing。
  */
 (function () {
-  /** 與 CSS .availability-booking-row--* 對應；新增第四種資源時請同步 CSS 與 classifyTags */
   var ROOM_ORDER = [
     { id: "balloon", label: "熱氣球房", css: "balloon" },
     { id: "cloud", label: "雲朵房", css: "cloud" },
@@ -103,10 +103,11 @@
     return events;
   }
 
+  /** 保留足夠時間範圍供月份範圍與預訂重疊計算 */
   function filterWindow(events) {
     var now = new Date();
-    var past = new Date(now.getFullYear(), now.getMonth() - 2, 1);
-    var future = new Date(now.getFullYear(), now.getMonth() + 5, 1);
+    var past = new Date(now.getFullYear() - 1, 0, 1);
+    var future = new Date(now.getFullYear() + 3, 11, 31);
     return events.filter(function (ev) {
       return ev.end > past && ev.start < future;
     });
@@ -163,9 +164,9 @@
     return a.getFullYear() === y && a.getMonth() === m && a.getDate() === d;
   }
 
-  function renderBookingRow(roomCss, label) {
+  function renderBookedRow(roomCss, label) {
     return (
-      '<div class="availability-booking-row availability-booking-row--' +
+      '<div class="availability-booking-row availability-booking-row--booked availability-booking-row--' +
       roomCss +
       '">' +
       '<span class="availability-booking-swatch" aria-hidden="true"></span>' +
@@ -179,7 +180,25 @@
     );
   }
 
-  function renderDayLines(y, m, d, events, inMonth) {
+  function renderPriceRow(roomCss, label, formattedPrice) {
+    return (
+      '<div class="availability-booking-row availability-booking-row--price availability-booking-row--' +
+      roomCss +
+      '">' +
+      '<span class="availability-booking-swatch" aria-hidden="true"></span>' +
+      '<span class="availability-booking-text">' +
+      '<span class="availability-booking-name">' +
+      label +
+      "</span>" +
+      '<span class="availability-booking-price">' +
+      formattedPrice +
+      "</span>" +
+      "</span>" +
+      "</div>"
+    );
+  }
+
+  function renderDayLines(y, m, d, events, inMonth, api) {
     if (!inMonth) {
       return (
         '<div class="availability-cal-cell availability-cal-cell--pad">' +
@@ -190,27 +209,37 @@
       );
     }
 
+    var now = new Date();
+    var todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    var cellDate = new Date(y, m, d);
+    var showPrices = cellDate >= todayStart;
+
     var rowsHtml = "";
-    var hasAny = false;
+    var hasBooking = false;
+    var hasPrice = false;
     var ri;
     for (ri = 0; ri < ROOM_ORDER.length; ri++) {
       var room = ROOM_ORDER[ri];
-      if (dayStatusForRoom(events, y, m, d, room.id)) {
-        hasAny = true;
-        rowsHtml += renderBookingRow(room.css, room.label);
+      var booked = dayStatusForRoom(events, y, m, d, room.id);
+      if (booked) hasBooking = true;
+
+      var disp = api.resolveResourceRowDisplay(room.id, y, m, d, booked);
+      if (disp.kind === "booked") {
+        rowsHtml += renderBookedRow(room.css, disp.label);
+      } else if (disp.kind === "price" && showPrices) {
+        hasPrice = true;
+        rowsHtml += renderPriceRow(room.css, disp.label, disp.formattedPrice);
       }
     }
 
-    var now = new Date();
     var isToday = isSameLocalDate(now, y, m, d);
-    var todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-    var cellDate = new Date(y, m, d);
     var isPast = cellDate < todayStart;
 
     var cls = "availability-cal-cell";
     if (isToday) cls += " availability-cal-cell--today";
     if (isPast) cls += " availability-cal-cell--past";
-    if (hasAny) cls += " availability-cal-cell--booked";
+    if (hasBooking) cls += " availability-cal-cell--booked";
+    if (hasPrice) cls += " availability-cal-cell--priced";
 
     var linesWrap = rowsHtml
       ? '<div class="availability-cal-lines">' + rowsHtml + "</div>"
@@ -228,7 +257,7 @@
     );
   }
 
-  function renderOneMonth(year, month, events) {
+  function renderOneMonth(year, month, events, api) {
     var title = year + " 年 " + (month + 1) + " 月";
     var cells = buildMonthCells(year, month);
     var head = ["日", "一", "二", "三", "四", "五", "六"];
@@ -239,7 +268,7 @@
       .join("");
     var body = cells
       .map(function (cell) {
-        return renderDayLines(cell.y, cell.m, cell.d, events, cell.inMonth);
+        return renderDayLines(cell.y, cell.m, cell.d, events, cell.inMonth, api);
       })
       .join("");
     return (
@@ -259,30 +288,26 @@
     );
   }
 
-  function filterEventsForTwoMonths(events, y0, m0) {
-    var rangeStart = new Date(y0, m0, 1, 0, 0, 0, 0);
-    var rangeEnd = new Date(y0, m0 + 2, 1, 0, 0, 0, 0);
-    return events.filter(function (ev) {
-      return ev.end > rangeStart && ev.start < rangeEnd;
-    });
+  function forEachMonthInRange(startYm, endYm, fn) {
+    var y = startYm.y;
+    var m = startYm.m;
+    while (y < endYm.y || (y === endYm.y && m <= endYm.m)) {
+      fn(y, m);
+      m++;
+      if (m > 11) {
+        m = 0;
+        y++;
+      }
+    }
   }
 
-  function renderCalendars(container, events) {
-    var now = new Date();
-    var y = now.getFullYear();
-    var m = now.getMonth();
-    var y2 = y;
-    var m2 = m + 1;
-    if (m2 > 11) {
-      m2 = 0;
-      y2++;
-    }
-    var scoped = filterEventsForTwoMonths(events, y, m);
-    var html =
-      '<div class="availability-calendars">' +
-      renderOneMonth(y, m, scoped) +
-      renderOneMonth(y2, m2, scoped) +
-      "</div>";
+  function renderCalendars(container, events, api) {
+    var range = api.computeCalendarMonthRange(events);
+    var parts = [];
+    forEachMonthInRange(range.startYm, range.endYm, function (y, m) {
+      parts.push(renderOneMonth(y, m, events, api));
+    });
+    var html = '<div class="availability-calendars">' + parts.join("") + "</div>";
     container.innerHTML = html;
   }
 
@@ -293,6 +318,18 @@
     var errEl = root.querySelector("[data-availability-error]");
     var tableMount = root.querySelector("[data-availability-table]");
     var icsUrl = root.getAttribute("data-ics-url") || "../data/calendar-basic.ics";
+
+    if (typeof window.CampCalendarPricing === "undefined") {
+      if (statusEl) statusEl.textContent = "";
+      if (errEl) {
+        errEl.style.display = "block";
+        errEl.textContent =
+          "價格模組未載入。請確認頁面已引入 camp-calendar-pricing.js，或重新整理後再試。";
+      }
+      console.error("CampCalendarPricing 未載入，請確認已引入 camp-calendar-pricing.js");
+      return;
+    }
+    var api = window.CampCalendarPricing;
 
     statusEl.textContent = "載入中…";
     errEl.style.display = "none";
@@ -306,7 +343,7 @@
       .then(function (text) {
         var all = filterWindow(parseEvents(text));
         statusEl.textContent = "";
-        renderCalendars(tableMount, all);
+        renderCalendars(tableMount, all, api);
       })
       .catch(function (e) {
         statusEl.textContent = "";

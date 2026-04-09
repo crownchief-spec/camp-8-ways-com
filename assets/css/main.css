@@ -475,7 +475,7 @@ p:last-child { margin-bottom: 0; }
   margin-top: 0;
 }
 
-/* 查詢空房頁：月曆（空檔留白；有預訂才顯示色塊＋資源名） */
+/* 查詢空房頁：月曆（已預訂／參考價；露營車未預訂不顯示價） */
 .availability-page-inner {
   width: min(960px, 100%);
   margin: 0 auto;
@@ -606,6 +606,12 @@ p:last-child { margin-bottom: 0; }
   min-height: 4.25rem;
   background: #fcfaf7;
 }
+.availability-cal-cell--priced {
+  min-height: 4rem;
+}
+.availability-cal-cell--booked.availability-cal-cell--priced {
+  min-height: 4.6rem;
+}
 .availability-cal-body .availability-cal-cell:nth-child(7n) {
   border-right: none;
 }
@@ -676,11 +682,22 @@ p:last-child { margin-bottom: 0; }
   color: #6b5340;
   font-weight: 600;
 }
-.availability-booking-status {
-  font-size: 0.68em;
-  font-weight: 500;
-  color: var(--color-text-muted);
-  letter-spacing: 0.02em;
+.availability-booking-row--booked .availability-booking-status {
+  font-size: 0.72em;
+  font-weight: 700;
+  color: #8a2f3a;
+  letter-spacing: 0.03em;
+}
+.availability-booking-price {
+  font-size: 0.72em;
+  font-weight: 600;
+  color: var(--color-forest-dark);
+  white-space: nowrap;
+}
+.availability-booking-row--price .availability-booking-text {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.08rem;
 }
 .availability-cal-cell--today {
   box-shadow: inset 0 0 0 2px var(--color-forest);
@@ -715,8 +732,11 @@ p:last-child { margin-bottom: 0; }
   .availability-booking-name {
     font-size: 0.95em;
   }
-  .availability-booking-status {
-    display: none;
+  .availability-booking-row--booked .availability-booking-status {
+    font-size: 0.68em;
+  }
+  .availability-booking-price {
+    font-size: 0.68em;
   }
   .availability-booking-swatch {
     min-height: 1.15rem;
