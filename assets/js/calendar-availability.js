@@ -164,35 +164,35 @@
     return a.getFullYear() === y && a.getMonth() === m && a.getDate() === d;
   }
 
-  /** 已預訂：簡稱 + 紅字已預訂（與價格 badge 分開樣式） */
-  function renderBookedBadge(roomCss, shortLabel) {
+  /** 已預訂：淡底＋左色條＋單行（非膠囊按鈕） */
+  function renderBookedLine(roomCss, shortLabel) {
     return (
-      '<div class="availability-res-badge availability-res-badge--' +
+      '<div class="availability-line availability-line--booked availability-line--' +
       roomCss +
-      ' availability-res-badge--booked" role="status">' +
-      '<span class="availability-res-badge__accent" aria-hidden="true"></span>' +
-      '<div class="availability-res-badge__main">' +
-      '<span class="availability-res-badge__name">' +
+      '" role="status">' +
+      '<span class="availability-line__bar" aria-hidden="true"></span>' +
+      '<div class="availability-line__inner">' +
+      '<span class="availability-line__name">' +
       shortLabel +
       "</span>" +
-      '<span class="availability-res-badge__state availability-res-badge__state--booked">已預訂</span>' +
+      '<span class="availability-line__booked">已預訂</span>' +
       "</div>" +
       "</div>"
     );
   }
 
-  /** 參考價：簡稱 + NT$（深灰） */
-  function renderPriceBadge(roomCss, shortLabel, formattedPrice) {
+  /** 參考價：無框無底，僅左色條＋房型色＋深灰價格 */
+  function renderPriceLine(roomCss, shortLabel, formattedPrice) {
     return (
-      '<div class="availability-res-badge availability-res-badge--' +
+      '<div class="availability-line availability-line--price availability-line--' +
       roomCss +
-      ' availability-res-badge--price" role="status">' +
-      '<span class="availability-res-badge__accent" aria-hidden="true"></span>' +
-      '<div class="availability-res-badge__main">' +
-      '<span class="availability-res-badge__name">' +
+      '" role="status">' +
+      '<span class="availability-line__bar" aria-hidden="true"></span>' +
+      '<div class="availability-line__inner">' +
+      '<span class="availability-line__name">' +
       shortLabel +
       "</span>" +
-      '<span class="availability-res-badge__state availability-res-badge__state--price">' +
+      '<span class="availability-line__price">' +
       formattedPrice +
       "</span>" +
       "</div>" +
@@ -217,23 +217,19 @@
     var showPrices = cellDate >= todayStart;
 
     var rowsHtml = "";
-    var hasBooking = false;
-    var hasPrice = false;
-    var badgeCount = 0;
+    var lineCount = 0;
     var ri;
-    for (ri = 0; ri < ROOM_ORDER.length && badgeCount < 3; ri++) {
+    for (ri = 0; ri < ROOM_ORDER.length && lineCount < 3; ri++) {
       var room = ROOM_ORDER[ri];
       var booked = dayStatusForRoom(events, y, m, d, room.id);
-      if (booked) hasBooking = true;
 
       var disp = api.resolveResourceRowDisplay(room.id, y, m, d, booked);
       if (disp.kind === "booked") {
-        rowsHtml += renderBookedBadge(room.css, disp.shortLabel);
-        badgeCount++;
+        rowsHtml += renderBookedLine(room.css, disp.shortLabel);
+        lineCount++;
       } else if (disp.kind === "price" && showPrices) {
-        hasPrice = true;
-        rowsHtml += renderPriceBadge(room.css, disp.shortLabel, disp.formattedPrice);
-        badgeCount++;
+        rowsHtml += renderPriceLine(room.css, disp.shortLabel, disp.formattedPrice);
+        lineCount++;
       }
     }
 
@@ -243,10 +239,10 @@
     var cls = "availability-cal-cell availability-cal-cell--day";
     if (isToday) cls += " availability-cal-cell--today";
     if (isPast) cls += " availability-cal-cell--past";
-    if (badgeCount > 0) cls += " availability-cal-cell--has-badges";
+    if (lineCount > 0) cls += " availability-cal-cell--has-lines";
 
     var linesWrap = rowsHtml
-      ? '<div class="availability-cal-badges">' + rowsHtml + "</div>"
+      ? '<div class="availability-cal-lines">' + rowsHtml + "</div>"
       : "";
 
     return (
