@@ -25,7 +25,7 @@ export function isHolidayPriceNight(
 }
 
 export function formatPriceNt(amount: number): string {
-  return "NT$" + amount.toLocaleString("zh-TW");
+  return "$" + amount.toLocaleString("zh-TW");
 }
 
 export type ResourceRowDisplay =

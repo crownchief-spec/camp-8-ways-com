@@ -95,7 +95,7 @@
     return isFridayOrSaturdayLocal(y, m, d);
   }
   function formatPriceNt(amount) {
-    return "NT$" + amount.toLocaleString("zh-TW");
+    return "$" + amount.toLocaleString("zh-TW");
   }
   function resolveResourceRowDisplay(resourceId, y, m, d, isBooked, holidayOverrideSet) {
     const cfg = calendarResourcePricing[resourceId];
