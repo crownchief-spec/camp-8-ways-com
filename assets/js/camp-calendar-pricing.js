@@ -65,18 +65,21 @@
   var calendarResourcePricing = {
     balloon: {
       label: "\u71B1\u6C23\u7403\u623F",
+      shortLabel: "\u71B1\u6C23\u7403",
       weekday: 3800,
       weekend: 5800,
       showPrice: true
     },
     cloud: {
       label: "\u96F2\u6735\u623F",
+      shortLabel: "\u96F2\u6735",
       weekday: 3800,
       weekend: 4800,
       showPrice: true
     },
     rv: {
       label: "\u9732\u71DF\u8ECA",
+      shortLabel: "\u9732\u71DF\u8ECA",
       showPrice: false
     }
   };
@@ -97,7 +100,7 @@
   function resolveResourceRowDisplay(resourceId, y, m, d, isBooked, holidayOverrideSet) {
     const cfg = calendarResourcePricing[resourceId];
     if (isBooked) {
-      return { kind: "booked", label: cfg.label };
+      return { kind: "booked", label: cfg.label, shortLabel: cfg.shortLabel };
     }
     if (!cfg.showPrice) {
       return { kind: "hidden" };
@@ -107,6 +110,7 @@
     return {
       kind: "price",
       label: cfg.label,
+      shortLabel: cfg.shortLabel,
       formattedPrice: formatPriceNt(amount)
     };
   }

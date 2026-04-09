@@ -29,8 +29,8 @@ export function formatPriceNt(amount: number): string {
 }
 
 export type ResourceRowDisplay =
-  | { kind: "booked"; label: string }
-  | { kind: "price"; label: string; formattedPrice: string }
+  | { kind: "booked"; label: string; shortLabel: string }
+  | { kind: "price"; label: string; shortLabel: string; formattedPrice: string }
   | { kind: "hidden" };
 
 /**
@@ -49,7 +49,7 @@ export function resolveResourceRowDisplay(
 ): ResourceRowDisplay {
   const cfg = calendarResourcePricing[resourceId];
   if (isBooked) {
-    return { kind: "booked", label: cfg.label };
+    return { kind: "booked", label: cfg.label, shortLabel: cfg.shortLabel };
   }
   if (!cfg.showPrice) {
     return { kind: "hidden" };
@@ -59,6 +59,7 @@ export function resolveResourceRowDisplay(
   return {
     kind: "price",
     label: cfg.label,
+    shortLabel: cfg.shortLabel,
     formattedPrice: formatPriceNt(amount),
   };
 }

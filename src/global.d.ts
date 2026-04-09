@@ -18,8 +18,8 @@ declare global {
         d: number,
         isBooked: boolean
       ):
-        | { kind: "booked"; label: string }
-        | { kind: "price"; label: string; formattedPrice: string }
+        | { kind: "booked"; label: string; shortLabel: string }
+        | { kind: "price"; label: string; shortLabel: string; formattedPrice: string }
         | { kind: "hidden" };
     };
   }

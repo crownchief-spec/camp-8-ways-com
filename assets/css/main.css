@@ -475,75 +475,112 @@ p:last-child { margin-bottom: 0; }
   margin-top: 0;
 }
 
-/* 查詢空房頁：月曆（已預訂／參考價；露營車未預訂不顯示價） */
+/* 查詢空房頁：月曆 badge、圖例（資源色：熱氣球／雲朵／露營車） */
 .availability-page-inner {
   width: min(960px, 100%);
   margin: 0 auto;
   padding: 0 var(--space-md);
 }
-/* 三資源色票（柔和、與森林系品牌調和） */
+
 .availability-legend-wrap {
-  margin-bottom: var(--space-lg);
-  padding: var(--space-md) var(--space-lg);
+  margin-bottom: var(--space-xl);
+  padding: var(--space-lg) var(--space-lg);
   background: #fff;
-  border: 1px solid var(--color-border);
+  border: 1px solid #eae7e1;
   border-radius: var(--radius-lg);
-  box-shadow: var(--shadow);
+  box-shadow: 0 4px 24px rgba(45, 42, 38, 0.06);
 }
-.availability-legend-lead {
-  margin: 0 0 var(--space-sm);
-  font-size: 0.9375rem;
-  color: var(--color-text-muted);
-  text-align: center;
+
+.availability-legend-copy-block {
+  margin-bottom: var(--space-lg);
+  text-align: left;
+  max-width: 40rem;
+  margin-left: auto;
+  margin-right: auto;
 }
-.availability-legend {
+
+.availability-legend-copy {
+  margin: 0 0 0.85rem;
+  font-size: 0.8125rem;
+  line-height: 1.65;
+  color: #666;
+}
+
+.availability-legend-copy:last-child {
+  margin-bottom: 0;
+}
+
+.availability-legend-copy__tag {
+  display: inline-block;
+  margin-right: 0.35rem;
+  font-weight: 600;
+  color: #444;
+}
+
+.availability-legend-cards {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: var(--space-md) var(--space-xl);
+  gap: 0.75rem 1rem;
   margin: 0;
   padding: 0;
   list-style: none;
 }
-.availability-legend li {
+
+.availability-legend-card {
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
+  gap: 0.5rem;
+  min-height: 2.5rem;
+  padding: 0.45rem 1rem 0.45rem 0.35rem;
+  border-radius: 999px;
+  border: 1px solid rgba(47, 58, 69, 0.08);
   font-size: 0.9375rem;
-  font-weight: 500;
-  color: var(--color-forest-dark);
+  font-weight: 600;
 }
-.availability-legend-swatch {
-  width: 0.65rem;
-  height: 0.65rem;
-  border-radius: 3px;
+
+.availability-legend-card__accent {
+  width: 4px;
+  align-self: stretch;
+  min-height: 1.25rem;
+  border-radius: 2px;
   flex-shrink: 0;
 }
-.availability-legend-swatch--balloon {
-  background: linear-gradient(145deg, #6d8b72 0%, #4f6b54 100%);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15);
+
+.availability-legend-card--balloon {
+  background: #eef4ee;
+  color: #4e6b50;
 }
-.availability-legend-swatch--cloud {
-  background: linear-gradient(145deg, #9eb4c4 0%, #7d96a8 100%);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+
+.availability-legend-card--balloon .availability-legend-card__accent {
+  background: #4e6b50;
 }
-.availability-legend-swatch--rv {
-  background: linear-gradient(145deg, #d4a574 0%, #b8895e 100%);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
+
+.availability-legend-card--cloud {
+  background: #f1f4f8;
+  color: #7b879c;
 }
-.availability-legend-note {
-  margin: var(--space-sm) 0 0;
-  font-size: 0.8125rem;
-  line-height: 1.55;
-  color: var(--color-text-muted);
-  text-align: center;
+
+.availability-legend-card--cloud .availability-legend-card__accent {
+  background: #7b879c;
 }
+
+.availability-legend-card--rv {
+  background: #f8f1e8;
+  color: #a8783a;
+}
+
+.availability-legend-card--rv .availability-legend-card__accent {
+  background: #a8783a;
+}
+
 .availability-status {
   margin: 0 0 var(--space-md);
   font-size: 0.9375rem;
   color: var(--color-text-muted);
   text-align: center;
 }
+
 .availability-error {
   padding: var(--space-sm) var(--space-md);
   background: #fff5f5;
@@ -552,195 +589,331 @@ p:last-child { margin-bottom: 0; }
   font-size: 0.875rem;
   color: #8a1538;
 }
+
 .availability-error code {
   font-size: 0.8125rem;
   word-break: break-all;
 }
+
 .availability-calendars {
   display: flex;
   flex-direction: column;
-  gap: var(--space-xl);
+  gap: 2.75rem;
 }
+
+.availability-month {
+  padding-top: 0.25rem;
+}
+
 .availability-month-title {
-  margin: 0 0 var(--space-sm);
-  font-size: 1.25rem;
+  margin: 0 0 1.25rem;
+  font-size: 2.25rem;
+  line-height: 1.2;
   text-align: center;
-  color: var(--color-forest-dark);
-  font-weight: 600;
+  color: #222;
+  font-weight: 800;
+  letter-spacing: -0.02em;
 }
+
 .availability-cal {
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
+  border: 1px solid #eae7e1;
+  border-radius: 12px;
   overflow: hidden;
   background: #fff;
-  box-shadow: var(--shadow);
+  box-shadow: 0 2px 16px rgba(45, 42, 38, 0.04);
 }
+
 .availability-cal-head,
 .availability-cal-body {
   display: grid;
   grid-template-columns: repeat(7, minmax(0, 1fr));
 }
+
 .availability-cal-head {
-  background: var(--color-cream-dark);
-  font-size: 0.8125rem;
-  font-weight: 600;
-  color: var(--color-forest-dark);
+  background: #f8f5ef;
+  border-bottom: 1px solid #eae7e1;
 }
+
 .availability-cal-headcell {
-  padding: 0.5rem 0.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0.5rem 0.25rem;
   text-align: center;
-  border-bottom: 1px solid var(--color-border);
+  font-size: 14px;
+  font-weight: 700;
+  color: #5a5a5a;
 }
+
 .availability-cal-body {
-  font-size: 0.75rem;
+  font-size: 0.8125rem;
 }
-.availability-cal-cell {
-  min-height: 3.1rem;
-  border-right: 1px solid var(--color-border);
-  border-bottom: 1px solid var(--color-border);
-  padding: 0.4rem 0.3rem 0.45rem;
+
+.availability-cal-cell--day {
+  min-height: 4.5rem;
+  border-right: 1px solid #eae7e1;
+  border-bottom: 1px solid #eae7e1;
+  padding: 10px 8px;
   vertical-align: top;
   background: #fff;
+  transition: background 0.15s ease, box-shadow 0.15s ease;
 }
-.availability-cal-cell--booked {
-  min-height: 4.25rem;
-  background: #fcfaf7;
+
+@media (hover: hover) and (pointer: fine) {
+  .availability-cal-cell--day:hover {
+    background: #fcfaf7;
+    box-shadow: inset 0 0 0 1px #d8d1c7;
+    z-index: 1;
+    position: relative;
+  }
 }
-.availability-cal-cell--priced {
-  min-height: 4rem;
+
+.availability-cal-cell--has-badges {
+  min-height: 7.25rem;
 }
-.availability-cal-cell--booked.availability-cal-cell--priced {
-  min-height: 4.6rem;
-}
+
 .availability-cal-body .availability-cal-cell:nth-child(7n) {
   border-right: none;
 }
+
 .availability-cal-body > .availability-cal-cell:nth-last-child(-n + 7) {
   border-bottom: none;
 }
+
 .availability-cal-cell--pad {
-  min-height: 2.5rem;
-  background: rgba(245, 241, 235, 0.55);
-  padding: 0.35rem;
+  min-height: 2.75rem;
+  background: #faf9f6;
+  padding: 8px;
+  border-right: 1px solid #eae7e1;
+  border-bottom: 1px solid #eae7e1;
 }
+
 .availability-cal-cell--pad .availability-cal-daynum {
-  color: #b0b0b0;
-  font-weight: 500;
+  color: #b8b4ad;
+  font-weight: 600;
 }
+
 .availability-cal-daynum {
   display: block;
-  font-weight: 600;
-  font-size: 0.8125rem;
-  margin-bottom: 0.15rem;
-  color: var(--color-forest-dark);
+  font-weight: 700;
+  font-size: 0.875rem;
+  margin-bottom: 8px;
+  color: #222;
   line-height: 1.2;
 }
-.availability-cal-lines {
+
+.availability-cal-badges {
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
-  margin-top: 0.2rem;
+  gap: 6px;
 }
-.availability-booking-row {
+
+/* 月曆格內資源 badge */
+.availability-res-badge {
   display: flex;
-  align-items: flex-start;
-  gap: 0.35rem;
-  line-height: 1.35;
+  align-items: stretch;
+  min-height: 30px;
+  border-radius: 999px;
+  overflow: hidden;
+  box-sizing: border-box;
 }
-.availability-booking-swatch {
-  width: 0.45rem;
-  min-height: 1.35rem;
-  margin-top: 0.12rem;
-  border-radius: 2px;
+
+.availability-res-badge__accent {
+  width: 4px;
   flex-shrink: 0;
+  align-self: stretch;
+  border-radius: 2px 0 0 2px;
 }
-.availability-booking-row--balloon .availability-booking-swatch {
-  background: linear-gradient(180deg, #6d8b72 0%, #4f6b54 100%);
-}
-.availability-booking-row--cloud .availability-booking-swatch {
-  background: linear-gradient(180deg, #9eb4c4 0%, #7d96a8 100%);
-}
-.availability-booking-row--rv .availability-booking-swatch {
-  background: linear-gradient(180deg, #d4a574 0%, #b8895e 100%);
-}
-.availability-booking-text {
+
+.availability-res-badge__main {
+  flex: 1;
   display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0.2rem 0.35rem;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.35rem 0.5rem;
   min-width: 0;
+  padding: 6px 10px 6px 8px;
 }
-.availability-booking-row--balloon .availability-booking-name {
-  color: #3d5240;
+
+.availability-res-badge__name {
+  font-size: 0.8125rem;
   font-weight: 600;
-}
-.availability-booking-row--cloud .availability-booking-name {
-  color: #4a5c6a;
-  font-weight: 600;
-}
-.availability-booking-row--rv .availability-booking-name {
-  color: #6b5340;
-  font-weight: 600;
-}
-.availability-booking-row--booked .availability-booking-status {
-  font-size: 0.72em;
-  font-weight: 700;
-  color: #8a2f3a;
-  letter-spacing: 0.03em;
-}
-.availability-booking-price {
-  font-size: 0.72em;
-  font-weight: 600;
-  color: var(--color-forest-dark);
+  line-height: 1.2;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-.availability-booking-row--price .availability-booking-text {
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.08rem;
+
+.availability-res-badge__state {
+  flex-shrink: 0;
+  font-size: 0.8125rem;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
 }
+
+.availability-res-badge__state--booked {
+  font-weight: 700;
+  color: #a63d40;
+}
+
+.availability-res-badge__state--price {
+  font-weight: 600;
+  color: #2f3a45;
+}
+
+/* 已預訂：淡紅底＋紅框，較價格更醒目 */
+.availability-res-badge--booked {
+  border: 1px solid #e8c7c8;
+  background: #fdf6f6;
+}
+
+.availability-res-badge--booked.availability-res-badge--balloon .availability-res-badge__accent {
+  background: #4e6b50;
+}
+
+.availability-res-badge--booked.availability-res-badge--cloud .availability-res-badge__accent {
+  background: #7b879c;
+}
+
+.availability-res-badge--booked.availability-res-badge--rv .availability-res-badge__accent {
+  background: #a8783a;
+}
+
+.availability-res-badge--booked.availability-res-badge--balloon .availability-res-badge__name {
+  color: #4e6b50;
+}
+
+.availability-res-badge--booked.availability-res-badge--cloud .availability-res-badge__name {
+  color: #7b879c;
+}
+
+.availability-res-badge--booked.availability-res-badge--rv .availability-res-badge__name {
+  color: #a8783a;
+}
+
+/* 價格：各資源淡底、不搶已預訂風格 */
+.availability-res-badge--price {
+  border: 1px solid rgba(47, 58, 69, 0.1);
+}
+
+.availability-res-badge--price.availability-res-badge--balloon {
+  background: #eef4ee;
+}
+
+.availability-res-badge--price.availability-res-badge--balloon .availability-res-badge__accent {
+  background: #4e6b50;
+}
+
+.availability-res-badge--price.availability-res-badge--balloon .availability-res-badge__name {
+  color: #4e6b50;
+}
+
+.availability-res-badge--price.availability-res-badge--cloud {
+  background: #f1f4f8;
+}
+
+.availability-res-badge--price.availability-res-badge--cloud .availability-res-badge__accent {
+  background: #7b879c;
+}
+
+.availability-res-badge--price.availability-res-badge--cloud .availability-res-badge__name {
+  color: #7b879c;
+}
+
+.availability-res-badge--price.availability-res-badge--rv {
+  background: #f8f1e8;
+}
+
+.availability-res-badge--price.availability-res-badge--rv .availability-res-badge__accent {
+  background: #a8783a;
+}
+
+.availability-res-badge--price.availability-res-badge--rv .availability-res-badge__name {
+  color: #a8783a;
+}
+
 .availability-cal-cell--today {
-  box-shadow: inset 0 0 0 2px var(--color-forest);
   position: relative;
   z-index: 1;
+  box-shadow: inset 0 0 0 1px #d9c9a8;
 }
+
 .availability-cal-cell--past:not(.availability-cal-cell--pad) {
-  opacity: 0.82;
+  opacity: 0.88;
 }
+
 @media (max-width: 640px) {
-  .availability-legend {
-    flex-direction: column;
-    align-items: center;
+  .availability-page-inner {
+    padding: 0 10px;
+  }
+
+  .availability-legend-wrap {
+    padding: var(--space-md);
+  }
+
+  .availability-legend-copy {
+    font-size: 0.78rem;
+  }
+
+  .availability-legend-cards {
     gap: 0.5rem;
   }
-  .availability-cal-body {
-    font-size: 0.65rem;
+
+  .availability-legend-card {
+    font-size: 0.875rem;
+    padding: 0.4rem 0.85rem 0.4rem 0.3rem;
   }
-  .availability-cal-cell {
-    min-height: 2.85rem;
-    padding: 0.3rem 0.15rem 0.35rem;
+
+  .availability-month-title {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
   }
-  .availability-cal-cell--booked {
-    min-height: 3.6rem;
+
+  .availability-cal-headcell {
+    min-height: 2.5rem;
+    font-size: 13px;
   }
+
+  .availability-cal-cell--day {
+    min-height: 5.5rem;
+    padding: 8px 6px;
+  }
+
+  .availability-cal-cell--has-badges {
+    min-height: 8.5rem;
+  }
+
   .availability-cal-daynum {
-    font-size: 0.75rem;
+    font-size: 0.8125rem;
+    margin-bottom: 8px;
   }
-  .availability-cal-lines {
-    gap: 0.28rem;
+
+  .availability-res-badge {
+    min-height: auto;
   }
-  .availability-booking-name {
-    font-size: 0.95em;
+
+  .availability-res-badge__main {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 0.15rem;
+    padding: 5px 8px 5px 6px;
   }
-  .availability-booking-row--booked .availability-booking-status {
-    font-size: 0.68em;
+
+  .availability-res-badge__name,
+  .availability-res-badge__state {
+    font-size: 11px;
   }
-  .availability-booking-price {
-    font-size: 0.68em;
+
+  .availability-res-badge__state--price {
+    font-size: 11px;
   }
-  .availability-booking-swatch {
-    min-height: 1.15rem;
-    width: 0.38rem;
+
+  .availability-res-badge__state--booked {
+    font-size: 12px;
   }
 }
 

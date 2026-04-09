@@ -39,7 +39,7 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/main.css">
 </head>
 <body class="site-wrap" data-base="../">
@@ -70,22 +70,30 @@
       <div class="container availability-page-inner">
         <div id="availability-app" data-ics-url="../data/calendar-basic.ics">
           <div class="availability-legend-wrap">
-            <p class="availability-legend-lead">圖例：色塊代表房型；「已預訂」為該入住夜已有預訂；未預訂則顯示參考價（露營車未預訂不顯示價格）</p>
-            <ul class="availability-legend" role="list">
-              <li>
-                <span class="availability-legend-swatch availability-legend-swatch--balloon" aria-hidden="true"></span>
-                <span>熱氣球房</span>
+            <div class="availability-legend-copy-block">
+              <p class="availability-legend-copy">
+                <span class="availability-legend-copy__tag">圖例說明</span>
+                紅字「已預訂」代表該入住日已有安排；未預訂日期則顯示參考價格（露營車未預訂暫不顯示價格）。
+              </p>
+              <p class="availability-legend-copy">
+                <span class="availability-legend-copy__tag">價格說明</span>
+                連假價格依設定規則換算，實際空房、總價與入住細節請以 LINE 確認為準。
+              </p>
+            </div>
+            <ul class="availability-legend-cards" role="list">
+              <li class="availability-legend-card availability-legend-card--balloon">
+                <span class="availability-legend-card__accent" aria-hidden="true"></span>
+                <span class="availability-legend-card__label">熱氣球房</span>
               </li>
-              <li>
-                <span class="availability-legend-swatch availability-legend-swatch--cloud" aria-hidden="true"></span>
-                <span>雲朵房</span>
+              <li class="availability-legend-card availability-legend-card--cloud">
+                <span class="availability-legend-card__accent" aria-hidden="true"></span>
+                <span class="availability-legend-card__label">雲朵房</span>
               </li>
-              <li>
-                <span class="availability-legend-swatch availability-legend-swatch--rv" aria-hidden="true"></span>
-                <span>露營車</span>
+              <li class="availability-legend-card availability-legend-card--rv">
+                <span class="availability-legend-card__accent" aria-hidden="true"></span>
+                <span class="availability-legend-card__label">露營車</span>
               </li>
             </ul>
-            <p class="availability-legend-note">價格為參考；國定連假依營主設定之規則換算。實際空房、總價與訂房條件請以 LINE 確認為準。</p>
           </div>
           <p data-availability-status class="availability-status" aria-live="polite"></p>
           <div data-availability-error class="availability-error" style="display: none;" role="alert"></div>
