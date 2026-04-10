@@ -5,7 +5,7 @@
   async function loadComponent(targetId, path){
     const el = document.getElementById(targetId);
     if(!el) return;
-    const res = await fetch(path, {cache:"no-store"});
+    const res = await fetch(path);
     if(!res.ok) throw new Error("Failed to load " + path);
     let html = await res.text();
     html = html.replaceAll("{{base}}", base);
