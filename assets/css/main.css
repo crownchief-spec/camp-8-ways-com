@@ -89,35 +89,39 @@ p:last-child { margin-bottom: 0; }
   flex: 1 1 auto;
   min-width: 0;
 }
-.brand img.brand-logo {
+.brand-mark {
   display: block;
-  max-height: 44px;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  vertical-align: middle;
   flex: 0 0 auto;
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
 }
-.brand-text {
-  display: flex;
-  flex-direction: column;
-  gap: 0.05rem;
-  min-width: 0;
-}
-.brand-title {
-  font-size: 1rem;
+.brand-heading {
+  display: block;
+  font-size: clamp(0.82rem, 2.1vw, 1.02rem);
   font-weight: 700;
-  color: var(--color-forest-dark);
-  line-height: 1.2;
-  white-space: nowrap;
-}
-.brand-subtitle {
-  font-size: 0.74rem;
-  color: var(--color-text-muted);
-  line-height: 1.2;
-  white-space: nowrap;
+  color: inherit;
+  line-height: 1.28;
+  white-space: normal;
 }
 .brand:hover { color: var(--color-forest); }
+
+/* 首頁：原 Header logo 圖改置於 hero 下方內容開頭 */
+.home-intro-brand {
+  padding: var(--space-xl) var(--space-md) 0;
+  text-align: center;
+}
+.home-intro-brand__visual {
+  margin: 0;
+}
+.home-intro-brand__logo {
+  display: inline-block;
+  width: min(200px, 72vw);
+  height: auto;
+  max-height: 200px;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+}
 .menu {
   display: flex;
   gap: clamp(10px, 1.2vw, 16px);
@@ -184,16 +188,13 @@ p:last-child { margin-bottom: 0; }
 @media (max-width: 980px) {
   .site-header .container { padding: 0 0.75rem; }
   .brand { flex: 1 1 auto; min-width: 0; }
-  .brand img.brand-logo { max-height: 36px; }
-  .brand-title {
-    display: block;
-    font-size: 0.94rem;
-    color: var(--color-forest-dark);
-    white-space: normal;
-    line-height: 1.2;
+  .brand-mark {
+    width: 38px;
+    height: 38px;
   }
-  .brand-subtitle {
-    display: none;
+  .brand-heading {
+    font-size: clamp(0.78rem, 2.4vw, 0.92rem);
+    line-height: 1.3;
   }
   .mobile-toggle { display: inline-flex; }
   .menu {
@@ -262,9 +263,12 @@ p:last-child { margin-bottom: 0; }
 }
 
 @media (max-width: 420px) {
-  .brand img.brand-logo { max-height: 32px; }
-  .brand-title {
-    font-size: 0.88rem;
+  .brand-mark {
+    width: 34px;
+    height: 34px;
+  }
+  .brand-heading {
+    font-size: 0.76rem;
   }
 }
 
