@@ -1370,6 +1370,25 @@ p:last-child { margin-bottom: 0; }
   max-width: 56ch;
   margin: 0 auto var(--space-lg);
 }
+.checkin-entry .checkin-wifi-note {
+  margin: 0 auto var(--space-lg);
+  max-width: 28rem;
+  padding: var(--space-md) var(--space-lg);
+  background: var(--color-cream);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  text-align: center;
+}
+.checkin-entry .checkin-wifi-note h3 {
+  margin-top: 0;
+  margin-bottom: var(--space-sm);
+  font-size: 1.0625rem;
+  color: var(--color-forest-dark);
+}
+.checkin-entry .checkin-wifi-note p {
+  margin: 0.35rem 0;
+  font-size: 0.9375rem;
+}
 .checkin-preface-section {
   padding: var(--space-2xl) 0;
   background: var(--color-cream-dark);
