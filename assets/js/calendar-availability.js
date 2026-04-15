@@ -312,6 +312,12 @@
     container.innerHTML = html;
   }
 
+  function buildIcsRequestUrl(icsUrl) {
+    // 避免同一路徑被瀏覽器或 CDN 回傳舊快取內容。
+    var sep = icsUrl.indexOf("?") === -1 ? "?" : "&";
+    return icsUrl + sep + "_ts=" + Date.now();
+  }
+
   function init() {
     var root = document.getElementById("availability-app");
     if (!root) return;
@@ -336,7 +342,7 @@
     errEl.style.display = "none";
     errEl.textContent = "";
 
-    fetch(icsUrl, { cache: "no-store" })
+    fetch(buildIcsRequestUrl(icsUrl), { cache: "no-store" })
       .then(function (r) {
         if (!r.ok) throw new Error("HTTP " + r.status);
         return r.text();
