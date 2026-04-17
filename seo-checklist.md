@@ -106,7 +106,7 @@
 - route: `/reviews//`
 - title: 揪好森旅人真實評價｜森林系包場體驗、家庭聚會與好友旅行回饋
 - description: 真實入住旅人的回饋分享。從少人數包場、森林中的放鬆感，到熱氣球房拍照、家庭聚會與好友旅行體驗，看看大家怎麼說揪好森。
-- canonical: `https://camp.8-ways.com/reviews//`
+- canonical: `https://camp.8-ways.com/reviews/`
 - hero image: `../assets/images/reviews/review-forest-secret-small-group-private-glamping.jpg`
 - og image: `https://camp.8-ways.com/reviews/../assets/images/reviews/review-forest-secret-small-group-private-glamping.jpg?page=reviews-index`
 - schema type: `WebPage`
@@ -346,7 +346,7 @@
 - route: `/seo//`
 - title: 旅遊露營指南（權威版）｜桃園楊梅・豪華露營・新手裝備與戶外知識｜camp.8-ways.com
 - description: 桃園楊梅露營主題入口（權威版）：整合官方旅遊機構、露營倫理、國家公園與專業教學來源，提供更完整的露營規劃知識、分類導覽與延伸閱讀。
-- canonical: `https://camp.8-ways.com/seo//`
+- canonical: `https://camp.8-ways.com/seo/`
 - hero image: `https://commons.wikimedia.org/wiki/Special:FilePath/Recreational%20camping.jpg`
 - og image: `https://commons.wikimedia.org/wiki/Special:FilePath/Beach_Layout_-_panoramio.jpg?page=seo-index`
 - schema type: `FAQPage`
