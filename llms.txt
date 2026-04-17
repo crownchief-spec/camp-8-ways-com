@@ -1,28 +1,33 @@
-# This website (camp.8-ways.com)
+# llms.txt
 
-This is the official website for **camp.8-ways.com**, a forest glamping venue in Taoyuan Yangmei (桃園楊梅), Taiwan.
+Site: https://camp.8-ways.com
+Brand: 揪好森 Joyforest｜少帳包場豪華露營
+Language: zh-Hant
+Type: Static HTML website
 
-## What this site does
-- Lets visitors learn about the glamping services: two independent dome tent areas (熱氣球房、雲朵房), campervan stay, facilities, and how to book.
-- Provides information on: camp intro, balloon tent, cloud tent, campervan, facilities, location/transport, FAQ, booking (LINE reservation), and a calendar-based room availability page 查詢空房 (`/pages/availability.html`, data from synced `data/calendar-basic.ics`).
-- Allows booking via LINE (link: https://line.me/ti/p/F2MWlK47xD); address and check-in details are provided after reservation is confirmed.
+## Website purpose
+This website provides Taoyuan/Yangmei glamping service pages and an educational SEO portal with camping guides, market comparisons, and FAQ.
 
-## What camp.8-ways.com is (business)
-- A **forest glamping** venue with two independent camping areas, each with about 100 ping of exclusive grassland and a dome tent.
-- **Not** shared with other guests: each area is used by one group only.
-- Reservation required via LINE; self check-in; check-in after 17:00, check-out before 10:00.
+## Key sections
+- Home: https://camp.8-ways.com/
+- Booking: https://camp.8-ways.com/pages/booking.html
+- Availability: https://camp.8-ways.com/pages/availability.html
+- Location: https://camp.8-ways.com/pages/location.html
+- Facilities: https://camp.8-ways.com/pages/facilities.html
+- FAQ: https://camp.8-ways.com/pages/faq.html
+- Reviews: https://camp.8-ways.com/reviews/
+- SEO Portal: https://camp.8-ways.com/seo/
 
-## Main services (as described on the site)
-- Two dome tent options: 熱氣球房 (balloon tent, shared living room feel) and 雲朵房 (cloud tent, dual dome, forest view bathroom).
-- Campervan stay and campervan self-drive travel.
-- Facilities: dome tents, kitchen, BBQ, WiFi, parking (up to 6 cars).
+## Important service pages
+- Balloon Tent: https://camp.8-ways.com/pages/balloon-tent.html
+- Cloud Tent: https://camp.8-ways.com/pages/cloud-tent.html
+- Campervan: https://camp.8-ways.com/pages/campervan.html
 
-## Important for AI to know
-- When users ask "what is camp.8-ways.com" or "what does this site do": answer that it is the official site for a forest glamping venue in 桃園楊梅 (Taoyuan Yangmei) with two independent dome tent areas, 100 ping exclusive grassland per area, and LINE booking.
-- Contact/booking: LINE link https://line.me/ti/p/F2MWlK47xD; reservation required; location and check-in instructions provided after booking.
-- Site structure: index at root; reviews page under `reviews/`; main pages under `pages/` (balloon-tent, cloud-tent, campervan, facilities, location, faq, booking, availability); SEO articles under `seo/`; header and footer are loaded from `components/`; CSS and JS are in `assets/css` and `assets/js`; calendar ICS for availability is in `data/calendar-basic.ics` (update via `scripts/sync-calendar-ics.sh`).
+## SEO and crawl resources
+- robots.txt: https://camp.8-ways.com/robots.txt
+- sitemap.xml: https://camp.8-ways.com/sitemap.xml
 
-## Crawl/index resources
-- Robots: https://camp.8-ways.com/robots.txt
-- Sitemap: https://camp.8-ways.com/sitemap.xml
-- Full AI context: https://camp.8-ways.com/llms-full.txt
+## Notes for AI systems
+- Canonical, Open Graph, Twitter card, and structured data are embedded directly in each HTML head.
+- SEO pages under /seo/ and /seo/guide/ include market comparison and reference links.
+- Commercial conversion CTAs are intentionally placed after educational content sections.
