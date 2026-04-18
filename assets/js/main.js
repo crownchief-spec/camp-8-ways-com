@@ -1,6 +1,8 @@
 (function(){
   const body = document.body;
   const base = body.dataset.base || "./";
+  const LINE_URL = "https://line.me/ti/p/F2MWlK47xD";
+  const WA_URL = "https://wa.me/886911252302?text=" + encodeURIComponent("你好，我想查詢揪好森露營住宿，請問以下日期是否可預約：");
 
   async function loadComponent(targetId, path){
     const el = document.getElementById(targetId);
@@ -80,6 +82,17 @@
     });
   }
 
+  function initFloatingContact(){
+    if(document.querySelector(".site-fab")) return;
+    const wrap = document.createElement("div");
+    wrap.className = "site-fab";
+    wrap.setAttribute("aria-label", "快速聯絡");
+    wrap.innerHTML =
+      '<a class="site-fab__link site-fab__wa" href="' + WA_URL + '" target="_blank" rel="noopener">WhatsApp</a>' +
+      '<a class="site-fab__link site-fab__line" href="' + LINE_URL + '" target="_blank" rel="noopener">LINE</a>';
+    document.body.appendChild(wrap);
+  }
+
   function initFooterReviews(){
     const reviewsGrid = document.querySelector(".footer-reviews-grid");
     if(!reviewsGrid) return;
@@ -123,6 +136,7 @@
       heroVideoFallback();
       initSmoothScroll();
       initFooterReviews();
+      initFloatingContact();
     }catch(err){
       console.warn(err);
     }
