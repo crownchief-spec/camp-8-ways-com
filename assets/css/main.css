@@ -113,13 +113,6 @@ p:last-child { margin-bottom: 0; }
   line-height: 1.25;
 }
 .brand:hover { color: var(--color-forest); }
-.header-ctas-desktop {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 8px;
-  flex-shrink: 0;
-}
 .btn-wa-solid {
   background: #128c7e;
   color: #fff !important;
@@ -168,15 +161,6 @@ p:last-child { margin-bottom: 0; }
   padding: 4px 2px;
 }
 .site-main-nav .nav-link:hover { color: var(--color-forest-dark); }
-.mobile-cta-stack {
-  display: none;
-  flex-direction: column;
-  gap: 8px;
-  width: 100%;
-  padding-bottom: 12px;
-  margin-bottom: 8px;
-  border-bottom: 1px solid var(--color-border);
-}
 
 /* 首頁：原 Header logo 圖改置於 hero 下方內容開頭 */
 .home-intro-brand {
@@ -245,7 +229,6 @@ p:last-child { margin-bottom: 0; }
 
 @media (max-width: 980px) {
   .site-header .container { padding: 0 0.75rem; }
-  .header-ctas-desktop { display: none; }
   .brand { flex: 1 1 auto; min-width: 0; }
   .brand-mark {
     width: 38px;
@@ -275,9 +258,6 @@ p:last-child { margin-bottom: 0; }
     margin: 0;
   }
   .site-main-nav.menu.open {
-    display: flex;
-  }
-  .mobile-cta-stack {
     display: flex;
   }
   .site-main-nav .nav-link {
@@ -1975,6 +1955,69 @@ footer a:hover { color: #ffffff; }
 
 /* ========== 2026 改版：Footer 主區、浮動聯絡、轉換區塊 ========== */
 .site-wrap { padding-bottom: max(5rem, env(safe-area-inset-bottom)); }
+
+.footer-seo-share {
+  padding: var(--space-xl) var(--space-md) var(--space-lg);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+.site-footer .footer-seo-share__inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+.footer-seo-share__title {
+  font-size: clamp(1.02rem, 2.4vw, 1.15rem);
+  color: #fff;
+  margin: 0 0 0.65rem;
+  text-align: center;
+  font-weight: 700;
+}
+.footer-seo-share__hub-wrap {
+  text-align: center;
+  margin: 0 0 var(--space-md);
+}
+.footer-seo-share__hub {
+  display: inline-block;
+  color: #e8f4ea;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  padding-bottom: 2px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+}
+.footer-seo-share__hub:hover {
+  color: #fff;
+  border-bottom-color: #fff;
+}
+.footer-seo-share__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.4rem 1.25rem;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 640px) {
+  .footer-seo-share__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+.footer-seo-share__list li {
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.footer-seo-share__list a {
+  display: block;
+  padding: 0.45rem 0;
+  color: rgba(245, 245, 245, 0.9);
+  font-size: 0.88rem;
+  text-decoration: none;
+  line-height: 1.45;
+}
+.footer-seo-share__list a:hover {
+  color: #fff;
+}
+
 .footer-main {
   padding-top: var(--space-xl);
   border-top: 1px solid rgba(255, 255, 255, 0.12);

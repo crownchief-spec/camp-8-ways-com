@@ -115,6 +115,47 @@
       .join("");
   }
 
+  function initFooterSeoRandomLinks(){
+    const ul = document.getElementById("footer-seo-random-links");
+    if(!ul) return;
+
+    const pool = [
+      { path: "seo/beginner-camping.html", title: "露營新手入門｜第一次出發的心理與實務準備" },
+      { path: "seo/taoyuan-glamping.html", title: "桃園豪華露營推薦｜更接近自然、更舒服" },
+      { path: "seo/guide/glamping-vs-camping.html", title: "豪華露營與一般露營差在哪？" },
+      { path: "seo/camping-gear.html", title: "露營裝備整理｜必帶、選配與季節" },
+      { path: "seo/family-camping.html", title: "親子露營指南｜行程節奏、安全與睡眠" },
+      { path: "seo/guide/how-to-choose-campsite.html", title: "怎麼挑選適合自己的露營區？" },
+      { path: "seo/yangmei-camping.html", title: "楊梅露營區推薦｜交通方便、像包下森林" },
+      { path: "seo/forest-camping.html", title: "桃園森林露營體驗｜樹林與草地之間" },
+      { path: "seo/night-outdoor.html", title: "夜間露營與戶外氛圍｜燈光與聊天節奏" },
+      { path: "seo/guide/first-camping-prep.html", title: "第一次露營要準備什麼？清單與心態" },
+      { path: "seo/dome-glamping.html", title: "圓頂帳篷露營介紹｜更舒適的森林住宿" },
+      { path: "seo/pet-friendly-camping.html", title: "寵物友善露營整理｜出發前該想好的事" },
+      { path: "seo/guide/weekend-outdoor-taoyuan.html", title: "桃園出發的週末戶外靈感" },
+      { path: "seo/nearby-attractions.html", title: "周邊景點與行程靈感｜桃園楊梅出發" },
+      { path: "seo/campervan-stay.html", title: "桃園露營車住宿｜更自由的旅居方式" },
+      { path: "seo/guide/camping-photo-tips.html", title: "露營拍照怎麼拍更好看？" },
+      { path: "seo/forest-activities.html", title: "森林系活動與戶外體驗｜慢下來的感官" },
+      { path: "seo/taoyuan-camping.html", title: "桃園露營區推薦｜安靜又有空間感" },
+      { path: "seo/guide/taoyuan-camping-types.html", title: "桃園露營有哪些類型？山線、海岸與豪華露營" },
+      { path: "seo/guide/one-day-vs-overnight.html", title: "一日戶外活動與兩天一夜差在哪？" },
+      { path: "seo/guide/family-camping-easier.html", title: "親子露營怎麼安排更輕鬆？" },
+      { path: "seo/guide/forest-space-charm.html", title: "森林系活動空間有什麼魅力？" }
+    ];
+
+    const count = 3 + Math.floor(Math.random() * 2);
+    const picked = pool
+      .map(function(item){ return { item: item, sort: Math.random() }; })
+      .sort(function(a, b){ return a.sort - b.sort; })
+      .slice(0, count)
+      .map(function(x){ return x.item; });
+
+    ul.innerHTML = picked.map(function(item){
+      return "<li><a href=\"" + base + item.path + "\">" + item.title + "</a></li>";
+    }).join("");
+  }
+
   document.addEventListener("DOMContentLoaded", async ()=>{
     try{
       await loadComponent("site-header", base + "components/header.html");
@@ -123,6 +164,7 @@
       heroVideoFallback();
       initSmoothScroll();
       initFooterReviews();
+      initFooterSeoRandomLinks();
     }catch(err){
       console.warn(err);
     }
