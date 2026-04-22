@@ -13,7 +13,6 @@ This website provides Taoyuan/Yangmei glamping service pages and an educational 
 - Booking: https://camp.8-ways.com/pages/booking.html
 - Availability: https://camp.8-ways.com/pages/availability.html
 - Location: https://camp.8-ways.com/pages/location.html
-- Facilities: https://camp.8-ways.com/pages/facilities.html
 - FAQ: https://camp.8-ways.com/pages/faq.html
 - Reviews: https://camp.8-ways.com/reviews/
 - SEO Portal: https://camp.8-ways.com/seo/

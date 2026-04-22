@@ -16,8 +16,8 @@
     "title": "桃園楊梅森林豪華露營｜旅遊露營指南入口・包場圓頂帳篷｜camp.8-ways.com",
     "description": "桃園楊梅森林豪華露營：兩座獨立圓頂帳篷、專屬草地包場。本站整理桃園／楊梅露營、豪華露營、親子與新手指南，並提供熱氣球房、雲朵房、露營車與 LINE 預約。",
     "canonical": "https://camp.8-ways.com/",
-    "hero_image": "assets/images/index/taoyuan-glamping-exclusive-grass-100ping.jpg",
-    "og_image": "https://camp.8-ways.com/assets/images/index/taoyuan-glamping-exclusive-grass-100ping.jpg?page=index",
+    "hero_image": "assets/images/balloon-tent/balloon-tent-exclusive-lawn-outdoor-kitchen-aerial-view.jpg",
+    "og_image": "https://camp.8-ways.com/assets/images/balloon-tent/balloon-tent-exclusive-lawn-outdoor-kitchen-aerial-view.jpg?page=index",
     "schema_type": "WebSite",
     "noindex": false
   },
@@ -73,17 +73,6 @@
     "canonical": "https://camp.8-ways.com/pages/cloud-tent.html",
     "hero_image": "../assets/images/cloud-tent/taoyuan-yangmei-cloud-tent-aerial-balloon-cloud-room-layout.jpg",
     "og_image": "https://camp.8-ways.com/pages/../assets/images/cloud-tent/taoyuan-yangmei-cloud-tent-aerial-balloon-cloud-room-layout.jpg?page=pages-cloud-tent",
-    "schema_type": "WebPage",
-    "noindex": false
-  },
-  {
-    "page_file": "pages/facilities.html",
-    "route": "/pages/facilities.html",
-    "title": "設施介紹｜舒適與自然並存的露營設施｜camp.8-ways.com",
-    "description": "圓頂帳篷、廚房、衛浴、草地空間、WiFi、停車。讓森林露營更輕鬆自在的設施配置說明。",
-    "canonical": "https://camp.8-ways.com/pages/facilities.html",
-    "hero_image": "../assets/images/index/taoyuan-glamping-exclusive-grass-100ping.jpg",
-    "og_image": "https://camp.8-ways.com/pages/../assets/images/index/taoyuan-glamping-exclusive-grass-100ping.jpg?page=pages-facilities",
     "schema_type": "WebPage",
     "noindex": false
   },

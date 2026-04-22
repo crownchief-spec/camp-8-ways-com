@@ -72,16 +72,6 @@
 - schema type: `WebPage`
 - noindex: `false`
 
-## pages/facilities.html
-- route: `/pages/facilities.html`
-- title: 設施介紹｜舒適與自然並存的露營設施｜camp.8-ways.com
-- description: 圓頂帳篷、廚房、衛浴、草地空間、WiFi、停車。讓森林露營更輕鬆自在的設施配置說明。
-- canonical: `https://camp.8-ways.com/pages/facilities.html`
-- hero image: `../assets/images/index/taoyuan-glamping-exclusive-grass-100ping.jpg`
-- og image: `https://camp.8-ways.com/pages/../assets/images/index/taoyuan-glamping-exclusive-grass-100ping.jpg?page=pages-facilities`
-- schema type: `WebPage`
-- noindex: `false`
-
 ## pages/faq.html
 - route: `/pages/faq.html`
 - title: 常見問題 FAQ｜入住前你可能想知道的事｜camp.8-ways.com
