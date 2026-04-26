@@ -2301,6 +2301,7 @@ footer a:hover { color: #ffffff; }
   margin-bottom: 0;
 }
 .forest-extend-room .section-title {
+  margin-top: 0;
   margin-bottom: var(--space-sm);
   font-size: clamp(1.25rem, 3.5vw, 1.5rem);
 }
