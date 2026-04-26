@@ -2197,6 +2197,17 @@ footer a:hover { color: #ffffff; }
 .forest-extend {
   scroll-margin-top: calc(var(--header-height) + 12px);
 }
+.forest-extend__scope {
+  max-width: 40rem;
+  margin: 0 auto var(--space-md);
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: var(--color-forest-dark);
+  font-weight: 500;
+}
+.forest-extend__scope strong {
+  font-weight: 700;
+}
 .forest-extend__lead {
   max-width: 40rem;
   margin: 0 auto var(--space-lg);
