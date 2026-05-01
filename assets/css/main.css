@@ -1957,7 +1957,6 @@ footer a:hover { color: #ffffff; }
   max-width: 28rem;
 }
 .footer-grad-card {
-  margin-top: 0.9rem;
   max-width: 20rem;
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.18);
@@ -1996,6 +1995,35 @@ footer a:hover { color: #ffffff; }
 .footer-grad-card .btn-outline-dark:hover {
   background: rgba(255, 255, 255, 0.12);
   color: #fff !important;
+}
+.footer-collab-zone {
+  margin-top: var(--space-lg);
+  padding: var(--space-md) 0 var(--space-sm);
+}
+.footer-grad-card--bottom {
+  max-width: 100%;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  align-items: stretch;
+  background: linear-gradient(135deg, #4b3d2c 0%, #355647 100%);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+}
+.footer-grad-card--bottom .footer-grad-card__img {
+  height: 100%;
+  min-height: 190px;
+}
+.footer-grad-card--bottom .footer-grad-card__body {
+  padding: 0.9rem 1rem;
+}
+.footer-grad-card--bottom .footer-grad-card__kicker {
+  font-size: 0.74rem;
+}
+.footer-grad-card--bottom .footer-grad-card__title {
+  font-size: 1.08rem;
+}
+.footer-grad-card--bottom .footer-grad-card__text {
+  font-size: 0.84rem;
 }
 .footer-link-list,
 .footer-contact-list {
@@ -2063,6 +2091,13 @@ footer a:hover { color: #ffffff; }
   }
   .footer-grad-card {
     max-width: 24rem;
+  }
+  .footer-grad-card--bottom {
+    max-width: 100%;
+    grid-template-columns: 1fr;
+  }
+  .footer-grad-card--bottom .footer-grad-card__img {
+    min-height: 160px;
   }
 }
 
