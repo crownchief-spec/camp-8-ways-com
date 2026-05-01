@@ -1057,6 +1057,15 @@ p:last-child { margin-bottom: 0; }
 }
 .location-local-reco .location-local-reco-list li { margin-bottom: 0.4rem; }
 .location-local-reco .location-local-reco-list li:last-child { margin-bottom: 0; }
+.location-hero-tags {
+  padding: var(--space-sm) 0 0;
+  gap: 0.55rem;
+}
+.location-time-note {
+  margin-top: var(--space-md);
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
 .location-local-reco-drive {
   margin-top: var(--space-xl);
   padding-top: var(--space-md);
