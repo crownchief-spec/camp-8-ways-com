@@ -1956,6 +1956,47 @@ footer a:hover { color: #ffffff; }
   margin: 0;
   max-width: 28rem;
 }
+.footer-grad-card {
+  margin-top: 0.9rem;
+  max-width: 20rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.footer-grad-card__img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+.footer-grad-card__body {
+  padding: 0.7rem 0.75rem 0.8rem;
+}
+.footer-grad-card__kicker {
+  margin: 0 0 0.2rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+.footer-grad-card__title {
+  margin: 0 0 0.3rem;
+  font-size: 0.98rem;
+  color: #fff;
+}
+.footer-grad-card__text {
+  margin: 0 0 0.55rem;
+  font-size: 0.79rem;
+  line-height: 1.5;
+  color: rgba(245, 245, 245, 0.88) !important;
+}
+.footer-grad-card .btn-outline-dark {
+  border-color: rgba(255, 255, 255, 0.5);
+  color: #fff !important;
+}
+.footer-grad-card .btn-outline-dark:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff !important;
+}
 .footer-link-list,
 .footer-contact-list {
   list-style: none;
@@ -2019,6 +2060,9 @@ footer a:hover { color: #ffffff; }
 @media (max-width: 900px) {
   .footer-grid {
     grid-template-columns: 1fr;
+  }
+  .footer-grad-card {
+    max-width: 24rem;
   }
 }
 
