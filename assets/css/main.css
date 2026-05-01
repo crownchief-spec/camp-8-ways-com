@@ -329,6 +329,12 @@ p:last-child { margin-bottom: 0; }
   object-fit: cover;
   display: block;
 }
+.hero-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
 .hero-media-overlay {
   position: absolute;
   inset: 0;
@@ -2378,4 +2384,231 @@ footer a:hover { color: #ffffff; }
     font-size: 0.9rem;
     margin-bottom: var(--space-md);
   }
+}
+
+/* ========== 森林系畢業寫真（合作頁｜揪好森 × 小巴老師） ========== */
+.forest-grad-kicker {
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.92;
+  margin: 0 0 var(--space-sm);
+  font-weight: 600;
+}
+.home-grad-collab__card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xl);
+  align-items: center;
+  background: var(--color-cream-dark);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow);
+}
+.home-grad-collab__kicker {
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  color: var(--color-forest);
+  margin: 0 0 var(--space-xs);
+}
+.home-grad-collab__title {
+  text-align: left !important;
+  margin-bottom: var(--space-sm) !important;
+}
+.home-grad-collab__tagline {
+  font-weight: 600;
+  color: var(--color-forest-dark);
+  margin: 0 0 var(--space-sm);
+  line-height: 1.55;
+}
+.home-grad-collab__text {
+  color: var(--color-text-muted);
+  margin: 0 0 var(--space-md);
+  line-height: 1.65;
+}
+.home-grad-collab__ctas {
+  justify-content: flex-start !important;
+  margin-top: 0 !important;
+}
+.home-grad-collab__fig {
+  margin: 0;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow);
+}
+.home-grad-collab__img {
+  width: 100%;
+  aspect-ratio: 3/2;
+  object-fit: cover;
+  display: block;
+  min-height: 200px;
+}
+@media (max-width: 768px) {
+  .home-grad-collab__card {
+    grid-template-columns: 1fr;
+    padding: var(--space-md);
+  }
+  .home-grad-collab__fig {
+    order: -1;
+  }
+}
+
+.forest-ref-deck-camp {
+  font-size: clamp(0.95rem, 2vw, 1.05rem);
+  color: var(--color-text-muted);
+  margin: 0 0 var(--space-md);
+  line-height: 1.55;
+}
+.forest-ref-subtitle-camp {
+  font-size: clamp(1.05rem, 2.4vw, 1.25rem);
+  margin: var(--space-lg) 0 var(--space-sm);
+  color: var(--color-forest-dark);
+  line-height: 1.35;
+}
+.forest-ref-mosaic-camp {
+  display: grid;
+  grid-template-columns: 1.22fr 1fr;
+  gap: 14px;
+  margin: var(--space-lg) 0 var(--space-sm);
+  align-items: start;
+}
+.forest-ref-mosaic-camp__main {
+  margin: 0;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow);
+  background: #fff;
+}
+.forest-ref-mosaic-camp__main img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  aspect-ratio: 4/5;
+  min-height: 260px;
+  display: block;
+}
+.forest-ref-mosaic-camp__side {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.forest-ref-mosaic-camp__cell {
+  margin: 0;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow);
+  background: #fff;
+}
+.forest-ref-mosaic-camp__cell img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  aspect-ratio: 1;
+  min-height: 132px;
+  display: block;
+}
+.forest-ref-cap-camp {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  padding: 8px 10px;
+  margin: 0;
+  background: rgba(255, 255, 255, 0.96);
+  line-height: 1.4;
+}
+@media (max-width: 768px) {
+  .forest-ref-mosaic-camp {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .forest-ref-mosaic-camp__main img {
+    aspect-ratio: 4/3;
+    min-height: 220px;
+  }
+  .forest-ref-mosaic-camp__side {
+    gap: 10px;
+  }
+  .forest-ref-mosaic-camp__cell img {
+    min-height: 148px;
+  }
+}
+
+.forest-grad-hero-price {
+  display: inline-block;
+  margin: 0 auto var(--space-md);
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  font-weight: 700;
+}
+.forest-scene-collage {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 12px;
+}
+.forest-scene-collage figure { margin: 0; }
+.forest-scene-collage__main { grid-row: span 2; }
+.forest-scene-collage img {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow);
+}
+.forest-scene-collage figcaption {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  padding: 0.45rem 0.2rem 0;
+}
+.forest-price-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(2, 1fr);
+}
+.forest-price-card {
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  padding: 1rem;
+}
+.forest-price-card h3 { font-size: 1rem; margin-bottom: 0.5rem; }
+.forest-price-card p { margin: 0.35rem 0; font-size: 0.9rem; }
+.forest-price-card del { color: var(--color-text-muted); margin-right: 0.35rem; }
+.forest-price-card strong { font-size: 1.2rem; color: var(--color-forest-dark); }
+.room-grad-entry__card {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: var(--space-md);
+  align-items: center;
+  padding: var(--space-md);
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+.room-grad-entry__img { border-radius: var(--radius); }
+.room-grad-entry__body h2 { margin: 0 0 0.5rem; font-size: 1.2rem; }
+.room-grad-entry__body p { margin: 0 0 0.75rem; color: var(--color-text-muted); }
+.home-grad-collab__card--compact { grid-template-columns: 320px 1fr; }
+.home-grad-collab__points {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 1rem;
+  font-size: 0.86rem;
+  margin-bottom: 0.5rem;
+}
+.home-grad-collab__price-note {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--color-forest-dark);
+}
+@media (max-width: 768px) {
+  .forest-scene-collage,
+  .forest-price-grid,
+  .home-grad-collab__card--compact,
+  .room-grad-entry__card { grid-template-columns: 1fr; }
 }
