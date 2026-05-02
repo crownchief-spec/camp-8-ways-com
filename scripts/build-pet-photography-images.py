@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""One-off batch: PNG sources → public/images/pet-photography-party/ webp + OG jpg."""
+"""One-off batch: PNG sources → assets/images/pet-photography-party/ webp + OG jpg."""
 from __future__ import annotations
 
 import os
@@ -11,7 +11,7 @@ from PIL import Image
 SRC = Path(
     "/Users/joyforest/.cursor/projects/Users-joyforest-Documents-camp-8-ways-com/assets"
 )
-OUT = Path("/Users/joyforest/Documents/camp-8-ways-com/public/images/pet-photography-party")
+OUT = Path("/Users/joyforest/Documents/camp-8-ways-com/assets/images/pet-photography-party")
 
 # uuid prefix -> base filename (no extension)
 MAP = {
