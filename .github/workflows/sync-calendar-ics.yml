@@ -1,0 +1,34 @@
+name: Sync Google Calendar ICS
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync-ics:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Sync ICS file
+        run: bash scripts/sync-calendar-ics.sh
+
+      - name: Commit and push if changed
+        run: |
+          if git diff --quiet -- data/calendar-basic.ics; then
+            echo "No ICS changes."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add data/calendar-basic.ics
+          git commit -m "chore(calendar): auto-sync Google Calendar ICS"
+          git push
