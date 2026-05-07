@@ -1142,6 +1142,24 @@ p:last-child { margin-bottom: 0; }
   border-width: 1px;
 }
 
+/* Homepage visual-first refresh */
+.hero-story-home .hero-actions .btn {
+  min-width: 160px;
+}
+.visual-story-grid .visual-story-card-full {
+  grid-column: 1 / -1;
+}
+
+/* Footer keyword tags for party SEO */
+.footer-keyword-tags {
+  padding-top: var(--space-md);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+.footer-keyword-tags .hashtags {
+  padding-top: var(--space-sm);
+  padding-bottom: var(--space-sm);
+}
+
 /* Balloon tent: simplified structure */
 .hero .hero-hint {
   max-width: 560px;
