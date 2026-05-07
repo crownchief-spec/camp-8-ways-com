@@ -2818,6 +2818,8 @@ footer a:hover { color: #ffffff; }
 @media (max-width: 768px) {
   .page-party-event-space .party-hero-sales {
     min-height: 82vh;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
   }
   .page-party-event-space .hero-actions .btn {
     min-height: 46px;
