@@ -2809,6 +2809,12 @@ footer a:hover { color: #ffffff; }
   font-size: 0.8125rem;
   font-weight: 600;
 }
+.party-square-crop img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  object-position: center;
+}
 @media (max-width: 768px) {
   .page-party-event-space .party-hero-sales {
     min-height: 82vh;
