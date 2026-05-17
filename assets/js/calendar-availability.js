@@ -5,11 +5,60 @@
  * 價格／連假規則由 assets/js/camp-calendar-pricing.js（TypeScript 編譯）提供 window.CampCalendarPricing。
  */
 (function () {
-  var ROOM_ORDER = [
-    { id: "balloon", label: "熱氣球房", css: "balloon" },
-    { id: "cloud", label: "雲朵房", css: "cloud" },
-    { id: "rv", label: "露營車", css: "rv" }
-  ];
+  var isEnLocale =
+    (document.body && document.body.dataset.locale === "en") ||
+    (document.documentElement && document.documentElement.lang === "en");
+
+  var ROOM_ORDER = isEnLocale
+    ? [
+        { id: "balloon", label: "Balloon Tent", css: "balloon" },
+        { id: "cloud", label: "Cloud Tent", css: "cloud" },
+        { id: "rv", label: "Campervan", css: "rv" }
+      ]
+    : [
+        { id: "balloon", label: "熱氣球房", css: "balloon" },
+        { id: "cloud", label: "雲朵房", css: "cloud" },
+        { id: "rv", label: "露營車", css: "rv" }
+      ];
+
+  var STR = isEnLocale
+    ? {
+        booked: "Booked",
+        loading: "Loading…",
+        pricingError:
+          "Pricing module not loaded. Please refresh the page or try again later.",
+        fetchError:
+          "Unable to load availability. Please try again later or contact us on WhatsApp or LINE.",
+        weekdays: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        monthTitle: function (year, month) {
+          var months = [
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December"
+          ];
+          return months[month] + " " + year;
+        }
+      }
+    : {
+        booked: "已預訂",
+        loading: "載入中…",
+        pricingError:
+          "價格模組未載入。請確認頁面已引入 camp-calendar-pricing.js，或重新整理後再試。",
+        fetchError: "無法載入空房資料。請稍後再試，或請營主確認網站已部署日曆檔案。",
+        weekdays: ["一", "二", "三", "四", "五", "六", "日"],
+        monthTitle: function (year, month) {
+          return year + " 年 " + (month + 1) + " 月";
+        }
+      };
 
   function unfoldIcs(text) {
     return text.replace(/\r\n/g, "\n").replace(/\n[\t ]/g, "");
@@ -165,8 +214,17 @@
     return a.getFullYear() === y && a.getMonth() === m && a.getDate() === d;
   }
 
+  function translateRoomLabel(label) {
+    if (!isEnLocale || !label) return label;
+    if (label.indexOf("熱氣球") !== -1) return "Balloon Tent";
+    if (label.indexOf("雲朵") !== -1) return "Cloud Tent";
+    if (label.indexOf("露營車") !== -1) return "Campervan";
+    return label;
+  }
+
   /** 已預訂：淡底＋左色條＋單行（非膠囊按鈕） */
   function renderBookedLine(roomCss, shortLabel) {
+    shortLabel = translateRoomLabel(shortLabel);
     return (
       '<div class="availability-line availability-line--booked availability-line--' +
       roomCss +
@@ -176,7 +234,7 @@
       '<span class="availability-line__name">' +
       shortLabel +
       "</span>" +
-      '<span class="availability-line__booked">已預訂</span>' +
+      '<span class="availability-line__booked">' + STR.booked + "</span>" +
       "</div>" +
       "</div>"
     );
@@ -184,6 +242,7 @@
 
   /** 參考價：無框無底，僅左色條＋房型色＋深灰價格 */
   function renderPriceLine(roomCss, shortLabel, formattedPrice) {
+    shortLabel = translateRoomLabel(shortLabel);
     return (
       '<div class="availability-line availability-line--price availability-line--' +
       roomCss +
@@ -259,9 +318,9 @@
   }
 
   function renderOneMonth(year, month, events, api) {
-    var title = year + " 年 " + (month + 1) + " 月";
+    var title = STR.monthTitle(year, month);
     var cells = buildMonthCells(year, month);
-    var head = ["一", "二", "三", "四", "五", "六", "日"];
+    var head = STR.weekdays;
     var headHtml = head
       .map(function (h) {
         return '<div class="availability-cal-headcell">' + h + "</div>";
@@ -330,15 +389,14 @@
       if (statusEl) statusEl.textContent = "";
       if (errEl) {
         errEl.style.display = "block";
-        errEl.textContent =
-          "價格模組未載入。請確認頁面已引入 camp-calendar-pricing.js，或重新整理後再試。";
+        errEl.textContent = STR.pricingError;
       }
       console.error("CampCalendarPricing 未載入，請確認已引入 camp-calendar-pricing.js");
       return;
     }
     var api = window.CampCalendarPricing;
 
-    statusEl.textContent = "載入中…";
+    statusEl.textContent = STR.loading;
     errEl.style.display = "none";
     errEl.textContent = "";
 
@@ -355,8 +413,7 @@
       .catch(function (e) {
         statusEl.textContent = "";
         errEl.style.display = "block";
-        errEl.innerHTML =
-          "無法載入空房資料。請稍後再試，或請營主確認網站已部署日曆檔案。";
+        errEl.textContent = STR.fetchError;
         console.warn(e);
       });
   }

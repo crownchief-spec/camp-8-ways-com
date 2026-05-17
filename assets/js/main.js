@@ -84,7 +84,17 @@
     const reviewsGrid = document.querySelector(".footer-reviews-grid");
     if(!reviewsGrid) return;
 
-    const reviewPool = [
+    const isEn = (document.body.dataset.locale || "zh") === "en";
+    const reviewPool = isEn ? [
+      { quote: "The private stay feeling is very clear — from evening to late night we could chat freely without worrying about strangers.", author: "Yoyo", source: "Google Review" },
+      { quote: "The lawn was bigger and cleaner than expected. Kids could run around while adults relaxed and took photos.", author: "Jason", source: "Facebook" },
+      { quote: "The tent was comfortable, the bed slept well, and the layout was clear. We wanted to stay longer the next morning.", author: "Nina", source: "Google Review" },
+      { quote: "Easy drive from the city, convenient shopping, yet instantly quiet forest pace.", author: "Vicky", source: "Google Review" },
+      { quote: "Perfect for friends — lawn time by day, food and conversation at night. Relaxed and easy.", author: "Tina", source: "Message" },
+      { quote: "Quiet and private with many photo angles — different forest moods day and night.", author: "Claire", source: "Google Review" },
+      { quote: "Well prepared for first-time glamping guests. Very friendly experience.", author: "Alex", source: "Facebook" },
+      { quote: "Best part: no sharing with strangers. Our family could slow down together.", author: "Mina", source: "Google Review" }
+    ] : [
       { quote: "一區一組的包場感受非常明顯，從傍晚到深夜都能自在聊天，不用擔心被陌生人打擾。", author: "柔柔", source: "Google 評價" },
       { quote: "草地空間比想像中更大也很乾淨，孩子可以放心跑跳，大人也能在旁邊輕鬆休息與拍照。", author: "Jason", source: "Facebook 留言" },
       { quote: "帳篷內外整理得很舒服，床鋪好睡、動線清楚，隔天醒來還是會想再多待一下。", author: "Nina", source: "Google 評價" },
@@ -118,6 +128,7 @@
   function initFooterSeoRandomLinks(){
     const ul = document.getElementById("footer-seo-random-links");
     if(!ul) return;
+    if((document.body.dataset.locale || "zh") === "en") return;
 
     const pool = [
       { path: "seo/beginner-camping.html", title: "露營新手入門｜第一次出發的心理與實務準備" },
@@ -158,9 +169,15 @@
 
   document.addEventListener("DOMContentLoaded", async ()=>{
     try{
-      await loadComponent("site-header", base + "components/header.html");
-      await loadComponent("site-footer", base + "components/footer.html");
+      const locale = body.dataset.locale || "zh";
+      const headerFile = locale === "en" ? "components/header-en.html" : "components/header.html";
+      await loadComponent("site-header", base + headerFile);
+      const footerFile = locale === "en" ? "components/footer-en.html" : "components/footer.html";
+      await loadComponent("site-footer", base + footerFile);
       wireNav();
+      if(global.JoyforestLangSwitch && global.JoyforestLangSwitch.initLangSwitchLinks){
+        global.JoyforestLangSwitch.initLangSwitchLinks();
+      }
       heroVideoFallback();
       initSmoothScroll();
       initFooterReviews();
