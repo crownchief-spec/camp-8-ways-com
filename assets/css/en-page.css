@@ -5,74 +5,17 @@
   scroll-padding-top: 7.5rem;
 }
 
-.page-en .en-topbar {
-  position: sticky;
-  top: 0;
-  z-index: 110;
+.page-en .en-site-header {
   background: rgba(250, 248, 245, 0.97);
-  border-bottom: 1px solid var(--color-border);
   backdrop-filter: blur(10px);
 }
 
-.page-en .en-topbar__inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem;
-  padding: 0.65rem 0;
-  min-height: 52px;
-}
-
-.page-en .en-topbar .brand-subline {
+.page-en .en-site-header .brand-subline {
   font-size: 0.72rem;
 }
 
-.page-en .en-lang-link {
-  font-size: 0.8125rem;
-  font-weight: 600;
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-
-.page-en .en-anchor-nav {
-  position: sticky;
-  top: 52px;
-  z-index: 105;
-  background: var(--color-cream-dark);
-  border-bottom: 1px solid var(--color-border);
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-}
-
-.page-en .en-anchor-nav::-webkit-scrollbar {
-  display: none;
-}
-
-.page-en .en-anchor-nav__list {
-  display: flex;
-  gap: 0.35rem;
-  list-style: none;
-  margin: 0;
-  padding: 0.5rem var(--space-md);
-  min-width: max-content;
-}
-
-.page-en .en-anchor-nav__list a {
-  display: block;
-  padding: 0.4rem 0.75rem;
-  font-size: 0.8125rem;
-  font-weight: 600;
-  color: var(--color-forest);
-  background: #fff;
-  border: 1px solid var(--color-border);
-  border-radius: 999px;
-  white-space: nowrap;
-}
-
-.page-en .en-anchor-nav__list a:hover {
-  background: var(--color-forest);
-  color: #fff;
+.page-en .en-section-nav {
+  border-top: 1px solid var(--color-border);
 }
 
 .page-en .hero-story-home .hero-sub {
@@ -214,16 +157,15 @@
   color: var(--color-text-muted);
 }
 
-.page-en .en-footer-minimal a {
-  font-weight: 600;
+.page-en .en-footer-minimal .footer-lang-link {
+  margin: 0 0 0.5rem;
+  font-size: 13px;
+  opacity: 0.75;
 }
 
-@media (min-width: 900px) {
-  .page-en .en-topbar__inner {
-    min-height: 56px;
-  }
-
-  .page-en .en-anchor-nav {
-    top: 56px;
-  }
+.page-en .en-footer-minimal .footer-lang-link a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  font-weight: 500;
 }

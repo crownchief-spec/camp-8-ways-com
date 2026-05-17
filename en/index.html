@@ -21,6 +21,7 @@
   <meta name="twitter:description" content="Private forest glamping stay in Taoyuan, Taiwan with two dome tent areas, private lawns, outdoor kitchens, projector, bathtub, and self check in.">
   <link rel="alternate" hreflang="zh-Hant" href="https://camp.8-ways.com/">
   <link rel="alternate" hreflang="en" href="https://camp.8-ways.com/en/">
+  <link rel="alternate" hreflang="x-default" href="https://camp.8-ways.com/">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -43,29 +44,30 @@
 </head>
 <body class="site-wrap page-en">
 
-  <header class="en-topbar">
-    <div class="container en-topbar__inner">
-      <a class="brand" href="index.html">
-        <img src="../assets/images/brand/joyforest-glamping-logo-96.png" alt="Joyforest glamping logo" width="48" height="48" class="brand-mark" decoding="async">
-        <span class="brand-stack">
-          <span class="brand-heading">Joyforest</span>
-          <span class="brand-subline">Taoyuan Forest Glamping</span>
-        </span>
-      </a>
-      <a href="../index.html" class="en-lang-link" hreflang="zh-Hant">中文</a>
+  <header class="site-header en-site-header">
+    <div class="container site-header-wrap">
+      <div class="site-header-bar">
+        <a class="brand" href="index.html">
+          <img src="../assets/images/brand/joyforest-glamping-logo-96.png" alt="Joyforest glamping logo" width="48" height="48" class="brand-mark" decoding="async">
+          <span class="brand-stack">
+            <span class="brand-heading">Joyforest</span>
+            <span class="brand-subline">Taoyuan Forest Glamping</span>
+          </span>
+        </a>
+        <button class="mobile-toggle" type="button" data-nav-toggle aria-expanded="false" aria-label="Open menu">☰</button>
+      </div>
+      <nav class="menu site-main-nav en-section-nav" data-nav-menu aria-label="Page sections">
+        <a href="#overview" class="nav-link">Overview</a>
+        <a href="#site-map" class="nav-link">Site Map</a>
+        <a href="#balloon-tent" class="nav-link">Balloon Tent</a>
+        <a href="#cloud-tent" class="nav-link">Cloud Tent</a>
+        <a href="#availability" class="nav-link">Availability</a>
+        <a href="#contact" class="nav-link">Contact</a>
+        <a href="/" class="lang-switch" hreflang="zh-Hant" lang="zh-Hant">中文</a>
+        <a href="/" class="lang-switch-mobile" hreflang="zh-Hant" lang="zh-Hant">中文｜中文版</a>
+      </nav>
     </div>
   </header>
-
-  <nav class="en-anchor-nav" aria-label="Page sections">
-    <ul class="en-anchor-nav__list">
-      <li><a href="#overview">Overview</a></li>
-      <li><a href="#site-map">Site Map</a></li>
-      <li><a href="#balloon-tent">Balloon Tent</a></li>
-      <li><a href="#cloud-tent">Cloud Tent</a></li>
-      <li><a href="#availability">Availability</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
 
   <main class="main">
 
@@ -595,12 +597,37 @@
 
   <footer class="en-footer-minimal">
     <div class="container">
-      <p>© Joyforest · <a href="../index.html">中文首頁</a> · <a href="https://camp.8-ways.com/en/">English</a></p>
+      <p class="footer-lang-link"><a href="/" hreflang="zh-Hant" lang="zh-Hant">中文版</a></p>
+      <p>© Joyforest</p>
     </div>
   </footer>
 
   <script>
   (function(){
+    var toggle = document.querySelector('[data-nav-toggle]');
+    var menu = document.querySelector('[data-nav-menu]');
+    if (toggle && menu) {
+      toggle.addEventListener('click', function() {
+        var open = menu.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', String(open));
+        document.body.style.overflow = open ? 'hidden' : '';
+      });
+      document.addEventListener('click', function(e) {
+        if (!toggle.contains(e.target) && !menu.contains(e.target)) {
+          menu.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+          document.body.style.overflow = '';
+        }
+      });
+      menu.addEventListener('click', function(e) {
+        if (e.target.closest('a')) {
+          menu.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+          document.body.style.overflow = '';
+        }
+      });
+    }
+
     document.querySelectorAll('a[href^="#"]').forEach(function(a){
       var href = a.getAttribute('href');
       if (href === '#') return;
