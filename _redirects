@@ -1,4 +1,10 @@
-# Legacy .html URLs → canonical folder URLs (one-way only)
+# Trailing slash canonical URLs (one-way)
+/en/pages/balloon-tent /en/pages/balloon-tent/ 301
+/en/pages/cloud-tent /en/pages/cloud-tent/ 301
+/en/pages/party-event-space /en/pages/party-event-space/ 301
+/en/pages/availability /en/pages/availability/ 301
+
+# Legacy .html URLs → folder URLs (one-way)
 /en/pages/balloon-tent.html /en/pages/balloon-tent/ 301
 /en/pages/cloud-tent.html /en/pages/cloud-tent/ 301
 /en/pages/party-event-space.html /en/pages/party-event-space/ 301
