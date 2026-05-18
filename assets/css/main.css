@@ -2045,6 +2045,24 @@ footer a:hover { color: #ffffff; }
   grid-template-columns: 1.15fr 0.85fr 1.2fr;
   align-items: start;
 }
+.footer-grid--en {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+.footer-seo-text {
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 0.92rem;
+  line-height: 1.65;
+  max-width: 52rem;
+  margin: 0 auto var(--space-md);
+}
+.footer-hashtags {
+  justify-content: center;
+}
+@media (max-width: 1100px) {
+  .footer-grid--en {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
 .footer-heading {
   font-size: 1.05rem;
   color: #fff;

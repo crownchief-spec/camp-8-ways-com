@@ -128,9 +128,29 @@
   function initFooterSeoRandomLinks(){
     const ul = document.getElementById("footer-seo-random-links");
     if(!ul) return;
-    if((document.body.dataset.locale || "zh") === "en") return;
-
-    const pool = [
+    const isEn = (document.body.dataset.locale || "zh") === "en";
+    const pool = isEn ? [
+      { path: "en/seo/beginner-camping/", title: "Beginner Camping Guide｜First Outdoor Stay Tips" },
+      { path: "en/seo/glamping-guide/", title: "Glamping in Taiwan Guide｜Comfort vs Camping" },
+      { path: "en/seo/glamping-vs-camping/", title: "Glamping vs Traditional Camping" },
+      { path: "en/seo/camping-gear/", title: "Camping Gear Checklist" },
+      { path: "en/seo/family-camping/", title: "Family Camping Guide" },
+      { path: "en/seo/choose-campsite/", title: "How to Choose the Right Campsite" },
+      { path: "en/seo/yangmei-camping/", title: "Yangmei Camping and Outdoor Activities" },
+      { path: "en/seo/night-camping-atmosphere/", title: "Night Camping and Outdoor Atmosphere" },
+      { path: "en/seo/first-camping-trip/", title: "What to Prepare for Your First Camping Trip" },
+      { path: "en/seo/pet-friendly-camping/", title: "Pet-Friendly Camping Guide" },
+      { path: "en/seo/taoyuan-outdoor-activities/", title: "Weekend Outdoor Ideas from Taoyuan" },
+      { path: "en/seo/nearby-attractions/", title: "Nearby Attractions and Trip Ideas" },
+      { path: "en/seo/campervan-travel/", title: "Campervan Travel and Stay Guide" },
+      { path: "en/seo/camping-photo-tips/", title: "How to Take Better Camping Photos" },
+      { path: "en/seo/forest-outdoor-experience/", title: "Forest Activities and Outdoor Experiences" },
+      { path: "en/seo/taoyuan-camping/", title: "Taoyuan Camping Guide" },
+      { path: "en/seo/types-of-camping-taoyuan/", title: "Types of Camping in Taoyuan" },
+      { path: "en/seo/one-day-vs-overnight-event/", title: "One-Day Event vs Two-Day Overnight Stay" },
+      { path: "en/seo/family-camping-planning/", title: "How to Plan an Easier Family Camping Trip" },
+      { path: "en/seo/forest-event-space/", title: "Why Forest-Style Event Spaces Are Attractive" }
+    ] : [
       { path: "seo/beginner-camping.html", title: "露營新手入門｜第一次出發的心理與實務準備" },
       { path: "seo/taoyuan-glamping.html", title: "桃園豪華露營推薦｜更接近自然、更舒服" },
       { path: "seo/guide/glamping-vs-camping.html", title: "豪華露營與一般露營差在哪？" },

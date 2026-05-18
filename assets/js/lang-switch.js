@@ -31,7 +31,26 @@
     { zh: "/pages/availability.html", en: "/en/pages/availability/" },
     { zh: "/en/pages/availability/", en: "/pages/availability/" },
     { zh: "/en/pages/availability", en: "/pages/availability/" },
-    { zh: "/en/pages/availability.html", en: "/pages/availability/" }
+    { zh: "/en/pages/availability.html", en: "/pages/availability/" },
+    { zh: "/seo/", en: "/en/seo/" },
+    { zh: "/seo/index.html", en: "/en/seo/" },
+    { zh: "/en/seo/", en: "/seo/" },
+    { zh: "/en/seo/index.html", en: "/seo/" },
+    { zh: "/pages/forest-graduation-photo/", en: "/en/pages/forest-graduation-photo/" },
+    { zh: "/pages/forest-graduation-photo", en: "/en/pages/forest-graduation-photo/" },
+    { zh: "/pages/forest-graduation-photo.html", en: "/en/pages/forest-graduation-photo/" },
+    { zh: "/en/pages/forest-graduation-photo/", en: "/pages/forest-graduation-photo/" },
+    { zh: "/en/pages/forest-graduation-photo", en: "/pages/forest-graduation-photo/" },
+    { zh: "/pages/family-photography-party/", en: "/en/pages/family-photography-party/" },
+    { zh: "/pages/family-photography-party", en: "/en/pages/family-photography-party/" },
+    { zh: "/pages/family-photography-party.html", en: "/en/pages/family-photography-party/" },
+    { zh: "/en/pages/family-photography-party/", en: "/pages/family-photography-party/" },
+    { zh: "/en/pages/family-photography-party", en: "/pages/family-photography-party/" },
+    { zh: "/pages/pet-photography-party/", en: "/en/pages/pet-photography-party/" },
+    { zh: "/pages/pet-photography-party", en: "/en/pages/pet-photography-party/" },
+    { zh: "/pages/pet-photography-party.html", en: "/en/pages/pet-photography-party/" },
+    { zh: "/en/pages/pet-photography-party/", en: "/pages/pet-photography-party/" },
+    { zh: "/en/pages/pet-photography-party", en: "/pages/pet-photography-party/" }
   ];
 
   function normalizePath(pathname) {
@@ -58,8 +77,18 @@
       }
     }
     if (targetLocale === "en") {
+      if (path.indexOf("/seo/") === 0) {
+        var zhSeoSlug = path.replace(/^\/seo\//, "").replace(/\.html$/, "");
+        if (zhSeoSlug && zhSeoSlug !== "index") {
+          return withTrailingSlash("/en/seo/" + zhSeoSlug);
+        }
+      }
       if (path.indexOf("/en/") === 0) return withTrailingSlash(path);
       return "/en/";
+    }
+    if (path.indexOf("/en/seo/") === 0) {
+      var enSeoSlug = path.replace(/^\/en\/seo\//, "");
+      if (enSeoSlug) return "/seo/" + enSeoSlug + ".html";
     }
     if (path.indexOf("/en/") === 0) {
       var zhPath = path.replace(/^\/en/, "") || "/";
