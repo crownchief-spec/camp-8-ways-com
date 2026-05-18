@@ -2,6 +2,26 @@
   const body = document.body;
   const base = body.dataset.base || "./";
 
+  function ensureLangSwitch(){
+    if(window.JoyforestLangSwitch){
+      return Promise.resolve();
+    }
+    return new Promise(function(resolve, reject){
+      const existing = document.querySelector('script[data-lang-switch-loader="1"]');
+      if(existing){
+        existing.addEventListener("load", function(){ resolve(); }, { once: true });
+        existing.addEventListener("error", function(){ reject(new Error("lang-switch.js failed")); }, { once: true });
+        return;
+      }
+      const script = document.createElement("script");
+      script.src = base + "assets/js/lang-switch.js";
+      script.dataset.langSwitchLoader = "1";
+      script.onload = function(){ resolve(); };
+      script.onerror = function(){ reject(new Error("lang-switch.js failed")); };
+      document.head.appendChild(script);
+    });
+  }
+
   async function loadComponent(targetId, path){
     const el = document.getElementById(targetId);
     if(!el) return;
@@ -189,14 +209,15 @@
 
   document.addEventListener("DOMContentLoaded", async ()=>{
     try{
+      await ensureLangSwitch();
       const locale = body.dataset.locale || "zh";
       const headerFile = locale === "en" ? "components/header-en.html" : "components/header.html";
       await loadComponent("site-header", base + headerFile);
       const footerFile = locale === "en" ? "components/footer-en.html" : "components/footer.html";
       await loadComponent("site-footer", base + footerFile);
       wireNav();
-      if(global.JoyforestLangSwitch && global.JoyforestLangSwitch.initLangSwitchLinks){
-        global.JoyforestLangSwitch.initLangSwitchLinks();
+      if(window.JoyforestLangSwitch && window.JoyforestLangSwitch.initLangSwitchLinks){
+        window.JoyforestLangSwitch.initLangSwitchLinks();
       }
       heroVideoFallback();
       initSmoothScroll();

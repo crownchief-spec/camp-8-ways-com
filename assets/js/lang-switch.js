@@ -76,15 +76,40 @@
         if (path === normalizePath(pair.en)) return withTrailingSlash(pair.zh);
       }
     }
+    var SEO_SLUG_ZH_TO_EN = {
+      "taoyuan-glamping": "glamping-guide",
+      "dome-glamping": "glamping-guide",
+      "campervan-stay": "campervan-travel",
+      "forest-camping": "forest-outdoor-experience",
+      "forest-activities": "forest-outdoor-experience",
+      "night-outdoor": "night-camping-atmosphere",
+      "guide/night-outdoor-mood": "night-outdoor-atmosphere",
+      "guide/weekend-outdoor-taoyuan": "taoyuan-outdoor-activities",
+      "guide/first-camping-prep": "first-camping-trip",
+      "guide/campervan-who": "who-campervan-travel",
+      "guide/yangmei-easy-outings": "easy-yangmei-outdoor-trips",
+      "guide/small-group-events": "small-private-event-planning",
+      "guide/pet-camping-notes": "camping-with-pets",
+      "guide/camping-faq-general": "common-camping-questions"
+    };
+
     if (targetLocale === "en") {
+      if (path.indexOf("/pages/") === 0) {
+        var zhPageSlug = path.replace(/^\/pages\//, "").replace(/\.html$/, "");
+        if (zhPageSlug) return withTrailingSlash("/en/pages/" + zhPageSlug);
+      }
       if (path.indexOf("/seo/") === 0) {
         var zhSeoSlug = path.replace(/^\/seo\//, "").replace(/\.html$/, "");
         if (zhSeoSlug && zhSeoSlug !== "index") {
-          return withTrailingSlash("/en/seo/" + zhSeoSlug);
+          var enSeoFromZh = SEO_SLUG_ZH_TO_EN[zhSeoSlug] || zhSeoSlug.replace(/^guide\//, "");
+          return withTrailingSlash("/en/seo/" + enSeoFromZh);
         }
       }
-      if (path.indexOf("/en/") === 0) return withTrailingSlash(path);
       return "/en/";
+    }
+    if (path.indexOf("/en/pages/") === 0) {
+      var enPageSlug = path.replace(/^\/en\/pages\//, "");
+      if (enPageSlug) return "/pages/" + enPageSlug + ".html";
     }
     if (path.indexOf("/en/seo/") === 0) {
       var enSeoSlug = path.replace(/^\/en\/seo\//, "");
@@ -92,6 +117,9 @@
     }
     if (path.indexOf("/en/") === 0) {
       var zhPath = path.replace(/^\/en/, "") || "/";
+      if (zhPath.indexOf("/pages/") === 0 && zhPath.indexOf(".") === -1) {
+        return zhPath + ".html";
+      }
       return withTrailingSlash(zhPath);
     }
     return "/";
