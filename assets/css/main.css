@@ -2949,6 +2949,40 @@ footer a:hover { color: #ffffff; }
   object-fit: cover;
   display: block;
 }
+.page-pet-photo .pet-hero-gift-note {
+  display: inline-block;
+  margin: 0 0 var(--space-md);
+  padding: 0.55rem 1rem;
+  border-radius: var(--radius-lg);
+  background: rgba(255, 248, 220, 0.96);
+  border: 2px solid rgba(218, 165, 32, 0.75);
+  color: #4a3a12;
+  font-weight: 600;
+  font-size: clamp(0.92rem, 2.1vw, 1.05rem);
+  line-height: 1.5;
+  max-width: 38rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+}
+.page-pet-photo .pet-price-gift-banner {
+  max-width: 44rem;
+  margin: 0 auto var(--space-md);
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius-lg);
+  background: #fff9e8;
+  border: 1px solid #e8c96a;
+  color: var(--color-forest-dark);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+.page-pet-photo .pet-price-card-gift {
+  margin: 0.5rem 0 0.75rem;
+  padding: 0.5rem 0.65rem;
+  border-radius: var(--radius);
+  background: #fff9e8;
+  border-left: 4px solid #d4a017;
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
 .page-pet-photo .hero-with-video {
   min-height: clamp(380px, 52vh, 560px);
 }
