@@ -30,15 +30,15 @@ export const calendarResourcePricing: {
   balloon: {
     label: "熱氣球房",
     shortLabel: "熱氣球",
-    weekday: 3800,
+    weekday: 5800,
     weekend: 5800,
     showPrice: true,
   },
   cloud: {
     label: "雲朵房",
     shortLabel: "雲朵",
-    weekday: 3800,
-    weekend: 4800,
+    weekday: 5800,
+    weekend: 5800,
     showPrice: true,
   },
   rv: {

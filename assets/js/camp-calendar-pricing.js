@@ -66,15 +66,15 @@
     balloon: {
       label: "\u71B1\u6C23\u7403\u623F",
       shortLabel: "\u71B1\u6C23\u7403",
-      weekday: 3800,
+      weekday: 5800,
       weekend: 5800,
       showPrice: true
     },
     cloud: {
       label: "\u96F2\u6735\u623F",
       shortLabel: "\u96F2\u6735",
-      weekday: 3800,
-      weekend: 4800,
+      weekday: 5800,
+      weekend: 5800,
       showPrice: true
     },
     rv: {

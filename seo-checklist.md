@@ -35,7 +35,7 @@
 ## pages/balloon-tent.html
 - route: `/pages/balloon-tent.html`
 - title: 熱氣球房｜假日包場方案｜camp.8-ways.com
-- description: 熱氣球房雙方案：假日 4–6 人包場（約 70 坪專屬空間、草地＋戶外廚房）與平日輕旅行 2 人可住，享受森林系豪華露營。
+- description: 熱氣球房雙方案：每晚 NT$5,800；平日一帳包場、假日兩帳包場（約 70 坪專屬空間、草地＋戶外廚房），享受森林系豪華露營。
 - canonical: `https://camp.8-ways.com/pages/balloon-tent.html`
 - hero image: `../assets/images/balloon-tent/balloon-tent-exclusive-lawn-outdoor-kitchen-aerial-view.jpg`
 - og image: `https://camp.8-ways.com/pages/../assets/images/balloon-tent/balloon-tent-exclusive-lawn-outdoor-kitchen-aerial-view.jpg?page=pages-balloon-tent`
@@ -65,7 +65,7 @@
 ## pages/cloud-tent.html
 - route: `/pages/cloud-tent.html`
 - title: 雲朵房｜假日包場方案｜camp.8-ways.com
-- description: 雲朵房雙方案：假日 4–6 人包場（約 50 坪專屬空間）與平日輕旅行 2 人可住，享受安靜放鬆的森林系豪華露營。
+- description: 雲朵房雙方案：每晚 NT$5,800；平日一帳包場、假日兩帳包場（約 50 坪專屬空間），享受安靜放鬆的森林系豪華露營。
 - canonical: `https://camp.8-ways.com/pages/cloud-tent.html`
 - hero image: `../assets/images/cloud-tent/taoyuan-yangmei-cloud-tent-aerial-balloon-cloud-room-layout.jpg`
 - og image: `https://camp.8-ways.com/pages/../assets/images/cloud-tent/taoyuan-yangmei-cloud-tent-aerial-balloon-cloud-room-layout.jpg?page=pages-cloud-tent`
