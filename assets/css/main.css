@@ -2285,6 +2285,57 @@ footer a:hover { color: #ffffff; }
   margin-top: var(--space-sm);
 }
 
+/* 方案標題：包場／包區關鍵字 */
+.plan-title-kw {
+  display: inline-block;
+  font-size: 1.22em;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  padding: 0 0.4em;
+  margin: 0 0.2em;
+  vertical-align: baseline;
+  line-height: 1.25;
+  border-radius: 4px;
+}
+.plan-title-kw--full {
+  color: var(--color-forest-dark);
+  background: rgba(45, 74, 62, 0.08);
+}
+.plan-title-kw--zone {
+  color: var(--color-forest-light);
+  background: rgba(61, 92, 79, 0.12);
+}
+.trust-badge .plan-title-kw {
+  font-size: 1.05em;
+  letter-spacing: 0.1em;
+  padding: 0 0.25em;
+  margin: 0 0.12em;
+}
+
+.home-pricing-intro {
+  max-width: 40rem;
+  margin: 0 auto var(--space-lg);
+  padding: var(--space-md) var(--space-lg);
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+}
+.home-pricing-intro__lead {
+  margin: 0 0 var(--space-sm);
+  font-size: 1.05rem;
+  line-height: 1.75;
+  text-align: center;
+}
+.home-pricing-intro__rules {
+  margin: 0;
+  padding-left: 1.25rem;
+  line-height: 1.8;
+}
+.home-pricing-intro__rules li + li {
+  margin-top: 0.35rem;
+}
+
 .room-pick-card {
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
