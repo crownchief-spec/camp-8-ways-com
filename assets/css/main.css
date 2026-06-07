@@ -3092,6 +3092,64 @@ footer a:hover { color: #ffffff; }
   color: var(--color-text-muted);
 }
 
+/* Party page usage scenario cards */
+.party-scenario-intro {
+  max-width: 40rem;
+  margin: 0 auto var(--space-lg);
+  color: var(--color-text-muted);
+  font-size: 0.9375rem;
+  line-height: 1.7;
+}
+.party-scenario-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+}
+.party-scenario-card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+.party-scenario-fig {
+  margin: 0;
+  overflow: hidden;
+}
+.party-scenario-fig img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  display: block;
+}
+.party-scenario-body {
+  padding: var(--space-lg);
+}
+.party-scenario-body h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.0625rem;
+  line-height: 1.4;
+}
+.party-scenario-body p {
+  margin: 0 0 0.5rem;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--color-text-muted);
+}
+.party-scenario-body p:last-child {
+  margin-bottom: 0;
+}
+.party-scenario-note {
+  margin-top: 0.5rem !important;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius);
+  background: var(--color-cream-dark);
+  border: 1px solid var(--color-border);
+  font-size: 0.8125rem !important;
+  color: var(--color-forest-dark) !important;
+}
+
 @media (max-width: 768px) {
   .page-party-event-space .party-hero-sales {
     min-height: 58vh;
@@ -3169,8 +3227,61 @@ footer a:hover { color: #ffffff; }
   .schedule-rule-card h3 {
     font-size: 1rem;
   }
+  .party-scenario-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .party-scenario-card {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 16px;
+    min-height: 120px;
+    overflow: hidden;
+  }
+  .party-scenario-fig {
+    width: 38%;
+    flex-shrink: 0;
+  }
+  .party-scenario-fig img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 4 / 3;
+    border-radius: 12px;
+  }
+  .party-scenario-body {
+    flex: 1;
+    min-width: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .party-scenario-body h3 {
+    font-size: 16px;
+    margin-bottom: 4px;
+  }
+  .party-scenario-body p {
+    font-size: 13px;
+    line-height: 1.45;
+    margin-bottom: 4px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .party-scenario-note {
+    -webkit-line-clamp: 3;
+    padding: 4px 8px !important;
+    font-size: 11px !important;
+    line-height: 1.4 !important;
+  }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
+  .party-scenario-grid {
+    grid-template-columns: 1fr;
+  }
   .time-slot-grid,
   .schedule-rule-grid {
     grid-template-columns: 1fr;
