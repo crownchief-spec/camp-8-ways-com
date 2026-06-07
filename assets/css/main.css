@@ -3101,13 +3101,18 @@ footer a:hover { color: #ffffff; }
   line-height: 1.7;
 }
 .party-scenario-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 42rem;
+  margin: 0 auto;
 }
 .party-scenario-card {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px;
   background: #fff;
   border-radius: var(--radius-lg);
   overflow: hidden;
@@ -3115,16 +3120,24 @@ footer a:hover { color: #ffffff; }
 }
 .party-scenario-fig {
   margin: 0;
+  width: 100px;
+  flex-shrink: 0;
   overflow: hidden;
+  border-radius: 10px;
+  background: var(--color-cream-dark);
 }
 .party-scenario-fig img {
   width: 100%;
-  aspect-ratio: 3 / 2;
+  aspect-ratio: 4 / 3;
   object-fit: cover;
   display: block;
+  filter: blur(2px) saturate(0.82);
+  transform: scale(1.06);
 }
 .party-scenario-body {
-  padding: var(--space-lg);
+  flex: 1;
+  min-width: 0;
+  padding: 0;
 }
 .party-scenario-body h3 {
   margin: 0 0 0.5rem;
@@ -3227,61 +3240,35 @@ footer a:hover { color: #ffffff; }
   .schedule-rule-card h3 {
     font-size: 1rem;
   }
-  .party-scenario-grid {
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
   .party-scenario-card {
-    flex-direction: row;
-    align-items: flex-start;
-    gap: 12px;
-    padding: 12px;
-    border-radius: 16px;
-    min-height: 120px;
-    overflow: hidden;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 14px;
   }
   .party-scenario-fig {
-    width: 38%;
-    flex-shrink: 0;
+    width: 72px;
+    border-radius: 8px;
   }
   .party-scenario-fig img {
-    width: 100%;
-    height: 100%;
-    aspect-ratio: 4 / 3;
-    border-radius: 12px;
-  }
-  .party-scenario-body {
-    flex: 1;
-    min-width: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    filter: blur(2.5px) saturate(0.78);
+    transform: scale(1.08);
   }
   .party-scenario-body h3 {
-    font-size: 16px;
+    font-size: 15px;
     margin-bottom: 4px;
   }
   .party-scenario-body p {
     font-size: 13px;
     line-height: 1.45;
     margin-bottom: 4px;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
   }
   .party-scenario-note {
-    -webkit-line-clamp: 3;
     padding: 4px 8px !important;
     font-size: 11px !important;
     line-height: 1.4 !important;
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
-  .party-scenario-grid {
-    grid-template-columns: 1fr;
-  }
   .time-slot-grid,
   .schedule-rule-grid {
     grid-template-columns: 1fr;
