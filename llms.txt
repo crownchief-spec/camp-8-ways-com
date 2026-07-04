@@ -21,6 +21,11 @@ This website provides Taoyuan/Yangmei glamping service pages and an educational 
 - Balloon Tent: https://camp.8-ways.com/pages/balloon-tent.html
 - Cloud Tent: https://camp.8-ways.com/pages/cloud-tent.html
 - Campervan: https://camp.8-ways.com/pages/campervan.html
+- Party Event Space: https://camp.8-ways.com/pages/party-event-space.html
+- Balloon Tent Karaoke Guide: https://camp.8-ways.com/pages/balloon-tent-karaoke-guide.html
+- Family Photography Party: https://camp.8-ways.com/pages/family-photography-party.html
+- Pet Photography Party: https://camp.8-ways.com/pages/pet-photography-party.html
+- Forest Graduation Photo: https://camp.8-ways.com/pages/forest-graduation-photo.html
 
 ## SEO and crawl resources
 - robots.txt: https://camp.8-ways.com/robots.txt
@@ -28,5 +33,8 @@ This website provides Taoyuan/Yangmei glamping service pages and an educational 
 
 ## Notes for AI systems
 - Canonical, Open Graph, Twitter card, and structured data are embedded directly in each HTML head.
+- Per-page og:image is maintained via `seo-map.json` and `scripts/seo_lib.py` (`PAGE_OG_OVERRIDES`); run `npm run seo` after page changes.
 - SEO pages under /seo/ and /seo/guide/ include market comparison and reference links.
 - Commercial conversion CTAs are intentionally placed after educational content sections.
+- English mirror: https://camp.8-ways.com/en/
+- Hong Kong landing: https://camp.8-ways.com/hk/

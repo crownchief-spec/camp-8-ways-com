@@ -3,7 +3,13 @@
   "private": true,
   "scripts": {
     "build:calendar-pricing": "esbuild src/bundle/campCalendarPricing.ts --bundle --format=iife --outfile=assets/js/camp-calendar-pricing.js",
-    "build": "npm run build:calendar-pricing"
+    "build": "npm run build:calendar-pricing",
+    "seo:map": "python3 scripts/build-seo-map.py",
+    "seo:apply": "python3 scripts/apply-seo.py",
+    "seo:sitemap": "python3 scripts/generate-sitemap.py",
+    "seo:audit": "python3 scripts/audit-seo.py",
+    "seo:export": "python3 scripts/export-seo-table.py",
+    "seo": "npm run seo:map && npm run seo:apply && npm run seo:sitemap && npm run seo:audit && npm run seo:export"
   },
   "devDependencies": {
     "esbuild": "^0.25.0",

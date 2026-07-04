@@ -1,0 +1,18 @@
+{
+  "site_url": "https://camp.8-ways.com",
+  "brand_name_zh": "揪好森 Joyforest",
+  "brand_name_en": "Joyforest",
+  "legal_name": "揪好森 Joyforest",
+  "theme_color": "#3d5c3a",
+  "locale_zh": "zh_TW",
+  "locale_en": "en_US",
+  "default_og_image": "https://camp.8-ways.com/assets/images/experience-refresh/joyforest-forest-aerial-view.jpg",
+  "home_og_image": "https://camp.8-ways.com/assets/images/experience-refresh/joyforest-forest-aerial-view.jpg",
+  "contact_phone": "+886-911-252-302",
+  "address_locality": "楊梅區",
+  "address_region": "桃園市",
+  "address_country": "TW",
+  "geo_latitude": "24.92",
+  "geo_longitude": "121.15",
+  "analytics_placeholder": "<!-- TODO: GA4 / GTM -->"
+}
