@@ -1108,6 +1108,20 @@ p:last-child { margin-bottom: 0; }
   align-items: center;
 }
 .guide-step-photos-stack .figure-block { margin: 0; width: 100%; }
+.remote-guide-figure {
+  max-width: 22rem;
+  margin: var(--space-lg) auto 0;
+}
+.remote-guide-figure img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  display: block;
+  box-shadow: var(--shadow);
+}
+@media (min-width: 640px) {
+  .remote-guide-figure { max-width: 26rem; }
+}
 
 /* Cards */
 .card-grid { display: grid; gap: var(--space-lg); }
