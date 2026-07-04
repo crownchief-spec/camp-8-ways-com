@@ -1101,7 +1101,13 @@ p:last-child { margin-bottom: 0; }
   color: var(--color-text-muted);
   margin: 0 0 var(--space-sm);
 }
-.page-karaoke-guide .hero-kicker a { color: var(--color-forest); }
+.guide-step-photos-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  align-items: center;
+}
+.guide-step-photos-stack .figure-block { margin: 0; width: 100%; }
 
 /* Cards */
 .card-grid { display: grid; gap: var(--space-lg); }
