@@ -14,18 +14,23 @@ RV_URL="https://calendar.google.com/calendar/ical/al2upmt9aegl0gc9uk6dms17k4%40g
 
 merge_ics() {
   local out="$1"
-  shift
-  local -a sources=("$@")
+  local camp_src="$2"
+  local rv_src="$3"
 
-  awk '/^BEGIN:VEVENT/{exit} {print}' "${sources[0]}" >"$out"
+  awk '/^BEGIN:VEVENT/{exit} {print}' "$camp_src" >"$out"
 
-  for src in "${sources[@]}"; do
-    awk '
-      /^BEGIN:VEVENT/ { in_event=1 }
-      in_event { print }
-      /^END:VEVENT/ { in_event=0 }
-    ' "$src" >>"$out"
-  done
+  awk '
+    /^BEGIN:VEVENT/ { in_event=1 }
+    in_event { print }
+    /^END:VEVENT/ { in_event=0 }
+  ' "$camp_src" >>"$out"
+
+  # 露營車日曆：每筆活動皆標記為 rv（不必標題含「露營車」）
+  awk '
+    /^BEGIN:VEVENT/ { in_event=1; print; next }
+    in_event && /^END:VEVENT/ { print "X-JOYFOREST-TAG:rv"; print; in_event=0; next }
+    in_event { print }
+  ' "$rv_src" >>"$out"
 
   printf '%s\n' "END:VCALENDAR" >>"$out"
 }

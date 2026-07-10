@@ -1,6 +1,7 @@
 /**
  * 讀取站內 Google Calendar iCal（.ics），依標題與說明內部分類（不對外顯示原文）：
- * 含「熱氣球」→ 熱氣球房｜含「雲朵」→ 雲朵房｜含「包場」→ 熱氣球房＋雲朵房｜含「露營車」→ 露營車
+ * 含「熱氣球」→ 熱氣球房｜含「雲朵」→ 雲朵房｜含「包場」→ 熱氣球房＋雲朵房
+ * 含「露營車」→ 露營車｜露營車日曆內任一活動（X-JOYFOREST-TAG:rv）→ 露營車
  *
  * 價格／連假規則由 assets/js/camp-calendar-pricing.js（TypeScript 編譯）提供 window.CampCalendarPricing。
  */
@@ -134,6 +135,9 @@
       var summary = props.SUMMARY ? props.SUMMARY.value : "";
       var description = props.DESCRIPTION ? props.DESCRIPTION.value : "";
       var tags = classifyTags(summary, description);
+      if (props["X-JOYFOREST-TAG"] && props["X-JOYFOREST-TAG"].value === "rv") {
+        if (tags.indexOf("rv") === -1) tags.push("rv");
+      }
       if (!tags.length) continue;
 
       var dtStart = props.DTSTART ? parseIcsDate(props.DTSTART) : null;
