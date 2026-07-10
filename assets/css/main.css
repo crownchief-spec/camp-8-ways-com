@@ -580,11 +580,11 @@ p:last-child { margin-bottom: 0; }
 }
 
 .availability-legend-swatch--balloon {
-  background: #4e6b50;
+  background: #f59e0b;
 }
 
 .availability-legend-swatch--cloud {
-  background: #7b879c;
+  background: #3b82f6;
 }
 
 .availability-legend-swatch--rv {
@@ -605,6 +605,17 @@ p:last-child { margin-bottom: 0; }
   line-height: 1.5;
   color: #888;
   text-align: center;
+}
+
+.availability-legend-foot + .availability-legend-foot {
+  margin-top: 0.35rem;
+}
+
+.availability-legend-foot a {
+  color: #3d5c3a;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 .availability-status {
@@ -809,6 +820,12 @@ p:last-child { margin-bottom: 0; }
   font-weight: 700;
 }
 
+.availability-line__promo-label {
+  font-size: 0.72em;
+  font-weight: 500;
+  color: #5a6570;
+}
+
 /* 已預訂：房型淡底、左直條、小圓角、無完整外框 */
 .availability-line--booked {
   border-radius: 4px;
@@ -820,27 +837,27 @@ p:last-child { margin-bottom: 0; }
 }
 
 .availability-line--booked.availability-line--balloon {
-  background: #eef4ee;
+  background: #fff7d6;
 }
 
 .availability-line--booked.availability-line--balloon .availability-line__bar {
-  background: #4e6b50;
+  background: #f59e0b;
 }
 
 .availability-line--booked.availability-line--balloon .availability-line__name {
-  color: #4e6b50;
+  color: #c2410c;
 }
 
 .availability-line--booked.availability-line--cloud {
-  background: #f1f4f8;
+  background: #e8f2ff;
 }
 
 .availability-line--booked.availability-line--cloud .availability-line__bar {
-  background: #7b879c;
+  background: #3b82f6;
 }
 
 .availability-line--booked.availability-line--cloud .availability-line__name {
-  color: #7b879c;
+  color: #1d4ed8;
 }
 
 .availability-line--booked.availability-line--rv {
@@ -867,19 +884,19 @@ p:last-child { margin-bottom: 0; }
 }
 
 .availability-line--price.availability-line--balloon .availability-line__bar {
-  background: #4e6b50;
+  background: #f59e0b;
 }
 
 .availability-line--price.availability-line--balloon .availability-line__name {
-  color: #4e6b50;
+  color: #c2410c;
 }
 
 .availability-line--price.availability-line--cloud .availability-line__bar {
-  background: #7b879c;
+  background: #3b82f6;
 }
 
 .availability-line--price.availability-line--cloud .availability-line__name {
-  color: #7b879c;
+  color: #1d4ed8;
 }
 
 .availability-line--price.availability-line--rv .availability-line__bar {

@@ -29,7 +29,11 @@ export function formatPriceNt(amount: number): string {
 }
 
 export function formatDiscountPriceDisplay(_original: number, discount: number): string {
-  return "<strong>打卡優惠 " + formatPriceNt(discount) + "</strong>";
+  return (
+    '<span class="availability-line__promo-label">打卡優惠</span> <strong>' +
+    formatPriceNt(discount) +
+    "</strong>"
+  );
 }
 
 export type ResourceRowDisplay =
