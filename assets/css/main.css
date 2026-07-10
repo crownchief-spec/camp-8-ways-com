@@ -844,8 +844,7 @@ p:last-child { margin-bottom: 0; }
 
 .availability-line__booked {
   font-size: 12px;
-  font-weight: 500;
-  color: #b8bcc2;
+  font-weight: 600;
   flex-shrink: 0;
   white-space: nowrap;
 }
@@ -877,24 +876,54 @@ p:last-child { margin-bottom: 0; }
   color: #5a6570;
 }
 
-/* 已預訂：淡化處理，讓可預訂列更醒目 */
+/* 已預訂：保留房型原色，整列 50% 透明度以便與可預訂列區分 */
 .availability-line--booked {
   border-radius: 4px;
   overflow: hidden;
-  opacity: 0.38;
-  background: #f3f3f2;
+  opacity: 0.5;
 }
 
 .availability-line--booked .availability-line__bar {
   width: 4px;
-  background: #d1d5db;
+}
+
+.availability-line--booked.availability-line--balloon {
+  background: #fff7d6;
+}
+
+.availability-line--booked.availability-line--balloon .availability-line__bar {
+  background: #f59e0b;
 }
 
 .availability-line--booked.availability-line--balloon .availability-line__name,
+.availability-line--booked.availability-line--balloon .availability-line__booked {
+  color: #c2410c;
+}
+
+.availability-line--booked.availability-line--cloud {
+  background: #e8f2ff;
+}
+
+.availability-line--booked.availability-line--cloud .availability-line__bar {
+  background: #3b82f6;
+}
+
 .availability-line--booked.availability-line--cloud .availability-line__name,
-.availability-line--booked.availability-line--rv .availability-line__name {
-  color: #a8adb4;
-  font-weight: 500;
+.availability-line--booked.availability-line--cloud .availability-line__booked {
+  color: #1d4ed8;
+}
+
+.availability-line--booked.availability-line--rv {
+  background: #f8f1e8;
+}
+
+.availability-line--booked.availability-line--rv .availability-line__bar {
+  background: #a8783a;
+}
+
+.availability-line--booked.availability-line--rv .availability-line__name,
+.availability-line--booked.availability-line--rv .availability-line__booked {
+  color: #a8783a;
 }
 
 /* 未預訂價格：透明／白底、無框、僅色條＋文字 */
