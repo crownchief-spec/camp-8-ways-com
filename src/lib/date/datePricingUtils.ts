@@ -28,14 +28,8 @@ export function formatPriceNt(amount: number): string {
   return "$" + amount.toLocaleString("zh-TW");
 }
 
-export function formatDiscountPriceDisplay(original: number, discount: number): string {
-  return (
-    "<del>" +
-    formatPriceNt(original) +
-    "</del> <strong>打卡優惠價 " +
-    formatPriceNt(discount) +
-    "</strong>"
-  );
+export function formatDiscountPriceDisplay(_original: number, discount: number): string {
+  return "<strong>打卡優惠 " + formatPriceNt(discount) + "</strong>";
 }
 
 export type ResourceRowDisplay =

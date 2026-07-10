@@ -1,6 +1,6 @@
 /**
  * 讀取站內 Google Calendar iCal（.ics），依標題與說明內部分類（不對外顯示原文）：
- * 含「熱氣球」→ 熱氣球房｜含「雲朵」→ 雲朵房｜含「露營車」→ 露營車
+ * 含「熱氣球」→ 熱氣球房｜含「雲朵」→ 雲朵房｜含「包場」→ 熱氣球房＋雲朵房｜含「露營車」→ 露營車
  *
  * 價格／連假規則由 assets/js/camp-calendar-pricing.js（TypeScript 編譯）提供 window.CampCalendarPricing。
  */
@@ -114,6 +114,10 @@
   function classifyTags(summary, description) {
     var text = (summary || "") + "\n" + (description || "");
     var tags = [];
+    if (text.indexOf("包場") !== -1) {
+      tags.push("balloon");
+      tags.push("cloud");
+    }
     if (text.indexOf("熱氣球") !== -1) tags.push("balloon");
     if (text.indexOf("雲朵") !== -1) tags.push("cloud");
     if (text.indexOf("露營車") !== -1) tags.push("rv");

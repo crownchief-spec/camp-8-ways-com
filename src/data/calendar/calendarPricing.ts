@@ -9,7 +9,7 @@ export interface PricedCalendarResource {
   label: string;
   /** 月曆格內簡稱 */
   shortLabel: string;
-  /** 原價（劃線顯示） */
+  /** 原價（僅供維運參考，空房頁不顯示） */
   originalPrice: number;
   /** 平日（週日～週四入住夜，且非連假 override） */
   weekday: number;
