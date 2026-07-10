@@ -9,6 +9,8 @@ export interface PricedCalendarResource {
   label: string;
   /** 月曆格內簡稱 */
   shortLabel: string;
+  /** 原價（劃線顯示） */
+  originalPrice: number;
   /** 平日（週日～週四入住夜，且非連假 override） */
   weekday: number;
   /** 假日（週五～週六入住夜，或連假 override 日） */
@@ -30,15 +32,17 @@ export const calendarResourcePricing: {
   balloon: {
     label: "熱氣球房",
     shortLabel: "熱氣球",
-    weekday: 5800,
-    weekend: 5800,
+    originalPrice: 7800,
+    weekday: 5000,
+    weekend: 5000,
     showPrice: true,
   },
   cloud: {
     label: "雲朵房",
     shortLabel: "雲朵",
-    weekday: 5800,
-    weekend: 5800,
+    originalPrice: 7800,
+    weekday: 5000,
+    weekend: 5000,
     showPrice: true,
   },
   rv: {

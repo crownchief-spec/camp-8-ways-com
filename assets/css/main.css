@@ -792,8 +792,21 @@ p:last-child { margin-bottom: 0; }
   font-size: 12px;
   font-weight: 600;
   color: #2f3a45;
-  flex-shrink: 0;
-  white-space: nowrap;
+  flex-shrink: 1;
+  min-width: 0;
+  white-space: normal;
+  line-height: 1.25;
+  text-align: right;
+}
+
+.availability-line__price del {
+  color: #7a828c;
+  font-weight: 500;
+}
+
+.availability-line__price strong {
+  color: #2f3a45;
+  font-weight: 700;
 }
 
 /* 已預訂：房型淡底、左直條、小圓角、無完整外框 */

@@ -66,15 +66,17 @@
     balloon: {
       label: "\u71B1\u6C23\u7403\u623F",
       shortLabel: "\u71B1\u6C23\u7403",
-      weekday: 5800,
-      weekend: 5800,
+      originalPrice: 7800,
+      weekday: 5e3,
+      weekend: 5e3,
       showPrice: true
     },
     cloud: {
       label: "\u96F2\u6735\u623F",
       shortLabel: "\u96F2\u6735",
-      weekday: 5800,
-      weekend: 5800,
+      originalPrice: 7800,
+      weekday: 5e3,
+      weekend: 5e3,
       showPrice: true
     },
     rv: {
@@ -97,6 +99,9 @@
   function formatPriceNt(amount) {
     return "$" + amount.toLocaleString("zh-TW");
   }
+  function formatDiscountPriceDisplay(original, discount) {
+    return "<del>" + formatPriceNt(original) + "</del> <strong>\u6253\u5361\u512A\u60E0\u50F9 " + formatPriceNt(discount) + "</strong>";
+  }
   function resolveResourceRowDisplay(resourceId, y, m, d, isBooked, holidayOverrideSet) {
     const cfg = calendarResourcePricing[resourceId];
     if (isBooked) {
@@ -111,7 +116,7 @@
       kind: "price",
       label: cfg.label,
       shortLabel: cfg.shortLabel,
-      formattedPrice: formatPriceNt(amount)
+      formattedPrice: formatDiscountPriceDisplay(cfg.originalPrice, amount)
     };
   }
   var RELEVANT = /* @__PURE__ */ new Set(["balloon", "cloud", "rv"]);

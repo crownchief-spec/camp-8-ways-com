@@ -28,6 +28,16 @@ export function formatPriceNt(amount: number): string {
   return "$" + amount.toLocaleString("zh-TW");
 }
 
+export function formatDiscountPriceDisplay(original: number, discount: number): string {
+  return (
+    "<del>" +
+    formatPriceNt(original) +
+    "</del> <strong>打卡優惠價 " +
+    formatPriceNt(discount) +
+    "</strong>"
+  );
+}
+
 export type ResourceRowDisplay =
   | { kind: "booked"; label: string; shortLabel: string }
   | { kind: "price"; label: string; shortLabel: string; formattedPrice: string }
@@ -60,7 +70,7 @@ export function resolveResourceRowDisplay(
     kind: "price",
     label: cfg.label,
     shortLabel: cfg.shortLabel,
-    formattedPrice: formatPriceNt(amount),
+    formattedPrice: formatDiscountPriceDisplay(cfg.originalPrice, amount),
   };
 }
 
