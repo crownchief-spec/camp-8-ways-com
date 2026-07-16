@@ -1,0 +1,9 @@
+/pages/staff-availability.html
+  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet
+  Cache-Control: no-store
+
+/api/staff-calendar/*
+  Cache-Control: private, no-store, no-cache, must-revalidate
+
+/api/staff-auth/*
+  Cache-Control: private, no-store, no-cache, must-revalidate

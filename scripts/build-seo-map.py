@@ -83,7 +83,7 @@ def build_entry(page_path: Path, brand: dict) -> dict:
 
     route = infer_route(page_file, canonical)
 
-    noindex = redirect or page_file == "404.html"
+    noindex = redirect or page_file == "404.html" or page_file == "pages/staff-availability.html"
 
     hero_raw = extract_hero_src(html)
     if redirect and redirect_target:
