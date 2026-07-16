@@ -90,9 +90,9 @@
       .map(function (tag) {
         var label =
           tag === "cloud"
-            ? "雲朵房"
+            ? "雲朵房（左邊帳篷）"
             : tag === "balloon"
-              ? "熱氣球房"
+              ? "熱氣球房（右邊帳篷）"
               : "露營車";
         return (
           '<span class="staff-tag staff-tag--' +
