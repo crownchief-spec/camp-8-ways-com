@@ -1,14 +1,9 @@
 import { fetchCalendarSources } from "../../_lib/calendar-fetch.js";
 import { mergeAndParseCalendars } from "../../_lib/ics-parser.js";
-import { jsonResponse, requireStaffSession } from "../../_lib/staff-auth.js";
+import { jsonResponse } from "../../_lib/staff-auth.js";
 
 export async function onRequestGet(context) {
   const { request, env } = context;
-
-  const authenticated = await requireStaffSession(request, env);
-  if (!authenticated) {
-    return jsonResponse({ ok: false, error: "未登入或 session 已過期。" }, 401);
-  }
 
   try {
     const { campIcs, rvIcs } = await fetchCalendarSources(env);

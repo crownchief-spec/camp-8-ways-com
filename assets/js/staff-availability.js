@@ -4,11 +4,6 @@
   var selectedMonth = "";
   var eventsCache = [];
 
-  var loginSection = document.getElementById("staff-login-section");
-  var mainSection = document.getElementById("staff-main-section");
-  var loginForm = document.getElementById("staff-login-form");
-  var loginError = document.getElementById("staff-login-error");
-  var logoutBtn = document.getElementById("staff-logout-btn");
   var statusEl = document.getElementById("staff-status");
   var fetchError = document.getElementById("staff-fetch-error");
   var eventsEl = document.getElementById("staff-events");
@@ -29,17 +24,6 @@
     return escapeHtml(text).replace(/\n/g, "<br>");
   }
 
-  function setLoginVisible(showLogin) {
-    loginSection.hidden = !showLogin;
-    mainSection.hidden = showLogin;
-    logoutBtn.hidden = showLogin;
-  }
-
-  function showLoginError(msg) {
-    loginError.textContent = msg || "";
-    loginError.hidden = !msg;
-  }
-
   function showFetchError(msg) {
     fetchError.textContent = msg || "";
     fetchError.hidden = !msg;
@@ -55,38 +39,6 @@
       return res.json().then(function (data) {
         return { res: res, data: data };
       });
-    });
-  }
-
-  function checkSession() {
-    return apiFetch("/staff-auth/session").then(function (result) {
-      if (result.data.ok && result.data.authenticated) {
-        setLoginVisible(false);
-        return true;
-      }
-      setLoginVisible(true);
-      return false;
-    });
-  }
-
-  function login(password) {
-    return apiFetch("/staff-auth/login", {
-      method: "POST",
-      body: JSON.stringify({ password: password })
-    }).then(function (result) {
-      if (!result.data.ok) {
-        throw new Error(result.data.error || "登入失敗");
-      }
-      setLoginVisible(false);
-      showLoginError("");
-    });
-  }
-
-  function logout() {
-    return apiFetch("/staff-auth/logout", { method: "POST" }).then(function () {
-      eventsCache = [];
-      eventsEl.innerHTML = "";
-      setLoginVisible(true);
     });
   }
 
@@ -229,7 +181,7 @@
       " " +
       escapeHtml(ev.checkOutTime) +
       "</p>" +
-      "<p class=\"staff-card__nights\">共 " +
+      '<p class="staff-card__nights">共 ' +
       escapeHtml(String(ev.nights != null ? ev.nights : "—")) +
       " 晚</p>" +
       "</div>" +
@@ -286,46 +238,26 @@
 
     var query = "?month=" + encodeURIComponent(selectedMonth);
 
-    return apiFetch("/staff-calendar/events" + query).then(function (result) {
-      if (result.res.status === 401) {
-        setLoginVisible(true);
-        throw new Error("登入已過期，請重新登入。");
-      }
-      if (!result.data.ok) {
-        throw new Error(result.data.error || "載入失敗");
-      }
-      eventsCache = result.data.events || [];
-      buildMonthOptions();
-      statusEl.textContent =
-        "共 " +
-        filterEvents().length +
-        " 筆（更新時間：" +
-        (result.data.fetchedAt || "") +
-        "）";
-      renderEvents();
-    }).catch(function (err) {
-      statusEl.textContent = "";
-      showFetchError(err.message || "無法載入資料");
-    });
-  }
-
-  loginForm.addEventListener("submit", function (e) {
-    e.preventDefault();
-    showLoginError("");
-    var password = document.getElementById("staff-password").value;
-    login(password)
-      .then(function () {
-        document.getElementById("staff-password").value = "";
-        return loadEvents();
+    return apiFetch("/staff-calendar/events" + query)
+      .then(function (result) {
+        if (!result.data.ok) {
+          throw new Error(result.data.error || "載入失敗");
+        }
+        eventsCache = result.data.events || [];
+        buildMonthOptions();
+        statusEl.textContent =
+          "共 " +
+          filterEvents().length +
+          " 筆（更新時間：" +
+          (result.data.fetchedAt || "") +
+          "）";
+        renderEvents();
       })
       .catch(function (err) {
-        showLoginError(err.message);
+        statusEl.textContent = "";
+        showFetchError(err.message || "無法載入資料");
       });
-  });
-
-  logoutBtn.addEventListener("click", function () {
-    logout();
-  });
+  }
 
   document.querySelectorAll(".staff-filter-btn").forEach(function (btn) {
     btn.addEventListener("click", function () {
@@ -335,8 +267,10 @@
       btn.classList.add("is-active");
       selectedRoom = btn.getAttribute("data-room") || "all";
       renderEvents();
-      statusEl.textContent =
-        statusEl.textContent.replace(/共 \d+ 筆/, "共 " + filterEvents().length + " 筆");
+      statusEl.textContent = statusEl.textContent.replace(
+        /共 \d+ 筆/,
+        "共 " + filterEvents().length + " 筆"
+      );
     });
   });
 
@@ -349,7 +283,6 @@
     loadEvents();
   });
 
-  checkSession().then(function (ok) {
-    if (ok) loadEvents();
-  });
+  buildMonthOptions();
+  loadEvents();
 })();
