@@ -1,13 +1,11 @@
 (function () {
   var API_BASE = "/api";
   var selectedRoom = "all";
-  var selectedMonth = "";
   var eventsCache = [];
 
   var statusEl = document.getElementById("staff-status");
   var fetchError = document.getElementById("staff-fetch-error");
   var eventsEl = document.getElementById("staff-events");
-  var monthSelect = document.getElementById("staff-month");
   var refreshBtn = document.getElementById("staff-refresh-btn");
 
   function escapeHtml(text) {
@@ -49,40 +47,12 @@
     return status;
   }
 
-  function buildMonthOptions() {
-    var now = new Date();
-    // 從「昨天」所在月份開始（例如月初時昨天可能是上月）
-    var start = new Date(now.getFullYear(), now.getMonth(), now.getDate() - 1);
-    var months = [];
-    for (var i = 0; i < 18; i++) {
-      var d = new Date(start.getFullYear(), start.getMonth() + i, 1);
-      var ym =
-        d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0");
-      months.push(ym);
-    }
-
-    monthSelect.innerHTML = months
-      .map(function (ym) {
-        var parts = ym.split("-");
-        var label = parts[0] + " 年 " + parseInt(parts[1], 10) + " 月";
-        return (
-          '<option value="' +
-          escapeHtml(ym) +
-          '">' +
-          escapeHtml(label) +
-          "</option>"
-        );
-      })
-      .join("");
-
-    if (!selectedMonth) {
-      selectedMonth =
-        now.getFullYear() + "-" + String(now.getMonth() + 1).padStart(2, "0");
-    }
-    if (months.indexOf(selectedMonth) === -1) {
-      selectedMonth = months[0];
-    }
-    monthSelect.value = selectedMonth;
+  function formatYmdLabel(ymd) {
+    if (!ymd) return "";
+    var parts = ymd.split("-");
+    return (
+      parseInt(parts[1], 10) + " 月 " + parseInt(parts[2], 10) + " 日"
+    );
   }
 
   function renderTagPills(ev) {
@@ -194,9 +164,6 @@
       if (selectedRoom !== "all" && ev.roomTags.indexOf(selectedRoom) === -1) {
         return false;
       }
-      if (selectedMonth && ev.checkInYm !== selectedMonth) {
-        return false;
-      }
       return true;
     });
   }
@@ -215,19 +182,26 @@
     statusEl.textContent = "載入中…";
     showFetchError("");
 
-    var query = "?month=" + encodeURIComponent(selectedMonth);
-
-    return apiFetch("/staff-calendar/events" + query)
+    return apiFetch("/staff-calendar/events")
       .then(function (result) {
         if (!result.data.ok) {
           throw new Error(result.data.error || "載入失敗");
         }
         eventsCache = result.data.events || [];
-        buildMonthOptions();
+        var rangeText = "";
+        if (result.data.fromYmd && result.data.untilYmd) {
+          rangeText =
+            "｜區間：" +
+            formatYmdLabel(result.data.fromYmd) +
+            "～" +
+            formatYmdLabel(result.data.untilYmd);
+        }
         statusEl.textContent =
           "共 " +
           filterEvents().length +
-          " 筆（更新時間：" +
+          " 筆" +
+          rangeText +
+          "（更新時間：" +
           (result.data.fetchedAt || "") +
           "）";
         renderEvents();
@@ -253,15 +227,9 @@
     });
   });
 
-  monthSelect.addEventListener("change", function () {
-    selectedMonth = monthSelect.value;
-    loadEvents();
-  });
-
   refreshBtn.addEventListener("click", function () {
     loadEvents();
   });
 
-  buildMonthOptions();
   loadEvents();
 })();

@@ -348,6 +348,33 @@ export function getYesterdayYmdTaipei(now = new Date()) {
   );
 }
 
+/** 台北時區「今天起一個月後」的 YYYY-MM-DD（含當日） */
+export function getOneMonthAheadYmdTaipei(now = new Date()) {
+  const todayStr = new Intl.DateTimeFormat("en-CA", {
+    timeZone: TZ,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit"
+  }).format(now);
+  const [y, m, d] = todayStr.split("-").map((n) => parseInt(n, 10));
+  const ahead = new Date(Date.UTC(y, m - 1 + 1, d));
+  return (
+    ahead.getUTCFullYear() +
+    "-" +
+    String(ahead.getUTCMonth() + 1).padStart(2, "0") +
+    "-" +
+    String(ahead.getUTCDate()).padStart(2, "0")
+  );
+}
+
+/** 顯示區間：昨天 ～ 今天起一個月內 */
+export function getStaffDisplayRangeYmd(now = new Date()) {
+  return {
+    fromYmd: getYesterdayYmdTaipei(now),
+    untilYmd: getOneMonthAheadYmdTaipei(now)
+  };
+}
+
 export function mergeAndParseCalendars(campIcs, rvIcs) {
   const campEvents = parseIcsEvents(campIcs, CAMP_CALENDAR_NAME, false);
   const rvEvents = parseIcsEvents(rvIcs, RV_CALENDAR_NAME, true);
