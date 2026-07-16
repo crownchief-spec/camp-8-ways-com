@@ -262,8 +262,8 @@
       '<div class="staff-day-table" role="table" aria-label="左右帳篷對照">' +
       '<div class="staff-day-head" role="row">' +
       '<div class="staff-day-col staff-day-col--date" role="columnheader">日期</div>' +
-      '<div class="staff-day-col staff-day-col--cloud" role="columnheader">雲朵房<br><span>（左邊帳篷）</span></div>' +
-      '<div class="staff-day-col staff-day-col--balloon" role="columnheader">熱氣球房<br><span>（右邊帳篷）</span></div>' +
+      '<div class="staff-day-col staff-day-col--cloud" role="columnheader">雲朵房<br><span>左邊帳篷</span></div>' +
+      '<div class="staff-day-col staff-day-col--balloon" role="columnheader">熱氣球房<br><span>右邊帳篷</span></div>' +
       "</div>" +
       rows.join("") +
       "</div>" +

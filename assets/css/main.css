@@ -4147,38 +4147,106 @@ footer a:hover { color: #ffffff; }
 
 @media (max-width: 760px) {
   .staff-app {
-    padding: 12px 12px 36px;
+    padding: 10px 8px 32px;
+    max-width: 100%;
+  }
+
+  .staff-day-table {
+    gap: 8px;
+  }
+
+  /* 手機版維持與電腦相同的三欄對照 */
+  .staff-day-head,
+  .staff-day-row {
+    grid-template-columns: minmax(56px, 0.55fr) 1fr 1fr;
+    gap: 6px;
   }
 
   .staff-day-head {
-    display: none;
+    display: grid;
+    padding: 6px 0 4px;
   }
 
-  .staff-day-head,
+  .staff-day-head .staff-day-col {
+    padding: 8px 4px;
+    font-size: 0.78rem;
+    border-radius: 8px;
+  }
+
+  .staff-day-head .staff-day-col span {
+    font-size: 0.68rem;
+  }
+
   .staff-day-row {
-    grid-template-columns: 1fr;
+    padding: 6px;
+    border-radius: 10px;
   }
 
   .staff-day-col-label {
-    display: block;
-  }
-
-  .staff-day-col--cloud .staff-day-col-label {
-    color: #1e4f9a;
-  }
-
-  .staff-day-col--balloon .staff-day-col-label {
-    color: #8a3a28;
+    display: none;
   }
 
   .staff-day-col--date {
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 8px;
-    padding-bottom: 4px;
-    border-bottom: 1px solid #e4ebe1;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+    padding: 2px 0;
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+
+  .staff-day-date {
+    font-size: 0.78rem;
+  }
+
+  .staff-day-weekday {
+    font-size: 0.7rem;
+  }
+
+  .staff-day-flag {
+    margin-top: 4px;
+    padding: 2px 5px;
+    font-size: 0.62rem;
+  }
+
+  .staff-day-empty {
+    padding: 10px 4px;
+    font-size: 0.75rem;
+  }
+
+  .staff-day-booking {
+    padding: 8px 6px;
+    border-radius: 8px;
+    margin-bottom: 6px;
+  }
+
+  .staff-day-booking__title {
+    font-size: 0.78rem;
     margin-bottom: 4px;
+  }
+
+  .staff-day-booking__nights {
+    font-size: 0.7rem;
+  }
+
+  .staff-day-booking__time,
+  .staff-day-booking__range,
+  .staff-day-booking__guest,
+  .staff-day-booking__meta {
+    font-size: 0.7rem;
+  }
+
+  .staff-day-booking__details {
+    font-size: 0.7rem;
+  }
+
+  .staff-card__status {
+    font-size: 0.68rem;
+    padding: 2px 6px;
+  }
+
+  .staff-status {
+    font-size: 0.8rem;
   }
 }
 
