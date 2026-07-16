@@ -4296,3 +4296,149 @@ footer a:hover { color: #ffffff; }
     padding: 12px 12px 36px;
   }
 }
+
+
+/* —— Content refresh: home selling points, room specs, mobile reading —— */
+.btn-ghost-light {
+  background: transparent;
+  color: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  font-weight: 500;
+}
+.btn-ghost-light:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.55);
+  color: #fff;
+}
+
+.hero-price {
+  font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+  margin: 0 auto var(--space-md);
+  max-width: 36rem;
+  color: #fff;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.35);
+}
+.hero-price del {
+  opacity: 0.75;
+  font-weight: 500;
+}
+.hero-price strong {
+  font-weight: 700;
+}
+
+.plan-explain-note {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  margin-top: 0.5rem;
+  line-height: 1.65;
+}
+
+.room-pick-card__subtitle {
+  font-size: 0.95rem;
+  color: var(--color-forest-dark);
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+  line-height: 1.5;
+}
+
+.room-tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  list-style: none;
+  margin: 0.75rem 0 1rem;
+  padding: 0;
+}
+.room-tag-list li {
+  font-size: 0.75rem;
+  line-height: 1.4;
+  padding: 0.3rem 0.55rem;
+  border-radius: 4px;
+  background: rgba(45, 74, 62, 0.08);
+  color: var(--color-forest-dark);
+}
+
+.room-spec-list {
+  max-width: 44rem;
+  margin: 0 auto;
+  display: grid;
+  gap: 0.85rem;
+}
+.room-spec-item {
+  display: grid;
+  grid-template-columns: 7.5rem 1fr;
+  gap: 0.75rem 1rem;
+  padding: 0.85rem 1rem;
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+.room-spec-item dt {
+  margin: 0;
+  font-weight: 700;
+  color: var(--color-forest-dark);
+  font-size: 0.9375rem;
+}
+.room-spec-item dd {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 0.9375rem;
+  line-height: 1.7;
+}
+.room-spec-item dd ul {
+  margin: 0.15rem 0 0;
+  padding-left: 1.1rem;
+}
+.room-spec-item dd li + li {
+  margin-top: 0.2rem;
+}
+
+.plan-explain-grid .plan-explain-card h3 {
+  font-size: 1.05rem;
+  line-height: 1.55;
+  margin-bottom: 0.65rem;
+}
+
+@media (max-width: 768px) {
+  .highlight-grid-4 {
+    grid-template-columns: 1fr 1fr;
+  }
+  .room-spec-item {
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
+  }
+  .room-spec-item dt {
+    font-size: 0.8125rem;
+    letter-spacing: 0.04em;
+  }
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.65rem;
+  }
+  .hero-actions .btn {
+    flex: 1 1 calc(50% - 0.65rem);
+    min-width: 9.5rem;
+    text-align: center;
+  }
+  .hero-actions .btn-ghost-light {
+    flex: 1 1 100%;
+    opacity: 0.9;
+  }
+  .plan-explain-grid {
+    grid-template-columns: 1fr;
+  }
+  .room-tag-list li {
+    font-size: 0.72rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .highlight-grid-4 {
+    grid-template-columns: 1fr;
+  }
+  .trust-badges {
+    justify-content: flex-start;
+  }
+}
