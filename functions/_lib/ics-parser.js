@@ -310,6 +310,10 @@ function parseIcsEvents(icsText, calendarName, isRvCalendar) {
         const lp = localDateParts(start);
         return `${lp.y}-${String(lp.m + 1).padStart(2, "0")}-${String(lp.d).padStart(2, "0")}`;
       })(),
+      checkOutYmd: (() => {
+        const lp = localDateParts(end);
+        return `${lp.y}-${String(lp.m + 1).padStart(2, "0")}-${String(lp.d).padStart(2, "0")}`;
+      })(),
       checkInYm: (() => {
         const lp = localDateParts(start);
         return `${lp.y}-${String(lp.m + 1).padStart(2, "0")}`;

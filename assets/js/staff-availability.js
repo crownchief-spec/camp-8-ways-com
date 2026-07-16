@@ -1,7 +1,9 @@
 (function () {
   var API_BASE = "/api";
-  var selectedRoom = "all";
   var eventsCache = [];
+  var rangeFrom = "";
+  var rangeUntil = "";
+  var WEEKDAYS = ["日", "一", "二", "三", "四", "五", "六"];
 
   var statusEl = document.getElementById("staff-status");
   var fetchError = document.getElementById("staff-fetch-error");
@@ -27,12 +29,11 @@
     fetchError.hidden = !msg;
   }
 
-  function apiFetch(path, options) {
+  function apiFetch(path) {
     return fetch(API_BASE + path, {
       credentials: "same-origin",
       cache: "no-store",
-      headers: { "Content-Type": "application/json" },
-      ...(options || {})
+      headers: { "Content-Type": "application/json" }
     }).then(function (res) {
       return res.json().then(function (data) {
         return { res: res, data: data };
@@ -50,36 +51,51 @@
   function formatYmdLabel(ymd) {
     if (!ymd) return "";
     var parts = ymd.split("-");
+    return parseInt(parts[1], 10) + " 月 " + parseInt(parts[2], 10) + " 日";
+  }
+
+  function addDaysYmd(ymd, days) {
+    var parts = ymd.split("-").map(function (n) {
+      return parseInt(n, 10);
+    });
+    var dt = new Date(Date.UTC(parts[0], parts[1] - 1, parts[2] + days));
     return (
-      parseInt(parts[1], 10) + " 月 " + parseInt(parts[2], 10) + " 日"
+      dt.getUTCFullYear() +
+      "-" +
+      String(dt.getUTCMonth() + 1).padStart(2, "0") +
+      "-" +
+      String(dt.getUTCDate()).padStart(2, "0")
     );
   }
 
-  function renderTagPills(ev) {
-    return ev.roomTags
-      .map(function (tag) {
-        var label =
-          tag === "cloud"
-            ? "雲朵房（左邊帳篷）"
-            : tag === "balloon"
-              ? "熱氣球房（右邊帳篷）"
-              : "露營車";
-        return (
-          '<span class="staff-tag staff-tag--' +
-          escapeHtml(tag) +
-          '">' +
-          escapeHtml(label) +
-          "</span>"
-        );
-      })
-      .join("");
+  function eachYmdInRange(fromYmd, untilYmd, fn) {
+    var cur = fromYmd;
+    while (cur <= untilYmd) {
+      fn(cur);
+      cur = addDaysYmd(cur, 1);
+    }
+  }
+
+  function weekdayLabel(ymd) {
+    var parts = ymd.split("-").map(function (n) {
+      return parseInt(n, 10);
+    });
+    var dt = new Date(parts[0], parts[1] - 1, parts[2]);
+    return WEEKDAYS[dt.getDay()];
+  }
+
+  /** 以入住晚數占據日期：入住日起連續 nights 晚 */
+  function eventOccupiesYmd(ev, ymd) {
+    if (!ev.checkInYmd) return false;
+    var nights = ev.nights != null ? ev.nights : 1;
+    if (nights < 1) nights = 1;
+    var lastNight = addDaysYmd(ev.checkInYmd, nights - 1);
+    return ymd >= ev.checkInYmd && ymd <= lastNight;
   }
 
   function renderGuestInfo(ev) {
     var parts = [];
-    if (ev.guestCount != null) {
-      parts.push("入住人數：" + ev.guestCount + " 人");
-    }
+    if (ev.guestCount != null) parts.push(ev.guestCount + " 人");
     if (ev.adults != null || ev.children != null) {
       var sub = [];
       if (ev.adults != null) sub.push("成人 " + ev.adults);
@@ -88,69 +104,64 @@
     }
     if (!parts.length) return "";
     return (
-      '<p class="staff-card__guest">' + escapeHtml(parts.join("｜")) + "</p>"
+      '<p class="staff-day-booking__guest">' +
+      escapeHtml(parts.join("｜")) +
+      "</p>"
     );
   }
 
-  function renderEventCard(ev) {
+  function renderBookingBlock(ev) {
     var statusClass =
-      ev.stayStatus === "checked-out" ? " staff-card--past" : "";
+      ev.stayStatus === "checked-out" ? " staff-day-booking--past" : "";
     var notesParts = [];
     if (ev.description) notesParts.push(ev.description);
     if (ev.comment) notesParts.push(ev.comment);
-
     var notesHtml = notesParts.length
-      ? '<details class="staff-card__details"><summary>完整備註</summary><div class="staff-card__notes">' +
+      ? '<details class="staff-day-booking__details"><summary>完整備註</summary><div class="staff-day-booking__notes">' +
         formatMultiline(notesParts.join("\n\n---\n\n")) +
         "</div></details>"
       : "";
 
     return (
-      '<article class="staff-card' +
+      '<article class="staff-day-booking' +
       statusClass +
       '">' +
-      '<div class="staff-card__head">' +
-      renderTagPills(ev) +
+      '<div class="staff-day-booking__top">' +
       '<span class="staff-card__status staff-card__status--' +
       escapeHtml(ev.stayStatus) +
       '">' +
       escapeHtml(stayStatusLabel(ev.stayStatus)) +
       "</span>" +
+      '<span class="staff-day-booking__nights">' +
+      escapeHtml(String(ev.nights != null ? ev.nights : "—")) +
+      " 晚</span>" +
       "</div>" +
-      '<h2 class="staff-card__title">' +
+      '<h3 class="staff-day-booking__title">' +
       formatMultiline(ev.summary || "（無標題）") +
-      "</h2>" +
-      '<div class="staff-card__dates">' +
-      "<p><strong>入住</strong> " +
-      escapeHtml(ev.checkInDate) +
-      " " +
+      "</h3>" +
+      '<p class="staff-day-booking__time">入住 ' +
       escapeHtml(ev.checkInTime) +
-      "</p>" +
-      "<p><strong>退房</strong> " +
-      escapeHtml(ev.checkOutDate) +
-      " " +
+      "｜退房 " +
       escapeHtml(ev.checkOutTime) +
       "</p>" +
-      '<p class="staff-card__nights">共 ' +
-      escapeHtml(String(ev.nights != null ? ev.nights : "—")) +
-      " 晚</p>" +
-      "</div>" +
+      '<p class="staff-day-booking__range">' +
+      escapeHtml(ev.checkInDate) +
+      " → " +
+      escapeHtml(ev.checkOutDate) +
+      "</p>" +
       renderGuestInfo(ev) +
       (ev.bookingSource
-        ? '<p class="staff-card__source">訂房來源：' +
+        ? '<p class="staff-day-booking__meta">來源：' +
           escapeHtml(ev.bookingSource) +
           "</p>"
         : "") +
       (ev.location
-        ? '<p class="staff-card__location">地點：' +
+        ? '<p class="staff-day-booking__meta">地點：' +
           formatMultiline(ev.location) +
           "</p>"
         : "") +
-      '<p class="staff-card__meta">所屬行事曆：' +
-      escapeHtml(ev.calendarName) +
-      "</p>" +
       (ev.lastModified
-        ? '<p class="staff-card__meta">最後更新：' +
+        ? '<p class="staff-day-booking__meta">更新：' +
           escapeHtml(ev.lastModified) +
           "</p>"
         : "") +
@@ -159,23 +170,103 @@
     );
   }
 
-  function filterEvents() {
-    return eventsCache.filter(function (ev) {
-      if (selectedRoom !== "all" && ev.roomTags.indexOf(selectedRoom) === -1) {
-        return false;
-      }
-      return true;
-    });
+  function renderRoomCell(events) {
+    if (!events.length) {
+      return '<p class="staff-day-empty">空房</p>';
+    }
+    return events.map(renderBookingBlock).join("");
   }
 
-  function renderEvents() {
-    var filtered = filterEvents();
-    if (!filtered.length) {
-      eventsEl.innerHTML =
-        '<p class="staff-empty">此篩選條件下沒有訂房資料。</p>';
+  function renderRvSection(rvEvents) {
+    if (!rvEvents.length) return "";
+    return (
+      '<section class="staff-rv-section">' +
+      "<h2>露營車（同期間）</h2>" +
+      '<div class="staff-rv-list">' +
+      rvEvents.map(renderBookingBlock).join("") +
+      "</div>" +
+      "</section>"
+    );
+  }
+
+  function renderDayGrid() {
+    if (!rangeFrom || !rangeUntil) {
+      eventsEl.innerHTML = '<p class="staff-empty">無法取得顯示區間。</p>';
       return;
     }
-    eventsEl.innerHTML = filtered.map(renderEventCard).join("");
+
+    var tentEvents = eventsCache.filter(function (ev) {
+      return (
+        ev.roomTags.indexOf("cloud") !== -1 ||
+        ev.roomTags.indexOf("balloon") !== -1
+      );
+    });
+    var rvEvents = eventsCache.filter(function (ev) {
+      return ev.roomTags.indexOf("rv") !== -1;
+    });
+
+    var rows = [];
+    eachYmdInRange(rangeFrom, rangeUntil, function (ymd) {
+      var cloud = tentEvents.filter(function (ev) {
+        return (
+          ev.roomTags.indexOf("cloud") !== -1 && eventOccupiesYmd(ev, ymd)
+        );
+      });
+      var balloon = tentEvents.filter(function (ev) {
+        return (
+          ev.roomTags.indexOf("balloon") !== -1 && eventOccupiesYmd(ev, ymd)
+        );
+      });
+
+      var both = cloud.length && balloon.length;
+      var onlyCloud = cloud.length && !balloon.length;
+      var onlyBalloon = balloon.length && !cloud.length;
+      var rowClass = "staff-day-row";
+      if (both) rowClass += " staff-day-row--both";
+      else if (onlyCloud) rowClass += " staff-day-row--cloud-only";
+      else if (onlyBalloon) rowClass += " staff-day-row--balloon-only";
+
+      rows.push(
+        '<div class="' +
+          rowClass +
+          '">' +
+          '<div class="staff-day-col staff-day-col--date">' +
+          '<p class="staff-day-date">' +
+          escapeHtml(formatYmdLabel(ymd)) +
+          "</p>" +
+          '<p class="staff-day-weekday">週' +
+          escapeHtml(weekdayLabel(ymd)) +
+          "</p>" +
+          (both
+            ? '<p class="staff-day-flag">兩邊都有</p>'
+            : onlyBalloon
+              ? '<p class="staff-day-flag staff-day-flag--right">只有右邊</p>'
+              : onlyCloud
+                ? '<p class="staff-day-flag staff-day-flag--left">只有左邊</p>'
+                : '<p class="staff-day-flag staff-day-flag--empty">兩邊空</p>') +
+          "</div>" +
+          '<div class="staff-day-col staff-day-col--cloud">' +
+          '<p class="staff-day-col-label">雲朵房（左邊帳篷）</p>' +
+          renderRoomCell(cloud) +
+          "</div>" +
+          '<div class="staff-day-col staff-day-col--balloon">' +
+          '<p class="staff-day-col-label">熱氣球房（右邊帳篷）</p>' +
+          renderRoomCell(balloon) +
+          "</div>" +
+          "</div>"
+      );
+    });
+
+    eventsEl.innerHTML =
+      '<div class="staff-day-table" role="table" aria-label="左右帳篷對照">' +
+      '<div class="staff-day-head" role="row">' +
+      '<div class="staff-day-col staff-day-col--date" role="columnheader">日期</div>' +
+      '<div class="staff-day-col staff-day-col--cloud" role="columnheader">雲朵房<br><span>（左邊帳篷）</span></div>' +
+      '<div class="staff-day-col staff-day-col--balloon" role="columnheader">熱氣球房<br><span>（右邊帳篷）</span></div>' +
+      "</div>" +
+      rows.join("") +
+      "</div>" +
+      renderRvSection(rvEvents);
   }
 
   function loadEvents() {
@@ -188,44 +279,31 @@
           throw new Error(result.data.error || "載入失敗");
         }
         eventsCache = result.data.events || [];
+        rangeFrom = result.data.fromYmd || "";
+        rangeUntil = result.data.untilYmd || "";
         var rangeText = "";
-        if (result.data.fromYmd && result.data.untilYmd) {
+        if (rangeFrom && rangeUntil) {
           rangeText =
             "｜區間：" +
-            formatYmdLabel(result.data.fromYmd) +
+            formatYmdLabel(rangeFrom) +
             "～" +
-            formatYmdLabel(result.data.untilYmd);
+            formatYmdLabel(rangeUntil);
         }
         statusEl.textContent =
           "共 " +
-          filterEvents().length +
+          eventsCache.length +
           " 筆" +
           rangeText +
           "（更新時間：" +
           (result.data.fetchedAt || "") +
           "）";
-        renderEvents();
+        renderDayGrid();
       })
       .catch(function (err) {
         statusEl.textContent = "";
         showFetchError(err.message || "無法載入資料");
       });
   }
-
-  document.querySelectorAll(".staff-filter-btn").forEach(function (btn) {
-    btn.addEventListener("click", function () {
-      document.querySelectorAll(".staff-filter-btn").forEach(function (b) {
-        b.classList.remove("is-active");
-      });
-      btn.classList.add("is-active");
-      selectedRoom = btn.getAttribute("data-room") || "all";
-      renderEvents();
-      statusEl.textContent = statusEl.textContent.replace(
-        /共 \d+ 筆/,
-        "共 " + filterEvents().length + " 筆"
-      );
-    });
-  });
 
   refreshBtn.addEventListener("click", function () {
     loadEvents();

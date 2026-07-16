@@ -18,21 +18,11 @@
       <p class="staff-banner">內部訂房資料｜僅供工作人員使用，請勿轉傳</p>
       <div class="staff-header-row">
         <h1 class="staff-title">完整訂房行事曆</h1>
+        <button type="button" id="staff-refresh-btn" class="staff-btn staff-btn--ghost">重新整理</button>
       </div>
     </header>
 
     <section id="staff-main-section" class="staff-main-section">
-      <div class="staff-toolbar">
-        <div class="staff-filter-group" role="tablist" aria-label="房型篩選">
-          <button type="button" class="staff-filter-btn is-active" data-room="all">全部</button>
-          <button type="button" class="staff-filter-btn" data-room="cloud">雲朵房（左邊帳篷）</button>
-          <button type="button" class="staff-filter-btn" data-room="balloon">熱氣球房（右邊帳篷）</button>
-          <button type="button" class="staff-filter-btn" data-room="rv">露營車</button>
-        </div>
-        <div class="staff-month-row">
-          <button type="button" id="staff-refresh-btn" class="staff-btn staff-btn--ghost">重新整理</button>
-        </div>
-      </div>
       <p id="staff-status" class="staff-status" aria-live="polite"></p>
       <p id="staff-fetch-error" class="staff-error" role="alert" hidden></p>
       <div id="staff-events" class="staff-events"></div>
