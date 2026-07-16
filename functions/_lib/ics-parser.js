@@ -317,16 +317,7 @@ function parseIcsEvents(icsText, calendarName, isRvCalendar) {
       checkInYm: (() => {
         const lp = localDateParts(start);
         return `${lp.y}-${String(lp.m + 1).padStart(2, "0")}`;
-      })(),
-      lastModified: props["LAST-MODIFIED"]
-        ? formatIsoTaipei(parseIcsDateProp(props["LAST-MODIFIED"]).date || new Date())
-        : null,
-      created: props.CREATED
-        ? formatIsoTaipei(parseIcsDateProp(props.CREATED).date || new Date())
-        : null,
-      dtStamp: props.DTSTAMP
-        ? formatIsoTaipei(parseIcsDateProp(props.DTSTAMP).date || new Date())
-        : null
+      })()
     });
   }
 

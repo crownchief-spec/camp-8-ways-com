@@ -166,11 +166,6 @@
           formatMultiline(ev.location) +
           "</p>"
         : "") +
-      (ev.lastModified
-        ? '<p class="staff-day-booking__meta">更新：' +
-          escapeHtml(ev.lastModified) +
-          "</p>"
-        : "") +
       notesHtml +
       "</article>"
     );
