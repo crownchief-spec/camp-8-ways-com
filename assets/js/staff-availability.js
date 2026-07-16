@@ -139,11 +139,17 @@
       '<h3 class="staff-day-booking__title">' +
       formatMultiline(ev.summary || "（無標題）") +
       "</h3>" +
-      '<p class="staff-day-booking__time">入住 ' +
-      escapeHtml(ev.checkInTime) +
-      "｜退房 " +
-      escapeHtml(ev.checkOutTime) +
-      "</p>" +
+      (ev.checkInTime || ev.checkOutTime
+        ? '<p class="staff-day-booking__time">' +
+          (ev.checkInTime
+            ? "入住 " + escapeHtml(ev.checkInTime)
+            : "") +
+          (ev.checkInTime && ev.checkOutTime ? "｜" : "") +
+          (ev.checkOutTime
+            ? "退房 " + escapeHtml(ev.checkOutTime)
+            : "") +
+          "</p>"
+        : "") +
       '<p class="staff-day-booking__range">' +
       escapeHtml(ev.checkInDate) +
       " → " +
