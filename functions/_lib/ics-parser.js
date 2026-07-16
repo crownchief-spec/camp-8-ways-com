@@ -322,11 +322,7 @@ function parseIcsEvents(icsText, calendarName, isRvCalendar) {
         : null,
       dtStamp: props.DTSTAMP
         ? formatIsoTaipei(parseIcsDateProp(props.DTSTAMP).date || new Date())
-        : null,
-      rawFields: Object.keys(props).sort().map((key) => ({
-        key,
-        value: unescapeIcsText(props[key].value)
-      }))
+        : null
     });
   }
 

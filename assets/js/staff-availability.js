@@ -135,31 +135,6 @@
         "</div></details>"
       : "";
 
-    var extraFields = ev.rawFields
-      .filter(function (f) {
-        return (
-          ["SUMMARY", "DESCRIPTION", "COMMENT", "LOCATION", "DTSTART", "DTEND"].indexOf(
-            f.key
-          ) === -1
-        );
-      })
-      .map(function (f) {
-        return (
-          "<dt>" +
-          escapeHtml(f.key) +
-          "</dt><dd>" +
-          formatMultiline(f.value) +
-          "</dd>"
-        );
-      })
-      .join("");
-
-    var extraHtml = extraFields
-      ? '<details class="staff-card__details"><summary>其他行事曆欄位</summary><dl class="staff-card__fields">' +
-        extraFields +
-        "</dl></details>"
-      : "";
-
     return (
       '<article class="staff-card' +
       statusClass +
@@ -210,7 +185,6 @@
           "</p>"
         : "") +
       notesHtml +
-      extraHtml +
       "</article>"
     );
   }
