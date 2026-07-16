@@ -150,11 +150,6 @@
             : "") +
           "</p>"
         : "") +
-      '<p class="staff-day-booking__range">' +
-      escapeHtml(ev.checkInDate) +
-      " → " +
-      escapeHtml(ev.checkOutDate) +
-      "</p>" +
       renderGuestInfo(ev) +
       (ev.bookingSource
         ? '<p class="staff-day-booking__meta">來源：' +
