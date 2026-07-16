@@ -51,9 +51,11 @@
 
   function buildMonthOptions() {
     var now = new Date();
+    // 從「昨天」所在月份開始（例如月初時昨天可能是上月）
+    var start = new Date(now.getFullYear(), now.getMonth(), now.getDate() - 1);
     var months = [];
-    for (var i = -2; i < 18; i++) {
-      var d = new Date(now.getFullYear(), now.getMonth() + i, 1);
+    for (var i = 0; i < 18; i++) {
+      var d = new Date(start.getFullYear(), start.getMonth() + i, 1);
       var ym =
         d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0");
       months.push(ym);
@@ -76,6 +78,9 @@
     if (!selectedMonth) {
       selectedMonth =
         now.getFullYear() + "-" + String(now.getMonth() + 1).padStart(2, "0");
+    }
+    if (months.indexOf(selectedMonth) === -1) {
+      selectedMonth = months[0];
     }
     monthSelect.value = selectedMonth;
   }

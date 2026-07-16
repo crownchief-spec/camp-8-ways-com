@@ -1,5 +1,8 @@
 import { fetchCalendarSources } from "../../_lib/calendar-fetch.js";
-import { mergeAndParseCalendars } from "../../_lib/ics-parser.js";
+import {
+  getYesterdayYmdTaipei,
+  mergeAndParseCalendars
+} from "../../_lib/ics-parser.js";
 import { jsonResponse } from "../../_lib/staff-auth.js";
 
 export async function onRequestGet(context) {
@@ -8,12 +11,14 @@ export async function onRequestGet(context) {
   try {
     const { campIcs, rvIcs } = await fetchCalendarSources(env);
     const events = mergeAndParseCalendars(campIcs, rvIcs);
+    const fromYmd = getYesterdayYmdTaipei();
+
+    // 只顯示入住日從昨天起的項目
+    let filtered = events.filter((ev) => ev.checkInYmd >= fromYmd);
 
     const url = new URL(request.url);
     const month = url.searchParams.get("month");
     const room = url.searchParams.get("room");
-
-    let filtered = events;
 
     if (month && /^\d{4}-\d{2}$/.test(month)) {
       filtered = filtered.filter((ev) => ev.checkInYm === month);

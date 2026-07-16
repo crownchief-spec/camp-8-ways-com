@@ -306,6 +306,10 @@ function parseIcsEvents(icsText, calendarName, isRvCalendar) {
       hasStartTime,
       hasEndTime,
       checkInSort: start.getTime(),
+      checkInYmd: (() => {
+        const lp = localDateParts(start);
+        return `${lp.y}-${String(lp.m + 1).padStart(2, "0")}-${String(lp.d).padStart(2, "0")}`;
+      })(),
       checkInYm: (() => {
         const lp = localDateParts(start);
         return `${lp.y}-${String(lp.m + 1).padStart(2, "0")}`;
@@ -327,6 +331,25 @@ function parseIcsEvents(icsText, calendarName, isRvCalendar) {
   }
 
   return events;
+}
+
+/** 台北時區「昨天」的 YYYY-MM-DD */
+export function getYesterdayYmdTaipei(now = new Date()) {
+  const todayStr = new Intl.DateTimeFormat("en-CA", {
+    timeZone: TZ,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit"
+  }).format(now);
+  const [y, m, d] = todayStr.split("-").map((n) => parseInt(n, 10));
+  const yesterday = new Date(Date.UTC(y, m - 1, d) - 86400000);
+  return (
+    yesterday.getUTCFullYear() +
+    "-" +
+    String(yesterday.getUTCMonth() + 1).padStart(2, "0") +
+    "-" +
+    String(yesterday.getUTCDate()).padStart(2, "0")
+  );
 }
 
 export function mergeAndParseCalendars(campIcs, rvIcs) {
