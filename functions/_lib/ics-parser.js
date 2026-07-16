@@ -286,7 +286,6 @@ function parseIcsEvents(icsText, calendarName, isRvCalendar) {
       roomTags: tags,
       roomLabels,
       roomLabel: roomLabels.join("＋"),
-      calendarName,
       summary,
       description,
       comment,
