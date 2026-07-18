@@ -139,17 +139,6 @@
       '<h3 class="staff-day-booking__title">' +
       formatMultiline(ev.summary || "（無標題）") +
       "</h3>" +
-      (ev.checkInTime || ev.checkOutTime
-        ? '<p class="staff-day-booking__time">' +
-          (ev.checkInTime
-            ? "入住 " + escapeHtml(ev.checkInTime)
-            : "") +
-          (ev.checkInTime && ev.checkOutTime ? "｜" : "") +
-          (ev.checkOutTime
-            ? "退房 " + escapeHtml(ev.checkOutTime)
-            : "") +
-          "</p>"
-        : "") +
       renderGuestInfo(ev) +
       (ev.bookingSource
         ? '<p class="staff-day-booking__meta">來源：' +

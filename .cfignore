@@ -1,0 +1,14 @@
+# Cloudflare Pages 本機部署時排除（wrangler pages deploy）
+# Git 連線部署則依 .gitignore，未提交的檔案本來就不會上線
+
+_joyforest-staff/
+camp-revenue-*-DETAIL.md
+.tmp-*
+node_modules/
+.wrangler/
+.env
+.dev.vars
+.git/
+.vscode/
+.idea/
+**/.DS_Store
