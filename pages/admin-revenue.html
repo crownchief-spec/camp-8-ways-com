@@ -84,13 +84,14 @@
           <span>露營車</span>
         </li>
       </ul>
-      <p class="admin-revenue-hint">自<strong>今年二月</strong>起列出全部月份。金額顯示在<strong>入住日</strong>；優先讀取行事曆「費用」<span class="admin-revenue-source-chip admin-revenue-source-chip--calendar">行事曆</span>，否則<span class="admin-revenue-source-chip admin-revenue-source-chip--estimate">估算</span>；格子內修改為<span class="admin-revenue-source-chip admin-revenue-source-chip--manual">手動</span>。露營車僅計連續多日租車；還車／驗車等單日備註不計入。</p>
+      <p class="admin-revenue-hint">自<strong>今年二月</strong>起列出全部月份。金額顯示在<strong>入住日</strong>；優先讀取行事曆「總租金／租金／方案費用／費用」並自動計算（如 <code>$11,800+2×2800</code>）<span class="admin-revenue-source-chip admin-revenue-source-chip--calendar">行事曆</span>，否則<span class="admin-revenue-source-chip admin-revenue-source-chip--estimate">估算</span>；格子內修改為<span class="admin-revenue-source-chip admin-revenue-source-chip--manual">手動</span>。露營車僅計連續多日租車；還車／驗車等單日備註不計入。</p>
       <p id="revenue-status" class="staff-status" aria-live="polite"></p>
       <p id="revenue-fetch-error" class="staff-error" role="alert" hidden></p>
       <div id="revenue-events" class="staff-events"></div>
     </section>
   </div>
   <script src="../assets/js/admin-gate.js"></script>
+  <script src="../assets/js/stated-price.js"></script>
   <script src="../assets/js/admin-revenue.js"></script>
 </body>
 </html>

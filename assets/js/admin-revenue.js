@@ -204,105 +204,6 @@
     return (list || []).filter(isRevenueEvent);
   }
 
-  function normalizeMoneyToken(raw, minAmount) {
-    if (minAmount == null) minAmount = 1000;
-    if (!raw) return null;
-    var s = String(raw).replace(/[,\s　]/g, "").replace(/[元塊]/g, "");
-    if (!/^\d+$/.test(s)) return null;
-    var n = parseInt(s, 10);
-    if (!isFinite(n) || n < minAmount || n > 5000000) return null;
-    return n;
-  }
-
-  /**
-   * 從 Google 行事曆內容的「費用：」解析實際收入。
-   * Agoda／Airbnb 通常不寫價格 → 回傳 null，改走預設定價。
-   */
-  function parseStatedPriceFromText(text, bookingSource) {
-    if (!text) return null;
-    if (
-      bookingSource === "Airbnb" ||
-      bookingSource === "Agoda" ||
-      /airbnb/i.test(text) ||
-      /agoda/i.test(text)
-    ) {
-      return null;
-    }
-
-    var feeMatch = text.match(/費用[：:]\s*([^\n\r]+)/);
-    if (!feeMatch) return null;
-
-    var expr = feeMatch[1]
-      .replace(/\u2028|\u2029/g, " ")
-      .replace(/（[^）]*）/g, " ")
-      .replace(/\([^)]*\)/g, " ")
-      .trim();
-
-    if (!expr || /^[0０]+$/.test(expr)) return null;
-    if (/每小時/.test(expr) && !/\d{4,}/.test(expr.replace(/[,\s　]/g, ""))) {
-      return null;
-    }
-
-    if (/=/.test(expr)) {
-      var rhs = expr.split("=").pop().replace(/\*/g, " ").trim();
-      var spaced = rhs.match(/(?:\d{1,3}(?:[,\s　]\d{3})+|\d{4,})/);
-      var nEq = normalizeMoneyToken(spaced ? spaced[0] : rhs);
-      if (nEq) return nEq;
-    }
-
-    var totalShare = expr.match(/共\s*(?:NT\$?|\$)?\s*([\d,\s　]{3,})/i);
-    if (totalShare) {
-      var nShare = normalizeMoneyToken(totalShare[1]);
-      if (nShare) return nShare;
-    }
-
-    if (/[＋+]/.test(expr)) {
-      var parts = expr.split(/[＋+]/);
-      var nums = [];
-      for (var i = 0; i < parts.length; i++) {
-        var part = parts[i];
-        if (/加時/.test(part) && !/\d{4,}/.test(part.replace(/[,\s　]/g, ""))) {
-          continue;
-        }
-        var mPlus = part.match(/(?:NT\$?|\$)?\s*(\d{1,3}(?:[,\s　]\d{3})+|\d{3,})/i);
-        if (mPlus) {
-          var nPlus = normalizeMoneyToken(mPlus[1], nums.length ? 100 : 1000);
-          if (nPlus) nums.push(nPlus);
-        }
-      }
-      if (nums.length >= 2) {
-        return nums.reduce(function (a, b) {
-          return a + b;
-        }, 0);
-      }
-      if (nums.length === 1) return nums[0];
-    }
-
-    var cashTokens = [];
-    var cashRe = /(?:NT\$?|\$)\s*([\d,\s　]+)/gi;
-    var cm;
-    while ((cm = cashRe.exec(expr)) !== null) {
-      var nCash = normalizeMoneyToken(cm[1]);
-      if (nCash) cashTokens.push(nCash);
-    }
-    if (cashTokens.length) return Math.max.apply(null, cashTokens);
-
-    var mul = expr.match(/(\d{4,})\s*\*\s*(\d{1,2})\b/);
-    if (mul) {
-      var a = parseInt(mul[1], 10);
-      var b = parseInt(mul[2], 10);
-      if (a >= 1000 && b >= 2 && b <= 30) return a * b;
-    }
-
-    var plain = expr.match(/(\d{1,3}(?:[,\s　]\d{3})+|\d{4,})/);
-    if (plain) {
-      var nPlain = normalizeMoneyToken(plain[1]);
-      if (nPlain) return nPlain;
-    }
-
-    return null;
-  }
-
   function eventText(ev) {
     return [ev.summary, ev.description, ev.comment].filter(Boolean).join("\n");
   }
@@ -311,11 +212,17 @@
     if (typeof ev.statedPrice === "number" && ev.statedPrice > 0) {
       return ev.statedPrice;
     }
-    return parseStatedPriceFromText(eventText(ev), ev.bookingSource);
+    var Price = window.JoyforestStatedPrice;
+    if (!Price || !Price.parseStatedPriceFromText) return null;
+    return Price.parseStatedPriceFromText(eventText(ev), ev.bookingSource);
   }
 
   function isPrivateEvent(ev) {
     if (ev.isPrivate) return true;
+    var Price = window.JoyforestStatedPrice;
+    if (Price && Price.isPrivateBookingText) {
+      return Price.isPrivateBookingText(eventText(ev));
+    }
     return /私[訂定]|私下|(?:^|[\s　])私(?:$|[\s　])/.test(eventText(ev));
   }
 
