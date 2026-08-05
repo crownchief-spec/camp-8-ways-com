@@ -5,7 +5,7 @@
   var API_BASE = "/api";
   var RULES_KEY = "joyforest_admin_pricing_rules";
   var OVERRIDES_KEY = "joyforest_admin_price_overrides";
-  var WEEKDAYS = ["日", "一", "二", "三", "四", "五", "六"];
+  var WEEKDAY_HEAD = ["一", "二", "三", "四", "五", "六", "日"];
 
   var DEFAULT_RULES = {
     tentNightly: 5000,
@@ -42,10 +42,6 @@
       .replace(/'/g, "&#39;");
   }
 
-  function formatMultiline(text) {
-    return escapeHtml(text).replace(/\n/g, "<br>");
-  }
-
   function showFetchError(msg) {
     fetchError.textContent = msg || "";
     fetchError.hidden = !msg;
@@ -55,10 +51,6 @@
     return String(n).padStart(2, "0");
   }
 
-  function ymKey(y, m0) {
-    return y + "-" + pad2(m0 + 1);
-  }
-
   function monthRange(y, m0) {
     var fromYmd = y + "-" + pad2(m0 + 1) + "-01";
     var lastDay = new Date(Date.UTC(y, m0 + 1, 0)).getUTCDate();
@@ -66,23 +58,13 @@
     return { fromYmd: fromYmd, untilYmd: untilYmd };
   }
 
+  function toYmd(y, m0, d) {
+    return y + "-" + pad2(m0 + 1) + "-" + pad2(d);
+  }
+
   function formatMoney(n) {
     var num = Math.round(Number(n) || 0);
     return "$" + num.toLocaleString("en-US");
-  }
-
-  function formatYmdLabel(ymd) {
-    if (!ymd) return "";
-    var parts = ymd.split("-");
-    return parseInt(parts[1], 10) + " 月 " + parseInt(parts[2], 10) + " 日";
-  }
-
-  function weekdayLabel(ymd) {
-    var parts = ymd.split("-").map(function (n) {
-      return parseInt(n, 10);
-    });
-    var dt = new Date(parts[0], parts[1] - 1, parts[2]);
-    return WEEKDAYS[dt.getDay()];
   }
 
   function loadRules() {
@@ -171,11 +153,34 @@
     return isRvEvent(ev) ? "rv" : "tent";
   }
 
-  function roomLabelText(ev) {
+  function roomCss(ev) {
+    if (isRvEvent(ev)) return "rv";
+    if (
+      ev.roomTags.indexOf("balloon") !== -1 &&
+      ev.roomTags.indexOf("cloud") === -1
+    ) {
+      return "balloon";
+    }
+    if (
+      ev.roomTags.indexOf("cloud") !== -1 &&
+      ev.roomTags.indexOf("balloon") === -1
+    ) {
+      return "cloud";
+    }
+    if (
+      ev.roomTags.indexOf("cloud") !== -1 &&
+      ev.roomTags.indexOf("balloon") !== -1
+    ) {
+      return "balloon";
+    }
+    return "cloud";
+  }
+
+  function roomLabelShort(ev) {
     if (isRvEvent(ev)) return "露營車";
     var labels = [];
-    if (ev.roomTags.indexOf("cloud") !== -1) labels.push("雲朵房");
-    if (ev.roomTags.indexOf("balloon") !== -1) labels.push("熱氣球房");
+    if (ev.roomTags.indexOf("cloud") !== -1) labels.push("雲朵");
+    if (ev.roomTags.indexOf("balloon") !== -1) labels.push("熱氣球");
     return labels.join("＋") || "住宿";
   }
 
@@ -223,204 +228,210 @@
     sumRv.textContent = formatMoney(rv);
   }
 
-  function groupByCheckIn(events) {
+  /** 一週自週一開始（欄位 0＝週一 … 欄位 6＝週日） */
+  function buildMonthCells(year, month) {
+    var first = new Date(year, month, 1);
+    var pad = (first.getDay() + 6) % 7;
+    var dim = new Date(year, month + 1, 0).getDate();
+    var cells = [];
+    var i;
+    var pm = month - 1;
+    var py = year;
+    if (pm < 0) {
+      pm = 11;
+      py--;
+    }
+    var pDim = new Date(py, pm + 1, 0).getDate();
+    for (i = 0; i < pad; i++) {
+      cells.push({ y: py, m: pm, d: pDim - pad + i + 1, inMonth: false });
+    }
+    for (var d = 1; d <= dim; d++) {
+      cells.push({ y: year, m: month, d: d, inMonth: true });
+    }
+    var nd = 1;
+    var nm = month + 1;
+    var ny = year;
+    if (nm > 11) {
+      nm = 0;
+      ny++;
+    }
+    while (cells.length % 7 !== 0) {
+      cells.push({ y: ny, m: nm, d: nd++, inMonth: false });
+    }
+    return cells;
+  }
+
+  function eventsByCheckInYmd(events) {
     var map = {};
     events.forEach(function (ev) {
       var key = ev.checkInYmd || "";
+      if (!key) return;
       if (!map[key]) map[key] = [];
+      if (
+        map[key].some(function (existing) {
+          return existing.id === ev.id;
+        })
+      ) {
+        return;
+      }
       map[key].push(ev);
     });
-    return Object.keys(map)
-      .sort()
-      .map(function (ymd) {
-        return { ymd: ymd, events: map[ymd] };
-      });
+    return map;
   }
 
-  function renderBookingCard(ev, rules, overrides) {
+  function renderRevenueLine(ev, rules, overrides) {
     var priceInfo = getEventPrice(ev, rules, overrides);
+    var css = roomCss(ev);
     var nights = eventNights(ev);
-    var kind = eventKind(ev);
-    var formulaHint =
-      kind === "rv"
-        ? nights <= rules.rvBaseNights
-          ? "露營車基本價（≤" + rules.rvBaseNights + " 晚）"
-          : "基本價 + " + (nights - rules.rvBaseNights) + " 天 × $" + rules.rvExtraDay
-        : tentRoomCount(ev) +
-          " 間 × " +
-          nights +
-          " 晚 × $" +
-          rules.tentNightly;
+    var title = (ev.summary || "").replace(/\s+/g, " ").trim();
+    if (title.length > 18) title = title.slice(0, 18) + "…";
 
     return (
-      '<article class="staff-day-booking admin-revenue-booking" data-event-id="' +
+      '<div class="availability-line availability-line--booked availability-line--' +
+      escapeHtml(css) +
+      ' admin-revenue-line' +
+      (priceInfo.overridden ? " admin-revenue-line--override" : "") +
+      '" data-event-id="' +
       escapeHtml(ev.id) +
+      '" title="' +
+      escapeHtml(
+        (ev.summary || "") +
+          "｜" +
+          nights +
+          " 晚｜" +
+          formatMoney(priceInfo.amount) +
+          (priceInfo.overridden ? "（已覆寫）" : "")
+      ) +
       '">' +
-      '<div class="staff-day-booking__top">' +
-      '<span class="staff-tag staff-tag--' +
-      escapeHtml(kind === "rv" ? "rv" : ev.roomTags.indexOf("balloon") !== -1 && ev.roomTags.indexOf("cloud") === -1 ? "balloon" : "cloud") +
-      '">' +
-      escapeHtml(roomLabelText(ev)) +
+      '<span class="availability-line__bar" aria-hidden="true"></span>' +
+      '<div class="availability-line__inner admin-revenue-line__inner">' +
+      '<span class="availability-line__name">' +
+      escapeHtml(roomLabelShort(ev)) +
       "</span>" +
-      '<span class="staff-day-booking__nights">' +
-      escapeHtml(String(nights)) +
-      " 晚</span>" +
-      "</div>" +
-      '<h3 class="staff-day-booking__title">' +
-      formatMultiline(ev.summary || "（無標題）") +
-      "</h3>" +
-      '<p class="staff-day-booking__meta">退房：' +
-      escapeHtml(ev.checkOutYmd || "—") +
-      (ev.bookingSource
-        ? "｜來源：" + escapeHtml(ev.bookingSource)
-        : "") +
-      "</p>" +
-      '<p class="admin-price-hint">' +
-      escapeHtml(formulaHint) +
-      (priceInfo.overridden ? "｜已手動覆寫" : "") +
-      "</p>" +
-      '<label class="admin-price-edit">' +
-      "<span>收入金額</span>" +
+      '<label class="admin-revenue-line__price">' +
+      '<span class="visually-hidden">收入金額</span>' +
+      '<span class="admin-revenue-line__currency">$</span>' +
       '<input type="number" min="0" step="100" class="admin-price-input" value="' +
       escapeHtml(String(priceInfo.amount)) +
       '">' +
       "</label>" +
-      "</article>"
+      "</div>" +
+      (title
+        ? '<p class="admin-revenue-line__title">' + escapeHtml(title) + "</p>"
+        : "") +
+      "</div>"
     );
   }
 
-  function renderDayGrid() {
+  function renderDayCell(cell, byCheckIn, rules, overrides) {
+    if (!cell.inMonth) {
+      return (
+        '<div class="availability-cal-cell availability-cal-cell--pad">' +
+        '<span class="availability-cal-daynum">' +
+        cell.d +
+        "</span>" +
+        "</div>"
+      );
+    }
+
+    var ymd = toYmd(cell.y, cell.m, cell.d);
+    var dayEvents = byCheckIn[ymd] || [];
+    var now = new Date();
+    var isToday =
+      now.getFullYear() === cell.y &&
+      now.getMonth() === cell.m &&
+      now.getDate() === cell.d;
+    var todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    var cellDate = new Date(cell.y, cell.m, cell.d);
+    var isPast = cellDate < todayStart;
+
+    var dayTotal = dayEvents.reduce(function (sum, ev) {
+      return sum + getEventPrice(ev, rules, overrides).amount;
+    }, 0);
+
+    var cls = "availability-cal-cell availability-cal-cell--day";
+    if (isToday) cls += " availability-cal-cell--today";
+    if (isPast) cls += " availability-cal-cell--past";
+    if (dayEvents.length) cls += " availability-cal-cell--has-lines admin-revenue-cell--has-booking";
+
+    var linesHtml = dayEvents
+      .map(function (ev) {
+        return renderRevenueLine(ev, rules, overrides);
+      })
+      .join("");
+
+    return (
+      '<div class="' +
+      cls +
+      '">' +
+      '<div class="admin-revenue-cell__top">' +
+      '<span class="availability-cal-daynum">' +
+      cell.d +
+      "</span>" +
+      (dayEvents.length
+        ? '<span class="admin-revenue-cell__day-total">' +
+          escapeHtml(formatMoney(dayTotal)) +
+          "</span>"
+        : "") +
+      "</div>" +
+      (linesHtml
+        ? '<div class="availability-cal-lines">' + linesHtml + "</div>"
+        : "") +
+      "</div>"
+    );
+  }
+
+  function renderMonthCalendar() {
     var rules = loadRules();
     var overrides = loadOverrides();
     updateSummary(eventsCache, rules, overrides);
 
-    if (!eventsCache.length) {
-      eventsEl.innerHTML =
-        '<p class="staff-empty">本月尚無入住案件。</p>';
-      return;
-    }
-
-    var tentEvents = eventsCache.filter(function (ev) {
-      return !isRvEvent(ev);
-    });
-    var rvEvents = eventsCache.filter(isRvEvent);
-    var groups = groupByCheckIn(tentEvents);
-
-    var rows = groups.map(function (group) {
-      var cloud = group.events.filter(function (ev) {
-        return ev.roomTags.indexOf("cloud") !== -1;
-      });
-      var balloon = group.events.filter(function (ev) {
-        return ev.roomTags.indexOf("balloon") !== -1;
-      });
-      // 包場（同時有兩標籤）只算一次收入，放在「兩邊」列顯示
-      var seen = {};
-      var unique = [];
-      group.events.forEach(function (ev) {
-        if (seen[ev.id]) return;
-        seen[ev.id] = true;
-        unique.push(ev);
-      });
-
-      var both =
-        unique.some(function (ev) {
-          return (
-            ev.roomTags.indexOf("cloud") !== -1 &&
-            ev.roomTags.indexOf("balloon") !== -1
-          );
-        }) ||
-        (cloud.length && balloon.length);
-
-      return (
-        '<div class="staff-day-row' +
-        (both ? " staff-day-row--both" : "") +
-        '">' +
-        '<div class="staff-day-col staff-day-col--date">' +
-        '<p class="staff-day-date">' +
-        escapeHtml(formatYmdLabel(group.ymd)) +
-        "</p>" +
-        '<p class="staff-day-weekday">週' +
-        escapeHtml(weekdayLabel(group.ymd)) +
-        "</p>" +
-        '<p class="admin-day-subtotal">當日住宿 ' +
-        escapeHtml(
-          formatMoney(
-            unique.reduce(function (sum, ev) {
-              return sum + getEventPrice(ev, rules, overrides).amount;
-            }, 0)
-          )
-        ) +
-        "</p>" +
-        "</div>" +
-        '<div class="staff-day-col staff-day-col--bookings">' +
-        unique.map(function (ev) {
-          return renderBookingCard(ev, rules, overrides);
-        }).join("") +
-        "</div>" +
-        "</div>"
-      );
-    });
-
-    var rvHtml = "";
-    if (rvEvents.length) {
-      var rvGroups = groupByCheckIn(rvEvents);
-      rvHtml =
-        '<section class="staff-rv-section">' +
-        "<h2>露營車</h2>" +
-        '<div class="staff-rv-list">' +
-        rvGroups
-          .map(function (group) {
-            return (
-              '<div class="admin-rv-day">' +
-              '<p class="admin-rv-day__date">' +
-              escapeHtml(formatYmdLabel(group.ymd)) +
-              "（週" +
-              escapeHtml(weekdayLabel(group.ymd)) +
-              "）</p>" +
-              group.events
-                .map(function (ev) {
-                  return renderBookingCard(ev, rules, overrides);
-                })
-                .join("") +
-              "</div>"
-            );
-          })
-          .join("") +
-        "</div>" +
-        "</section>";
-    }
+    var byCheckIn = eventsByCheckInYmd(eventsCache);
+    var cells = buildMonthCells(viewYear, viewMonth);
+    var headHtml = WEEKDAY_HEAD.map(function (h) {
+      return '<div class="availability-cal-headcell">' + h + "</div>";
+    }).join("");
+    var bodyHtml = cells
+      .map(function (cell) {
+        return renderDayCell(cell, byCheckIn, rules, overrides);
+      })
+      .join("");
 
     eventsEl.innerHTML =
-      '<div class="staff-day-table admin-revenue-table" role="table" aria-label="本月住宿收入">' +
-      (rows.length
-        ? '<div class="staff-day-head admin-revenue-head" role="row">' +
-          '<div class="staff-day-col staff-day-col--date" role="columnheader">入住日</div>' +
-          '<div class="staff-day-col staff-day-col--bookings" role="columnheader">住宿案件與收入</div>' +
-          "</div>" +
-          rows.join("")
-        : '<p class="staff-empty">本月無帳篷住宿案件。</p>') +
+      '<div class="availability-calendars admin-revenue-calendars">' +
+      '<div class="availability-month">' +
+      '<div class="availability-cal" aria-label="營業額月曆">' +
+      '<div class="availability-cal-head">' +
+      headHtml +
       "</div>" +
-      rvHtml;
+      '<div class="availability-cal-body">' +
+      bodyHtml +
+      "</div>" +
+      "</div>" +
+      "</div>" +
+      "</div>";
   }
 
   function bindPriceInputs() {
     eventsEl.querySelectorAll(".admin-price-input").forEach(function (input) {
       input.addEventListener("change", function () {
-        var card = input.closest("[data-event-id]");
-        if (!card) return;
-        var id = card.getAttribute("data-event-id");
+        var line = input.closest("[data-event-id]");
+        if (!line) return;
+        var id = line.getAttribute("data-event-id");
         var amount = Math.max(0, Number(input.value) || 0);
         var overrides = loadOverrides();
         overrides[id] = amount;
         saveOverrides(overrides);
-        renderDayGrid();
-        bindPriceInputs();
+        renderAll();
+      });
+      input.addEventListener("click", function (e) {
+        e.stopPropagation();
       });
     });
   }
 
   function renderAll() {
-    renderDayGrid();
+    renderMonthCalendar();
     bindPriceInputs();
   }
 
@@ -462,7 +473,6 @@
     loadEvents();
   }
 
-  // init month = current
   (function initMonth() {
     var now = new Date();
     viewYear = now.getFullYear();

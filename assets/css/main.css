@@ -4516,43 +4516,120 @@ footer a:hover { color: #ffffff; }
   color: #1f2a1d;
 }
 
-.admin-revenue-table .staff-day-row,
-.admin-revenue-table .admin-revenue-head {
-  grid-template-columns: 140px 1fr;
+.admin-revenue-page .staff-app {
+  max-width: 1100px;
 }
 
-.admin-revenue-table .staff-day-col--bookings {
+.admin-revenue-legend {
+  margin-bottom: 8px;
+}
+
+.admin-revenue-hint {
+  margin: 0 0 12px;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: #5a6558;
+  text-align: center;
+}
+
+.admin-revenue-calendars {
+  margin-top: 8px;
+}
+
+.admin-revenue-cell__top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 4px;
+  margin-bottom: 4px;
+}
+
+.admin-revenue-cell__top .availability-cal-daynum {
+  margin-bottom: 0;
+}
+
+.admin-revenue-cell__day-total {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #3d5c3a;
+  white-space: nowrap;
+}
+
+.admin-revenue-cell--has-booking {
+  background: #fcfaf7;
+}
+
+.admin-revenue-line {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 2px;
+  min-height: auto;
+  opacity: 1;
+}
+
+.admin-revenue-line__inner {
+  width: 100%;
+}
+
+.admin-revenue-line__title {
+  margin: 0;
+  padding: 0 4px 2px 7px;
+  font-size: 0.68rem;
+  line-height: 1.3;
+  color: #6a7468;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.admin-revenue-line__price {
+  display: inline-flex;
+  align-items: center;
+  gap: 1px;
+  flex-shrink: 0;
+  margin: 0;
+}
+
+.admin-revenue-line__currency {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #2f3a45;
+}
+
+.admin-revenue-line .admin-price-input {
+  width: 4.6rem;
+  padding: 2px 4px;
+  border: 1px solid #c8d0c4;
+  border-radius: 6px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-align: right;
   background: #fff;
 }
 
-.admin-day-subtotal {
-  margin: 8px 0 0;
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: #3d5c3a;
+.admin-revenue-line--override .admin-price-input {
+  border-color: #3d5c3a;
+  background: #f3f8f1;
 }
 
-.admin-price-hint {
-  margin: 6px 0 8px;
-  font-size: 0.82rem;
-  color: #5a6558;
+.admin-revenue-page .visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
-.admin-price-edit {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  font-size: 0.85rem;
-  font-weight: 600;
+.admin-revenue-page .availability-cal-cell--day {
+  min-height: 5.5rem;
 }
 
-.admin-rv-day {
-  margin-bottom: 12px;
-}
-
-.admin-rv-day__date {
-  margin: 0 0 8px;
-  font-weight: 600;
+.admin-revenue-page .availability-cal-cell--has-lines {
+  min-height: 7rem;
 }
 
 .footer-admin-link {
@@ -4577,9 +4654,28 @@ footer a:hover { color: #ffffff; }
     grid-template-columns: 1fr;
   }
 
-  .admin-revenue-table .staff-day-row,
-  .admin-revenue-table .admin-revenue-head {
-    grid-template-columns: 1fr;
+  .admin-revenue-page .staff-app {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .admin-revenue-page .availability-cal-headcell {
+    font-size: 12px;
+    min-height: 2.25rem;
+  }
+
+  .admin-revenue-page .availability-cal-cell--day {
+    padding: 6px 4px;
+    min-height: 4.5rem;
+  }
+
+  .admin-revenue-line .admin-price-input {
+    width: 3.6rem;
+    font-size: 0.65rem;
+  }
+
+  .admin-revenue-line__title {
+    display: none;
   }
 }
 
