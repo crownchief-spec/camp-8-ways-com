@@ -15,14 +15,15 @@
   };
 
   var eventsCache = [];
-  var viewYear = 0;
-  var viewMonth = 0; // 0-11
+  var rangeFromYmd = "";
+  var rangeUntilYmd = "";
 
   var statusEl = document.getElementById("revenue-status");
   var fetchError = document.getElementById("revenue-fetch-error");
   var eventsEl = document.getElementById("revenue-events");
   var refreshBtn = document.getElementById("revenue-refresh-btn");
-  var monthLabel = document.getElementById("month-label");
+  var rangeLabel = document.getElementById("revenue-range-label");
+  var monthTableEl = document.getElementById("revenue-month-table");
   var sumTotal = document.getElementById("sum-total");
   var sumTent = document.getElementById("sum-tent");
   var sumRv = document.getElementById("sum-rv");
@@ -56,6 +57,55 @@
     var lastDay = new Date(Date.UTC(y, m0 + 1, 0)).getUTCDate();
     var untilYmd = y + "-" + pad2(m0 + 1) + "-" + pad2(lastDay);
     return { fromYmd: fromYmd, untilYmd: untilYmd };
+  }
+
+  /** 今年二月一日 ～ 今年年底（含未來已訂月份） */
+  function getReportRange() {
+    var now = new Date();
+    var year = now.getFullYear();
+    var fromYmd = year + "-02-01";
+    var untilYmd = year + "-12-31";
+    return { fromYmd: fromYmd, untilYmd: untilYmd, year: year };
+  }
+
+  function parseYmdParts(ymd) {
+    if (!ymd) return null;
+    var parts = ymd.split("-").map(function (n) {
+      return parseInt(n, 10);
+    });
+    if (parts.length < 3 || !parts[0]) return null;
+    return { y: parts[0], m: parts[1] - 1, d: parts[2] };
+  }
+
+  /** 自二月列到「本月」與「最後一筆入住月」較晚者 */
+  function listReportMonths(events, reportYear) {
+    var now = new Date();
+    var endY = now.getFullYear();
+    var endM = now.getMonth();
+    revenueEvents(events).forEach(function (ev) {
+      var p = parseYmdParts(ev.checkInYmd);
+      if (!p) return;
+      if (p.y > endY || (p.y === endY && p.m > endM)) {
+        endY = p.y;
+        endM = p.m;
+      }
+    });
+    if (endY < reportYear || (endY === reportYear && endM < 1)) {
+      endY = reportYear;
+      endM = 1;
+    }
+    var months = [];
+    var y = reportYear;
+    var m = 1; // February
+    while (y < endY || (y === endY && m <= endM)) {
+      months.push({ y: y, m: m });
+      m += 1;
+      if (m > 11) {
+        m = 0;
+        y += 1;
+      }
+    }
+    return months;
   }
 
   function toYmd(y, m0, d) {
@@ -126,6 +176,149 @@
     return ev.roomTags && ev.roomTags.indexOf("rv") !== -1;
   }
 
+  /**
+   * 露營車單日／備註事件（還車、驗車、洗車等）不是租車行程，不計收入。
+   * 真正出租一定是連續多日（三天兩夜起，nights >= 2）。
+   */
+  function isRvNonRentalNote(ev) {
+    if (!isRvEvent(ev)) return false;
+    var nights = eventNights(ev);
+    if (nights < 2) return true;
+    var summary = ev.summary || "";
+    if (/驗車/.test(summary)) return true;
+    if (
+      /還車|還露營車/.test(summary) &&
+      !/租/.test(summary) &&
+      !/方案費用|費用[：:]/.test(eventText(ev))
+    ) {
+      return true;
+    }
+    return false;
+  }
+
+  function isRevenueEvent(ev) {
+    return !isRvNonRentalNote(ev);
+  }
+
+  function revenueEvents(list) {
+    return (list || []).filter(isRevenueEvent);
+  }
+
+  function normalizeMoneyToken(raw, minAmount) {
+    if (minAmount == null) minAmount = 1000;
+    if (!raw) return null;
+    var s = String(raw).replace(/[,\s　]/g, "").replace(/[元塊]/g, "");
+    if (!/^\d+$/.test(s)) return null;
+    var n = parseInt(s, 10);
+    if (!isFinite(n) || n < minAmount || n > 5000000) return null;
+    return n;
+  }
+
+  /**
+   * 從 Google 行事曆內容的「費用：」解析實際收入。
+   * Agoda／Airbnb 通常不寫價格 → 回傳 null，改走預設定價。
+   */
+  function parseStatedPriceFromText(text, bookingSource) {
+    if (!text) return null;
+    if (
+      bookingSource === "Airbnb" ||
+      bookingSource === "Agoda" ||
+      /airbnb/i.test(text) ||
+      /agoda/i.test(text)
+    ) {
+      return null;
+    }
+
+    var feeMatch = text.match(/費用[：:]\s*([^\n\r]+)/);
+    if (!feeMatch) return null;
+
+    var expr = feeMatch[1]
+      .replace(/\u2028|\u2029/g, " ")
+      .replace(/（[^）]*）/g, " ")
+      .replace(/\([^)]*\)/g, " ")
+      .trim();
+
+    if (!expr || /^[0０]+$/.test(expr)) return null;
+    if (/每小時/.test(expr) && !/\d{4,}/.test(expr.replace(/[,\s　]/g, ""))) {
+      return null;
+    }
+
+    if (/=/.test(expr)) {
+      var rhs = expr.split("=").pop().replace(/\*/g, " ").trim();
+      var spaced = rhs.match(/(?:\d{1,3}(?:[,\s　]\d{3})+|\d{4,})/);
+      var nEq = normalizeMoneyToken(spaced ? spaced[0] : rhs);
+      if (nEq) return nEq;
+    }
+
+    var totalShare = expr.match(/共\s*(?:NT\$?|\$)?\s*([\d,\s　]{3,})/i);
+    if (totalShare) {
+      var nShare = normalizeMoneyToken(totalShare[1]);
+      if (nShare) return nShare;
+    }
+
+    if (/[＋+]/.test(expr)) {
+      var parts = expr.split(/[＋+]/);
+      var nums = [];
+      for (var i = 0; i < parts.length; i++) {
+        var part = parts[i];
+        if (/加時/.test(part) && !/\d{4,}/.test(part.replace(/[,\s　]/g, ""))) {
+          continue;
+        }
+        var mPlus = part.match(/(?:NT\$?|\$)?\s*(\d{1,3}(?:[,\s　]\d{3})+|\d{3,})/i);
+        if (mPlus) {
+          var nPlus = normalizeMoneyToken(mPlus[1], nums.length ? 100 : 1000);
+          if (nPlus) nums.push(nPlus);
+        }
+      }
+      if (nums.length >= 2) {
+        return nums.reduce(function (a, b) {
+          return a + b;
+        }, 0);
+      }
+      if (nums.length === 1) return nums[0];
+    }
+
+    var cashTokens = [];
+    var cashRe = /(?:NT\$?|\$)\s*([\d,\s　]+)/gi;
+    var cm;
+    while ((cm = cashRe.exec(expr)) !== null) {
+      var nCash = normalizeMoneyToken(cm[1]);
+      if (nCash) cashTokens.push(nCash);
+    }
+    if (cashTokens.length) return Math.max.apply(null, cashTokens);
+
+    var mul = expr.match(/(\d{4,})\s*\*\s*(\d{1,2})\b/);
+    if (mul) {
+      var a = parseInt(mul[1], 10);
+      var b = parseInt(mul[2], 10);
+      if (a >= 1000 && b >= 2 && b <= 30) return a * b;
+    }
+
+    var plain = expr.match(/(\d{1,3}(?:[,\s　]\d{3})+|\d{4,})/);
+    if (plain) {
+      var nPlain = normalizeMoneyToken(plain[1]);
+      if (nPlain) return nPlain;
+    }
+
+    return null;
+  }
+
+  function eventText(ev) {
+    return [ev.summary, ev.description, ev.comment].filter(Boolean).join("\n");
+  }
+
+  function resolveCalendarPrice(ev) {
+    if (typeof ev.statedPrice === "number" && ev.statedPrice > 0) {
+      return ev.statedPrice;
+    }
+    return parseStatedPriceFromText(eventText(ev), ev.bookingSource);
+  }
+
+  function isPrivateEvent(ev) {
+    if (ev.isPrivate) return true;
+    return /私[訂定]|私下|(?:^|[\s　])私(?:$|[\s　])/.test(eventText(ev));
+  }
+
   function tentRoomCount(ev) {
     var count = 0;
     if (ev.roomTags.indexOf("cloud") !== -1) count += 1;
@@ -185,14 +378,31 @@
   }
 
   function getEventPrice(ev, rules, overrides) {
+    if (isRvNonRentalNote(ev)) {
+      return {
+        amount: 0,
+        source: "note",
+        overridden: false
+      };
+    }
     if (Object.prototype.hasOwnProperty.call(overrides, ev.id)) {
       return {
         amount: Math.max(0, Number(overrides[ev.id]) || 0),
+        source: "manual",
         overridden: true
+      };
+    }
+    var calendarPrice = resolveCalendarPrice(ev);
+    if (calendarPrice != null) {
+      return {
+        amount: calendarPrice,
+        source: "calendar",
+        overridden: false
       };
     }
     return {
       amount: computeDefaultPrice(ev, rules),
+      source: "estimate",
       overridden: false
     };
   }
@@ -209,23 +419,89 @@
     });
   }
 
-  function updateMonthLabel() {
-    monthLabel.textContent = viewYear + " 年 " + (viewMonth + 1) + " 月";
+  function updateRangeLabel() {
+    if (!rangeLabel) return;
+    rangeLabel.textContent =
+      "載入區間：" +
+      (rangeFromYmd || "—") +
+      " ～ " +
+      (rangeUntilYmd || "—") +
+      "（自今年二月起）";
   }
 
-  function updateSummary(events, rules, overrides) {
+  function summarizeEvents(events, rules, overrides) {
     var total = 0;
     var tent = 0;
     var rv = 0;
-    events.forEach(function (ev) {
+    revenueEvents(events).forEach(function (ev) {
       var price = getEventPrice(ev, rules, overrides).amount;
       total += price;
       if (eventKind(ev) === "rv") rv += price;
       else tent += price;
     });
-    sumTotal.textContent = formatMoney(total);
-    sumTent.textContent = formatMoney(tent);
-    sumRv.textContent = formatMoney(rv);
+    return { total: total, tent: tent, rv: rv };
+  }
+
+  function updateSummary(events, rules, overrides) {
+    var sum = summarizeEvents(events, rules, overrides);
+    sumTotal.textContent = formatMoney(sum.total);
+    sumTent.textContent = formatMoney(sum.tent);
+    sumRv.textContent = formatMoney(sum.rv);
+  }
+
+  function eventsInMonth(events, year, month0) {
+    var prefix = year + "-" + pad2(month0 + 1);
+    return events.filter(function (ev) {
+      return ev.checkInYmd && ev.checkInYmd.indexOf(prefix) === 0;
+    });
+  }
+
+  function renderMonthBreakdown(months, rules, overrides) {
+    if (!monthTableEl) return;
+    if (!months.length) {
+      monthTableEl.innerHTML = '<p class="staff-empty">尚無月份資料。</p>';
+      return;
+    }
+    var rows = months
+      .map(function (mo) {
+        var monthEvents = eventsInMonth(eventsCache, mo.y, mo.m);
+        var sum = summarizeEvents(monthEvents, rules, overrides);
+        var count = revenueEvents(monthEvents).length;
+        var id = "revenue-month-" + mo.y + "-" + pad2(mo.m + 1);
+        return (
+          "<tr>" +
+          '<td><a href="#' +
+          id +
+          '">' +
+          escapeHtml(String(mo.y)) +
+          " 年 " +
+          escapeHtml(String(mo.m + 1)) +
+          " 月</a></td>" +
+          "<td>" +
+          count +
+          "</td>" +
+          "<td>" +
+          escapeHtml(formatMoney(sum.tent)) +
+          "</td>" +
+          "<td>" +
+          escapeHtml(formatMoney(sum.rv)) +
+          "</td>" +
+          '<td class="admin-month-table__total">' +
+          escapeHtml(formatMoney(sum.total)) +
+          "</td>" +
+          "</tr>"
+        );
+      })
+      .join("");
+
+    monthTableEl.innerHTML =
+      '<table class="admin-month-table">' +
+      "<thead><tr>" +
+      "<th>月份</th><th>案件</th><th>住宿</th><th>露營車</th><th>合計</th>" +
+      "</tr></thead>" +
+      "<tbody>" +
+      rows +
+      "</tbody></table>";
   }
 
   /** 一週自週一開始（欄位 0＝週一 … 欄位 6＝週日） */
@@ -263,7 +539,7 @@
 
   function eventsByCheckInYmd(events) {
     var map = {};
-    events.forEach(function (ev) {
+    revenueEvents(events).forEach(function (ev) {
       var key = ev.checkInYmd || "";
       if (!key) return;
       if (!map[key]) map[key] = [];
@@ -285,12 +561,25 @@
     var nights = eventNights(ev);
     var title = (ev.summary || "").replace(/\s+/g, " ").trim();
     if (title.length > 18) title = title.slice(0, 18) + "…";
+    var sourceLabel =
+      priceInfo.source === "manual"
+        ? "手動"
+        : priceInfo.source === "calendar"
+          ? "行事曆"
+          : "估算";
+    var sourceClass =
+      priceInfo.source === "manual"
+        ? " admin-revenue-line--manual"
+        : priceInfo.source === "calendar"
+          ? " admin-revenue-line--calendar"
+          : " admin-revenue-line--estimate";
+    if (isPrivateEvent(ev)) sourceClass += " admin-revenue-line--private";
 
     return (
       '<div class="availability-line availability-line--booked availability-line--' +
       escapeHtml(css) +
-      ' admin-revenue-line' +
-      (priceInfo.overridden ? " admin-revenue-line--override" : "") +
+      " admin-revenue-line" +
+      sourceClass +
       '" data-event-id="' +
       escapeHtml(ev.id) +
       '" title="' +
@@ -300,13 +589,19 @@
           nights +
           " 晚｜" +
           formatMoney(priceInfo.amount) +
-          (priceInfo.overridden ? "（已覆寫）" : "")
+          "（" +
+          sourceLabel +
+          "）"
       ) +
       '">' +
       '<span class="availability-line__bar" aria-hidden="true"></span>' +
       '<div class="availability-line__inner admin-revenue-line__inner">' +
       '<span class="availability-line__name">' +
       escapeHtml(roomLabelShort(ev)) +
+      (isPrivateEvent(ev) ? "·私" : "") +
+      "</span>" +
+      '<span class="admin-revenue-source">' +
+      escapeHtml(sourceLabel) +
       "</span>" +
       '<label class="admin-revenue-line__price">' +
       '<span class="visually-hidden">收入金額</span>' +
@@ -381,13 +676,8 @@
     );
   }
 
-  function renderMonthCalendar() {
-    var rules = loadRules();
-    var overrides = loadOverrides();
-    updateSummary(eventsCache, rules, overrides);
-
-    var byCheckIn = eventsByCheckInYmd(eventsCache);
-    var cells = buildMonthCells(viewYear, viewMonth);
+  function renderOneMonth(year, month, byCheckIn, rules, overrides) {
+    var cells = buildMonthCells(year, month);
     var headHtml = WEEKDAY_HEAD.map(function (h) {
       return '<div class="availability-cal-headcell">' + h + "</div>";
     }).join("");
@@ -396,11 +686,31 @@
         return renderDayCell(cell, byCheckIn, rules, overrides);
       })
       .join("");
+    var monthEvents = eventsInMonth(eventsCache, year, month);
+    var sum = summarizeEvents(monthEvents, rules, overrides);
+    var id = "revenue-month-" + year + "-" + pad2(month + 1);
 
-    eventsEl.innerHTML =
-      '<div class="availability-calendars admin-revenue-calendars">' +
-      '<div class="availability-month">' +
-      '<div class="availability-cal" aria-label="營業額月曆">' +
+    return (
+      '<div class="availability-month" id="' +
+      id +
+      '">' +
+      '<h3 class="availability-month-title">' +
+      escapeHtml(String(year)) +
+      " 年 " +
+      escapeHtml(String(month + 1)) +
+      " 月</h3>" +
+      '<p class="admin-month-subtotal">本月合計 ' +
+      escapeHtml(formatMoney(sum.total)) +
+      "（住宿 " +
+      escapeHtml(formatMoney(sum.tent)) +
+      "／露營車 " +
+      escapeHtml(formatMoney(sum.rv)) +
+      "）</p>" +
+      '<div class="availability-cal" aria-label="' +
+      escapeHtml(String(year)) +
+      " 年 " +
+      escapeHtml(String(month + 1)) +
+      ' 月營業額">' +
       '<div class="availability-cal-head">' +
       headHtml +
       "</div>" +
@@ -408,7 +718,29 @@
       bodyHtml +
       "</div>" +
       "</div>" +
-      "</div>" +
+      "</div>"
+    );
+  }
+
+  function renderMonthCalendar() {
+    var rules = loadRules();
+    var overrides = loadOverrides();
+    var report = getReportRange();
+    updateSummary(eventsCache, rules, overrides);
+
+    var months = listReportMonths(eventsCache, report.year);
+    renderMonthBreakdown(months, rules, overrides);
+
+    var byCheckIn = eventsByCheckInYmd(eventsCache);
+    var calendarsHtml = months
+      .map(function (mo) {
+        return renderOneMonth(mo.y, mo.m, byCheckIn, rules, overrides);
+      })
+      .join("");
+
+    eventsEl.innerHTML =
+      '<div class="availability-calendars admin-revenue-calendars">' +
+      calendarsHtml +
       "</div>";
   }
 
@@ -436,26 +768,34 @@
   }
 
   function loadEvents() {
-    var range = monthRange(viewYear, viewMonth);
+    var report = getReportRange();
+    rangeFromYmd = report.fromYmd;
+    rangeUntilYmd = report.untilYmd;
     statusEl.textContent = "載入中…";
     showFetchError("");
-    updateMonthLabel();
+    updateRangeLabel();
 
     return apiFetch(
       "/staff-calendar/events?from=" +
-        encodeURIComponent(range.fromYmd) +
+        encodeURIComponent(rangeFromYmd) +
         "&until=" +
-        encodeURIComponent(range.untilYmd)
+        encodeURIComponent(rangeUntilYmd)
     )
       .then(function (result) {
         if (!result.data.ok) {
           throw new Error(result.data.error || "載入失敗");
         }
         eventsCache = result.data.events || [];
+        var counted = revenueEvents(eventsCache).length;
+        var skipped = eventsCache.length - counted;
         statusEl.textContent =
-          "本月入住案件 " +
-          eventsCache.length +
-          " 筆（更新時間：" +
+          "計入案件 " +
+          counted +
+          " 筆" +
+          (skipped
+            ? "（略過露營車備註／單日 " + skipped + " 筆）"
+            : "") +
+          "（更新時間：" +
           (result.data.fetchedAt || "") +
           "）";
         renderAll();
@@ -466,33 +806,7 @@
       });
   }
 
-  function shiftMonth(delta) {
-    var d = new Date(viewYear, viewMonth + delta, 1);
-    viewYear = d.getFullYear();
-    viewMonth = d.getMonth();
-    loadEvents();
-  }
-
-  (function initMonth() {
-    var now = new Date();
-    viewYear = now.getFullYear();
-    viewMonth = now.getMonth();
-  })();
-
   fillRulesInputs(loadRules());
-
-  document.getElementById("month-prev-btn").addEventListener("click", function () {
-    shiftMonth(-1);
-  });
-  document.getElementById("month-next-btn").addEventListener("click", function () {
-    shiftMonth(1);
-  });
-  document.getElementById("month-today-btn").addEventListener("click", function () {
-    var now = new Date();
-    viewYear = now.getFullYear();
-    viewMonth = now.getMonth();
-    loadEvents();
-  });
 
   applyBtn.addEventListener("click", function () {
     var rules = readRulesFromInputs();

@@ -160,6 +160,119 @@ function parseBookingSource(text) {
   return null;
 }
 
+/** 標題／內容含「私訂／私定／私下」等，視為私下預訂 */
+export function isPrivateBookingText(text) {
+  if (!text) return false;
+  return /私[訂定]|私下|(?:^|[\s　])私(?:$|[\s　])/.test(text);
+}
+
+function normalizeMoneyToken(raw, minAmount = 1000) {
+  if (!raw) return null;
+  let s = String(raw).replace(/[,\s　]/g, "").replace(/[元塊]/g, "");
+  if (!/^\d+$/.test(s)) return null;
+  const n = parseInt(s, 10);
+  if (!Number.isFinite(n) || n < minAmount || n > 5000000) return null;
+  return n;
+}
+
+/**
+ * 從行事曆「費用：」列解析實際收入。
+ * Agoda / Airbnb 通常不寫價格，略過。
+ * 優先：等號右側總額 → 共 NT$… → 明確 $／NT$ 加總 → 簡單加減乘 → 第一個合理金額。
+ */
+export function parseStatedPriceFromText(text, bookingSource) {
+  if (!text) return null;
+  if (
+    bookingSource === "Airbnb" ||
+    bookingSource === "Agoda" ||
+    /airbnb/i.test(text) ||
+    /agoda/i.test(text)
+  ) {
+    return null;
+  }
+
+  const feeMatch = text.match(/費用[：:]\s*([^\n\r]+)/);
+  if (!feeMatch) return null;
+
+  let expr = feeMatch[1]
+    .replace(/\u2028|\u2029/g, " ")
+    .replace(/（[^）]*）/g, " ")
+    .replace(/\([^)]*\)/g, " ")
+    .trim();
+
+  if (!expr || /^[0０]+$/.test(expr)) return null;
+  // 僅有「每小時 $300」這類時數費，不是整筆收入
+  if (/每小時/.test(expr) && !/\d{4,}/.test(expr.replace(/[,\s　]/g, ""))) {
+    return null;
+  }
+
+  // 等號右側總額（含 *18,600* 這類）
+  if (/=/.test(expr)) {
+    const rhs = expr.split("=").pop().replace(/\*/g, " ").trim();
+    const spaced = rhs.match(/(?:\d{1,3}(?:[,\s　]\d{3})+|\d{4,})/);
+    const n = normalizeMoneyToken(spaced ? spaced[0] : rhs);
+    if (n) return n;
+  }
+
+  // 「共 NT$2,600」
+  const totalShare = expr.match(/共\s*(?:NT\$?|\$)?\s*([\d,\s　]{3,})/i);
+  if (totalShare) {
+    const n = normalizeMoneyToken(totalShare[1]);
+    if (n) return n;
+  }
+
+  // 以 +／＋ 分段加總（略過「加時 12*300」這類非整筆段落）
+  if (/[＋+]/.test(expr)) {
+    const parts = expr.split(/[＋+]/);
+    const nums = [];
+    for (let i = 0; i < parts.length; i++) {
+      const part = parts[i];
+      if (/加時/.test(part) && !/\d{4,}/.test(part.replace(/[,\s　]/g, ""))) {
+        continue;
+      }
+      // 加總時允許較小附加費（如車馬費 800）
+      const m = part.match(/(?:NT\$?|\$)?\s*(\d{1,3}(?:[,\s　]\d{3})+|\d{3,})/i);
+      if (m) {
+        const n = normalizeMoneyToken(m[1], nums.length ? 100 : 1000);
+        if (n) nums.push(n);
+      }
+    }
+    if (nums.length >= 2) {
+      return nums.reduce((a, b) => a + b, 0);
+    }
+    if (nums.length === 1) return nums[0];
+  }
+
+  // 單一 $ / NT$ 金額
+  const cashTokens = [];
+  const cashRe = /(?:NT\$?|\$)\s*([\d,\s　]+)/gi;
+  let cm;
+  while ((cm = cashRe.exec(expr)) !== null) {
+    const n = normalizeMoneyToken(cm[1]);
+    if (n) cashTokens.push(n);
+  }
+  if (cashTokens.length) {
+    return Math.max(...cashTokens);
+  }
+
+  // 簡單 8800*3
+  const mul = expr.match(/(\d{4,})\s*\*\s*(\d{1,2})\b/);
+  if (mul) {
+    const a = parseInt(mul[1], 10);
+    const b = parseInt(mul[2], 10);
+    if (a >= 1000 && b >= 2 && b <= 30) return a * b;
+  }
+
+  // 13,400 或 13400 或 13 400（空白千分位）
+  const plain = expr.match(/(\d{1,3}(?:[,\s　]\d{3})+|\d{4,})/);
+  if (plain) {
+    const n = normalizeMoneyToken(plain[1]);
+    if (n) return n;
+  }
+
+  return null;
+}
+
 function localDateParts(date) {
   const fmt = new Intl.DateTimeFormat("en-CA", {
     timeZone: TZ,
@@ -276,6 +389,8 @@ function parseIcsEvents(icsText, calendarName, isRvCalendar) {
     const combinedText = [summary, description, comment].filter(Boolean).join("\n");
     const guestInfo = parseGuestInfo(combinedText);
     const bookingSource = parseBookingSource(combinedText);
+    const statedPrice = parseStatedPriceFromText(combinedText, bookingSource);
+    const isPrivate = isPrivateBookingText(combinedText);
     const nights = countNights(start, end, isAllDay);
     const now = new Date();
 
@@ -292,6 +407,8 @@ function parseIcsEvents(icsText, calendarName, isRvCalendar) {
       location,
       status: props.STATUS ? props.STATUS.value : "",
       bookingSource,
+      statedPrice,
+      isPrivate,
       guestCount: guestInfo.totalGuests,
       adults: guestInfo.adults,
       children: guestInfo.children,

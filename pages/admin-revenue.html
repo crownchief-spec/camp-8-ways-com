@@ -17,12 +17,13 @@
     <header class="staff-header">
       <p class="staff-banner">營業額行事曆｜僅供內部使用，金額可手動調整</p>
       <div class="staff-header-row">
-        <h1 class="staff-title">營業額行事曆</h1>
+        <h1 class="staff-title">營業額總整理</h1>
         <div class="admin-header-actions">
           <a href="admin.html" class="staff-btn staff-btn--ghost">回管理首頁</a>
           <button type="button" id="revenue-refresh-btn" class="staff-btn staff-btn--ghost">重新整理</button>
         </div>
       </div>
+      <p id="revenue-range-label" class="admin-range-label">載入區間：—</p>
     </header>
 
     <section class="admin-pricing-panel" aria-label="定價規則">
@@ -44,20 +45,13 @@
       </div>
       <div class="admin-pricing-actions">
         <button type="button" id="price-apply-btn" class="staff-btn staff-btn--primary">套用定價</button>
-        <button type="button" id="price-reset-overrides-btn" class="staff-btn staff-btn--ghost">清除本月手動覆寫</button>
+        <button type="button" id="price-reset-overrides-btn" class="staff-btn staff-btn--ghost">清除全部手動覆寫</button>
       </div>
-    </section>
-
-    <section class="admin-month-bar" aria-label="月份切換">
-      <button type="button" id="month-prev-btn" class="staff-btn staff-btn--ghost" aria-label="上個月">‹</button>
-      <h2 id="month-label" class="admin-month-label">—</h2>
-      <button type="button" id="month-next-btn" class="staff-btn staff-btn--ghost" aria-label="下個月">›</button>
-      <button type="button" id="month-today-btn" class="staff-btn staff-btn--ghost">本月</button>
     </section>
 
     <section id="revenue-summary" class="admin-revenue-summary" aria-live="polite">
       <div class="admin-summary-card">
-        <p class="admin-summary-label">本月全部總額</p>
+        <p class="admin-summary-label">期間全部總額</p>
         <p id="sum-total" class="admin-summary-value">$0</p>
       </div>
       <div class="admin-summary-card admin-summary-card--tent">
@@ -68,6 +62,11 @@
         <p class="admin-summary-label">露營車總額</p>
         <p id="sum-rv" class="admin-summary-value">$0</p>
       </div>
+    </section>
+
+    <section class="admin-month-breakdown" aria-label="各月營業額">
+      <h2 class="admin-panel-title">各月營業額</h2>
+      <div id="revenue-month-table" class="admin-month-table-wrap"></div>
     </section>
 
     <section class="staff-main-section admin-revenue-main">
@@ -85,7 +84,7 @@
           <span>露營車</span>
         </li>
       </ul>
-      <p class="admin-revenue-hint">月曆由週一起算；金額顯示在<strong>入住日</strong>，可直接在格子內修改。</p>
+      <p class="admin-revenue-hint">自<strong>今年二月</strong>起列出全部月份。金額顯示在<strong>入住日</strong>；優先讀取行事曆「費用」<span class="admin-revenue-source-chip admin-revenue-source-chip--calendar">行事曆</span>，否則<span class="admin-revenue-source-chip admin-revenue-source-chip--estimate">估算</span>；格子內修改為<span class="admin-revenue-source-chip admin-revenue-source-chip--manual">手動</span>。露營車僅計連續多日租車；還車／驗車等單日備註不計入。</p>
       <p id="revenue-status" class="staff-status" aria-live="polite"></p>
       <p id="revenue-fetch-error" class="staff-error" role="alert" hidden></p>
       <div id="revenue-events" class="staff-events"></div>

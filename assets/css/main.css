@@ -4366,6 +4366,71 @@ footer a:hover { color: #ffffff; }
 }
 
 /* ── Admin hub & revenue ── */
+.admin-range-label {
+  margin: 8px 0 0;
+  font-size: 0.88rem;
+  color: #5a6558;
+}
+
+.admin-month-breakdown {
+  background: #fff;
+  border-radius: 14px;
+  padding: 18px 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.admin-month-table-wrap {
+  overflow-x: auto;
+}
+
+.admin-month-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+
+.admin-month-table th,
+.admin-month-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #e7eee4;
+  text-align: right;
+}
+
+.admin-month-table th:first-child,
+.admin-month-table td:first-child {
+  text-align: left;
+}
+
+.admin-month-table th {
+  font-weight: 700;
+  color: #3a4538;
+  background: #f7f9f6;
+}
+
+.admin-month-table a {
+  color: #3d5c3a;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.admin-month-table a:hover {
+  text-decoration: underline;
+}
+
+.admin-month-table__total {
+  font-weight: 700;
+  color: #1f2a1d;
+}
+
+.admin-month-subtotal {
+  margin: -0.5rem 0 1rem;
+  text-align: center;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #3d5c3a;
+}
+
 .admin-hub-lead {
   margin: 0 0 16px;
   color: #3a4538;
@@ -4607,9 +4672,60 @@ footer a:hover { color: #ffffff; }
   background: #fff;
 }
 
-.admin-revenue-line--override .admin-price-input {
+.admin-revenue-line--override .admin-price-input,
+.admin-revenue-line--manual .admin-price-input {
   border-color: #3d5c3a;
   background: #f3f8f1;
+}
+
+.admin-revenue-source {
+  flex-shrink: 0;
+  font-size: 0.62rem;
+  font-weight: 700;
+  padding: 1px 4px;
+  border-radius: 4px;
+  line-height: 1.2;
+  background: #eceae4;
+  color: #5a6558;
+}
+
+.admin-revenue-line--calendar .admin-revenue-source {
+  background: #e5f3e8;
+  color: #2f6b3c;
+}
+
+.admin-revenue-line--manual .admin-revenue-source {
+  background: #e7efe4;
+  color: #3d5c3a;
+}
+
+.admin-revenue-line--estimate .admin-revenue-source {
+  background: #f3eee6;
+  color: #8a6a3a;
+}
+
+.admin-revenue-source-chip {
+  display: inline-block;
+  margin: 0 2px;
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-size: 0.78em;
+  font-weight: 700;
+}
+
+.admin-revenue-source-chip--calendar {
+  background: #e5f3e8;
+  color: #2f6b3c;
+}
+
+.admin-revenue-source-chip--estimate {
+  background: #f3eee6;
+  color: #8a6a3a;
+}
+
+.admin-revenue-source-chip--manual {
+  background: #e7efe4;
+  color: #3d5c3a;
 }
 
 .admin-revenue-page .visually-hidden {
