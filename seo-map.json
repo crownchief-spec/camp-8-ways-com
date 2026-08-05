@@ -826,6 +826,34 @@
     "is_redirect": false
   },
   {
+    "page_file": "pages/admin.html",
+    "route": "/pages/admin.html",
+    "lang": "zh-Hant",
+    "title": "管理後台｜揪好森",
+    "description": "",
+    "canonical": "https://camp.8-ways.com/pages/admin.html",
+    "hero_image": "",
+    "og_image": "https://camp.8-ways.com/assets/images/experience-refresh/joyforest-forest-aerial-view.jpg",
+    "og_image_override": false,
+    "schema_type": "WebPage",
+    "noindex": true,
+    "is_redirect": false
+  },
+  {
+    "page_file": "pages/admin-revenue.html",
+    "route": "/pages/admin-revenue.html",
+    "lang": "zh-Hant",
+    "title": "營業額行事曆｜揪好森",
+    "description": "",
+    "canonical": "https://camp.8-ways.com/pages/admin-revenue.html",
+    "hero_image": "",
+    "og_image": "https://camp.8-ways.com/assets/images/experience-refresh/joyforest-forest-aerial-view.jpg",
+    "og_image_override": false,
+    "schema_type": "WebPage",
+    "noindex": true,
+    "is_redirect": false
+  },
+  {
     "page_file": "pages/staff-availability.html",
     "route": "/pages/staff-availability.html",
     "lang": "zh-Hant",

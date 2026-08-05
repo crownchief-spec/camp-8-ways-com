@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+  <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet">
+  <link rel="icon" href="/favicon.ico">
+  <title>管理後台｜揪好森</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body class="staff-availability-page admin-page">
+  <div id="admin-app" class="staff-app">
+    <header class="staff-header">
+      <p class="staff-banner">管理後台｜僅供內部使用，請勿轉傳</p>
+      <div class="staff-header-row">
+        <h1 class="staff-title">揪好森管理</h1>
+        <button type="button" id="admin-logout-btn" class="staff-btn staff-btn--ghost" hidden>登出</button>
+      </div>
+    </header>
+
+    <section id="admin-login-section" class="staff-login-section" hidden>
+      <form id="admin-login-form" class="staff-login-form" autocomplete="off">
+        <label for="admin-password">請輸入管理密碼</label>
+        <input id="admin-password" name="password" type="password" inputmode="numeric" maxlength="20" required>
+        <button type="submit" class="staff-btn staff-btn--primary">進入</button>
+        <p id="admin-login-error" class="staff-error" role="alert" hidden></p>
+      </form>
+    </section>
+
+    <section id="admin-hub-section" class="admin-hub-section" hidden>
+      <p class="admin-hub-lead">請選擇要開啟的功能：</p>
+      <div class="admin-hub-grid">
+        <a class="admin-hub-card" href="staff-availability.html">
+          <h2>訂房行事曆</h2>
+          <p>查看完整訂房資料（雲朵房、熱氣球房、露營車）。</p>
+        </a>
+        <a class="admin-hub-card" href="admin-revenue.html">
+          <h2>營業額行事曆</h2>
+          <p>依案子顯示預估收入，可調整定價並查看每月總額。</p>
+        </a>
+      </div>
+    </section>
+  </div>
+  <script src="../assets/js/admin-gate.js"></script>
+  <script src="../assets/js/admin.js"></script>
+</body>
+</html>

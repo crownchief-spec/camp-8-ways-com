@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+  <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet">
+  <link rel="icon" href="/favicon.ico">
+  <title>營業額行事曆｜揪好森</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body class="staff-availability-page admin-revenue-page">
+  <div id="revenue-app" class="staff-app">
+    <header class="staff-header">
+      <p class="staff-banner">營業額行事曆｜僅供內部使用，金額可手動調整</p>
+      <div class="staff-header-row">
+        <h1 class="staff-title">營業額行事曆</h1>
+        <div class="admin-header-actions">
+          <a href="admin.html" class="staff-btn staff-btn--ghost">回管理首頁</a>
+          <button type="button" id="revenue-refresh-btn" class="staff-btn staff-btn--ghost">重新整理</button>
+        </div>
+      </div>
+    </header>
+
+    <section class="admin-pricing-panel" aria-label="定價規則">
+      <h2 class="admin-panel-title">定價規則（可修改）</h2>
+      <p class="admin-panel-note">預設：帳篷單間每晚 $5,000；露營車三天兩夜 $13,800，每多一天 +$2,800。修改後會套用到尚未手動覆寫的案子。</p>
+      <div class="admin-pricing-grid">
+        <label>
+          帳篷單間／晚
+          <input id="price-tent-night" type="number" min="0" step="100" value="5000">
+        </label>
+        <label>
+          露營車基本價（三天兩夜）
+          <input id="price-rv-base" type="number" min="0" step="100" value="13800">
+        </label>
+        <label>
+          露營車多一天
+          <input id="price-rv-extra" type="number" min="0" step="100" value="2800">
+        </label>
+      </div>
+      <div class="admin-pricing-actions">
+        <button type="button" id="price-apply-btn" class="staff-btn staff-btn--primary">套用定價</button>
+        <button type="button" id="price-reset-overrides-btn" class="staff-btn staff-btn--ghost">清除本月手動覆寫</button>
+      </div>
+    </section>
+
+    <section class="admin-month-bar" aria-label="月份切換">
+      <button type="button" id="month-prev-btn" class="staff-btn staff-btn--ghost" aria-label="上個月">‹</button>
+      <h2 id="month-label" class="admin-month-label">—</h2>
+      <button type="button" id="month-next-btn" class="staff-btn staff-btn--ghost" aria-label="下個月">›</button>
+      <button type="button" id="month-today-btn" class="staff-btn staff-btn--ghost">本月</button>
+    </section>
+
+    <section id="revenue-summary" class="admin-revenue-summary" aria-live="polite">
+      <div class="admin-summary-card">
+        <p class="admin-summary-label">本月全部總額</p>
+        <p id="sum-total" class="admin-summary-value">$0</p>
+      </div>
+      <div class="admin-summary-card admin-summary-card--tent">
+        <p class="admin-summary-label">住宿（帳篷）總額</p>
+        <p id="sum-tent" class="admin-summary-value">$0</p>
+      </div>
+      <div class="admin-summary-card admin-summary-card--rv">
+        <p class="admin-summary-label">露營車總額</p>
+        <p id="sum-rv" class="admin-summary-value">$0</p>
+      </div>
+    </section>
+
+    <section class="staff-main-section">
+      <p id="revenue-status" class="staff-status" aria-live="polite"></p>
+      <p id="revenue-fetch-error" class="staff-error" role="alert" hidden></p>
+      <div id="revenue-events" class="staff-events"></div>
+    </section>
+  </div>
+  <script src="../assets/js/admin-gate.js"></script>
+  <script src="../assets/js/admin-revenue.js"></script>
+</body>
+</html>
