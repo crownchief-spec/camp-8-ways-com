@@ -1,0 +1,38 @@
+{
+  "html_pages": 95,
+  "broken_local_references": [],
+  "images_without_alt": [],
+  "images_without_width_height": [],
+  "hero_images_lazy_loaded": [],
+  "non_descriptive_image_names": [],
+  "large_media": [
+    {
+      "file": "assets/video/cloud-tent/cloud-tent.mp4",
+      "bytes": 9129364
+    },
+    {
+      "file": "assets/video/hero/hero-forest-aerial.mp4",
+      "bytes": 8068010
+    },
+    {
+      "file": "assets/video/campervan/rv-aerial-overview-03.mp4",
+      "bytes": 4488984
+    },
+    {
+      "file": "assets/video/balloon-tent/party-forest-aerial.mp4.mp4",
+      "bytes": 4232396
+    },
+    {
+      "file": "assets/images/index/taoyuan-glamping-private-campsite-forest.png",
+      "bytes": 2155171
+    },
+    {
+      "file": "assets/images/balloon-tent/balloon-tent-forest-camping.png",
+      "bytes": 1923038
+    },
+    {
+      "file": "assets/images/index/yangmei-glamping-dome-tent.png",
+      "bytes": 1912296
+    }
+  ]
+}

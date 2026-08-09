@@ -7,6 +7,7 @@ import re
 import sys
 from html import escape as h, unescape
 from pathlib import Path
+from urllib.parse import urljoin
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
@@ -78,8 +79,7 @@ def json_ld_local_business(brand: dict) -> str:
 
 
 def json_ld_webpage(entry: dict, brand: dict) -> str:
-    return json.dumps(
-        {
+    data = {
             "@context": "https://schema.org",
             "@type": "WebPage",
             "name": entry["title"],
@@ -87,7 +87,16 @@ def json_ld_webpage(entry: dict, brand: dict) -> str:
             "url": entry["canonical"],
             "inLanguage": entry.get("lang", "zh-Hant"),
             "isPartOf": {"@type": "WebSite", "name": brand["legal_name"], "url": brand["site_url"]},
-        },
+        }
+    if entry.get("og_image"):
+        data["primaryImageOfPage"] = {
+            "@type": "ImageObject",
+            "url": entry["og_image"],
+            "width": 1200,
+            "height": 630,
+        }
+    return json.dumps(
+        data,
         ensure_ascii=False,
         indent=2,
     )
@@ -127,13 +136,80 @@ def json_ld_service(entry: dict, brand: dict) -> str:
             "provider": {"@type": "LodgingBusiness", "name": brand["legal_name"], "url": brand["site_url"]},
             "areaServed": "桃園楊梅",
             "url": entry["canonical"],
+            "image": entry.get("og_image", ""),
         },
         ensure_ascii=False,
         indent=2,
     )
 
 
-def schema_blocks(entry: dict, brand: dict) -> list[str]:
+def json_ld_faq(entry: dict, html: str) -> str:
+    questions: list[dict] = []
+    for match in re.finditer(r"<details[^>]*>(.*?)</details>", html, re.I | re.S):
+        block = match.group(1)
+        summary_match = re.search(r"<summary[^>]*>(.*?)</summary>", block, re.I | re.S)
+        if not summary_match:
+            continue
+        question = re.sub(r"<[^>]+>", " ", summary_match.group(1))
+        answer_html = block[summary_match.end() :]
+        answer = re.sub(r"<[^>]+>", " ", answer_html)
+        question = " ".join(unescape(question).split())
+        answer = " ".join(unescape(answer).split())
+        if question and answer:
+            questions.append(
+                {
+                    "@type": "Question",
+                    "name": question,
+                    "acceptedAnswer": {"@type": "Answer", "text": answer},
+                }
+            )
+    if not questions:
+        return ""
+    return json.dumps(
+        {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "name": entry["title"],
+            "url": entry["canonical"],
+            "mainEntity": questions,
+        },
+        ensure_ascii=False,
+        indent=2,
+    )
+
+
+def json_ld_breadcrumb(entry: dict, html: str) -> str:
+    if "BreadcrumbList" not in html:
+        return ""
+    items: list[dict] = []
+    for match in re.finditer(r'<li[^>]*itemprop=["\']itemListElement["\'][^>]*>(.*?)</li>', html, re.I | re.S):
+        block = match.group(1)
+        name_match = re.search(r'<span[^>]*itemprop=["\']name["\'][^>]*>(.*?)</span>', block, re.I | re.S)
+        if not name_match:
+            continue
+        name = " ".join(unescape(re.sub(r"<[^>]+>", " ", name_match.group(1))).split())
+        href_match = re.search(r'<a[^>]*href=["\']([^"\']+)["\']', block, re.I)
+        item_url = urljoin(entry["canonical"], href_match.group(1)) if href_match else entry["canonical"]
+        if item_url.endswith("/index.html"):
+            item_url = item_url[: -len("index.html")]
+        items.append(
+            {
+                "@type": "ListItem",
+                "position": len(items) + 1,
+                "name": name,
+                "item": item_url,
+            }
+        )
+    if len(items) < 2:
+        return ""
+    return json.dumps(
+        {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": items},
+        ensure_ascii=False,
+        indent=2,
+    )
+
+
+def schema_blocks(entry: dict, brand: dict, html: str) -> list[str]:
     st = entry.get("schema_type", "WebPage")
     pf = entry["page_file"]
     blocks: list[str] = []
@@ -156,14 +232,19 @@ def schema_blocks(entry: dict, brand: dict) -> list[str]:
     elif st == "Service":
         blocks.append(json_ld_service(entry, brand))
     elif st == "FAQPage":
-        blocks.append(json_ld_webpage(entry, brand))
+        faq = json_ld_faq(entry, html)
+        blocks.append(faq if faq else json_ld_webpage(entry, brand))
     else:
         blocks.append(json_ld_webpage(entry, brand))
+
+    breadcrumb = json_ld_breadcrumb(entry, html)
+    if breadcrumb:
+        blocks.append(breadcrumb)
 
     return blocks
 
 
-def build_head_seo(entry: dict, brand: dict, hreflang: str, redirect: bool) -> str:
+def build_head_seo(entry: dict, brand: dict, hreflang: str, redirect: bool, html: str) -> str:
     lang = entry.get("lang", "zh-Hant")
     locale = brand["locale_en"] if lang.startswith("en") else brand["locale_zh"]
     og_type = og_type_for_schema(entry.get("schema_type", "WebPage"))
@@ -174,18 +255,20 @@ def build_head_seo(entry: dict, brand: dict, hreflang: str, redirect: bool) -> s
 
     robots = ""
     if entry.get("noindex"):
-        robots = '  <meta name="robots" content="noindex, follow">\n'
-
-    twitter_extra = ""
-    if "og-family-photography-party" in og_image or "og-pet-photography-party" in og_image:
-        twitter_extra = (
-            '  <meta property="og:image:width" content="1200">\n'
-            '  <meta property="og:image:height" content="630">\n'
+        robots = (
+            '  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">\n'
+            '  <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet">\n'
         )
+
+    image_meta = (
+        '  <meta property="og:image:width" content="1200">\n'
+        '  <meta property="og:image:height" content="630">\n'
+        f'  <meta property="og:image:alt" content="{og_title}">\n'
+    )
 
     schema_html = ""
     if not redirect:
-        for block in schema_blocks(entry, brand):
+        for block in schema_blocks(entry, brand, html):
             schema_html += f'  <script type="application/ld+json">\n{block}\n  </script>\n'
 
     hreflang_block = f"  {hreflang}\n" if hreflang else ""
@@ -210,11 +293,13 @@ def build_head_seo(entry: dict, brand: dict, hreflang: str, redirect: bool) -> s
   <meta property="og:title" content="{og_title}">
   <meta property="og:description" content="{og_desc}">
   <meta property="og:image" content="{og_image}">
+{image_meta}  <meta property="og:site_name" content="{h(brand['legal_name'], quote=True)}">
   <meta property="og:locale" content="{locale}">
-{twitter_extra}  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{og_title}">
   <meta name="twitter:description" content="{og_desc}">
   <meta name="twitter:image" content="{og_image}">
+  <meta name="twitter:image:alt" content="{og_title}">
 {schema_html}{analytics}"""
 
 
@@ -276,10 +361,8 @@ def apply_entry(entry: dict, brand: dict) -> bool:
     html = page_path.read_text(encoding="utf-8", errors="replace")
     redirect = entry.get("is_redirect", False)
     hreflang = extract_hreflang(html)
-    seo_block = build_head_seo(entry, brand, hreflang, redirect)
+    seo_block = build_head_seo(entry, brand, hreflang, redirect, html)
     new_html = replace_head(html, seo_block, redirect)
-    if not redirect:
-        new_html = fix_hero_image(new_html, entry["og_image"], entry["page_file"])
     if new_html != html:
         page_path.write_text(new_html, encoding="utf-8")
         return True

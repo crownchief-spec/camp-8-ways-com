@@ -22,6 +22,7 @@ from seo_lib import (  # noqa: E402
     list_html_pages,
     load_brand,
     page_lang,
+    og_card_path,
     resolve_asset_path,
     to_absolute_url,
 )
@@ -30,6 +31,9 @@ OUT = ROOT / "seo-map.json"
 
 
 def dedicated_og(page_file: str, hero_abs: str) -> str:
+    generated = og_card_path(page_file)
+    if (ROOT / generated).exists():
+        return to_absolute_url(generated)
     if page_file in PAGE_OG_OVERRIDES:
         return to_absolute_url(PAGE_OG_OVERRIDES[page_file])
     if "og-family-photography-party" in page_file or "family-photography-party" in page_file:
@@ -83,7 +87,8 @@ def build_entry(page_path: Path, brand: dict) -> dict:
 
     route = infer_route(page_file, canonical)
 
-    noindex = redirect or page_file == "404.html" or page_file == "pages/staff-availability.html"
+    robots = extract_meta(html, "robots").lower()
+    noindex = redirect or page_file == "404.html" or "noindex" in robots
 
     hero_raw = extract_hero_src(html)
     if redirect and redirect_target:
@@ -103,6 +108,10 @@ def build_entry(page_path: Path, brand: dict) -> dict:
     schema_type = infer_schema_type(page_file)
     if page_file in ("index.html", "en/index.html"):
         schema_type = "WebSite"
+    elif schema_type == "FAQPage" and "<details" not in html.lower():
+        # FAQ rich results must be backed by visible question/answer content.
+        # Long-form “common questions” guides without accordions are articles.
+        schema_type = "Article"
 
     return {
         "page_file": page_file,

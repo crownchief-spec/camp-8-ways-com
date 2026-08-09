@@ -114,6 +114,7 @@ SERVICE_PAGES = {
     "pages/pet-photography-party.html",
     "pages/forest-graduation-photo.html",
     "pages/balloon-tent-karaoke-guide.html",
+    "pages/facilities.html",
     "en/pages/balloon-tent-karaoke-guide/index.html",
     "en/pages/balloon-tent/index.html",
     "en/pages/cloud-tent/index.html",
@@ -122,6 +123,17 @@ SERVICE_PAGES = {
     "en/pages/pet-photography-party/index.html",
     "en/pages/forest-graduation-photo/index.html",
 }
+
+
+def og_card_filename(page_file: str) -> str:
+    """Return the stable per-page social-card filename."""
+    clean = page_file.replace("\\", "/").removesuffix(".html").strip("/")
+    return (clean.replace("/", "-") or "index") + ".jpg"
+
+
+def og_card_path(page_file: str) -> str:
+    """Return the public path for a generated per-page social card."""
+    return f"assets/images/og/{og_card_filename(page_file)}"
 
 
 def load_brand() -> dict:
