@@ -2,6 +2,7 @@ User-agent: *
 Allow: /
 Disallow: /pages/admin.html
 Disallow: /pages/admin-revenue.html
+Disallow: /pages/admin-cleaning-sop.html
 Disallow: /pages/staff-availability.html
 
 Sitemap: https://camp.8-ways.com/sitemap.xml

@@ -560,6 +560,20 @@
     "is_redirect": false
   },
   {
+    "page_file": "pages/admin-cleaning-sop.html",
+    "route": "/pages/admin-cleaning-sop.html",
+    "lang": "zh-Hant",
+    "title": "清潔整理 SOP｜揪好森內部管理",
+    "description": "揪好森清潔與房務人員內部整理標準，包含烤肉爐去油、備品補充、床鋪整理與倉庫收納流程。",
+    "canonical": "https://camp.8-ways.com/pages/admin-cleaning-sop.html",
+    "hero_image": "",
+    "og_image": "https://camp.8-ways.com/assets/images/og/pages-admin-cleaning-sop.jpg",
+    "og_image_override": false,
+    "schema_type": "WebPage",
+    "noindex": true,
+    "is_redirect": false
+  },
+  {
     "page_file": "pages/admin-revenue.html",
     "route": "/pages/admin-revenue.html",
     "lang": "zh-Hant",

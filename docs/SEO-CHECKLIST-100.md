@@ -1,6 +1,6 @@
 # SEO 100 項檢查驗收總表（自動產生）
 
-- 總 HTML 頁數：**95**
+- 總 HTML 頁數：**96**
 - 可索引頁：**86**
 - 共用 og:image 群組（indexable）：**0**
 - 使用 default og 後備：**0**
@@ -54,7 +54,7 @@
 | 27 | twitter:description | 完成 | 與頁面 SEO 同步 |
 | 28 | twitter:image | 完成 | 逐頁專屬 |
 | 29 | 寫死共用 og:image | 完成 | 已改為 per-page 產生流程 |
-| 30 | 不同頁面不再同圖 | 完成 | 非轉址頁 90 張、唯一值 90 |
+| 30 | 不同頁面不再同圖 | 完成 | 非轉址頁 91 張、唯一值 91 |
 | 31 | hero 圖優先 | 完成 | 社群卡以 hero/頁面主圖為來源 |
 | 32 | 專用 og:image | 完成 | assets/images/og 每頁獨立產生 |
 | 33 | 選圖邏輯 | 完成 | hero → per-page override →品牌後備 |

@@ -12,7 +12,7 @@ from PIL import Image, ImageDraw, ImageEnhance, ImageFont, ImageOps
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
-from seo_lib import SITE, og_card_path  # noqa: E402
+from seo_lib import PAGE_OG_OVERRIDES, SITE, og_card_path  # noqa: E402
 
 MAP_PATH = ROOT / "seo-map.json"
 SIZE = (1200, 630)
@@ -32,7 +32,11 @@ def font_path() -> Path:
 
 
 def local_source(entry: dict) -> Path:
-    candidates = [entry.get("hero_image", ""), entry.get("og_image", "")]
+    candidates = [
+        entry.get("hero_image", ""),
+        PAGE_OG_OVERRIDES.get(entry.get("page_file", ""), ""),
+        entry.get("og_image", ""),
+    ]
     for raw in candidates:
         if not raw:
             continue
@@ -41,6 +45,10 @@ def local_source(entry: dict) -> Path:
         elif raw.startswith("http://") or raw.startswith("https://"):
             continue
         raw = raw.lstrip("/")
+        # Never use a previously generated social card as the next source;
+        # repeated SEO builds would otherwise recompress and degrade it.
+        if raw.startswith("assets/images/og/"):
+            continue
         path = ROOT / raw
         if path.is_file():
             return path
