@@ -207,6 +207,56 @@
     }).join("");
   }
 
+  function initFacilityFilters(){
+    const buttons = Array.from(document.querySelectorAll("[data-facility-filter]"));
+    const cards = Array.from(document.querySelectorAll(".facility-equipment-card[data-locations]"));
+    const result = document.querySelector(".facility-filter-result");
+    if(!buttons.length || !cards.length) return;
+
+    const labels = {
+      all: "全部設備",
+      balloon: "熱氣球房設備",
+      cloud: "雲朵房設備",
+      indoor: "帳篷內設備",
+      lawn: "專屬草地設備"
+    };
+
+    function matches(locations, filter){
+      if(filter === "all") return true;
+      return locations.some(function(location){
+        if(filter === "balloon") return location.startsWith("balloon-");
+        if(filter === "cloud") return location.startsWith("cloud-");
+        if(filter === "indoor") return location.endsWith("-indoor");
+        if(filter === "lawn") return location.endsWith("-lawn");
+        return false;
+      });
+    }
+
+    buttons.forEach(function(button){
+      button.addEventListener("click", function(){
+        const filter = button.dataset.facilityFilter || "all";
+        let visibleCount = 0;
+
+        buttons.forEach(function(item){
+          const active = item === button;
+          item.classList.toggle("is-active", active);
+          item.setAttribute("aria-pressed", String(active));
+        });
+
+        cards.forEach(function(card){
+          const locations = (card.dataset.locations || "").split(/\s+/).filter(Boolean);
+          const visible = matches(locations, filter);
+          card.hidden = !visible;
+          if(visible) visibleCount += 1;
+        });
+
+        if(result){
+          result.textContent = "目前顯示" + labels[filter] + "，共 " + visibleCount + " 項";
+        }
+      });
+    });
+  }
+
   document.addEventListener("DOMContentLoaded", async ()=>{
     try{
       await ensureLangSwitch();
@@ -221,6 +271,7 @@
       }
       heroVideoFallback();
       initSmoothScroll();
+      initFacilityFilters();
       initFooterReviews();
       initFooterSeoRandomLinks();
     }catch(err){
