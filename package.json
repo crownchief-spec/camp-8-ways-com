@@ -3,7 +3,8 @@
   "private": true,
   "scripts": {
     "build:calendar-pricing": "esbuild src/bundle/campCalendarPricing.ts --bundle --format=iife --outfile=assets/js/camp-calendar-pricing.js",
-    "build": "npm run build:calendar-pricing",
+    "build:stories": "node scripts/build-camp-stories.mjs",
+    "build": "npm run build:calendar-pricing && npm run build:stories",
     "seo:map": "python3 scripts/build-seo-map.py",
     "seo:og": "/usr/bin/python3 scripts/generate-og-images.py",
     "seo:fix-links": "python3 scripts/fix-known-internal-links.py",
@@ -17,6 +18,8 @@
   },
   "devDependencies": {
     "esbuild": "^0.25.0",
+    "gray-matter": "^4.0.3",
+    "marked": "^15.0.12",
     "typescript": "^5.7.0"
   }
 }

@@ -9,6 +9,7 @@ from xml.etree.ElementTree import Element, SubElement, tostring
 ROOT = Path(__file__).resolve().parents[1]
 MAP_PATH = ROOT / "seo-map.json"
 OUT = ROOT / "sitemap.xml"
+STORIES_PATH = ROOT / "assets" / "data" / "camp-stories-articles.json"
 
 PRIORITY = {
     "/": 1.0,
@@ -40,6 +41,28 @@ def changefreq_for(route: str) -> str:
 
 def main() -> None:
     entries = json.loads(MAP_PATH.read_text(encoding="utf-8"))
+    stories_hub = ROOT / "pages" / "stories.html"
+    if stories_hub.exists() and not any(entry.get("route") == "/pages/stories.html" for entry in entries):
+        entries.append(
+            {
+                "canonical": "https://camp.8-ways.com/pages/stories.html",
+                "route": "/pages/stories.html",
+                "noindex": False,
+                "is_redirect": False,
+            }
+        )
+    if STORIES_PATH.exists():
+        story_data = json.loads(STORIES_PATH.read_text(encoding="utf-8"))
+        entries.extend(
+            {
+                "canonical": item["url"],
+                "route": f"/stories/{item['slug']}/",
+                "noindex": False,
+                "is_redirect": False,
+            }
+            for item in story_data.get("articles", [])
+            if item.get("status") == "published" and item.get("privacy") == "public"
+        )
     urlset = Element("urlset", xmlns="http://www.sitemaps.org/schemas/sitemap/0.9")
 
     for entry in sorted(entries, key=lambda e: e["canonical"]):

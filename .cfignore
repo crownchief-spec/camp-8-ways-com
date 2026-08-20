@@ -2,6 +2,7 @@
 # Git 連線部署則依 .gitignore，未提交的檔案本來就不會上線
 
 _joyforest-staff/
+content/camp-stories/
 camp-revenue-*-DETAIL.md
 .tmp-*
 node_modules/
