@@ -53,7 +53,7 @@ function isoDate(value, field, file) {
 }
 
 function validatePublished(data, file) {
-  ["storyId", "slug", "title", "description", "publishedDate", "category", "coverImage", "coverImageAlt", "coverImageWidth", "coverImageHeight", "privacy"].forEach((field) => required(data, field, file));
+  ["storyId", "slug", "title", "description", "publishedDate", "category", "coverImage", "coverImageAlt", "coverImageWidth", "coverImageHeight", "thumbnailImage", "thumbnailImageAlt", "thumbnailImageWidth", "thumbnailImageHeight", "privacy"].forEach((field) => required(data, field, file));
   if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(data.slug)) throw new Error(`${file}: slug 只可使用英文小寫、數字與連字號`);
   if (!ALLOWED_CATEGORIES.includes(data.category)) throw new Error(`${file}: category 必須是 ${ALLOWED_CATEGORIES.join("、")}`);
   if (data.privacy !== "public") throw new Error(`${file}: 只有 privacy: public 的內容可發布`);
@@ -62,6 +62,9 @@ function validatePublished(data, file) {
   if (!String(data.coverImage).startsWith("/assets/")) throw new Error(`${file}: coverImage 必須使用 /assets/ 開頭的網站路徑`);
   const localImage = path.join(ROOT, String(data.coverImage).replace(/^\//, ""));
   if (!fs.existsSync(localImage)) throw new Error(`${file}: 找不到封面圖片 ${data.coverImage}`);
+  if (!String(data.thumbnailImage).startsWith("/assets/")) throw new Error(`${file}: thumbnailImage 必須使用 /assets/ 開頭的網站路徑`);
+  const localThumbnail = path.join(ROOT, String(data.thumbnailImage).replace(/^\//, ""));
+  if (!fs.existsSync(localThumbnail)) throw new Error(`${file}: 找不到正方形縮圖 ${data.thumbnailImage}`);
 }
 
 function loadArticles() {
@@ -107,6 +110,10 @@ function publicItem(article) {
     coverImageAlt: article.coverImageAlt,
     coverImageWidth: Number(article.coverImageWidth),
     coverImageHeight: Number(article.coverImageHeight),
+    thumbnailImage: article.thumbnailImage,
+    thumbnailImageAlt: article.thumbnailImageAlt,
+    thumbnailImageWidth: Number(article.thumbnailImageWidth),
+    thumbnailImageHeight: Number(article.thumbnailImageHeight),
     featured: article.featured,
     readingTime: article.readingTime,
     path: `/stories/${article.slug}/`,
@@ -124,7 +131,7 @@ function articlePage(article, related) {
       <div class="container">
         <h2 id="related-stories-title">繼續閱讀森林故事</h2>
         <div class="story-card-grid">${related.map((item) => `
-          <article class="story-card"><a class="story-card__media" href="/stories/${escapeHtml(item.slug)}/"><img src="${escapeHtml(item.coverImage)}" alt="${escapeHtml(item.coverImageAlt)}" width="${Number(item.coverImageWidth)}" height="${Number(item.coverImageHeight)}" loading="lazy" decoding="async"></a><div class="story-card__body"><div class="story-card__meta"><span>${escapeHtml(item.category)}</span><time datetime="${escapeHtml(item.publishedDate)}">${escapeHtml(item.publishedDate)}</time></div><h3><a href="/stories/${escapeHtml(item.slug)}/">${escapeHtml(item.title)}</a></h3><p>${escapeHtml(item.description)}</p></div></article>`).join("")}</div>
+          <article class="story-card"><a class="story-card__media" href="/stories/${escapeHtml(item.slug)}/"><img src="${escapeHtml(item.thumbnailImage)}" alt="${escapeHtml(item.thumbnailImageAlt)}" width="${Number(item.thumbnailImageWidth)}" height="${Number(item.thumbnailImageHeight)}" loading="lazy" decoding="async"></a><div class="story-card__body"><div class="story-card__meta"><span>${escapeHtml(item.category)}</span><time datetime="${escapeHtml(item.publishedDate)}">${escapeHtml(item.publishedDate)}</time></div><h3><a href="/stories/${escapeHtml(item.slug)}/">${escapeHtml(item.title)}</a></h3><p>${escapeHtml(item.description)}</p></div></article>`).join("")}</div>
       </div>
     </section>` : "";
   const schema = JSON.stringify({

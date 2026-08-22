@@ -32,7 +32,7 @@
     }).join("");
     return '<article class="story-card">' +
       '<a class="story-card__media" href="' + escapeHtml(article.path) + '">' +
-        '<img src="' + escapeHtml(article.coverImage) + '" alt="' + escapeHtml(article.coverImageAlt) + '" title="' + escapeHtml(article.title) + '" width="' + escapeHtml(article.coverImageWidth) + '" height="' + escapeHtml(article.coverImageHeight) + '" loading="lazy" decoding="async">' +
+        '<img src="' + escapeHtml(article.thumbnailImage) + '" alt="' + escapeHtml(article.thumbnailImageAlt) + '" title="' + escapeHtml(article.title) + '" width="' + escapeHtml(article.thumbnailImageWidth) + '" height="' + escapeHtml(article.thumbnailImageHeight) + '" loading="lazy" decoding="async">' +
       "</a>" +
       '<div class="story-card__body">' +
         '<div class="story-card__meta"><span>' + escapeHtml(article.category) + "</span><time datetime=\"" + escapeHtml(article.publishedDate) + '\">' + escapeHtml(formatDate(article.publishedDate)) + "</time></div>" +
