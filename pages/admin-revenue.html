@@ -73,11 +73,23 @@
 
     <section class="admin-pricing-panel" aria-label="定價規則">
       <h2 class="admin-panel-title">定價規則（可修改）</h2>
-      <p class="admin-panel-note">預設：帳篷單間每晚 $5,000；露營車三天兩夜 $13,800，每多一天 +$2,800。修改後會套用到尚未手動覆寫的案子。</p>
+      <p class="admin-panel-note">行事曆有明確總額時直接採用；缺價才依歷史階段估算。雲朵＋熱氣球同時出現在一筆事件中<strong>不會自動乘以兩間</strong>；只有明確兩帳／兩房或入住超過 6 人，才使用兩帳包場估算。</p>
       <div class="admin-pricing-grid">
         <label>
-          帳篷單間／晚
+          早期缺價估算／晚（～4/17）
+          <input id="price-camp-early" type="number" min="0" step="100" value="3800">
+        </label>
+        <label>
+          過渡期缺價估算／晚（4/18～6/19）
+          <input id="price-camp-middle" type="number" min="0" step="100" value="4800">
+        </label>
+        <label>
+          現行單筆住宿淨額估算／晚
           <input id="price-tent-night" type="number" min="0" step="100" value="5000">
+        </label>
+        <label>
+          明確兩帳包場估算／晚
+          <input id="price-full-site-night" type="number" min="0" step="100" value="9800">
         </label>
         <label>
           露營車基本價（三天兩夜）
@@ -107,6 +119,14 @@
         <p class="admin-summary-label">露營車總額</p>
         <p id="sum-rv" class="admin-summary-value">$0</p>
       </div>
+      <div class="admin-summary-card">
+        <p class="admin-summary-label">明確／手動金額</p>
+        <p id="sum-exact" class="admin-summary-value">$0</p>
+      </div>
+      <div class="admin-summary-card">
+        <p class="admin-summary-label">尚屬估算金額</p>
+        <p id="sum-estimated" class="admin-summary-value">$0</p>
+      </div>
     </section>
 
     <section class="admin-month-breakdown" aria-label="各月營業額">
@@ -129,7 +149,7 @@
           <span>露營車</span>
         </li>
       </ul>
-      <p class="admin-revenue-hint">自<strong>今年二月</strong>起列出全部月份。金額顯示在<strong>入住日</strong>；優先讀取行事曆「總租金／租金／方案費用／費用」並自動計算（如 <code>$11,800+2×2800</code>）<span class="admin-revenue-source-chip admin-revenue-source-chip--calendar">行事曆</span>，否則<span class="admin-revenue-source-chip admin-revenue-source-chip--estimate">估算</span>；格子內修改為<span class="admin-revenue-source-chip admin-revenue-source-chip--manual">手動</span>。露營車僅計連續多日租車；還車／驗車等單日備註不計入。</p>
+      <p class="admin-revenue-hint">自<strong>今年二月</strong>起列出全部月份。金額顯示在<strong>入住日</strong>；優先讀取行事曆「總租金／總金額／金額／方案費用／費用」與算式（如 <code>$11,800+2×2800</code>）<span class="admin-revenue-source-chip admin-revenue-source-chip--calendar">行事曆明確</span>，Airbnb／Agoda 缺價才標成<span class="admin-revenue-source-chip admin-revenue-source-chip--estimate">平台估算</span>；格子內修改則為<span class="admin-revenue-source-chip admin-revenue-source-chip--manual">手動確定</span>。問號暫定案、互惠、補償、唱歌／設備備註、同筆訂房的重複房型事件與露營車單日作業均不計入。</p>
       <p id="revenue-status" class="staff-status" aria-live="polite"></p>
       <p id="revenue-fetch-error" class="staff-error" role="alert" hidden></p>
       <div id="revenue-events" class="staff-events"></div>
@@ -137,6 +157,7 @@
   </div>
   <script src="../assets/js/admin-gate.js"></script>
   <script src="../assets/js/stated-price.js"></script>
+  <script src="../assets/js/revenue-rules.js"></script>
   <script src="../assets/js/admin-revenue.js"></script>
 </body>
 </html>

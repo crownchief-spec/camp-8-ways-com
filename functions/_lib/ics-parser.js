@@ -152,6 +152,7 @@ function parseBookingSource(text) {
   if (!text) return null;
   const sources = [
     { re: /airbnb/i, label: "Airbnb" },
+    { re: /(?:^|[^a-z])bnb(?:[^a-z]|$)/i, label: "Airbnb" },
     { re: /agoda/i, label: "Agoda" },
     { re: /booking\.com|booking/i, label: "Booking.com" },
     { re: /whatsapp/i, label: "WhatsApp" },

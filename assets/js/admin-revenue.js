@@ -1,6 +1,8 @@
 (function () {
   var Gate = window.JoyforestAdminGate;
   if (!Gate || !Gate.requireAuth("admin.html")) return;
+  var RevenueRules = window.JoyforestRevenueRules;
+  if (!RevenueRules) return;
 
   var API_BASE = "/api";
   var RULES_KEY = "joyforest_admin_pricing_rules";
@@ -8,7 +10,10 @@
   var WEEKDAY_HEAD = ["一", "二", "三", "四", "五", "六", "日"];
 
   var DEFAULT_RULES = {
+    campEarlyNightly: 3800,
+    campMiddleNightly: 4800,
     tentNightly: 5000,
+    fullSiteNightly: 9800,
     rvBase: 13800,
     rvExtraDay: 2800,
     rvBaseNights: 2
@@ -27,7 +32,12 @@
   var sumTotal = document.getElementById("sum-total");
   var sumTent = document.getElementById("sum-tent");
   var sumRv = document.getElementById("sum-rv");
+  var sumExact = document.getElementById("sum-exact");
+  var sumEstimated = document.getElementById("sum-estimated");
+  var campEarlyInput = document.getElementById("price-camp-early");
+  var campMiddleInput = document.getElementById("price-camp-middle");
   var tentNightInput = document.getElementById("price-tent-night");
+  var fullSiteInput = document.getElementById("price-full-site-night");
   var rvBaseInput = document.getElementById("price-rv-base");
   var rvExtraInput = document.getElementById("price-rv-extra");
   var applyBtn = document.getElementById("price-apply-btn");
@@ -123,7 +133,10 @@
       if (!raw) return Object.assign({}, DEFAULT_RULES);
       var parsed = JSON.parse(raw);
       return {
+        campEarlyNightly: Number(parsed.campEarlyNightly) || DEFAULT_RULES.campEarlyNightly,
+        campMiddleNightly: Number(parsed.campMiddleNightly) || DEFAULT_RULES.campMiddleNightly,
         tentNightly: Number(parsed.tentNightly) || DEFAULT_RULES.tentNightly,
+        fullSiteNightly: Number(parsed.fullSiteNightly) || DEFAULT_RULES.fullSiteNightly,
         rvBase: Number(parsed.rvBase) || DEFAULT_RULES.rvBase,
         rvExtraDay: Number(parsed.rvExtraDay) || DEFAULT_RULES.rvExtraDay,
         rvBaseNights: DEFAULT_RULES.rvBaseNights
@@ -137,7 +150,10 @@
     localStorage.setItem(
       RULES_KEY,
       JSON.stringify({
+        campEarlyNightly: rules.campEarlyNightly,
+        campMiddleNightly: rules.campMiddleNightly,
         tentNightly: rules.tentNightly,
+        fullSiteNightly: rules.fullSiteNightly,
         rvBase: rules.rvBase,
         rvExtraDay: rules.rvExtraDay
       })
@@ -158,14 +174,20 @@
   }
 
   function fillRulesInputs(rules) {
+    campEarlyInput.value = rules.campEarlyNightly;
+    campMiddleInput.value = rules.campMiddleNightly;
     tentNightInput.value = rules.tentNightly;
+    fullSiteInput.value = rules.fullSiteNightly;
     rvBaseInput.value = rules.rvBase;
     rvExtraInput.value = rules.rvExtraDay;
   }
 
   function readRulesFromInputs() {
     return {
+      campEarlyNightly: Math.max(0, Number(campEarlyInput.value) || 0),
+      campMiddleNightly: Math.max(0, Number(campMiddleInput.value) || 0),
       tentNightly: Math.max(0, Number(tentNightInput.value) || 0),
+      fullSiteNightly: Math.max(0, Number(fullSiteInput.value) || 0),
       rvBase: Math.max(0, Number(rvBaseInput.value) || 0),
       rvExtraDay: Math.max(0, Number(rvExtraInput.value) || 0),
       rvBaseNights: DEFAULT_RULES.rvBaseNights
@@ -173,7 +195,7 @@
   }
 
   function isRvEvent(ev) {
-    return ev.roomTags && ev.roomTags.indexOf("rv") !== -1;
+    return RevenueRules.isRvEvent(ev);
   }
 
   /**
@@ -196,12 +218,8 @@
     return false;
   }
 
-  function isRevenueEvent(ev) {
-    return !isRvNonRentalNote(ev);
-  }
-
   function revenueEvents(list) {
-    return (list || []).filter(isRevenueEvent);
+    return RevenueRules.analyzeEvents(list || []).included;
   }
 
   function eventText(ev) {
@@ -226,27 +244,13 @@
     return /私[訂定]|私下|(?:^|[\s　])私(?:$|[\s　])/.test(eventText(ev));
   }
 
-  function tentRoomCount(ev) {
-    var count = 0;
-    if (ev.roomTags.indexOf("cloud") !== -1) count += 1;
-    if (ev.roomTags.indexOf("balloon") !== -1) count += 1;
-    return Math.max(count, 1);
-  }
-
   function eventNights(ev) {
-    var nights = ev.nights != null ? Number(ev.nights) : 1;
-    if (!nights || nights < 1) nights = 1;
-    return nights;
+    return RevenueRules.eventNights(ev);
   }
 
-  /** 帳篷：單間每晚 × 間數 × 晚數；露營車：三天兩夜基本價，每多一天 +extra */
+  /** 缺少明確金額時才估算；房型標籤不代表可以直接相乘。 */
   function computeDefaultPrice(ev, rules) {
-    var nights = eventNights(ev);
-    if (isRvEvent(ev)) {
-      if (nights <= rules.rvBaseNights) return rules.rvBase;
-      return rules.rvBase + (nights - rules.rvBaseNights) * rules.rvExtraDay;
-    }
-    return tentRoomCount(ev) * nights * rules.tentNightly;
+    return RevenueRules.computeEstimate(ev, rules);
   }
 
   function eventKind(ev) {
@@ -307,9 +311,11 @@
         overridden: false
       };
     }
+    var estimate = computeDefaultPrice(ev, rules);
     return {
-      amount: computeDefaultPrice(ev, rules),
-      source: "estimate",
+      amount: estimate.amount,
+      source: estimate.source,
+      estimateLabel: estimate.label,
       overridden: false
     };
   }
@@ -340,13 +346,18 @@
     var total = 0;
     var tent = 0;
     var rv = 0;
+    var exact = 0;
+    var estimated = 0;
     revenueEvents(events).forEach(function (ev) {
-      var price = getEventPrice(ev, rules, overrides).amount;
+      var info = getEventPrice(ev, rules, overrides);
+      var price = info.amount;
       total += price;
       if (eventKind(ev) === "rv") rv += price;
       else tent += price;
+      if (info.source === "manual" || info.source === "calendar") exact += price;
+      else estimated += price;
     });
-    return { total: total, tent: tent, rv: rv };
+    return { total: total, tent: tent, rv: rv, exact: exact, estimated: estimated };
   }
 
   function updateSummary(events, rules, overrides) {
@@ -354,11 +365,13 @@
     sumTotal.textContent = formatMoney(sum.total);
     sumTent.textContent = formatMoney(sum.tent);
     sumRv.textContent = formatMoney(sum.rv);
+    if (sumExact) sumExact.textContent = formatMoney(sum.exact);
+    if (sumEstimated) sumEstimated.textContent = formatMoney(sum.estimated);
   }
 
   function eventsInMonth(events, year, month0) {
     var prefix = year + "-" + pad2(month0 + 1);
-    return events.filter(function (ev) {
+    return revenueEvents(events).filter(function (ev) {
       return ev.checkInYmd && ev.checkInYmd.indexOf(prefix) === 0;
     });
   }
@@ -470,10 +483,12 @@
     if (title.length > 18) title = title.slice(0, 18) + "…";
     var sourceLabel =
       priceInfo.source === "manual"
-        ? "手動"
+        ? "手動確定"
         : priceInfo.source === "calendar"
-          ? "行事曆"
-          : "估算";
+          ? "行事曆明確"
+          : priceInfo.source === "platform-estimate"
+            ? "平台估算"
+            : priceInfo.estimateLabel || "歷史估算";
     var sourceClass =
       priceInfo.source === "manual"
         ? " admin-revenue-line--manual"
@@ -693,14 +708,24 @@
           throw new Error(result.data.error || "載入失敗");
         }
         eventsCache = result.data.events || [];
-        var counted = revenueEvents(eventsCache).length;
-        var skipped = eventsCache.length - counted;
+        var analysis = RevenueRules.analyzeEvents(eventsCache);
+        var counted = analysis.included.length;
+        var skipped = analysis.excluded.length;
+        var reasonCounts = {};
+        analysis.excluded.forEach(function (item) {
+          reasonCounts[item.reason] = (reasonCounts[item.reason] || 0) + 1;
+        });
+        var reasonText = Object.keys(reasonCounts)
+          .map(function (reason) {
+            return reason + " " + reasonCounts[reason] + " 筆";
+          })
+          .join("、");
         statusEl.textContent =
           "計入案件 " +
           counted +
           " 筆" +
           (skipped
-            ? "（略過露營車備註／單日 " + skipped + " 筆）"
+            ? "（未計入 " + skipped + " 筆：" + reasonText + "）"
             : "") +
           "（更新時間：" +
           (result.data.fetchedAt || "") +

@@ -77,7 +77,7 @@ function evaluateMoneyExpression(raw, minAmount = 1000) {
   return sum;
 }
 
-function isChannelWithoutPrice(text, bookingSource) {
+function isPlatformChannel(text, bookingSource) {
   return (
     bookingSource === "Airbnb" ||
     bookingSource === "Agoda" ||
@@ -120,7 +120,6 @@ function takeContinuation(lines, index, rhs) {
  */
 function parseStatedPriceFromText(text, bookingSource) {
   if (!text) return null;
-  if (isChannelWithoutPrice(text, bookingSource)) return null;
 
   const candidates = [];
   const push = (amount, score) => {
@@ -129,6 +128,41 @@ function parseStatedPriceFromText(text, bookingSource) {
   };
 
   const lines = String(text).split(/\r?\n/);
+
+  // 0) 已明寫的實收／含稅／總金額／金額／住宿費。
+  // 平台名稱本身不代表沒有價格；有明確金額仍應讀取，缺價才交給估算規則。
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    const depositOrBalanceLine = lineLooksLikeDepositOrBalance(line);
+
+    const taxed = line.match(/含稅\s*(?:NT\$?|\$)?\s*([\d,\s　]{3,})/i);
+    if (taxed) push(normalizeMoneyToken(taxed[1]), 106);
+
+    const grandTotal = line.match(
+      /(?:本次[^\n]{0,20})?(?:費用合計|合計金額|總金額|應收金額|實收金額)\s*[：:]?\s*(?:NT\$?|\$)?\s*([\d,\s　]{3,})/i
+    );
+    if (grandTotal) push(normalizeMoneyToken(grandTotal[1]), 104);
+
+    const amount = line.match(/(?:^|[•\s])金額(?:兩晚|\d+晚)?\s*[：:]?\s*(?:NT\$?|\$)?\s*([\d,\s　]{3,})/i);
+    if (amount) push(normalizeMoneyToken(amount[1]), 98);
+
+    const lodging = line.match(/住宿費\s*(?:NT\$?|\$)?\s*([\d,\s　]{3,})/i);
+    if (lodging) push(normalizeMoneyToken(lodging[1]), 94);
+
+    const standaloneFormula = line.match(
+      /^\s*(?:NT\$?|\$)?\s*\d[\d,\s]*(?:[+＋*×ｘ]\s*\d[\d,.]*)+\s*=\s*[\d,\s]+\s*$/i
+    );
+    if (standaloneFormula) push(evaluateMoneyExpression(standaloneFormula[0], 100), 93);
+
+    if (/優惠/.test(line) && /=/.test(line) && /[*×ｘ]/.test(line)) {
+      push(evaluateMoneyExpression(line, 100), 92);
+    }
+
+    if (!depositOrBalanceLine && isPlatformChannel(text, bookingSource)) {
+      const explicitCash = line.match(/(?:NT\$?|\$)\s*([\d,\s　]{3,})/i);
+      if (explicitCash) push(normalizeMoneyToken(explicitCash[1]), 89);
+    }
+  }
 
   // 1) 明確「總租金」／Total Rental／New Total
   for (let i = 0; i < lines.length; i++) {

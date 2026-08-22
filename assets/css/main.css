@@ -5350,7 +5350,7 @@ footer a:hover { color: #ffffff; }
 
 .admin-pricing-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 12px;
   margin-bottom: 14px;
 }
@@ -5397,7 +5397,7 @@ footer a:hover { color: #ffffff; }
 
 .admin-revenue-summary {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
   gap: 12px;
   margin-bottom: 18px;
 }
