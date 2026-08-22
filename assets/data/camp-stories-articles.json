@@ -2,6 +2,58 @@
   "schemaVersion": 1,
   "articles": [
     {
+      "storyId": "20260513-001",
+      "slug": "forest-family-photography-indoor-outdoor",
+      "status": "published",
+      "privacy": "public",
+      "title": "一組全家福，收藏兩種風景｜森林親子寫真實拍示範",
+      "description": "從棚內的乾淨肖像，到草地上的自在互動；揪好森把親子全家福拍攝延伸成可慢慢停留、聚會或安排平日住宿的森林時光。",
+      "publishedDate": "2026-08-23",
+      "modifiedDate": "2026-08-23",
+      "category": "森林故事",
+      "tags": [
+        "親子全家福",
+        "桃園家庭攝影",
+        "森林寫真",
+        "平日住宿",
+        "揪好森攝影服務"
+      ],
+      "coverImage": "/assets/images/stories/forest-family-photography-indoor-outdoor/forest-family-photography-outdoor-01.webp",
+      "coverImageAlt": "揪好森草地與森林綠意中的親子全家福自然互動畫面",
+      "coverImageWidth": 1067,
+      "coverImageHeight": 1600,
+      "featured": true,
+      "readingTime": "4 分鐘",
+      "path": "/stories/forest-family-photography-indoor-outdoor/",
+      "url": "https://camp.8-ways.com/stories/forest-family-photography-indoor-outdoor/"
+    },
+    {
+      "storyId": "20260702-001",
+      "slug": "studio-family-photography-white-backdrop",
+      "status": "published",
+      "privacy": "public",
+      "title": "把一家人的表情留在最純粹的畫面裡｜棚內親子寫真實拍示範",
+      "description": "用純白背景收住一家人的互動與表情。揪好森的親子全家福拍攝可結合棚內寫真、森林空間與平日住宿安排，讓拍照成為一段從容的家庭時光。",
+      "publishedDate": "2026-08-23",
+      "modifiedDate": "2026-08-23",
+      "category": "森林故事",
+      "tags": [
+        "親子全家福",
+        "桃園家庭攝影",
+        "森林寫真",
+        "平日住宿",
+        "揪好森攝影服務"
+      ],
+      "coverImage": "/assets/images/stories/studio-family-photography-white-backdrop/studio-family-photography-studio-01.webp",
+      "coverImageAlt": "純白棚內背景中的親子全家福自然互動畫面",
+      "coverImageWidth": 1067,
+      "coverImageHeight": 1600,
+      "featured": true,
+      "readingTime": "4 分鐘",
+      "path": "/stories/studio-family-photography-white-backdrop/",
+      "url": "https://camp.8-ways.com/stories/studio-family-photography-white-backdrop/"
+    },
+    {
       "storyId": "20260727-001",
       "slug": "xinyue-forest-english-staff-retreat",
       "status": "published",
