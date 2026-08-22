@@ -2,6 +2,32 @@
   "schemaVersion": 1,
   "articles": [
     {
+      "storyId": "20260509-001",
+      "slug": "two-families-private-camping-weekend",
+      "status": "published",
+      "privacy": "public",
+      "title": "兄弟兩個家庭的森林週末｜帶著妻子與孩子輕鬆包場",
+      "description": "兄弟各自帶著妻子與孩子來到桃園楊梅揪好森，兩個小家庭包下兩座帳篷，在歌聲、泡泡、營火與親子寫真中，輕鬆度過一個只屬於彼此的森林週末。",
+      "publishedDate": "2026-08-23",
+      "modifiedDate": "2026-08-23",
+      "category": "客戶推薦分享",
+      "tags": [
+        "桃園親子住宿",
+        "兩個家庭包場",
+        "兄弟家庭旅行",
+        "親子露營體驗",
+        "森林親子寫真"
+      ],
+      "coverImage": "/assets/images/stories/two-families-private-camping-weekend/two-children-private-camping-weekend.webp",
+      "coverImageAlt": "兩個家庭的孩子在揪好森圓頂帳篷裡一起玩玩具",
+      "coverImageWidth": 1600,
+      "coverImageHeight": 1066,
+      "featured": true,
+      "readingTime": "5 分鐘",
+      "path": "/stories/two-families-private-camping-weekend/",
+      "url": "https://camp.8-ways.com/stories/two-families-private-camping-weekend/"
+    },
+    {
       "storyId": "20260513-001",
       "slug": "forest-family-photography-indoor-outdoor",
       "status": "published",
