@@ -5630,6 +5630,16 @@ footer a:hover { color: #ffffff; }
     min-height: 2.25rem;
   }
 
+  .admin-revenue-page .availability-cal {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .admin-revenue-page .availability-cal-head,
+  .admin-revenue-page .availability-cal-body {
+    min-width: 700px;
+  }
+
   .admin-revenue-page .availability-cal-cell--day {
     padding: 6px 4px;
     min-height: 4.5rem;
