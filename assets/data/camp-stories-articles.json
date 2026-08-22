@@ -1,4 +1,31 @@
 {
   "schemaVersion": 1,
-  "articles": []
+  "articles": [
+    {
+      "storyId": "20260727-001",
+      "slug": "xinyue-forest-english-staff-retreat",
+      "status": "published",
+      "privacy": "public",
+      "title": "從英文教室走進森林｜昕閱森林英語的包場員工旅遊",
+      "description": "昕閱森林英語把員工旅遊搬進桃園楊梅的森林包場空間，結合攝影教學、英文尋寶、草地遊戲、烤肉、營火與歡唱，留下大人與孩子都能參與的團隊回憶。",
+      "publishedDate": "2026-08-23",
+      "modifiedDate": "2026-08-23",
+      "category": "客戶推薦分享",
+      "tags": [
+        "桃園員工旅遊",
+        "小型企業包場",
+        "親子員工旅遊",
+        "英語教室活動",
+        "森林團體活動"
+      ],
+      "coverImage": "/assets/images/stories/xinyue-forest-english-staff-retreat/team-campfire-evening.webp",
+      "coverImageAlt": "昕閱森林英語員工與家人在揪好森草地營火旁一起互動",
+      "coverImageWidth": 1600,
+      "coverImageHeight": 1066,
+      "featured": true,
+      "readingTime": "6 分鐘",
+      "path": "/stories/xinyue-forest-english-staff-retreat/",
+      "url": "https://camp.8-ways.com/stories/xinyue-forest-english-staff-retreat/"
+    }
+  ]
 }
