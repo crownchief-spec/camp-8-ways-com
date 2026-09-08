@@ -3,6 +3,18 @@ const DEFAULT_CAMP_URL =
 const DEFAULT_RV_URL =
   "https://calendar.google.com/calendar/ical/al2upmt9aegl0gc9uk6dms17k4%40group.calendar.google.com/private-96c6b258d3838a040c762d5a412aa839/basic.ics";
 
+export async function fetchRvCalendarSource(env) {
+  const rvUrl = env.JOYFOREST_RV_ICS_URL || DEFAULT_RV_URL;
+  const rvRes = await fetch(rvUrl, {
+    cache: "no-store",
+    cf: { cacheTtl: 0, cacheEverything: false }
+  });
+  if (!rvRes.ok) {
+    throw new Error(`RV calendar fetch failed: HTTP ${rvRes.status}`);
+  }
+  return rvRes.text();
+}
+
 export async function fetchCalendarSources(env) {
   const campUrl = env.JOYFOREST_CAMP_ICS_URL || DEFAULT_CAMP_URL;
   const rvUrl = env.JOYFOREST_RV_ICS_URL || DEFAULT_RV_URL;
