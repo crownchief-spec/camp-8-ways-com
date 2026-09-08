@@ -6,7 +6,6 @@ const DEFAULT_RV_URL =
 export async function fetchRvCalendarSource(env) {
   const rvUrl = env.JOYFOREST_RV_ICS_URL || DEFAULT_RV_URL;
   const rvRes = await fetch(rvUrl, {
-    cache: "no-store",
     cf: { cacheTtl: 0, cacheEverything: false }
   });
   if (!rvRes.ok) {
