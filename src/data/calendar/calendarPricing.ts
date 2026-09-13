@@ -11,10 +11,12 @@ export interface PricedCalendarResource {
   shortLabel: string;
   /** 原價（僅供維運參考，空房頁不顯示） */
   originalPrice: number;
-  /** 平日（週日～週四入住夜，且非連假 override） */
+  /** 一般住宿日 */
   weekday: number;
-  /** 假日（週五～週六入住夜，或連假 override 日） */
+  /** 一般週末住宿日 */
   weekend: number;
+  /** 官方連假前 N−1 晚（連假最後一天不加價） */
+  longHoliday: number;
   showPrice: true;
 }
 
@@ -35,6 +37,7 @@ export const calendarResourcePricing: {
     originalPrice: 7800,
     weekday: 5000,
     weekend: 5000,
+    longHoliday: 6000,
     showPrice: true,
   },
   cloud: {
@@ -43,6 +46,7 @@ export const calendarResourcePricing: {
     originalPrice: 7800,
     weekday: 5000,
     weekend: 5000,
+    longHoliday: 6000,
     showPrice: true,
   },
   rv: {

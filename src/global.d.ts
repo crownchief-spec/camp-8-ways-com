@@ -11,6 +11,7 @@ declare global {
         startYm: { y: number; m: number };
         endYm: { y: number; m: number };
       };
+      isWithinBookingWindow(y: number, m: number, d: number): boolean;
       resolveResourceRowDisplay(
         resourceId: string,
         y: number,

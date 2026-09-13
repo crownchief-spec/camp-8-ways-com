@@ -289,14 +289,15 @@
     var now = new Date();
     var todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate());
     var cellDate = new Date(y, m, d);
-    var showPrices = cellDate >= todayStart;
+    var inBookingWindow = api.isWithinBookingWindow(y, m, d);
+    var showPrices = cellDate >= todayStart && inBookingWindow;
 
     var rowsHtml = "";
     var lineCount = 0;
     var ri;
     for (ri = 0; ri < ROOM_ORDER.length && lineCount < 3; ri++) {
       var room = ROOM_ORDER[ri];
-      var booked = dayStatusForRoom(events, y, m, d, room.id);
+      var booked = inBookingWindow && dayStatusForRoom(events, y, m, d, room.id);
 
       var disp = api.resolveResourceRowDisplay(room.id, y, m, d, booked);
       if (disp.kind === "booked") {
@@ -314,6 +315,7 @@
     var cls = "availability-cal-cell availability-cal-cell--day";
     if (isToday) cls += " availability-cal-cell--today";
     if (isPast) cls += " availability-cal-cell--past";
+    if (!inBookingWindow && !isPast) cls += " availability-cal-cell--not-open";
     if (lineCount > 0) cls += " availability-cal-cell--has-lines";
 
     var linesWrap = rowsHtml

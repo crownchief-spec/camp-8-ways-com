@@ -971,6 +971,10 @@ p:last-child { margin-bottom: 0; }
   opacity: 0.88;
 }
 
+.availability-cal-cell--not-open:not(.availability-cal-cell--pad) {
+  opacity: 0.42;
+}
+
 @media (max-width: 640px) {
   .availability-page-inner {
     padding: 0 8px;

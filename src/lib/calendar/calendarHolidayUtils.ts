@@ -1,6 +1,4 @@
-/**
- * 連假區間 → 價格套用日（入住夜）：整段往前移一天，天數不變。
- */
+/** 連假區間 → 價格套用入住夜：連假第一天至倒數第二天。 */
 
 function pad2(n: number): string {
   return n < 10 ? "0" + n : String(n);
@@ -24,7 +22,8 @@ export function addLocalDays(base: Date, delta: number): Date {
 }
 
 /**
- * 單一官方連假區間 → 價格 override：整段往前移一天（起、迄各減一日），天數不變，展開區間內每一天（含首尾）。
+ * 單一官方連假區間 → 價格 override：從連假第一天到最後一天的前一晚。
+ * 例如五、六、日三日連假，只調整星期五與星期六入住價。
  */
 export function holidayBlockToPriceOverrideDates(block: {
   start: string;
@@ -32,9 +31,8 @@ export function holidayBlockToPriceOverrideDates(block: {
 }): string[] {
   const rawStart = parseYmdLocal(block.start);
   const rawEnd = parseYmdLocal(block.end);
-  const priceStart = addLocalDays(rawStart, -1);
   const priceEnd = addLocalDays(rawEnd, -1);
-  return enumerateInclusiveLocalYmd(priceStart, priceEnd);
+  return enumerateInclusiveLocalYmd(rawStart, priceEnd);
 }
 
 function enumerateInclusiveLocalYmd(start: Date, end: Date): string[] {

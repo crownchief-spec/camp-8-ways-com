@@ -1,6 +1,12 @@
-/**
- * 2027 年官方辦公日曆／連假尚未公告。
- * 請之後手動補入 calendarHolidayBlocks2027 的 { start, end } 區間（YYYY-MM-DD），
- * 與 2026 年相同規則：程式會自動「整段往前移一天」產生假日價套用日。
- */
-export const calendarHolidayBlocks2027: Array<{ start: string; end: string }> = [];
+/** 2027 年行政院人事行政總處公布的 3 日以上連假。 */
+export const calendarHolidayBlocks2027: Array<{ start: string; end: string }> = [
+  { start: "2027-01-01", end: "2027-01-03" },
+  { start: "2027-02-04", end: "2027-02-10" },
+  { start: "2027-02-27", end: "2027-03-01" },
+  { start: "2027-04-03", end: "2027-04-06" },
+  { start: "2027-04-30", end: "2027-05-02" },
+  { start: "2027-10-09", end: "2027-10-11" },
+  { start: "2027-10-23", end: "2027-10-25" },
+  { start: "2027-12-24", end: "2027-12-26" },
+  { start: "2027-12-31", end: "2028-01-02" },
+];

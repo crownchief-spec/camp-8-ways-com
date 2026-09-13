@@ -2,8 +2,11 @@
 (() => {
   // src/data/calendar/calendarHolidayBlocks2026.ts
   var calendarHolidayBlocks2026 = [
+    { start: "2026-02-14", end: "2026-02-22" },
+    { start: "2026-02-27", end: "2026-03-01" },
+    { start: "2026-04-03", end: "2026-04-06" },
     { start: "2026-05-01", end: "2026-05-03" },
-    { start: "2026-06-19", end: "2026-06-22" },
+    { start: "2026-06-19", end: "2026-06-21" },
     { start: "2026-09-25", end: "2026-09-28" },
     { start: "2026-10-09", end: "2026-10-11" },
     { start: "2026-10-24", end: "2026-10-26" },
@@ -11,7 +14,17 @@
   ];
 
   // src/data/calendar/calendarHolidayBlocks2027.ts
-  var calendarHolidayBlocks2027 = [];
+  var calendarHolidayBlocks2027 = [
+    { start: "2027-01-01", end: "2027-01-03" },
+    { start: "2027-02-04", end: "2027-02-10" },
+    { start: "2027-02-27", end: "2027-03-01" },
+    { start: "2027-04-03", end: "2027-04-06" },
+    { start: "2027-04-30", end: "2027-05-02" },
+    { start: "2027-10-09", end: "2027-10-11" },
+    { start: "2027-10-23", end: "2027-10-25" },
+    { start: "2027-12-24", end: "2027-12-26" },
+    { start: "2027-12-31", end: "2028-01-02" }
+  ];
 
   // src/lib/calendar/calendarHolidayUtils.ts
   function pad2(n) {
@@ -32,9 +45,8 @@
   function holidayBlockToPriceOverrideDates(block) {
     const rawStart = parseYmdLocal(block.start);
     const rawEnd = parseYmdLocal(block.end);
-    const priceStart = addLocalDays(rawStart, -1);
     const priceEnd = addLocalDays(rawEnd, -1);
-    return enumerateInclusiveLocalYmd(priceStart, priceEnd);
+    return enumerateInclusiveLocalYmd(rawStart, priceEnd);
   }
   function enumerateInclusiveLocalYmd(start, end) {
     const out = [];
@@ -69,6 +81,7 @@
       originalPrice: 7800,
       weekday: 5e3,
       weekend: 5e3,
+      longHoliday: 6e3,
       showPrice: true
     },
     cloud: {
@@ -77,6 +90,7 @@
       originalPrice: 7800,
       weekday: 5e3,
       weekend: 5e3,
+      longHoliday: 6e3,
       showPrice: true
     },
     rv: {
@@ -86,15 +100,21 @@
     }
   };
 
+  // src/data/calendar/calendarSpecialNightlyPrices.ts
+  var calendarSpecialNightlyPrices = {
+    "2027-02-03": 8e3,
+    "2027-02-04": 8e3,
+    "2027-02-05": 8e3,
+    "2027-02-06": 8e3,
+    "2027-02-07": 8e3,
+    "2027-02-08": 8e3
+  };
+
   // src/lib/date/datePricingUtils.ts
+  var BOOKING_WINDOW_MONTHS = 6;
   function isFridayOrSaturdayLocal(y, m, d) {
     const dow = new Date(y, m, d).getDay();
     return dow === 5 || dow === 6;
-  }
-  function isHolidayPriceNight(y, m, d, holidayOverrideSet) {
-    const key = formatYmdLocal(new Date(y, m, d, 0, 0, 0, 0));
-    if (holidayOverrideSet.has(key)) return true;
-    return isFridayOrSaturdayLocal(y, m, d);
   }
   function formatPriceNt(amount) {
     return "$" + amount.toLocaleString("zh-TW");
@@ -110,8 +130,9 @@
     if (!cfg.showPrice) {
       return { kind: "hidden" };
     }
-    const holidayNight = isHolidayPriceNight(y, m, d, holidayOverrideSet);
-    const amount = holidayNight ? cfg.weekend : cfg.weekday;
+    const key = formatYmdLocal(new Date(y, m, d, 0, 0, 0, 0));
+    const specialPrice = calendarSpecialNightlyPrices[key];
+    const amount = specialPrice ?? (holidayOverrideSet.has(key) ? cfg.longHoliday : isFridayOrSaturdayLocal(y, m, d) ? cfg.weekend : cfg.weekday);
     return {
       kind: "price",
       label: cfg.label,
@@ -119,40 +140,39 @@
       formattedPrice: formatDiscountPriceDisplay(cfg.originalPrice, amount)
     };
   }
-  var RELEVANT = /* @__PURE__ */ new Set(["balloon", "cloud", "rv"]);
   function startOfToday(now = /* @__PURE__ */ new Date()) {
     return new Date(now.getFullYear(), now.getMonth(), now.getDate(), 0, 0, 0, 0);
   }
-  function eventOverlapsLocalDay(ev, y, m, day) {
-    const dayStart = new Date(y, m, day, 0, 0, 0, 0);
-    const dayEnd = new Date(y, m, day + 1, 0, 0, 0, 0);
-    return ev.end > dayStart && ev.start < dayEnd;
-  }
-  function computeCalendarMonthRange(events, now = /* @__PURE__ */ new Date()) {
-    const todayStart = startOfToday(now);
+  function computeCalendarMonthRange(_events, now = /* @__PURE__ */ new Date()) {
     const startYm = { y: now.getFullYear(), m: now.getMonth() };
-    let maxY = startYm.y;
-    let maxM = startYm.m;
-    for (const ev of events) {
-      if (!ev.tags.some((t) => RELEVANT.has(t))) continue;
-      if (ev.end <= todayStart) continue;
-      let cur = new Date(
-        ev.start < todayStart ? todayStart.getTime() : ev.start.getTime()
-      );
-      cur = new Date(cur.getFullYear(), cur.getMonth(), cur.getDate(), 0, 0, 0, 0);
-      while (cur < ev.end) {
-        if (cur >= todayStart && eventOverlapsLocalDay(ev, cur.getFullYear(), cur.getMonth(), cur.getDate())) {
-          const cy = cur.getFullYear();
-          const cm = cur.getMonth();
-          if (cy > maxY || cy === maxY && cm > maxM) {
-            maxY = cy;
-            maxM = cm;
-          }
-        }
-        cur.setDate(cur.getDate() + 1);
-      }
-    }
-    return { startYm, endYm: { y: maxY, m: maxM } };
+    const cutoff = bookingWindowCutoff(now);
+    return { startYm, endYm: { y: cutoff.getFullYear(), m: cutoff.getMonth() } };
+  }
+  function bookingWindowCutoff(now = /* @__PURE__ */ new Date()) {
+    const source = startOfToday(now);
+    const targetMonth = new Date(
+      source.getFullYear(),
+      source.getMonth() + BOOKING_WINDOW_MONTHS,
+      1
+    );
+    const lastDay = new Date(
+      targetMonth.getFullYear(),
+      targetMonth.getMonth() + 1,
+      0
+    ).getDate();
+    return new Date(
+      targetMonth.getFullYear(),
+      targetMonth.getMonth(),
+      Math.min(source.getDate(), lastDay),
+      0,
+      0,
+      0,
+      0
+    );
+  }
+  function isWithinBookingWindow(y, m, d, now = /* @__PURE__ */ new Date()) {
+    const day = new Date(y, m, d, 0, 0, 0, 0);
+    return day >= startOfToday(now) && day <= bookingWindowCutoff(now);
   }
 
   // src/bundle/campCalendarPricing.ts
@@ -164,6 +184,7 @@
     RESOURCE_ORDER: ["balloon", "cloud", "rv"],
     holidayOverrideDateSet,
     computeCalendarMonthRange,
+    isWithinBookingWindow,
     resolveResourceRowDisplay(resourceId, y, m, d, isBooked) {
       return resolveResourceRowDisplay(
         resourceId,

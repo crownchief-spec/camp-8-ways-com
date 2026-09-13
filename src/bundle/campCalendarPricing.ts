@@ -7,6 +7,7 @@ import { calendarHolidayBlocks2027 } from "../data/calendar/calendarHolidayBlock
 import { buildHolidayOverrideDateSet } from "../lib/calendar/calendarHolidayUtils";
 import {
   computeCalendarMonthRange,
+  isWithinBookingWindow,
   resolveResourceRowDisplay as resolveResourceRowDisplayCore,
 } from "../lib/date/datePricingUtils";
 
@@ -19,6 +20,7 @@ const CampCalendarPricing = {
   RESOURCE_ORDER: ["balloon", "cloud", "rv"] as const,
   holidayOverrideDateSet,
   computeCalendarMonthRange,
+  isWithinBookingWindow,
   resolveResourceRowDisplay(
     resourceId: string,
     y: number,
