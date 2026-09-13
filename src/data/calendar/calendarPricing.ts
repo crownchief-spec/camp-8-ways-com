@@ -15,7 +15,7 @@ export interface PricedCalendarResource {
   weekday: number;
   /** 一般週末住宿日 */
   weekend: number;
-  /** 官方連假前 N−1 晚（連假最後一天不加價） */
+  /** 官方連假前 N−1 晚與每年 12/31 跨年夜 */
   longHoliday: number;
   showPrice: true;
 }

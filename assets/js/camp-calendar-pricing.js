@@ -132,7 +132,8 @@
     }
     const key = formatYmdLocal(new Date(y, m, d, 0, 0, 0, 0));
     const specialPrice = calendarSpecialNightlyPrices[key];
-    const amount = specialPrice ?? (holidayOverrideSet.has(key) ? cfg.longHoliday : isFridayOrSaturdayLocal(y, m, d) ? cfg.weekend : cfg.weekday);
+    const isNewYearsEve = m === 11 && d === 31;
+    const amount = specialPrice ?? (holidayOverrideSet.has(key) || isNewYearsEve ? cfg.longHoliday : isFridayOrSaturdayLocal(y, m, d) ? cfg.weekend : cfg.weekday);
     return {
       kind: "price",
       label: cfg.label,
