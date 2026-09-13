@@ -5049,6 +5049,58 @@ footer a:hover { color: #ffffff; }
   font-weight: 700;
 }
 .facility-scope--conditional { background: #fff0df; color: #7d4a18; }
+.room-amenity-intro {
+  max-width: 42rem;
+  margin: -0.35rem auto 1.25rem;
+  color: var(--color-text-muted);
+  text-align: center;
+}
+.room-amenity-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+  max-width: 62rem;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+}
+.room-amenity-list li {
+  position: relative;
+  min-width: 0;
+  padding: 0.7rem 0.85rem 0.7rem 2rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.7rem;
+  background: #fff;
+}
+.room-amenity-list li::before {
+  content: "";
+  position: absolute;
+  top: 1.03rem;
+  left: 0.85rem;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: var(--color-forest);
+}
+.room-amenity-list strong {
+  display: block;
+  color: var(--color-forest-dark);
+  font-size: 0.95rem;
+  line-height: 1.35;
+}
+.room-amenity-list small {
+  display: block;
+  margin-top: 0.14rem;
+  color: var(--color-text-muted);
+  font-size: 0.79rem;
+  line-height: 1.55;
+}
+.room-amenity-list a,
+.room-amenity-more a { font-weight: 700; }
+.room-amenity-more {
+  margin: 1rem 0 0;
+  text-align: center;
+}
 .facility-hub-intro { max-width: 50rem; margin: 0 auto 1.5rem; text-align: center; }
 .facility-hub-intro .lead { margin-bottom: 0; }
 .facility-space-preview {
@@ -5217,6 +5269,7 @@ footer a:hover { color: #ffffff; }
   .facility-teaser-grid,
   .room-facility-summary,
   .facility-hub-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .room-amenity-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (min-width: 769px) {
