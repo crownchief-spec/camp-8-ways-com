@@ -134,6 +134,18 @@
       <div id="revenue-month-table" class="admin-month-table-wrap"></div>
     </section>
 
+    <section class="admin-month-breakdown" aria-labelledby="revenue-growth-title">
+      <h2 id="revenue-growth-title" class="admin-panel-title">每月營收成長與修正</h2>
+      <p class="admin-analysis-note">截至 2026/9/14 正式對帳。修正後台幣營收已採 Agoda 扣除佣金後淨額；Airbnb 因官方月結為美元，暫沿用台幣管理估值。</p>
+      <div id="revenue-growth-table" class="admin-month-table-wrap" aria-live="polite"></div>
+    </section>
+
+    <section class="admin-month-breakdown" aria-labelledby="booking-source-title">
+      <h2 id="booking-source-title" class="admin-panel-title">每月訂單來源比例</h2>
+      <p class="admin-analysis-note">以下按有效案件數計算，不是收入金額；無法由現有紀錄確認平台者獨立列為「平台未註明」。</p>
+      <div id="booking-source-table" class="admin-month-table-wrap" aria-live="polite"></div>
+    </section>
+
     <section class="staff-main-section admin-revenue-main">
       <ul class="availability-legend-list admin-revenue-legend" role="list">
         <li>
@@ -149,7 +161,7 @@
           <span>露營車</span>
         </li>
       </ul>
-      <p class="admin-revenue-hint">自<strong>今年二月</strong>起列出全部月份。金額顯示在<strong>入住日</strong>；優先讀取行事曆「總租金／總金額／金額／方案費用／費用」與算式（如 <code>$11,800+2×2800</code>）<span class="admin-revenue-source-chip admin-revenue-source-chip--calendar">行事曆明確</span>，Airbnb／Agoda 缺價才標成<span class="admin-revenue-source-chip admin-revenue-source-chip--estimate">平台估算</span>；格子內修改則為<span class="admin-revenue-source-chip admin-revenue-source-chip--manual">手動確定</span>。問號暫定案、互惠、補償、唱歌／設備備註、同筆訂房的重複房型事件與露營車單日作業均不計入。</p>
+      <p class="admin-revenue-hint">自<strong>今年二月</strong>起列出全部月份。Agoda 已套用正式訂單淨額（扣佣金後）<span class="admin-revenue-source-chip admin-revenue-source-chip--calendar">正式對帳</span>；其餘金額顯示在<strong>入住日</strong>，優先讀取行事曆「總租金／總金額／金額／方案費用／費用」與算式（如 <code>$11,800+2×2800</code>）<span class="admin-revenue-source-chip admin-revenue-source-chip--calendar">行事曆明確</span>，Airbnb 缺價才標成<span class="admin-revenue-source-chip admin-revenue-source-chip--estimate">平台估算</span>；格子內修改則為<span class="admin-revenue-source-chip admin-revenue-source-chip--manual">手動確定</span>。問號暫定案、互惠、補償、唱歌／設備備註、同筆訂房的重複房型事件與露營車單日作業均不計入。Airbnb 官方美元月結另存於內部報表，未混入台幣精準實收。</p>
       <p id="revenue-status" class="staff-status" aria-live="polite"></p>
       <p id="revenue-fetch-error" class="staff-error" role="alert" hidden></p>
       <div id="revenue-events" class="staff-events"></div>

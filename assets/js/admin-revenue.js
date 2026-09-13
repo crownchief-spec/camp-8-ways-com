@@ -20,6 +20,7 @@
   };
 
   var eventsCache = [];
+  var officialReconciliation = { overrides: {}, excludedEventIds: [], excludedRules: [], virtualEvents: [] };
   var rangeFromYmd = "";
   var rangeUntilYmd = "";
 
@@ -29,6 +30,8 @@
   var refreshBtn = document.getElementById("revenue-refresh-btn");
   var rangeLabel = document.getElementById("revenue-range-label");
   var monthTableEl = document.getElementById("revenue-month-table");
+  var revenueGrowthTableEl = document.getElementById("revenue-growth-table");
+  var bookingSourceTableEl = document.getElementById("booking-source-table");
   var sumTotal = document.getElementById("sum-total");
   var sumTent = document.getElementById("sum-tent");
   var sumRv = document.getElementById("sum-rv");
@@ -127,6 +130,85 @@
     return "$" + num.toLocaleString("en-US");
   }
 
+  function formatMonth(month) {
+    var parts = String(month || "").split("-");
+    if (parts.length !== 2) return month || "—";
+    return Number(parts[1]) + " 月";
+  }
+
+  function formatSignedMoney(n) {
+    var num = Math.round(Number(n) || 0);
+    if (num === 0) return "$0";
+    return (num > 0 ? "+" : "−") + formatMoney(Math.abs(num));
+  }
+
+  function formatGrowth(n) {
+    if (n == null) return "—";
+    var num = Number(n) || 0;
+    return (num > 0 ? "+" : num < 0 ? "−" : "") + Math.abs(num).toFixed(1) + "%";
+  }
+
+  function sourceCell(count, total) {
+    var percentage = total ? (Number(count || 0) / total) * 100 : 0;
+    return escapeHtml(String(count || 0)) + '<span class="admin-analysis-percent">' + percentage.toFixed(1) + "%</span>";
+  }
+
+  function renderReconciliationTables() {
+    var monthlyRevenue = officialReconciliation.monthlyRevenue || [];
+    if (revenueGrowthTableEl) {
+      if (!monthlyRevenue.length) {
+        revenueGrowthTableEl.innerHTML = '<p class="staff-empty">尚無正式對帳資料。</p>';
+      } else {
+        var revenueRows = monthlyRevenue.map(function (row) {
+          var differenceClass = row.difference < 0 ? " admin-analysis-value--down" : row.difference > 0 ? " admin-analysis-value--up" : "";
+          var growthClass = row.growth < 0 ? " admin-analysis-value--down" : row.growth > 0 ? " admin-analysis-value--up" : "";
+          return "<tr>" +
+            "<td>" + escapeHtml(formatMonth(row.month)) + "</td>" +
+            "<td>" + escapeHtml(formatMoney(row.original)) + "</td>" +
+            '<td class="admin-month-table__total">' + escapeHtml(formatMoney(row.revised)) + "</td>" +
+            '<td class="' + differenceClass.trim() + '">' + escapeHtml(formatSignedMoney(row.difference)) + "</td>" +
+            '<td class="' + growthClass.trim() + '">' + escapeHtml(formatGrowth(row.growth)) + "</td>" +
+            "<td>" + escapeHtml(formatMoney(row.cumulative)) + "</td>" +
+            "</tr>";
+        }).join("");
+        var originalTotal = monthlyRevenue.reduce(function (sum, row) { return sum + Number(row.original || 0); }, 0);
+        var revisedTotal = monthlyRevenue.reduce(function (sum, row) { return sum + Number(row.revised || 0); }, 0);
+        revenueGrowthTableEl.innerHTML =
+          '<table class="admin-month-table admin-analysis-table">' +
+          "<thead><tr><th>月份</th><th>原估營收</th><th>修正後營收</th><th>修正差額</th><th>月成長率</th><th>累計營收</th></tr></thead>" +
+          "<tbody>" + revenueRows + "</tbody>" +
+          '<tfoot><tr><th>2–8 月合計</th><th>' + escapeHtml(formatMoney(originalTotal)) + '</th><th>' + escapeHtml(formatMoney(revisedTotal)) + '</th><th class="admin-analysis-value--down">' + escapeHtml(formatSignedMoney(revisedTotal - originalTotal)) + '</th><th>—</th><th>' + escapeHtml(formatMoney(revisedTotal)) + "</th></tr></tfoot>" +
+          "</table>";
+      }
+    }
+
+    var monthlySources = officialReconciliation.monthlySourceCases || [];
+    if (bookingSourceTableEl) {
+      if (!monthlySources.length) {
+        bookingSourceTableEl.innerHTML = '<p class="staff-empty">尚無訂單來源資料。</p>';
+      } else {
+        var totals = { total: 0, airbnb: 0, agoda: 0, unknown: 0, direct: 0 };
+        var sourceRows = monthlySources.map(function (row) {
+          Object.keys(totals).forEach(function (key) { totals[key] += Number(row[key] || 0); });
+          return "<tr>" +
+            "<td>" + escapeHtml(formatMonth(row.month)) + "</td>" +
+            "<td>" + escapeHtml(String(row.total)) + "</td>" +
+            "<td>" + sourceCell(row.airbnb, row.total) + "</td>" +
+            "<td>" + sourceCell(row.agoda, row.total) + "</td>" +
+            "<td>" + sourceCell(row.unknown, row.total) + "</td>" +
+            "<td>" + sourceCell(row.direct, row.total) + "</td>" +
+            "</tr>";
+        }).join("");
+        bookingSourceTableEl.innerHTML =
+          '<table class="admin-month-table admin-analysis-table">' +
+          "<thead><tr><th>月份</th><th>有效案件</th><th>Airbnb</th><th>Agoda</th><th>平台未註明</th><th>私下接單</th></tr></thead>" +
+          "<tbody>" + sourceRows + "</tbody>" +
+          '<tfoot><tr><th>2–8 月合計</th><th>' + totals.total + "</th><th>" + sourceCell(totals.airbnb, totals.total) + "</th><th>" + sourceCell(totals.agoda, totals.total) + "</th><th>" + sourceCell(totals.unknown, totals.total) + "</th><th>" + sourceCell(totals.direct, totals.total) + "</th></tr></tfoot>" +
+          "</table>";
+      }
+    }
+  }
+
   function loadRules() {
     try {
       var raw = localStorage.getItem(RULES_KEY);
@@ -218,8 +300,17 @@
     return false;
   }
 
+  function isOfficiallyExcluded(ev) {
+    if (officialReconciliation.excludedEventIds.indexOf(ev.id) !== -1) return true;
+    return (officialReconciliation.excludedRules || []).some(function (rule) {
+      return ev.checkInYmd === rule.checkInYmd && (!rule.roomTag || (ev.roomTags || []).indexOf(rule.roomTag) !== -1);
+    });
+  }
+
   function revenueEvents(list) {
-    return RevenueRules.analyzeEvents(list || []).included;
+    return RevenueRules.analyzeEvents(list || []).included.filter(function (ev) {
+      return !isOfficiallyExcluded(ev);
+    });
   }
 
   function eventText(ev) {
@@ -289,6 +380,14 @@
   }
 
   function getEventPrice(ev, rules, overrides) {
+    var official = officialReconciliation.overrides[ev.id];
+    if (official) {
+      return {
+        amount: official.amount,
+        source: "official",
+        overridden: false
+      };
+    }
     if (isRvNonRentalNote(ev)) {
       return {
         amount: 0,
@@ -354,7 +453,7 @@
       total += price;
       if (eventKind(ev) === "rv") rv += price;
       else tent += price;
-      if (info.source === "manual" || info.source === "calendar") exact += price;
+      if (info.source === "official" || info.source === "manual" || info.source === "calendar") exact += price;
       else estimated += price;
     });
     return { total: total, tent: tent, rv: rv, exact: exact, estimated: estimated };
@@ -482,7 +581,9 @@
     var title = (ev.summary || "").replace(/\s+/g, " ").trim();
     if (title.length > 18) title = title.slice(0, 18) + "…";
     var sourceLabel =
-      priceInfo.source === "manual"
+      priceInfo.source === "official"
+        ? "正式對帳"
+        : priceInfo.source === "manual"
         ? "手動確定"
         : priceInfo.source === "calendar"
           ? "行事曆明確"
@@ -490,7 +591,9 @@
             ? "平台估算"
             : priceInfo.estimateLabel || "歷史估算";
     var sourceClass =
-      priceInfo.source === "manual"
+      priceInfo.source === "official"
+        ? " admin-revenue-line--calendar"
+        : priceInfo.source === "manual"
         ? " admin-revenue-line--manual"
         : priceInfo.source === "calendar"
           ? " admin-revenue-line--calendar"
@@ -697,24 +800,53 @@
     showFetchError("");
     updateRangeLabel();
 
-    return apiFetch(
+    return Promise.all([
+      apiFetch(
       "/staff-calendar/events?from=" +
         encodeURIComponent(rangeFromYmd) +
         "&until=" +
         encodeURIComponent(rangeUntilYmd)
-    )
-      .then(function (result) {
+      ),
+      fetch("/data/revenue-reconciliation-2026.json", { cache: "no-store" })
+        .then(function (response) {
+          return response.ok ? response.json() : officialReconciliation;
+        })
+        .catch(function () {
+          return officialReconciliation;
+        })
+    ])
+      .then(function (results) {
+        var result = results[0];
+        officialReconciliation = results[1] || officialReconciliation;
+        renderReconciliationTables();
         if (!result.data.ok) {
           throw new Error(result.data.error || "載入失敗");
         }
-        eventsCache = result.data.events || [];
+        eventsCache = (result.data.events || []).concat(
+          (officialReconciliation.virtualEvents || []).map(function (ev) {
+            return {
+              id: ev.id,
+              roomTags: ev.roomTags || [],
+              roomLabels: [],
+              summary: ev.summary || "Agoda 正式訂單",
+              description: "Agoda 正式對帳補列",
+              comment: "",
+              bookingSource: "Agoda",
+              checkInYmd: ev.checkInYmd,
+              nights: ev.nights || 1,
+              isPrivate: false
+            };
+          })
+        );
         var analysis = RevenueRules.analyzeEvents(eventsCache);
-        var counted = analysis.included.length;
-        var skipped = analysis.excluded.length;
+        var counted = revenueEvents(eventsCache).length;
+        var officialSkipped = analysis.included.filter(isOfficiallyExcluded).length;
+        var skipped = analysis.excluded.length + officialSkipped;
         var reasonCounts = {};
         analysis.excluded.forEach(function (item) {
           reasonCounts[item.reason] = (reasonCounts[item.reason] || 0) + 1;
         });
+        if (officialSkipped) reasonCounts["正式對帳排除"] = officialSkipped;
         var reasonText = Object.keys(reasonCounts)
           .map(function (reason) {
             return reason + " " + reasonCounts[reason] + " 筆";

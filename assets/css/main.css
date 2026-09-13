@@ -5366,6 +5366,47 @@ footer a:hover { color: #ffffff; }
   color: #1f2a1d;
 }
 
+.admin-analysis-note {
+  margin: -4px 0 14px;
+  color: #5a6558;
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+.admin-analysis-table {
+  min-width: 720px;
+}
+
+.admin-analysis-table tfoot th {
+  padding: 11px 12px;
+  border-top: 2px solid #ccd8c8;
+  background: #eef3ec;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.admin-analysis-table tfoot th:first-child {
+  text-align: left;
+}
+
+.admin-analysis-percent {
+  display: block;
+  margin-top: 2px;
+  color: #6b7568;
+  font-size: 0.76rem;
+  font-weight: 500;
+}
+
+.admin-analysis-value--up {
+  color: #25643a;
+  font-weight: 700;
+}
+
+.admin-analysis-value--down {
+  color: #a04436;
+  font-weight: 700;
+}
+
 .admin-month-subtotal {
   margin: -0.5rem 0 1rem;
   text-align: center;
