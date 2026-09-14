@@ -5373,6 +5373,10 @@ footer a:hover { color: #ffffff; }
   line-height: 1.6;
 }
 
+.admin-analysis-note--forecast {
+  margin-top: -10px;
+}
+
 .admin-analysis-table {
   min-width: 720px;
 }
@@ -5404,6 +5408,21 @@ footer a:hover { color: #ffffff; }
 
 .admin-analysis-value--down {
   color: #a04436;
+  font-weight: 700;
+}
+
+.admin-analysis-row--forecast {
+  opacity: 0.55;
+}
+
+.admin-analysis-row--forecast-start td {
+  border-top: 2px dashed #879482;
+}
+
+.admin-analysis-forecast-label {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.72rem;
   font-weight: 700;
 }
 

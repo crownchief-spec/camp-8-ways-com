@@ -136,6 +136,12 @@
     return Number(parts[1]) + " 月";
   }
 
+  function formatYearMonth(month) {
+    var parts = String(month || "").split("-");
+    if (parts.length !== 2) return month || "—";
+    return Number(parts[0]) + " 年 " + Number(parts[1]) + " 月";
+  }
+
   function formatSignedMoney(n) {
     var num = Math.round(Number(n) || 0);
     if (num === 0) return "$0";
@@ -173,11 +179,31 @@
         }).join("");
         var originalTotal = monthlyRevenue.reduce(function (sum, row) { return sum + Number(row.original || 0); }, 0);
         var revisedTotal = monthlyRevenue.reduce(function (sum, row) { return sum + Number(row.revised || 0); }, 0);
+        var forecastMonths = (officialReconciliation.revenueForecast || {}).months || [];
+        var forecastCumulative = revisedTotal;
+        var previousRevenue = monthlyRevenue.length ? Number(monthlyRevenue[monthlyRevenue.length - 1].revised || 0) : 0;
+        var forecastRows = forecastMonths.map(function (row, index) {
+          var amount = Number(row.amount || 0);
+          var growth = previousRevenue ? ((amount - previousRevenue) / previousRevenue) * 100 : null;
+          forecastCumulative += amount;
+          previousRevenue = amount;
+          return '<tr class="admin-analysis-row--forecast' + (index === 0 ? " admin-analysis-row--forecast-start" : "") + '">' +
+            "<td>" + escapeHtml(formatYearMonth(row.month)) + '<span class="admin-analysis-forecast-label">預估</span></td>' +
+            "<td>—</td>" +
+            '<td class="admin-month-table__total">' + escapeHtml(formatMoney(amount)) + "</td>" +
+            "<td>—</td>" +
+            "<td>" + escapeHtml(formatGrowth(growth)) + "</td>" +
+            "<td>" + escapeHtml(formatMoney(forecastCumulative)) + "</td>" +
+            "</tr>";
+        }).join("");
+        var forecastTotal = forecastMonths.reduce(function (sum, row) { return sum + Number(row.amount || 0); }, 0);
         revenueGrowthTableEl.innerHTML =
           '<table class="admin-month-table admin-analysis-table">' +
-          "<thead><tr><th>月份</th><th>原估營收</th><th>修正後營收</th><th>修正差額</th><th>月成長率</th><th>累計營收</th></tr></thead>" +
-          "<tbody>" + revenueRows + "</tbody>" +
-          '<tfoot><tr><th>2–8 月合計</th><th>' + escapeHtml(formatMoney(originalTotal)) + '</th><th>' + escapeHtml(formatMoney(revisedTotal)) + '</th><th class="admin-analysis-value--down">' + escapeHtml(formatSignedMoney(revisedTotal - originalTotal)) + '</th><th>—</th><th>' + escapeHtml(formatMoney(revisedTotal)) + "</th></tr></tfoot>" +
+          "<thead><tr><th>月份</th><th>原估營收</th><th>修正／預估營收</th><th>修正差額</th><th>月成長率</th><th>累計營收</th></tr></thead>" +
+          "<tbody>" + revenueRows + forecastRows + "</tbody>" +
+          '<tfoot><tr><th>2–8 月實際合計</th><th>' + escapeHtml(formatMoney(originalTotal)) + '</th><th>' + escapeHtml(formatMoney(revisedTotal)) + '</th><th class="admin-analysis-value--down">' + escapeHtml(formatSignedMoney(revisedTotal - originalTotal)) + '</th><th>—</th><th>' + escapeHtml(formatMoney(revisedTotal)) + "</th></tr>" +
+          (forecastMonths.length ? '<tr class="admin-analysis-row--forecast"><th>未來 6 個月預估</th><th>—</th><th>' + escapeHtml(formatMoney(forecastTotal)) + '</th><th>—</th><th>—</th><th>' + escapeHtml(formatMoney(revisedTotal + forecastTotal)) + "</th></tr>" : "") +
+          "</tfoot>" +
           "</table>";
       }
     }

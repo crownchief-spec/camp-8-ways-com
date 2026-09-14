@@ -258,6 +258,18 @@
     { "month": "2026-07", "original": 83800, "revised": 82610, "difference": -1190, "growth": 2.4, "cumulative": 343320 },
     { "month": "2026-08", "original": 128400, "revised": 129060, "difference": 660, "growth": 56.2, "cumulative": 472380 }
   ],
+  "revenueForecast": {
+    "createdAt": "2026-09-14",
+    "basis": "6–8 月加權平均約 NT$103,000／月，再套用旺淡季係數",
+    "months": [
+      { "month": "2026-09", "amount": 97900 },
+      { "month": "2026-10", "amount": 103000 },
+      { "month": "2026-11", "amount": 98900 },
+      { "month": "2026-12", "amount": 115400 },
+      { "month": "2027-01", "amount": 92700 },
+      { "month": "2027-02", "amount": 94800 }
+    ]
+  },
   "monthlySourceCases": [
     { "month": "2026-02", "total": 3, "airbnb": 0, "agoda": 3, "unknown": 0, "direct": 0 },
     { "month": "2026-03", "total": 5, "airbnb": 0, "agoda": 5, "unknown": 0, "direct": 0 },
