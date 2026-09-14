@@ -5373,12 +5373,72 @@ footer a:hover { color: #ffffff; }
   line-height: 1.6;
 }
 
-.admin-analysis-note--forecast {
-  margin-top: -10px;
-}
-
 .admin-analysis-table {
   min-width: 720px;
+}
+
+.admin-chart-wrap {
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.admin-chart {
+  display: block;
+  width: 100%;
+  min-width: 720px;
+  height: auto;
+}
+
+.admin-chart-grid {
+  stroke: #dce5d9;
+  stroke-width: 1;
+}
+
+.admin-chart-axis-label {
+  fill: #5d685a;
+  font-size: 13px;
+}
+
+.admin-chart-legend-label {
+  fill: #344132;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.admin-chart-line--actual {
+  fill: none;
+  stroke: #2f6b45;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 4;
+}
+
+.admin-chart-line--forecast {
+  fill: none;
+  opacity: 0.55;
+  stroke: #b06f36;
+  stroke-dasharray: 10 8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 4;
+}
+
+.admin-chart-point--actual {
+  fill: #fff;
+  stroke: #2f6b45;
+  stroke-width: 3;
+}
+
+.admin-chart-point--forecast {
+  fill: #fff;
+  opacity: 0.55;
+  stroke: #b06f36;
+  stroke-width: 3;
+}
+
+.admin-chart-forecast-zone {
+  fill: #f2ede4;
+  opacity: 0.45;
 }
 
 .admin-analysis-table tfoot th {
@@ -5408,21 +5468,6 @@ footer a:hover { color: #ffffff; }
 
 .admin-analysis-value--down {
   color: #a04436;
-  font-weight: 700;
-}
-
-.admin-analysis-row--forecast {
-  opacity: 0.55;
-}
-
-.admin-analysis-row--forecast-start td {
-  border-top: 2px dashed #879482;
-}
-
-.admin-analysis-forecast-label {
-  display: block;
-  margin-top: 2px;
-  font-size: 0.72rem;
   font-weight: 700;
 }
 

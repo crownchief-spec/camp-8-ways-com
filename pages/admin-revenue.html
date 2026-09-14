@@ -134,10 +134,21 @@
       <div id="revenue-month-table" class="admin-month-table-wrap"></div>
     </section>
 
+    <section class="admin-month-breakdown" aria-labelledby="revenue-chart-title">
+      <h2 id="revenue-chart-title" class="admin-panel-title">營收成長曲線</h2>
+      <p class="admin-analysis-note">實線為 2～8 月對帳資料；淡色虛線從 8 月實績延伸，預估 2026 年 9 月至 2027 年 2 月。</p>
+      <div id="revenue-trend-chart" class="admin-chart-wrap" aria-live="polite"></div>
+    </section>
+
+    <section class="admin-month-breakdown" aria-labelledby="source-chart-title">
+      <h2 id="source-chart-title" class="admin-panel-title">訂單來源比例變化</h2>
+      <p class="admin-analysis-note">每根柱子代表該月有效案件的來源比例；這張圖不含尚未發生月份的猜測。</p>
+      <div id="booking-source-chart" class="admin-chart-wrap" aria-live="polite"></div>
+    </section>
+
     <section class="admin-month-breakdown" aria-labelledby="revenue-growth-title">
       <h2 id="revenue-growth-title" class="admin-panel-title">每月營收成長與修正</h2>
       <p class="admin-analysis-note">截至 2026/9/14 正式對帳。修正後台幣營收已採 Agoda 扣除佣金後淨額；Airbnb 因官方月結為美元，暫沿用台幣管理估值。</p>
-      <p class="admin-analysis-note admin-analysis-note--forecast">未來六個月以 6～8 月加權平均約 NT$103,000／月為基準，再套用旺淡季係數推估；淡色虛線列不是已收訂單或保證收入。</p>
       <div id="revenue-growth-table" class="admin-month-table-wrap" aria-live="polite"></div>
     </section>
 

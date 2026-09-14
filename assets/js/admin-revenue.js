@@ -30,6 +30,8 @@
   var refreshBtn = document.getElementById("revenue-refresh-btn");
   var rangeLabel = document.getElementById("revenue-range-label");
   var monthTableEl = document.getElementById("revenue-month-table");
+  var revenueTrendChartEl = document.getElementById("revenue-trend-chart");
+  var bookingSourceChartEl = document.getElementById("booking-source-chart");
   var revenueGrowthTableEl = document.getElementById("revenue-growth-table");
   var bookingSourceTableEl = document.getElementById("booking-source-table");
   var sumTotal = document.getElementById("sum-total");
@@ -136,12 +138,6 @@
     return Number(parts[1]) + " 月";
   }
 
-  function formatYearMonth(month) {
-    var parts = String(month || "").split("-");
-    if (parts.length !== 2) return month || "—";
-    return Number(parts[0]) + " 年 " + Number(parts[1]) + " 月";
-  }
-
   function formatSignedMoney(n) {
     var num = Math.round(Number(n) || 0);
     if (num === 0) return "$0";
@@ -179,31 +175,11 @@
         }).join("");
         var originalTotal = monthlyRevenue.reduce(function (sum, row) { return sum + Number(row.original || 0); }, 0);
         var revisedTotal = monthlyRevenue.reduce(function (sum, row) { return sum + Number(row.revised || 0); }, 0);
-        var forecastMonths = (officialReconciliation.revenueForecast || {}).months || [];
-        var forecastCumulative = revisedTotal;
-        var previousRevenue = monthlyRevenue.length ? Number(monthlyRevenue[monthlyRevenue.length - 1].revised || 0) : 0;
-        var forecastRows = forecastMonths.map(function (row, index) {
-          var amount = Number(row.amount || 0);
-          var growth = previousRevenue ? ((amount - previousRevenue) / previousRevenue) * 100 : null;
-          forecastCumulative += amount;
-          previousRevenue = amount;
-          return '<tr class="admin-analysis-row--forecast' + (index === 0 ? " admin-analysis-row--forecast-start" : "") + '">' +
-            "<td>" + escapeHtml(formatYearMonth(row.month)) + '<span class="admin-analysis-forecast-label">預估</span></td>' +
-            "<td>—</td>" +
-            '<td class="admin-month-table__total">' + escapeHtml(formatMoney(amount)) + "</td>" +
-            "<td>—</td>" +
-            "<td>" + escapeHtml(formatGrowth(growth)) + "</td>" +
-            "<td>" + escapeHtml(formatMoney(forecastCumulative)) + "</td>" +
-            "</tr>";
-        }).join("");
-        var forecastTotal = forecastMonths.reduce(function (sum, row) { return sum + Number(row.amount || 0); }, 0);
         revenueGrowthTableEl.innerHTML =
           '<table class="admin-month-table admin-analysis-table">' +
-          "<thead><tr><th>月份</th><th>原估營收</th><th>修正／預估營收</th><th>修正差額</th><th>月成長率</th><th>累計營收</th></tr></thead>" +
-          "<tbody>" + revenueRows + forecastRows + "</tbody>" +
-          '<tfoot><tr><th>2–8 月實際合計</th><th>' + escapeHtml(formatMoney(originalTotal)) + '</th><th>' + escapeHtml(formatMoney(revisedTotal)) + '</th><th class="admin-analysis-value--down">' + escapeHtml(formatSignedMoney(revisedTotal - originalTotal)) + '</th><th>—</th><th>' + escapeHtml(formatMoney(revisedTotal)) + "</th></tr>" +
-          (forecastMonths.length ? '<tr class="admin-analysis-row--forecast"><th>未來 6 個月預估</th><th>—</th><th>' + escapeHtml(formatMoney(forecastTotal)) + '</th><th>—</th><th>—</th><th>' + escapeHtml(formatMoney(revisedTotal + forecastTotal)) + "</th></tr>" : "") +
-          "</tfoot>" +
+          "<thead><tr><th>月份</th><th>原估營收</th><th>修正後營收</th><th>修正差額</th><th>月成長率</th><th>累計營收</th></tr></thead>" +
+          "<tbody>" + revenueRows + "</tbody>" +
+          '<tfoot><tr><th>2–8 月合計</th><th>' + escapeHtml(formatMoney(originalTotal)) + '</th><th>' + escapeHtml(formatMoney(revisedTotal)) + '</th><th class="admin-analysis-value--down">' + escapeHtml(formatSignedMoney(revisedTotal - originalTotal)) + '</th><th>—</th><th>' + escapeHtml(formatMoney(revisedTotal)) + "</th></tr></tfoot>" +
           "</table>";
       }
     }
@@ -233,6 +209,139 @@
           "</table>";
       }
     }
+  }
+
+  function chartMonthLabel(month) {
+    var parts = String(month || "").split("-");
+    if (parts.length !== 2) return month || "—";
+    return String(parts[0]).slice(-2) + "/" + Number(parts[1]);
+  }
+
+  function svgPath(points) {
+    return points.map(function (point, index) {
+      return (index ? "L" : "M") + point.x.toFixed(1) + " " + point.y.toFixed(1);
+    }).join(" ");
+  }
+
+  function renderRevenueTrendChart() {
+    if (!revenueTrendChartEl) return;
+    var actual = officialReconciliation.monthlyRevenue || [];
+    var forecast = (officialReconciliation.revenueForecast || {}).months || [];
+    if (!actual.length) {
+      revenueTrendChartEl.innerHTML = '<p class="staff-empty">尚無營收曲線資料。</p>';
+      return;
+    }
+
+    var series = actual.map(function (row) {
+      return { month: row.month, amount: Number(row.revised || 0), forecast: false };
+    }).concat(forecast.map(function (row) {
+      return { month: row.month, amount: Number(row.amount || 0), forecast: true };
+    }));
+    var width = 920;
+    var height = 360;
+    var left = 70;
+    var right = 24;
+    var top = 62;
+    var bottom = 54;
+    var plotWidth = width - left - right;
+    var plotHeight = height - top - bottom;
+    var maxAmount = Math.max.apply(null, series.map(function (row) { return row.amount; }));
+    var yMax = Math.max(20000, Math.ceil(maxAmount / 20000) * 20000);
+    var stepX = series.length > 1 ? plotWidth / (series.length - 1) : 0;
+    var points = series.map(function (row, index) {
+      return {
+        x: left + stepX * index,
+        y: top + plotHeight - (row.amount / yMax) * plotHeight,
+        row: row
+      };
+    });
+    var actualPoints = points.slice(0, actual.length);
+    var forecastPoints = points.slice(Math.max(0, actual.length - 1));
+    var grid = [0, 1, 2, 3, 4].map(function (index) {
+      var amount = yMax - (yMax / 4) * index;
+      var y = top + (plotHeight / 4) * index;
+      return '<line class="admin-chart-grid" x1="' + left + '" y1="' + y + '" x2="' + (width - right) + '" y2="' + y + '"></line>' +
+        '<text class="admin-chart-axis-label" x="' + (left - 12) + '" y="' + (y + 4) + '" text-anchor="end">' + (amount ? Math.round(amount / 10000) + " 萬" : "0") + "</text>";
+    }).join("");
+    var labels = points.map(function (point) {
+      return '<text class="admin-chart-axis-label" x="' + point.x.toFixed(1) + '" y="' + (height - 20) + '" text-anchor="middle">' + escapeHtml(chartMonthLabel(point.row.month)) + "</text>";
+    }).join("");
+    var actualDots = actualPoints.map(function (point) {
+      return '<circle class="admin-chart-point--actual" cx="' + point.x.toFixed(1) + '" cy="' + point.y.toFixed(1) + '" r="5"><title>' + escapeHtml(chartMonthLabel(point.row.month) + " " + formatMoney(point.row.amount)) + "</title></circle>";
+    }).join("");
+    var forecastDots = points.slice(actual.length).map(function (point) {
+      return '<circle class="admin-chart-point--forecast" cx="' + point.x.toFixed(1) + '" cy="' + point.y.toFixed(1) + '" r="5"><title>' + escapeHtml(chartMonthLabel(point.row.month) + " 預估 " + formatMoney(point.row.amount)) + "</title></circle>";
+    }).join("");
+    var forecastStartX = actual.length < series.length ? points[actual.length - 1].x + stepX / 2 : width - right;
+    revenueTrendChartEl.innerHTML =
+      '<svg class="admin-chart" viewBox="0 0 ' + width + " " + height + '" role="img" aria-labelledby="revenue-chart-svg-title revenue-chart-svg-desc">' +
+      '<title id="revenue-chart-svg-title">每月營收成長曲線與未來六個月預估</title>' +
+      '<desc id="revenue-chart-svg-desc">綠色實線為正式對帳資料，棕色淡色虛線為未來六個月預估。</desc>' +
+      '<rect class="admin-chart-forecast-zone" x="' + forecastStartX.toFixed(1) + '" y="' + top + '" width="' + Math.max(0, width - right - forecastStartX).toFixed(1) + '" height="' + plotHeight + '"></rect>' +
+      grid +
+      '<line x1="70" y1="24" x2="102" y2="24" class="admin-chart-line--actual"></line><text x="112" y="29" class="admin-chart-legend-label">正式營收</text>' +
+      '<line x1="220" y1="24" x2="252" y2="24" class="admin-chart-line--forecast"></line><text x="262" y="29" class="admin-chart-legend-label">未來六個月預估</text>' +
+      '<path class="admin-chart-line--actual" d="' + svgPath(actualPoints) + '"></path>' +
+      (forecast.length ? '<path class="admin-chart-line--forecast" d="' + svgPath(forecastPoints) + '"></path>' : "") +
+      actualDots + forecastDots + labels +
+      "</svg>";
+  }
+
+  function renderBookingSourceChart() {
+    if (!bookingSourceChartEl) return;
+    var rows = officialReconciliation.monthlySourceCases || [];
+    if (!rows.length) {
+      bookingSourceChartEl.innerHTML = '<p class="staff-empty">尚無訂單來源圖表資料。</p>';
+      return;
+    }
+    var categories = [
+      { key: "airbnb", label: "Airbnb", color: "#4078d4" },
+      { key: "agoda", label: "Agoda", color: "#d99627" },
+      { key: "unknown", label: "平台未註明", color: "#969c94" },
+      { key: "direct", label: "私下接單", color: "#3a6f4f" }
+    ];
+    var width = 920;
+    var height = 360;
+    var left = 70;
+    var right = 24;
+    var top = 72;
+    var bottom = 54;
+    var plotWidth = width - left - right;
+    var plotHeight = height - top - bottom;
+    var slot = plotWidth / rows.length;
+    var barWidth = Math.min(72, slot * 0.62);
+    var grid = [0, 25, 50, 75, 100].map(function (percent) {
+      var y = top + plotHeight - (percent / 100) * plotHeight;
+      return '<line class="admin-chart-grid" x1="' + left + '" y1="' + y + '" x2="' + (width - right) + '" y2="' + y + '"></line>' +
+        '<text class="admin-chart-axis-label" x="' + (left - 12) + '" y="' + (y + 4) + '" text-anchor="end">' + percent + "%</text>";
+    }).join("");
+    var bars = rows.map(function (row, rowIndex) {
+      var x = left + slot * rowIndex + (slot - barWidth) / 2;
+      var used = 0;
+      var segments = categories.map(function (category) {
+        var count = Number(row[category.key] || 0);
+        var percent = row.total ? (count / row.total) * 100 : 0;
+        var segmentHeight = (percent / 100) * plotHeight;
+        var y = top + plotHeight - used - segmentHeight;
+        used += segmentHeight;
+        return '<rect x="' + x.toFixed(1) + '" y="' + y.toFixed(1) + '" width="' + barWidth.toFixed(1) + '" height="' + segmentHeight.toFixed(1) + '" fill="' + category.color + '"><title>' + escapeHtml(category.label + "：" + count + " 筆（" + percent.toFixed(1) + "%）") + "</title></rect>";
+      }).join("");
+      return segments + '<text class="admin-chart-axis-label" x="' + (x + barWidth / 2).toFixed(1) + '" y="' + (height - 20) + '" text-anchor="middle">' + escapeHtml(chartMonthLabel(row.month)) + "</text>";
+    }).join("");
+    var legendX = [70, 210, 345, 530];
+    var legend = categories.map(function (category, index) {
+      return '<rect x="' + legendX[index] + '" y="18" width="14" height="14" rx="2" fill="' + category.color + '"></rect><text x="' + (legendX[index] + 22) + '" y="30" class="admin-chart-legend-label">' + escapeHtml(category.label) + "</text>";
+    }).join("");
+    bookingSourceChartEl.innerHTML =
+      '<svg class="admin-chart" viewBox="0 0 ' + width + " " + height + '" role="img" aria-labelledby="source-chart-svg-title source-chart-svg-desc">' +
+      '<title id="source-chart-svg-title">每月訂單來源比例變化</title>' +
+      '<desc id="source-chart-svg-desc">百分比堆疊柱狀圖，呈現 Airbnb、Agoda、平台未註明與私下接單的每月案件比例。</desc>' +
+      legend + grid + bars + "</svg>";
+  }
+
+  function renderReconciliationCharts() {
+    renderRevenueTrendChart();
+    renderBookingSourceChart();
   }
 
   function loadRules() {
@@ -845,6 +954,7 @@
         var result = results[0];
         officialReconciliation = results[1] || officialReconciliation;
         renderReconciliationTables();
+        renderReconciliationCharts();
         if (!result.data.ok) {
           throw new Error(result.data.error || "載入失敗");
         }
