@@ -594,6 +594,46 @@ p:last-child { margin-bottom: 0; }
   gap: 0.4rem;
 }
 
+/* 房型小標誌：透明底線稿，只作快速辨識，不取代房型名稱。 */
+.room-mark {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.room-title-with-mark {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.room-title-with-mark h3 { margin: 0; }
+
+.room-mark--card {
+  width: 3rem;
+  height: 3rem;
+  flex: 0 0 3rem;
+}
+
+.room-mark--hero {
+  width: clamp(3.6rem, 7vw, 5rem);
+  height: clamp(3.6rem, 7vw, 5rem);
+  margin: 0 0 0.65rem;
+}
+
+.room-mark--on-dark {
+  filter: invert(1);
+  opacity: 0.92;
+}
+
+.room-mark--legend {
+  width: 1.8rem;
+  height: 1.8rem;
+  flex: 0 0 1.8rem;
+}
+
+
 .availability-legend-swatch {
   width: 0.65rem;
   height: 0.65rem;
