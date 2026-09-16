@@ -400,7 +400,7 @@
     var statusEl = root.querySelector("[data-availability-status]");
     var errEl = root.querySelector("[data-availability-error]");
     var tableMount = root.querySelector("[data-availability-table]");
-    var icsUrl = root.getAttribute("data-ics-url") || "../data/calendar-basic.ics";
+    var icsUrl = root.getAttribute("data-ics-url") || "/data/calendar-basic.ics";
 
     if (typeof window.CampCalendarPricing === "undefined") {
       if (statusEl) statusEl.textContent = "";
