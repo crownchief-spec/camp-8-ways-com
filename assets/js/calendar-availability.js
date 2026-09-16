@@ -13,8 +13,8 @@
 
   var ROOM_ORDER = isEnLocale
     ? [
-        { id: "balloon", label: "Balloon Tent", css: "balloon" },
-        { id: "cloud", label: "Cloud Tent", css: "cloud" },
+        { id: "balloon", label: "The Balloon Tent", css: "balloon" },
+        { id: "cloud", label: "The Cloud Tent", css: "cloud" },
         { id: "rv", label: "Campervan", css: "rv" }
       ]
     : [
@@ -26,6 +26,7 @@
   var STR = isEnLocale
     ? {
         booked: "Booked",
+        available: "Available",
         loading: "Loading…",
         pricingError:
           "Pricing module not loaded. Please refresh the page or try again later.",
@@ -52,6 +53,7 @@
       }
     : {
         booked: "已預訂",
+        available: "可預約",
         loading: "載入中…",
         pricingError:
           "價格模組未載入。請確認頁面已引入 camp-calendar-pricing.js，或重新整理後再試。",
@@ -231,10 +233,17 @@
 
   function translateRoomLabel(label) {
     if (!isEnLocale || !label) return label;
-    if (label.indexOf("熱氣球") !== -1) return "Balloon Tent";
-    if (label.indexOf("雲朵") !== -1) return "Cloud Tent";
+    if (label.indexOf("熱氣球") !== -1) return "The Balloon Tent";
+    if (label.indexOf("雲朵") !== -1) return "The Cloud Tent";
     if (label.indexOf("露營車") !== -1) return "Campervan";
     return label;
+  }
+
+  function translatePriceDisplay(formattedPrice) {
+    if (!isEnLocale || !formattedPrice) return formattedPrice;
+    return formattedPrice
+      .replace(/打卡優惠/g, STR.available + " ·")
+      .replace(/<strong>\$/g, "<strong>NT$");
   }
 
   /** 已預訂：淡底＋左色條＋單行（非膠囊按鈕） */
@@ -258,6 +267,7 @@
   /** 參考價：無框無底，僅左色條＋房型色＋深灰價格 */
   function renderPriceLine(roomCss, shortLabel, formattedPrice) {
     shortLabel = translateRoomLabel(shortLabel);
+    formattedPrice = translatePriceDisplay(formattedPrice);
     return (
       '<div class="availability-line availability-line--price availability-line--' +
       roomCss +
