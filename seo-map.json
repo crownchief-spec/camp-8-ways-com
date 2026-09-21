@@ -42,6 +42,20 @@
     "is_redirect": false
   },
   {
+    "page_file": "en/pages/summer-mosquito-prevention/index.html",
+    "route": "/en/pages/summer-mosquito-prevention/",
+    "lang": "en",
+    "title": "Mosquito-Control Guide | Coils, Lamps &amp; Citronella | Joyforest",
+    "description": "Mosquito-control measures for Joyforest Cloud Tent and Balloon Tent: outdoor coil holders, indoor and lawn mosquito-control lamps, and citronella environmental spray.",
+    "canonical": "https://camp.8-ways.com/en/pages/summer-mosquito-prevention/",
+    "hero_image": "assets/images/summer-mosquito-prevention/mosquito-coil-holder-hanging.webp",
+    "og_image": "https://camp.8-ways.com/assets/images/summer-mosquito-prevention/mosquito-coil-holder-hanging.webp",
+    "og_image_override": true,
+    "schema_type": "WebPage",
+    "noindex": false,
+    "is_redirect": false
+  },
+  {
     "page_file": "en/pages/balloon-tent-karaoke-guide/index.html",
     "route": "/en/pages/balloon-tent-karaoke-guide/",
     "lang": "en",
@@ -955,12 +969,12 @@
     "page_file": "pages/summer-mosquito-prevention.html",
     "route": "/pages/summer-mosquito-prevention.html",
     "lang": "zh-Hant",
-    "title": "夏季防蚊措施｜防蚊液・蚊香・電風扇｜揪好森 Joyforest",
-    "description": "揪好森夏季防蚊說明：每帳附防蚊液、戶外白色蚊香盒與蚊香、戶外電風扇，搭配傍晚時段提醒、驅蚊植物與定期除草，讓森林露營更舒適。",
+    "title": "森林住宿防蚊措施｜蚊香・滅蚊燈・香茅環境噴霧｜揪好森",
+    "description": "揪好森雲朵房與熱氣球房防蚊說明：草地與帳篷門口的蚊香盒、室內外滅蚊燈，以及只能噴在周遭地面與桌面的香茅環境噴霧。",
     "canonical": "https://camp.8-ways.com/pages/summer-mosquito-prevention.html",
-    "hero_image": "assets/images/summer-mosquito-prevention/mosquito-coil-holder-hanging.jpg",
-    "og_image": "https://camp.8-ways.com/assets/images/og/pages-summer-mosquito-prevention.jpg",
-    "og_image_override": false,
+    "hero_image": "assets/images/summer-mosquito-prevention/mosquito-coil-holder-hanging.webp",
+    "og_image": "https://camp.8-ways.com/assets/images/summer-mosquito-prevention/mosquito-coil-holder-hanging.webp",
+    "og_image_override": true,
     "schema_type": "WebPage",
     "noindex": false,
     "is_redirect": false
