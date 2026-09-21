@@ -70,6 +70,20 @@
     "is_redirect": false
   },
   {
+    "page_file": "en/pages/balloon-tent-mahjong-guide/index.html",
+    "route": "/en/pages/balloon-tent-mahjong-guide/",
+    "lang": "en",
+    "title": "Balloon Tent Automatic Mahjong Table Guide | Joyforest",
+    "description": "How to use the automatic mahjong table inside Joyforest Balloon Tent: raise the center tray, load the tiles, start automatic shuffling, and use the electronic dice.",
+    "canonical": "https://camp.8-ways.com/en/pages/balloon-tent-mahjong-guide/",
+    "hero_image": "assets/images/balloon-tent-mahjong/balloon-tent-automatic-mahjong-table-forest-view.webp",
+    "og_image": "https://camp.8-ways.com/assets/images/balloon-tent-mahjong/balloon-tent-automatic-mahjong-table-forest-view.webp",
+    "og_image_override": true,
+    "schema_type": "HowTo",
+    "noindex": false,
+    "is_redirect": false
+  },
+  {
     "page_file": "en/pages/balloon-tent/index.html",
     "route": "/en/pages/balloon-tent/",
     "lang": "en",
@@ -666,6 +680,20 @@
     "canonical": "https://camp.8-ways.com/pages/balloon-tent-outdoor-projector-guide.html",
     "hero_image": "assets/images/balloon-tent-outdoor-projector/balloon-tent-private-lawn-outdoor-cinema-night.webp",
     "og_image": "https://camp.8-ways.com/assets/images/balloon-tent-outdoor-projector/balloon-tent-private-lawn-outdoor-cinema-night.webp",
+    "og_image_override": true,
+    "schema_type": "HowTo",
+    "noindex": false,
+    "is_redirect": false
+  },
+  {
+    "page_file": "pages/balloon-tent-mahjong-guide.html",
+    "route": "/pages/balloon-tent-mahjong-guide.html",
+    "lang": "zh-Hant",
+    "title": "熱氣球房電動麻將桌使用說明｜自動洗牌・電子骰子｜揪好森",
+    "description": "揪好森熱氣球房電動麻將桌圖文說明：同時按下兩個紅色按鈕升降中央進牌台、自動洗牌並送出牌組，以及使用東南西北四方電子骰子。",
+    "canonical": "https://camp.8-ways.com/pages/balloon-tent-mahjong-guide.html",
+    "hero_image": "assets/images/balloon-tent-mahjong/balloon-tent-automatic-mahjong-table-forest-view.webp",
+    "og_image": "https://camp.8-ways.com/assets/images/balloon-tent-mahjong/balloon-tent-automatic-mahjong-table-forest-view.webp",
     "og_image_override": true,
     "schema_type": "HowTo",
     "noindex": false,
