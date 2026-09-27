@@ -126,6 +126,9 @@ function articlePage(article, related) {
   const published = `${article.publishedDate}T09:00:00+08:00`;
   const modified = `${article.modifiedDate || article.publishedDate}T09:00:00+08:00`;
   const tags = article.tags.map((tag) => `<span class="story-card__tag">${escapeHtml(tag)}</span>`).join("");
+  const hashtags = article.tags
+    .map((tag) => `<span>#${escapeHtml(String(tag).replace(/^#+/, ""))}</span>`)
+    .join("");
   const relatedHtml = related.length ? `
     <section class="section section-alt" aria-labelledby="related-stories-title">
       <div class="container">
@@ -172,7 +175,7 @@ function articlePage(article, related) {
   <main class="main">
     <header class="story-article-hero"><div class="container story-article-hero__inner"><nav class="story-article-breadcrumb" aria-label="麵包屑"><a href="/">首頁</a> / <a href="/pages/stories.html">森林故事</a> / ${escapeHtml(article.category)}</nav><span class="story-article-category">${escapeHtml(article.category)}</span><h1>${escapeHtml(article.title)}</h1><p class="story-article-deck">${escapeHtml(article.description)}</p><div class="story-article-meta"><time datetime="${article.publishedDate}">${article.publishedDate}</time><span>${escapeHtml(article.readingTime)}閱讀</span></div>${tags ? `<div class="story-card__tags">${tags}</div>` : ""}</div></header>
     <figure class="story-article-cover"><img src="${escapeHtml(article.coverImage)}" alt="${escapeHtml(article.coverImageAlt)}" title="${escapeHtml(article.title)}" width="${Number(article.coverImageWidth)}" height="${Number(article.coverImageHeight)}" fetchpriority="high" decoding="async"></figure>
-    <article class="container story-article-content">${article.bodyHtml}</article>
+    <article class="container story-article-content">${article.bodyHtml}${hashtags ? `<section class="story-article-keywords" aria-label="文章關鍵字"><h2>延伸搜尋關鍵字</h2><div class="hashtags">${hashtags}</div></section>` : ""}</article>
     ${relatedHtml}
     <section class="cta-block"><div class="container"><h2>想親自來森林裡住一晚？</h2><div class="page-cta-row"><a href="/index.html#room-entrances" class="btn btn-secondary">看雲朵房＋熱氣球房</a><a href="/pages/availability.html" class="btn btn-outline">查看空房與價格</a></div></div></section>
   </main>
@@ -187,7 +190,7 @@ function ensureHubInSitemap(articles) {
   xml = xml.replace(/<url>\s*<loc>https:\/\/camp\.8-ways\.com\/stories\/[a-z0-9-]+\/<\/loc>[\s\S]*?<\/url>/g, "");
   const urls = [
     { loc: `${SITE}/pages/stories.html`, changefreq: "weekly", priority: "0.9" },
-    ...articles.map((item) => ({ loc: `${SITE}/stories/${item.slug}/`, changefreq: "monthly", priority: "0.8" })),
+    ...articles.map((item) => ({ loc: `${SITE}/stories/${item.slug}/`, changefreq: "monthly", priority: "0.85" })),
   ];
   for (const entry of urls) {
     if (xml.includes(`<loc>${entry.loc}</loc>`)) continue;
