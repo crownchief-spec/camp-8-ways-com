@@ -1412,5 +1412,33 @@
     "schema_type": "Article",
     "noindex": false,
     "is_redirect": false
+  },
+  {
+    "page_file": "en/pages/cloud-tent-gas-bbq-guide/index.html",
+    "route": "/en/pages/cloud-tent-gas-bbq-guide/",
+    "lang": "en",
+    "title": "Cloud Tent Premium Natural Gas BBQ Grill Guide | Joyforest",
+    "description": "How to use the premium American-style natural gas BBQ grill on the Cloud Tent private lawn, including four main burners, side burner, separate ignition button, cast-iron grate, warming rack, preheating, and shutdown.",
+    "canonical": "https://camp.8-ways.com/en/pages/cloud-tent-gas-bbq-guide/",
+    "hero_image": "assets/images/cloud-tent-gas-bbq/cloud-tent-natural-gas-american-bbq-grill-open.webp",
+    "og_image": "https://camp.8-ways.com/assets/images/cloud-tent-gas-bbq/cloud-tent-natural-gas-american-bbq-grill-open.webp",
+    "og_image_override": true,
+    "schema_type": "HowTo",
+    "noindex": false,
+    "is_redirect": false
+  },
+  {
+    "page_file": "pages/cloud-tent-gas-bbq-guide.html",
+    "route": "/pages/cloud-tent-gas-bbq-guide.html",
+    "lang": "zh-Hant",
+    "title": "雲朵房頂級天然氣式美式烤肉爐使用說明｜四爐頭・側邊爐｜揪好森",
+    "description": "揪好森雲朵房專屬草地的頂級天然氣式美式烤肉爐圖文說明：四個主烤爐頭、右側煮鍋爐頭、獨立點火鍵、鑄鐵烤網、上層保溫架與安全關火方式。",
+    "canonical": "https://camp.8-ways.com/pages/cloud-tent-gas-bbq-guide.html",
+    "hero_image": "assets/images/cloud-tent-gas-bbq/cloud-tent-natural-gas-american-bbq-grill-open.webp",
+    "og_image": "https://camp.8-ways.com/assets/images/cloud-tent-gas-bbq/cloud-tent-natural-gas-american-bbq-grill-open.webp",
+    "og_image_override": true,
+    "schema_type": "HowTo",
+    "noindex": false,
+    "is_redirect": false
   }
 ]
