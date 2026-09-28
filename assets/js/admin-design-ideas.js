@@ -61,10 +61,18 @@
       saved = [];
     }
     if (Array.isArray(saved)) {
+      var originalCards = cards();
       var byId = {};
-      cards().forEach(function (card) { byId[card.dataset.designId] = card; });
+      originalCards.forEach(function (card) { byId[card.dataset.designId] = card; });
+      var restoredIds = {};
       saved.forEach(function (id) {
-        if (byId[id]) list.appendChild(byId[id]);
+        if (byId[id]) {
+          list.appendChild(byId[id]);
+          restoredIds[id] = true;
+        }
+      });
+      originalCards.forEach(function (card) {
+        if (!restoredIds[card.dataset.designId]) list.appendChild(card);
       });
     }
     updateNumbers();
