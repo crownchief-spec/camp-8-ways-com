@@ -4,6 +4,7 @@
   if (!Gate || (!isLocalPreview && !Gate.requireAuth("admin.html"))) return;
 
   var STORAGE_KEY = "joyforest_admin_design_ideas_order_v1";
+  var DELETED_STORAGE_KEY = "joyforest_admin_design_ideas_deleted_v1";
   var list = document.getElementById("design-idea-list");
   var status = document.getElementById("design-save-status");
   var activeCard = null;
@@ -20,6 +21,15 @@
   function currentOrder() {
     return cards().map(function (card) { return card.dataset.designId; });
   }
+
+  cards().forEach(function (card) {
+    var deleteButton = document.createElement("button");
+    deleteButton.type = "button";
+    deleteButton.className = "design-delete-btn";
+    deleteButton.setAttribute("aria-label", "刪除此構想");
+    deleteButton.textContent = "刪除";
+    card.querySelector(".design-idea-sort").appendChild(deleteButton);
+  });
 
   function updateNumbers() {
     cards().forEach(function (card, index) {
@@ -43,11 +53,20 @@
     }, 1800);
   }
 
-  function saveOrder() {
+  function readDeletedIds() {
+    try {
+      var saved = JSON.parse(localStorage.getItem(DELETED_STORAGE_KEY) || "[]");
+      return Array.isArray(saved) ? saved : [];
+    } catch (error) {
+      return [];
+    }
+  }
+
+  function saveOrder(message) {
     updateNumbers();
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(currentOrder()));
-      showStatus("順序已儲存", false);
+      showStatus(message || "順序已儲存", false);
     } catch (error) {
       showStatus("目前瀏覽器無法儲存排序", true);
     }
@@ -60,6 +79,10 @@
     } catch (error) {
       saved = [];
     }
+    var deletedIds = readDeletedIds();
+    cards().forEach(function (card) {
+      if (deletedIds.indexOf(card.dataset.designId) !== -1) card.remove();
+    });
     if (Array.isArray(saved)) {
       var byId = {};
       cards().forEach(function (card) { byId[card.dataset.designId] = card; });
@@ -83,6 +106,23 @@
   }
 
   list.addEventListener("click", function (event) {
+    var deleteButton = event.target.closest(".design-delete-btn");
+    if (deleteButton) {
+      var card = deleteButton.closest(".design-idea-card");
+      var title = card.querySelector("h2").textContent.trim();
+      if (!window.confirm("確定要刪除「" + title + "」嗎？\n刪除後，這台裝置的頁面將不再顯示這則構想。")) return;
+      var deletedIds = readDeletedIds();
+      if (deletedIds.indexOf(card.dataset.designId) === -1) deletedIds.push(card.dataset.designId);
+      try {
+        localStorage.setItem(DELETED_STORAGE_KEY, JSON.stringify(deletedIds));
+      } catch (error) {
+        showStatus("目前瀏覽器無法儲存刪除結果", true);
+        return;
+      }
+      card.remove();
+      saveOrder("已刪除「" + title + "」");
+      return;
+    }
     var button = event.target.closest(".design-move-btn");
     if (!button) return;
     moveCard(button.closest(".design-idea-card"), button.dataset.move);
@@ -136,7 +176,7 @@
   document.addEventListener("pointerup", endDrag);
   document.addEventListener("pointercancel", endDrag);
   window.addEventListener("storage", function (event) {
-    if (event.key === STORAGE_KEY) restoreOrder();
+    if (event.key === STORAGE_KEY || event.key === DELETED_STORAGE_KEY) restoreOrder();
   });
 
   restoreOrder();
