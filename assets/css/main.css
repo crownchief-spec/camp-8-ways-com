@@ -1273,6 +1273,254 @@ p:last-child { margin-bottom: 0; }
   .card-grid-2, .card-grid-3 { grid-template-columns: 1fr; }
 }
 
+/* ── Admin design ideas (internal) ── */
+.admin-design-app {
+  max-width: 1120px;
+}
+
+.admin-design-header {
+  position: relative;
+}
+
+.admin-design-eyebrow {
+  margin: 0 0 4px;
+  color: #60705d;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.admin-design-title {
+  font-size: clamp(1.6rem, 4vw, 2.35rem);
+  color: #29472f;
+}
+
+.admin-design-intro {
+  max-width: 850px;
+  margin: 14px 0 6px;
+  color: #4b5748;
+  font-size: 0.95rem;
+  line-height: 1.75;
+}
+
+.admin-design-save-status {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  margin: 6px 0 0;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #e8eee5;
+  color: #3d5c3a;
+  font-size: 0.8rem;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+
+.admin-design-save-status.is-saved {
+  background: #3d5c3a;
+  color: #fff;
+}
+
+.admin-design-save-status.is-error {
+  background: #8a342f;
+  color: #fff;
+}
+
+.design-idea-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 22px;
+}
+
+.design-idea-card {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  overflow: hidden;
+  border: 1px solid #d5ded1;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 5px 18px rgba(40, 66, 43, 0.08);
+  transition: box-shadow 0.18s ease, transform 0.18s ease, opacity 0.18s ease;
+}
+
+.design-idea-card.is-dragging {
+  opacity: 0.45;
+  pointer-events: none;
+  box-shadow: 0 12px 28px rgba(40, 66, 43, 0.22);
+  transform: scale(0.995);
+}
+
+.is-sorting-design-ideas {
+  user-select: none;
+  cursor: grabbing;
+}
+
+.design-idea-sort {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 18px 10px;
+  border-right: 1px solid #dce4d8;
+  background: #edf2ea;
+}
+
+.design-drag-handle {
+  display: grid;
+  gap: 5px;
+  width: 42px;
+  height: 42px;
+  padding: 10px 8px;
+  border: 1px solid #b9c7b4;
+  border-radius: 10px;
+  background: #fff;
+  cursor: grab;
+  touch-action: none;
+}
+
+.design-drag-handle:active {
+  cursor: grabbing;
+}
+
+.design-drag-handle span {
+  display: block;
+  height: 3px;
+  border-radius: 99px;
+  background: #3d5c3a;
+}
+
+.design-drag-handle:focus-visible,
+.design-move-btn:focus-visible {
+  outline: 3px solid rgba(61, 92, 58, 0.32);
+  outline-offset: 2px;
+}
+
+.design-idea-number {
+  color: #3d5c3a;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+}
+
+.design-move-btn {
+  width: 34px;
+  height: 32px;
+  border: 1px solid #c8d2c4;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.78);
+  color: #3d5c3a;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.design-move-btn:disabled {
+  opacity: 0.28;
+  cursor: default;
+}
+
+.design-idea-card__body {
+  min-width: 0;
+  padding: 18px;
+}
+
+.design-idea-card figure {
+  margin: 0;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #f3efe5;
+  text-align: center;
+}
+
+.design-idea-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 88vh;
+  object-fit: contain;
+  margin: 0 auto;
+}
+
+.design-idea-summary {
+  padding: 16px 4px 2px;
+}
+
+.design-idea-summary h2 {
+  margin: 0 0 8px;
+  color: #29472f;
+  font-size: 1.25rem;
+}
+
+.design-idea-summary p {
+  margin: 0;
+  color: #4d584b;
+  font-size: 0.95rem;
+  line-height: 1.75;
+}
+
+@media (max-width: 600px) {
+  .admin-design-app {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  .admin-design-intro {
+    font-size: 0.88rem;
+  }
+
+  .design-idea-list {
+    gap: 16px;
+  }
+
+  .design-idea-card {
+    grid-template-columns: 46px minmax(0, 1fr);
+    border-radius: 14px;
+  }
+
+  .design-idea-sort {
+    gap: 7px;
+    padding: 12px 5px;
+  }
+
+  .design-drag-handle {
+    width: 36px;
+    height: 38px;
+    padding: 10px 7px;
+  }
+
+  .design-move-btn {
+    width: 32px;
+    height: 30px;
+  }
+
+  .design-idea-card__body {
+    padding: 10px;
+  }
+
+  .design-idea-card img {
+    max-height: none;
+  }
+
+  .design-idea-summary {
+    padding: 12px 2px 2px;
+  }
+
+  .design-idea-summary h2 {
+    font-size: 1.08rem;
+  }
+
+  .design-idea-summary p {
+    font-size: 0.88rem;
+    line-height: 1.68;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .design-idea-card,
+  .admin-design-save-status {
+    transition: none;
+  }
+}
+
 /* ── Admin cleaning SOP (internal, mobile first) ── */
 .admin-sop-app {
   max-width: 980px;
