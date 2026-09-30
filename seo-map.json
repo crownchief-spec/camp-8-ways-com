@@ -42,6 +42,34 @@
     "is_redirect": false
   },
   {
+    "page_file": "en/pages/booking/index.html",
+    "route": "/en/pages/booking/",
+    "lang": "en",
+    "title": "How to Book｜Joyforest Taoyuan Glamping, Taiwan",
+    "description": "How to check dates, choose Balloon Tent or Cloud Tent, pay the deposit, and confirm a private glamping stay at Joyforest in Taoyuan, Taiwan.",
+    "canonical": "https://camp.8-ways.com/en/pages/booking/",
+    "hero_image": "assets/images/index/taoyuan-glamping-exclusive-grass-100ping.jpg",
+    "og_image": "https://camp.8-ways.com/assets/images/og/pages-booking.jpg",
+    "og_image_override": true,
+    "schema_type": "WebPage",
+    "noindex": false,
+    "is_redirect": false
+  },
+  {
+    "page_file": "en/pages/facilities/index.html",
+    "route": "/en/pages/facilities/",
+    "lang": "en",
+    "title": "Facilities &amp; Equipment｜Joyforest Balloon Tent and Cloud Tent",
+    "description": "Compare the private bathrooms, outdoor kitchens, BBQ grills, karaoke, projectors, bathtub, mahjong table, and private lawns available at Joyforest Balloon Tent and Cloud Tent.",
+    "canonical": "https://camp.8-ways.com/en/pages/facilities/",
+    "hero_image": "",
+    "og_image": "https://camp.8-ways.com/assets/images/og/pages-facilities.jpg",
+    "og_image_override": true,
+    "schema_type": "WebPage",
+    "noindex": false,
+    "is_redirect": false
+  },
+  {
     "page_file": "en/pages/summer-mosquito-prevention/index.html",
     "route": "/en/pages/summer-mosquito-prevention/",
     "lang": "en",

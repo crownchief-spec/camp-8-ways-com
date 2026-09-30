@@ -120,7 +120,7 @@
     return "$" + amount.toLocaleString("zh-TW");
   }
   function formatDiscountPriceDisplay(_original, discount) {
-    return '<span class="availability-line__promo-label">\u6253\u5361\u512A\u60E0</span> <strong>' + formatPriceNt(discount) + "</strong>";
+    return '<span class="availability-line__promo-label">\u5B98\u7DB2\u76F4\u8A02</span> <strong>' + formatPriceNt(discount) + "</strong>";
   }
   function resolveResourceRowDisplay(resourceId, y, m, d, isBooked, holidayOverrideSet) {
     const cfg = calendarResourcePricing[resourceId];

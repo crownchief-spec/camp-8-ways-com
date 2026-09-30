@@ -45,7 +45,9 @@ col1 = (
     li_link(f"{B}en/", "Home")
     + li_link(f"{B}en/pages/balloon-tent/", "Balloon Tent")
     + li_link(f"{B}en/pages/cloud-tent/", "Cloud Tent")
+    + li_link(f"{B}en/pages/facilities/", "Facilities & Equipment")
     + li_link(f"{B}en/pages/availability/", "Check Availability")
+    + li_link(f"{B}en/pages/booking/", "How to Book")
     + li_link(f"{B}en/pages/party-event-space/", "Private Forest Party Venue")
 )
 

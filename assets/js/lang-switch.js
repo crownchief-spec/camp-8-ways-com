@@ -32,6 +32,27 @@
     { zh: "/en/pages/availability/", en: "/pages/availability/" },
     { zh: "/en/pages/availability", en: "/pages/availability/" },
     { zh: "/en/pages/availability.html", en: "/pages/availability/" },
+    { zh: "/pages/booking/", en: "/en/pages/booking/" },
+    { zh: "/pages/booking", en: "/en/pages/booking/" },
+    { zh: "/pages/booking.html", en: "/en/pages/booking/" },
+    { zh: "/en/pages/booking/", en: "/pages/booking/" },
+    { zh: "/en/pages/booking", en: "/pages/booking/" },
+    { zh: "/pages/balloon-tent-tv-guide.html", en: "/en/pages/balloon-tent/" },
+    { zh: "/pages/balloon-tent-tv-guide", en: "/en/pages/balloon-tent/" },
+    { zh: "/pages/cloud-tent-projector-guide.html", en: "/en/pages/cloud-tent/" },
+    { zh: "/pages/cloud-tent-projector-guide", en: "/en/pages/cloud-tent/" },
+    { zh: "/pages/facilities.html", en: "/en/pages/facilities/" },
+    { zh: "/pages/facilities", en: "/en/pages/facilities/" },
+    { zh: "/en/pages/facilities/", en: "/pages/facilities/" },
+    { zh: "/en/pages/facilities", en: "/pages/facilities/" },
+    { zh: "/pages/faq.html", en: "/en/pages/booking/" },
+    { zh: "/pages/faq", en: "/en/pages/booking/" },
+    { zh: "/pages/location.html", en: "/en/pages/booking/" },
+    { zh: "/pages/location", en: "/en/pages/booking/" },
+    { zh: "/pages/stories.html", en: "/en/seo/" },
+    { zh: "/pages/stories", en: "/en/seo/" },
+    { zh: "/pages/campervan.html", en: "/en/seo/campervan-travel/" },
+    { zh: "/pages/campervan", en: "/en/seo/campervan-travel/" },
     { zh: "/seo/", en: "/en/seo/" },
     { zh: "/seo/index.html", en: "/en/seo/" },
     { zh: "/en/seo/", en: "/seo/" },
@@ -55,7 +76,7 @@
 
   function normalizePath(pathname) {
     if (!pathname) return "/";
-    var p = pathname.replace(/\/+$/, "") || "/";
+    var p = pathname.replace(/\/index\.html$/, "").replace(/\/+$/, "") || "/";
     return p;
   }
 
@@ -92,6 +113,35 @@
       "guide/pet-camping-notes": "camping-with-pets",
       "guide/camping-faq-general": "common-camping-questions"
     };
+    var SEO_SLUG_EN_TO_ZH = {
+      "beginner-camping": "beginner-camping",
+      "campervan-travel": "campervan-stay",
+      "camping-gear": "camping-gear",
+      "camping-photo-tips": "guide/camping-photo-tips",
+      "camping-with-pets": "guide/pet-camping-notes",
+      "choose-campsite": "guide/how-to-choose-campsite",
+      "common-camping-questions": "guide/camping-faq-general",
+      "easy-yangmei-outdoor-trips": "guide/yangmei-easy-outings",
+      "family-camping-planning": "guide/family-camping-easier",
+      "family-camping": "family-camping",
+      "first-camping-trip": "guide/first-camping-prep",
+      "forest-event-space": "guide/forest-space-charm",
+      "forest-outdoor-experience": "forest-camping",
+      "glamping-guide": "taoyuan-glamping",
+      "glamping-vs-camping": "guide/glamping-vs-camping",
+      "nearby-attractions": "nearby-attractions",
+      "night-camping-atmosphere": "night-outdoor",
+      "night-outdoor-atmosphere": "guide/night-outdoor-mood",
+      "one-day-vs-overnight-event": "guide/one-day-vs-overnight",
+      "outdoor-vs-indoor-gathering": "guide/outdoor-vs-indoor-gathering",
+      "pet-friendly-camping": "pet-friendly-camping",
+      "small-private-event-planning": "guide/small-group-events",
+      "taoyuan-camping": "taoyuan-camping",
+      "taoyuan-outdoor-activities": "guide/weekend-outdoor-taoyuan",
+      "types-of-camping-taoyuan": "guide/taoyuan-camping-types",
+      "who-campervan-travel": "guide/campervan-who",
+      "yangmei-camping": "yangmei-camping"
+    };
 
     if (targetLocale === "en") {
       if (path.indexOf("/pages/") === 0) {
@@ -113,7 +163,10 @@
     }
     if (path.indexOf("/en/seo/") === 0) {
       var enSeoSlug = path.replace(/^\/en\/seo\//, "");
-      if (enSeoSlug) return "/seo/" + enSeoSlug + ".html";
+      if (enSeoSlug) {
+        var zhSeoFromEn = SEO_SLUG_EN_TO_ZH[enSeoSlug] || enSeoSlug;
+        return "/seo/" + zhSeoFromEn + ".html";
+      }
     }
     if (path.indexOf("/en/") === 0) {
       var zhPath = path.replace(/^\/en/, "") || "/";

@@ -8,7 +8,8 @@ const Rules = globalThis.JoyforestRevenueRules;
 const defaults = {
   campEarlyNightly: 3800,
   campMiddleNightly: 4800,
-  tentNightly: 5000,
+  cloudNightly: 5000,
+  balloonNightly: 5800,
   fullSiteNightly: 9800,
   rvBase: 13800,
   rvExtraDay: 2800,
@@ -32,6 +33,18 @@ assert.equal(
 assert.equal(
   Rules.computeEstimate({ checkInYmd: "2026-08-20", nights: 1, roomTags: ["balloon", "cloud"], guestCount: 5, summary: "一帳包場5人" }, defaults).amount,
   5000
+);
+assert.equal(
+  Rules.computeEstimate({ checkInYmd: "2026-08-20", nights: 1, roomTags: ["balloon"], guestCount: 4, summary: "熱氣球房4人" }, defaults).amount,
+  5000
+);
+assert.equal(
+  Rules.computeEstimate({ checkInYmd: "2026-10-02", nights: 1, roomTags: ["cloud"], guestCount: 4, summary: "雲朵房4人" }, defaults).amount,
+  5000
+);
+assert.equal(
+  Rules.computeEstimate({ checkInYmd: "2026-10-02", nights: 1, roomTags: ["balloon"], guestCount: 4, summary: "熱氣球房4人" }, defaults).amount,
+  5800
 );
 assert.equal(
   Rules.computeEstimate({ checkInYmd: "2026-08-22", nights: 1, roomTags: ["balloon", "cloud"], guestCount: 10, summary: "兩帳包場10人" }, defaults).amount,

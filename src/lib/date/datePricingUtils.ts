@@ -31,7 +31,7 @@ export function formatPriceNt(amount: number): string {
 
 export function formatDiscountPriceDisplay(_original: number, discount: number): string {
   return (
-    '<span class="availability-line__promo-label">打卡優惠</span> <strong>' +
+    '<span class="availability-line__promo-label">官網直訂</span> <strong>' +
     formatPriceNt(discount) +
     "</strong>"
   );

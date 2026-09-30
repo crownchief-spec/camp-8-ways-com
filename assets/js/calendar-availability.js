@@ -242,7 +242,7 @@
   function translatePriceDisplay(formattedPrice) {
     if (!isEnLocale || !formattedPrice) return formattedPrice;
     return formattedPrice
-      .replace(/打卡優惠/g, STR.available + " ·")
+      .replace(/(?:打卡優惠|官網直訂)/g, "Direct rate ·")
       .replace(/<strong>\$/g, "<strong>NT$");
   }
 

@@ -150,7 +150,11 @@
     var ymd = String(event.checkInYmd || "");
     if (ymd && ymd <= "2026-04-17") return Number(rules.campEarlyNightly) || 3800;
     if (ymd && ymd <= "2026-06-19") return Number(rules.campMiddleNightly) || 4800;
-    return Number(rules.tentNightly) || 5000;
+    if (ymd && ymd < "2026-10-01") return 5000;
+    var roomTags = event.roomTags || [];
+    var balloonOnly = roomTags.indexOf("balloon") !== -1 && roomTags.indexOf("cloud") === -1;
+    if (balloonOnly) return Number(rules.balloonNightly) || 5800;
+    return Number(rules.cloudNightly || rules.tentNightly) || 5000;
   }
 
   function computeEstimate(event, rules) {

@@ -4962,6 +4962,45 @@ footer a:hover { color: #ffffff; }
   }
 }
 
+.mobile-booking-bar {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .page-availability {
+    padding-bottom: calc(4.25rem + env(safe-area-inset-bottom));
+  }
+  .mobile-booking-bar {
+    position: fixed;
+    z-index: 950;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    padding: 0.65rem max(0.75rem, env(safe-area-inset-left)) calc(0.65rem + env(safe-area-inset-bottom)) max(0.75rem, env(safe-area-inset-right));
+    background: rgba(255, 255, 255, 0.97);
+    border-top: 1px solid var(--color-border);
+    box-shadow: 0 -6px 24px rgba(25, 45, 35, 0.12);
+    backdrop-filter: blur(10px);
+  }
+  .mobile-booking-bar a {
+    display: block;
+    padding: 0.75rem 0.5rem;
+    border-radius: 999px;
+    background: var(--color-forest-dark);
+    color: #fff;
+    font-weight: 700;
+    text-align: center;
+    line-height: 1.2;
+    text-decoration: none;
+  }
+  .mobile-booking-bar a:first-child {
+    background: #16784a;
+  }
+}
+
 /* ========== 森林故事：文章入口與文章頁 ========== */
 .stories-hero {
   position: relative;

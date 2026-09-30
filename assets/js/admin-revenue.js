@@ -12,7 +12,8 @@
   var DEFAULT_RULES = {
     campEarlyNightly: 3800,
     campMiddleNightly: 4800,
-    tentNightly: 5000,
+    cloudNightly: 5000,
+    balloonNightly: 5800,
     fullSiteNightly: 9800,
     rvBase: 13800,
     rvExtraDay: 2800,
@@ -41,7 +42,8 @@
   var sumEstimated = document.getElementById("sum-estimated");
   var campEarlyInput = document.getElementById("price-camp-early");
   var campMiddleInput = document.getElementById("price-camp-middle");
-  var tentNightInput = document.getElementById("price-tent-night");
+  var cloudNightInput = document.getElementById("price-cloud-night");
+  var balloonNightInput = document.getElementById("price-balloon-night");
   var fullSiteInput = document.getElementById("price-full-site-night");
   var rvBaseInput = document.getElementById("price-rv-base");
   var rvExtraInput = document.getElementById("price-rv-extra");
@@ -352,7 +354,8 @@
       return {
         campEarlyNightly: Number(parsed.campEarlyNightly) || DEFAULT_RULES.campEarlyNightly,
         campMiddleNightly: Number(parsed.campMiddleNightly) || DEFAULT_RULES.campMiddleNightly,
-        tentNightly: Number(parsed.tentNightly) || DEFAULT_RULES.tentNightly,
+        cloudNightly: Number(parsed.cloudNightly || parsed.tentNightly) || DEFAULT_RULES.cloudNightly,
+        balloonNightly: Number(parsed.balloonNightly) || DEFAULT_RULES.balloonNightly,
         fullSiteNightly: Number(parsed.fullSiteNightly) || DEFAULT_RULES.fullSiteNightly,
         rvBase: Number(parsed.rvBase) || DEFAULT_RULES.rvBase,
         rvExtraDay: Number(parsed.rvExtraDay) || DEFAULT_RULES.rvExtraDay,
@@ -369,7 +372,8 @@
       JSON.stringify({
         campEarlyNightly: rules.campEarlyNightly,
         campMiddleNightly: rules.campMiddleNightly,
-        tentNightly: rules.tentNightly,
+        cloudNightly: rules.cloudNightly,
+        balloonNightly: rules.balloonNightly,
         fullSiteNightly: rules.fullSiteNightly,
         rvBase: rules.rvBase,
         rvExtraDay: rules.rvExtraDay
@@ -393,7 +397,8 @@
   function fillRulesInputs(rules) {
     campEarlyInput.value = rules.campEarlyNightly;
     campMiddleInput.value = rules.campMiddleNightly;
-    tentNightInput.value = rules.tentNightly;
+    cloudNightInput.value = rules.cloudNightly;
+    balloonNightInput.value = rules.balloonNightly;
     fullSiteInput.value = rules.fullSiteNightly;
     rvBaseInput.value = rules.rvBase;
     rvExtraInput.value = rules.rvExtraDay;
@@ -403,7 +408,8 @@
     return {
       campEarlyNightly: Math.max(0, Number(campEarlyInput.value) || 0),
       campMiddleNightly: Math.max(0, Number(campMiddleInput.value) || 0),
-      tentNightly: Math.max(0, Number(tentNightInput.value) || 0),
+      cloudNightly: Math.max(0, Number(cloudNightInput.value) || 0),
+      balloonNightly: Math.max(0, Number(balloonNightInput.value) || 0),
       fullSiteNightly: Math.max(0, Number(fullSiteInput.value) || 0),
       rvBase: Math.max(0, Number(rvBaseInput.value) || 0),
       rvExtraDay: Math.max(0, Number(rvExtraInput.value) || 0),
