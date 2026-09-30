@@ -34,9 +34,9 @@ export const calendarResourcePricing: {
   balloon: {
     label: "熱氣球房",
     shortLabel: "熱氣球",
-    originalPrice: 7800,
-    weekday: 5000,
-    weekend: 5000,
+    originalPrice: 6800,
+    weekday: 5800,
+    weekend: 5800,
     longHoliday: 6000,
     showPrice: true,
   },

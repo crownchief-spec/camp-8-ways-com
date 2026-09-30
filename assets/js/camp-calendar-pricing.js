@@ -78,9 +78,9 @@
     balloon: {
       label: "\u71B1\u6C23\u7403\u623F",
       shortLabel: "\u71B1\u6C23\u7403",
-      originalPrice: 7800,
-      weekday: 5e3,
-      weekend: 5e3,
+      originalPrice: 6800,
+      weekday: 5800,
+      weekend: 5800,
       longHoliday: 6e3,
       showPrice: true
     },

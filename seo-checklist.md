@@ -35,7 +35,7 @@
 ## pages/balloon-tent.html
 - route: `/pages/balloon-tent.html`
 - title: 熱氣球房｜假日包場方案｜camp.8-ways.com
-- description: 熱氣球房：平日一帳包場、假日一帳包區原價 NT$7,800、打卡優惠 NT$5,000；兩帳包場原價 NT$12,800、打卡優惠 NT$9,800（約 70 坪室內外專屬空間、草地＋戶外廚房），享受森林系豪華露營。
+- description: 熱氣球房：平日一帳包場、假日一帳包區，訂房平台 NT$6,800、官網直訂 NT$5,800；兩帳包場原價 NT$12,800、打卡優惠 NT$9,800（約 70 坪室內外專屬空間、草地＋戶外廚房），享受森林系豪華露營。
 - canonical: `https://camp.8-ways.com/pages/balloon-tent.html`
 - hero image: `../assets/images/balloon-tent/balloon-tent-exclusive-lawn-outdoor-kitchen-aerial-view.jpg`
 - og image: `https://camp.8-ways.com/pages/../assets/images/balloon-tent/balloon-tent-exclusive-lawn-outdoor-kitchen-aerial-view.jpg?page=pages-balloon-tent`
