@@ -5385,7 +5385,7 @@ footer a:hover { color: #ffffff; }
 .room-jump-nav a { flex: 0 0 auto; color: var(--color-text); font-size: 0.86rem; font-weight: 700; text-decoration: none; }
 .room-jump-nav a:hover { color: var(--color-forest); }
 #room-story, #room-specs, #pricing, #room-photos, #facilities, #house-rules,
-#cloud-bathtub, #outdoor-kitchen, #outdoor-cinema, #firepit { scroll-margin-top: 8.5rem; }
+#cloud-bathtub, #outdoor-kitchen, #outdoor-cinema { scroll-margin-top: 8.5rem; }
 
 .room-facility-summary,
 .facility-hub-grid { display: grid; gap: 1rem; }
