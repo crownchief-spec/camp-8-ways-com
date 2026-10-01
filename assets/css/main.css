@@ -1,23 +1,34 @@
 /* ============================================
    camp.8-ways.com — 桃園森林豪華露營區
-   Main Styles · 森林系 · 米白／奶白／木質／深綠
+   Main Styles · 森林派對 · 暖米白／鼠尾草綠／燕麥奶茶／霧金
    ============================================ */
 
 :root {
-  --color-cream: #faf8f5;
-  --color-cream-dark: #f5f1eb;
-  --color-beige: #e8e0d5;
-  --color-sand: #d4c8b8;
-  --color-wood: #c4b5a0;
-  --color-wood-dark: #a89882;
-  --color-forest: #2d4a3e;
-  --color-forest-dark: #1a3329;
-  --color-forest-light: #3d5c4f;
-  --color-text: #2c2c2c;
-  --color-text-muted: #5c5c5c;
-  --color-border: rgba(45, 74, 62, 0.12);
+  /* Joy Forest 2026 brand palette */
+  --color-dusty-sage: #9ea58c;
+  --color-eucalyptus: #7f8770;
+  --color-pale-sage: #c4c8b5;
+  --color-warm-white: #f2ece1;
+  --color-oat-milk: #d6c3a5;
+  --color-fog-gold: #b39a64;
+
+  /* Existing semantic tokens mapped to the brand palette. */
+  --color-cream: #f2ece1;
+  --color-cream-dark: #e9e2d6;
+  --color-beige: #d6c3a5;
+  --color-sand: #c4c8b5;
+  --color-wood: #b39a64;
+  --color-wood-dark: #806b44;
+  --color-earth: #75613d;
+  --color-forest: #7f8770;
+  --color-forest-dark: #4e5748;
+  --color-forest-light: #9ea58c;
+  --color-text: #34372f;
+  --color-text-muted: #65695f;
+  --color-border: rgba(78, 87, 72, 0.2);
   --font-sans: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
   --font-serif: "Noto Serif TC", "PingFang TC", serif;
+  --font-hand: "Klee", "Xingkai TC", "DFKai-SB", "BiauKai", "標楷體", var(--font-serif);
   --container: min(1120px, 92vw);
   --header-height: 72px;
   --space-xs: 0.5rem;
@@ -26,10 +37,10 @@
   --space-lg: 2rem;
   --space-xl: 3rem;
   --space-2xl: 4rem;
-  --radius: 8px;
-  --radius-lg: 12px;
-  --shadow: 0 4px 20px rgba(26, 51, 41, 0.08);
-  --shadow-hover: 0 8px 32px rgba(26, 51, 41, 0.12);
+  --radius: 12px;
+  --radius-lg: 20px;
+  --shadow: 0 8px 28px rgba(78, 87, 72, 0.1);
+  --shadow-hover: 0 14px 38px rgba(78, 87, 72, 0.16);
   --transition: 0.25s ease;
 }
 
@@ -6367,5 +6378,495 @@ footer a:hover { color: #ffffff; }
   }
   .trust-badges {
     justify-content: flex-start;
+  }
+}
+
+/* ==========================================================
+   Joy Forest editorial refresh · 2026-10
+   Brand palette: dusty sage / eucalyptus / pale sage /
+   warm white / oat milk tea / fog gold.
+   Decorative SVGs are intentionally CSS backgrounds: all SEO
+   headings remain real, indexable HTML text in both languages.
+   ========================================================== */
+
+body {
+  background-color: var(--color-warm-white);
+  background-image:
+    radial-gradient(circle at 8% 5%, rgba(196, 200, 181, 0.2), transparent 24rem),
+    radial-gradient(circle at 94% 28%, rgba(214, 195, 165, 0.18), transparent 28rem);
+}
+
+::selection {
+  color: var(--color-forest-dark);
+  background: rgba(179, 154, 100, 0.3);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: var(--color-forest-dark);
+  text-wrap: balance;
+}
+
+.site-header {
+  background: rgba(242, 236, 225, 0.94);
+  border-bottom-color: rgba(179, 154, 100, 0.34);
+  box-shadow: 0 7px 26px rgba(78, 87, 72, 0.07);
+}
+
+.brand-heading,
+.footer-heading {
+  font-family: var(--font-hand);
+  letter-spacing: 0.055em;
+}
+
+.site-main-nav .nav-link {
+  position: relative;
+}
+
+.site-main-nav .nav-link::after {
+  content: "";
+  position: absolute;
+  right: 0.55rem;
+  bottom: 0.2rem;
+  left: 0.55rem;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--color-fog-gold);
+  opacity: 0;
+  transform: scaleX(0.45);
+  transition: opacity var(--transition), transform var(--transition);
+}
+
+.site-main-nav .nav-link:hover::after,
+.site-main-nav .nav-link[aria-current="page"]::after {
+  opacity: 0.78;
+  transform: scaleX(1);
+}
+
+.hero,
+.hero--availability {
+  background: linear-gradient(145deg, #465043 0%, #68715f 58%, var(--color-dusty-sage) 100%);
+}
+
+.hero-with-img::after,
+.hero-media-overlay {
+  background: linear-gradient(180deg, rgba(52, 60, 48, 0.28) 0%, rgba(52, 60, 48, 0.78) 100%);
+}
+
+.hero h1,
+.stories-hero__content h1 {
+  font-family: var(--font-hand);
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-shadow: 0 2px 18px rgba(35, 40, 33, 0.4);
+}
+
+.hero .container::before,
+.stories-hero__content::before {
+  content: "";
+  display: block;
+  width: clamp(5.5rem, 12vw, 8rem);
+  height: 2.1rem;
+  margin: 0 auto 0.8rem;
+  background: url("../images/brand/jf-doodle-mountains.svg") center / contain no-repeat;
+  filter: brightness(0) invert(1);
+  opacity: 0.76;
+}
+
+.stories-hero__content::before {
+  margin-left: 0;
+}
+
+.hero .hero-sub,
+.hero .hero-lead,
+.hero .hero-text {
+  text-shadow: 0 1px 10px rgba(35, 40, 33, 0.45);
+}
+
+.trust-badge {
+  background: rgba(242, 236, 225, 0.14);
+  border-color: rgba(242, 236, 225, 0.55);
+  box-shadow: inset 0 0 0 1px rgba(179, 154, 100, 0.08);
+  backdrop-filter: blur(5px);
+}
+
+.btn {
+  min-height: 44px;
+  border-radius: 999px;
+  font-weight: 650;
+  letter-spacing: 0.025em;
+}
+
+.btn-primary {
+  background: var(--color-forest-dark);
+  box-shadow: 0 5px 16px rgba(78, 87, 72, 0.2);
+}
+
+.btn-primary:hover {
+  background: #3f483b;
+}
+
+.btn-outline-dark {
+  color: var(--color-forest-dark);
+  border-color: var(--color-eucalyptus);
+}
+
+.btn-outline-dark:hover {
+  background: var(--color-forest-dark);
+  border-color: var(--color-forest-dark);
+}
+
+.section {
+  position: relative;
+  isolation: isolate;
+  padding-block: clamp(3.4rem, 7vw, 5.6rem);
+}
+
+.section > .container {
+  position: relative;
+  z-index: 1;
+}
+
+.section-alt {
+  overflow: hidden;
+  background-color: rgba(196, 200, 181, 0.32);
+  background-image: linear-gradient(135deg, rgba(242, 236, 225, 0.7), rgba(196, 200, 181, 0.35));
+}
+
+.section-alt::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  top: 1.2rem;
+  right: max(-5rem, calc((100vw - 1120px) / 2 - 9rem));
+  width: clamp(14rem, 29vw, 25rem);
+  aspect-ratio: 2 / 1;
+  background: url("../images/brand/jf-doodle-clouds.svg") center / contain no-repeat;
+  opacity: 0.11;
+  pointer-events: none;
+}
+
+.section-title,
+.booking-section-head h2,
+.stories-section-heading h2,
+.facility-category-heading h2 {
+  font-family: var(--font-hand);
+  letter-spacing: 0.055em;
+}
+
+.section-title::after {
+  content: "";
+  display: block;
+  width: 7.25rem;
+  height: 1.35rem;
+  margin: 0.75rem auto 0;
+  background: url("../images/brand/jf-doodle-mountains.svg") center / contain no-repeat;
+  opacity: 0.72;
+}
+
+.section-title p {
+  font-family: var(--font-sans);
+  letter-spacing: normal;
+}
+
+.section-kicker,
+.booking-room-card__eyebrow,
+.stories-eyebrow,
+.selling-point-card__label,
+.facility-teaser-card__body > span {
+  color: var(--color-earth);
+  font-family: var(--font-hand);
+  letter-spacing: 0.12em;
+  text-transform: none;
+}
+
+.booking-section-head__link,
+.stories-text-link {
+  text-decoration-color: var(--color-fog-gold);
+  text-decoration-thickness: 2px;
+}
+
+.card,
+.story-topic-card,
+.story-card,
+.booking-room-card,
+.selling-point-card,
+.facility-teaser-card,
+.facility-hub-card,
+.facility-equipment-card,
+.home-pricing-intro,
+.price-table-wrap,
+.stay-rules-accordion,
+.room-spec-item,
+.availability-legend-wrap {
+  background: rgba(255, 253, 248, 0.92);
+  border-color: rgba(127, 135, 112, 0.25);
+  box-shadow: var(--shadow);
+}
+
+.card,
+.story-topic-card,
+.story-card,
+.selling-point-card,
+.facility-teaser-card,
+.facility-hub-card,
+.facility-equipment-card {
+  border-radius: var(--radius-lg);
+}
+
+.card:hover,
+.story-topic-card:hover,
+.story-card:hover,
+.booking-room-card:hover,
+.selling-point-card:hover,
+.facility-teaser-card:hover,
+.facility-hub-card:hover,
+.facility-equipment-card:hover {
+  box-shadow: var(--shadow-hover);
+  border-color: rgba(179, 154, 100, 0.48);
+}
+
+.booking-room-card {
+  border-radius: 1.6rem;
+  box-shadow: 0 13px 36px rgba(78, 87, 72, 0.12);
+}
+
+.booking-room-card__media {
+  background: var(--color-pale-sage);
+}
+
+.booking-room-card__media::after {
+  content: "";
+  position: absolute;
+  top: 0.8rem;
+  left: 0.8rem;
+  width: 3.5rem;
+  height: 3.5rem;
+  border: 1px solid rgba(242, 236, 225, 0.76);
+  border-radius: 50%;
+  background: rgba(78, 87, 72, 0.38) url("../images/brand/jf-doodle-clouds.svg") center / 85% auto no-repeat;
+  box-shadow: 0 5px 18px rgba(52, 55, 47, 0.18);
+  backdrop-filter: blur(4px);
+}
+
+.booking-room-card:has(.booking-room-card__media[href*="balloon-tent"]) .booking-room-card__media::after {
+  background-image: url("../images/brand/jf-doodle-balloon.svg");
+  background-size: auto 72%;
+}
+
+.booking-room-card__photo-link {
+  background: rgba(242, 236, 225, 0.94);
+  box-shadow: 0 5px 15px rgba(52, 55, 47, 0.14);
+}
+
+.booking-room-card__facts li,
+.room-tag-list li,
+.story-card__tag,
+.hashtags a,
+.hashtags span {
+  background: rgba(196, 200, 181, 0.35);
+  border-color: rgba(127, 135, 112, 0.22);
+  color: var(--color-forest-dark);
+}
+
+.selling-point-card__label,
+.facility-teaser-card__body > span {
+  background: rgba(214, 195, 165, 0.34);
+  color: var(--color-forest-dark);
+}
+
+.booking-room-card__price strong,
+.facility-equipment-card h2 span {
+  color: var(--color-earth);
+}
+
+.room-mark--card {
+  padding: 0.24rem;
+  border-radius: 50%;
+  background: rgba(196, 200, 181, 0.28);
+}
+
+.room-jump-nav-wrap {
+  background: rgba(242, 236, 225, 0.95);
+  border-color: rgba(179, 154, 100, 0.3);
+}
+
+.room-jump-nav a {
+  border-radius: 999px;
+  padding: 0.3rem 0.2rem;
+}
+
+.room-jump-nav a:hover {
+  color: var(--color-earth);
+}
+
+.story-filter {
+  border-color: rgba(127, 135, 112, 0.36);
+  color: var(--color-forest-dark);
+  background: rgba(255, 253, 248, 0.9);
+}
+
+.story-filter.is-active {
+  color: #fff;
+  background: var(--color-forest-dark);
+  border-color: var(--color-forest-dark);
+}
+
+.stories-hero {
+  background: var(--color-forest-dark);
+}
+
+.stories-hero__shade {
+  background: linear-gradient(180deg, rgba(52, 60, 48, 0.1) 18%, rgba(52, 60, 48, 0.86) 100%);
+}
+
+.stories-eyebrow {
+  color: #ead9bb;
+}
+
+.cta-block {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: linear-gradient(135deg, #515b4b 0%, var(--color-eucalyptus) 100%);
+}
+
+.cta-block::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  right: clamp(-3.5rem, 2vw, 1rem);
+  bottom: -5.6rem;
+  width: clamp(10rem, 23vw, 16rem);
+  aspect-ratio: 7 / 9;
+  background: url("../images/brand/jf-doodle-balloon.svg") center / contain no-repeat;
+  filter: brightness(0) invert(1);
+  opacity: 0.12;
+  pointer-events: none;
+}
+
+.site-footer,
+footer,
+.site-footer {
+  position: relative;
+  overflow: hidden;
+  background-color: #4e5748;
+  color: #f7f2e9;
+}
+
+.site-footer::before {
+  content: "";
+  position: absolute;
+  right: 2vw;
+  top: 1.2rem;
+  width: min(30rem, 45vw);
+  height: 5rem;
+  background: url("../images/brand/jf-doodle-mountains.svg") center / contain no-repeat;
+  filter: brightness(0) invert(1);
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+.site-footer p,
+.site-footer a,
+.site-footer span,
+footer p,
+footer a,
+footer span {
+  color: rgba(247, 242, 233, 0.88);
+}
+
+.footer-heading {
+  color: #fffdf8;
+}
+
+.footer-main,
+.footer-bottom {
+  position: relative;
+  z-index: 1;
+}
+
+.footer-main {
+  border-top-color: rgba(214, 195, 165, 0.28);
+}
+
+.footer-bottom {
+  border-top-color: rgba(214, 195, 165, 0.24);
+}
+
+input:not([type="checkbox"]):not([type="radio"]),
+select,
+textarea {
+  border-color: rgba(127, 135, 112, 0.38);
+  border-radius: var(--radius);
+  background-color: rgba(255, 253, 248, 0.92);
+  color: var(--color-text);
+}
+
+input:not([type="checkbox"]):not([type="radio"]):focus,
+select:focus,
+textarea:focus {
+  border-color: var(--color-fog-gold);
+  outline: 3px solid rgba(179, 154, 100, 0.2);
+  outline-offset: 1px;
+}
+
+.price-table th {
+  background: rgba(196, 200, 181, 0.32);
+}
+
+@media (max-width: 768px) {
+  .site-header {
+    background: rgba(242, 236, 225, 0.97);
+  }
+
+  .hero .container::before,
+  .stories-hero__content::before {
+    width: 5.6rem;
+    margin-bottom: 0.55rem;
+  }
+
+  .hero h1,
+  .stories-hero__content h1 {
+    letter-spacing: 0.045em;
+  }
+
+  .section {
+    padding-block: 3.25rem;
+  }
+
+  .section-alt::after {
+    top: 0.6rem;
+    right: -6.5rem;
+    width: 18rem;
+    opacity: 0.08;
+  }
+
+  .booking-room-card {
+    border-radius: 1.3rem;
+  }
+
+  .booking-room-card__media::after {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .site-footer::before {
+    right: -5rem;
+    width: 20rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .story-card,
+  .booking-room-card,
+  .selling-point-card,
+  .facility-teaser-card,
+  .facility-equipment-card,
+  .site-main-nav .nav-link::after {
+    transition: none;
   }
 }
