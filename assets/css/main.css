@@ -1267,6 +1267,7 @@ p:last-child { margin-bottom: 0; }
 .card-grid { display: grid; gap: var(--space-lg); }
 .card-grid-2 { grid-template-columns: repeat(2, 1fr); }
 .card-grid-3 { grid-template-columns: repeat(3, 1fr); }
+.card-grid-single { max-width: 52rem; margin-inline: auto; }
 .card {
   background: #fff;
   border-radius: var(--radius-lg);
