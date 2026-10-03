@@ -3140,6 +3140,34 @@ footer a:hover { color: #ffffff; }
   color: var(--color-text-muted);
 }
 
+.booking-plan-summary .card-body {
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+}
+.booking-plan-summary__intro {
+  margin: 0 0 1.25rem;
+  color: var(--color-forest-dark);
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.7;
+  text-align: center;
+}
+.booking-plan-summary__rule {
+  padding-block: 1.1rem;
+}
+.booking-plan-summary__rule + .booking-plan-summary__rule {
+  border-top: 1px solid var(--color-border);
+}
+.booking-plan-summary__rule h3 {
+  margin: 0 0 0.45rem;
+  color: var(--color-forest-dark);
+}
+.booking-plan-summary__rule p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--color-text-muted);
+}
+
 .room-pick-card {
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
