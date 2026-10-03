@@ -14,7 +14,7 @@
     campMiddleNightly: 4800,
     cloudNightly: 5000,
     balloonNightly: 5800,
-    fullSiteNightly: 9800,
+    fullSiteNightly: 10800,
     rvBase: 13800,
     rvExtraDay: 2800,
     rvBaseNights: 2
@@ -356,7 +356,9 @@
         campMiddleNightly: Number(parsed.campMiddleNightly) || DEFAULT_RULES.campMiddleNightly,
         cloudNightly: Number(parsed.cloudNightly || parsed.tentNightly) || DEFAULT_RULES.cloudNightly,
         balloonNightly: Number(parsed.balloonNightly) || DEFAULT_RULES.balloonNightly,
-        fullSiteNightly: Number(parsed.fullSiteNightly) || DEFAULT_RULES.fullSiteNightly,
+        fullSiteNightly: Number(parsed.fullSiteNightly) === 9800
+          ? DEFAULT_RULES.fullSiteNightly
+          : Number(parsed.fullSiteNightly) || DEFAULT_RULES.fullSiteNightly,
         rvBase: Number(parsed.rvBase) || DEFAULT_RULES.rvBase,
         rvExtraDay: Number(parsed.rvExtraDay) || DEFAULT_RULES.rvExtraDay,
         rvBaseNights: DEFAULT_RULES.rvBaseNights

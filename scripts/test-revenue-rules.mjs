@@ -10,7 +10,7 @@ const defaults = {
   campMiddleNightly: 4800,
   cloudNightly: 5000,
   balloonNightly: 5800,
-  fullSiteNightly: 9800,
+  fullSiteNightly: 10800,
   rvBase: 13800,
   rvExtraDay: 2800,
   rvBaseNights: 2
@@ -48,7 +48,7 @@ assert.equal(
 );
 assert.equal(
   Rules.computeEstimate({ checkInYmd: "2026-08-22", nights: 1, roomTags: ["balloon", "cloud"], guestCount: 10, summary: "兩帳包場10人" }, defaults).amount,
-  9800
+  10800
 );
 assert.equal(
   Rules.computeEstimate({ checkInYmd: "2026-08-22", nights: 1, roomTags: ["balloon", "cloud"], guestCount: 2, summary: "雲朵房兩人 Airbnb", description: "因時間調整，補償讓你們包場，兩間帳篷都可使用" }, defaults).amount,

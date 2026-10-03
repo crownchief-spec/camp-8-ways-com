@@ -146,7 +146,7 @@
   }
 
   function campsiteNightlyEstimate(event, rules) {
-    if (isTwoTentPackage(event)) return Number(rules.fullSiteNightly) || 9800;
+    if (isTwoTentPackage(event)) return Number(rules.fullSiteNightly) || 10800;
     var ymd = String(event.checkInYmd || "");
     if (ymd && ymd <= "2026-04-17") return Number(rules.campEarlyNightly) || 3800;
     if (ymd && ymd <= "2026-06-19") return Number(rules.campMiddleNightly) || 4800;
