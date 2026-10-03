@@ -1475,6 +1475,19 @@ p:last-child { margin-bottom: 0; }
   margin: 0 auto;
 }
 
+.design-idea-gallery {
+  display: grid;
+  gap: 14px;
+}
+
+.design-idea-gallery figcaption {
+  padding: 9px 12px 11px;
+  color: #566052;
+  font-size: 0.82rem;
+  line-height: 1.55;
+  text-align: left;
+}
+
 .design-idea-summary {
   padding: 16px 4px 2px;
 }
@@ -1490,6 +1503,10 @@ p:last-child { margin-bottom: 0; }
   color: #4d584b;
   font-size: 0.95rem;
   line-height: 1.75;
+}
+
+.design-idea-summary p + p {
+  margin-top: 0.8rem;
 }
 
 @media (max-width: 600px) {
