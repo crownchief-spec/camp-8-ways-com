@@ -17,6 +17,7 @@ function option(name) {
 }
 
 const explicitContentDir = option("--content-dir") || process.env.CAMP_STORIES_CONTENT_DIR;
+const mergeExisting = process.argv.includes("--merge-existing");
 const contentDir = explicitContentDir
   ? path.resolve(explicitContentDir)
   : path.join(ROOT, "content", "camp-stories");
@@ -65,6 +66,21 @@ function validatePublished(data, file) {
   if (!String(data.thumbnailImage).startsWith("/assets/")) throw new Error(`${file}: thumbnailImage 必須使用 /assets/ 開頭的網站路徑`);
   const localThumbnail = path.join(ROOT, String(data.thumbnailImage).replace(/^\//, ""));
   if (!fs.existsSync(localThumbnail)) throw new Error(`${file}: 找不到正方形縮圖 ${data.thumbnailImage}`);
+  if (data.videos !== undefined && !Array.isArray(data.videos)) throw new Error(`${file}: videos 必須是陣列`);
+  for (const video of data.videos || []) {
+    ["name", "description", "thumbnailUrl", "contentUrl", "duration"].forEach((field) => required(video, field, file));
+    for (const field of ["thumbnailUrl", "contentUrl"]) {
+      if (!String(video[field]).startsWith("/assets/")) throw new Error(`${file}: videos.${field} 必須使用 /assets/ 開頭的網站路徑`);
+      const localMedia = path.join(ROOT, String(video[field]).replace(/^\//, ""));
+      if (!fs.existsSync(localMedia)) throw new Error(`${file}: 找不到影片資源 ${video[field]}`);
+    }
+  }
+  if (data.collaborators !== undefined && !Array.isArray(data.collaborators)) throw new Error(`${file}: collaborators 必須是陣列`);
+  for (const collaborator of data.collaborators || []) {
+    ["handle", "url"].forEach((field) => required(collaborator, field, file));
+    if (!/^@[A-Za-z0-9._]+$/.test(String(collaborator.handle))) throw new Error(`${file}: collaborators.handle 格式錯誤`);
+    if (!/^https:\/\/www\.instagram\.com\/[A-Za-z0-9._]+\/$/.test(String(collaborator.url))) throw new Error(`${file}: collaborators.url 必須是 Instagram 個人頁網址`);
+  }
 }
 
 function loadArticles() {
@@ -86,6 +102,8 @@ function loadArticles() {
       status,
       tags: Array.isArray(parsed.data.tags) ? parsed.data.tags.map(String) : [],
       featured: Boolean(parsed.data.featured),
+      videos: Array.isArray(parsed.data.videos) ? parsed.data.videos : [],
+      collaborators: Array.isArray(parsed.data.collaborators) ? parsed.data.collaborators : [],
       readingTime: parsed.data.readingTime || `${Math.max(1, Math.ceil(parsed.content.length / 650))} 分鐘`,
       bodyHtml: marked.parse(parsed.content, { gfm: true, breaks: false }),
       sourceFile: file,
@@ -116,6 +134,7 @@ function publicItem(article) {
     thumbnailImageHeight: Number(article.thumbnailImageHeight),
     featured: article.featured,
     readingTime: article.readingTime,
+    collaborators: article.collaborators,
     path: `/stories/${article.slug}/`,
     url: `${SITE}/stories/${article.slug}/`,
   };
@@ -125,9 +144,10 @@ function articlePage(article, related) {
   const canonical = `${SITE}/stories/${article.slug}/`;
   const published = `${article.publishedDate}T09:00:00+08:00`;
   const modified = `${article.modifiedDate || article.publishedDate}T09:00:00+08:00`;
-  const tags = article.tags.map((tag) => `<span class="story-card__tag">${escapeHtml(tag)}</span>`).join("");
+  const tagHref = (tag) => `/pages/stories.html?tag=${encodeURIComponent(tag)}#latest-stories`;
+  const tags = article.tags.map((tag) => `<a class="story-card__tag" href="${tagHref(tag)}">${escapeHtml(tag)}</a>`).join("");
   const hashtags = article.tags
-    .map((tag) => `<span>#${escapeHtml(String(tag).replace(/^#+/, ""))}</span>`)
+    .map((tag) => `<a href="${tagHref(tag)}">#${escapeHtml(String(tag).replace(/^#+/, ""))}</a>`)
     .join("");
   const relatedHtml = related.length ? `
     <section class="section section-alt" aria-labelledby="related-stories-title">
@@ -137,7 +157,7 @@ function articlePage(article, related) {
           <article class="story-card"><a class="story-card__media" href="/stories/${escapeHtml(item.slug)}/"><img src="${escapeHtml(item.thumbnailImage)}" alt="${escapeHtml(item.thumbnailImageAlt)}" width="${Number(item.thumbnailImageWidth)}" height="${Number(item.thumbnailImageHeight)}" loading="lazy" decoding="async"></a><div class="story-card__body"><div class="story-card__meta"><span>${escapeHtml(item.category)}</span><time datetime="${escapeHtml(item.publishedDate)}">${escapeHtml(item.publishedDate)}</time></div><h3><a href="/stories/${escapeHtml(item.slug)}/">${escapeHtml(item.title)}</a></h3><p>${escapeHtml(item.description)}</p></div></article>`).join("")}</div>
       </div>
     </section>` : "";
-  const schema = JSON.stringify({
+  const articleSchema = {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: article.title,
@@ -150,7 +170,33 @@ function articlePage(article, related) {
     publisher: { "@type": "Organization", name: "揪好森 Joyforest", url: SITE },
     articleSection: article.category,
     keywords: article.tags.join(", "),
-  }).replaceAll("<", "\\u003c");
+  };
+  if (article.collaborators?.length) {
+    articleSchema.mentions = article.collaborators.map((collaborator) => ({
+      "@type": "Person",
+      name: collaborator.handle,
+      sameAs: collaborator.url,
+    }));
+  }
+  if (article.videos?.length) {
+    articleSchema.video = article.videos.map((video) => ({
+      "@type": "VideoObject",
+      name: video.name,
+      description: video.description,
+      thumbnailUrl: `${SITE}${video.thumbnailUrl}`,
+      contentUrl: `${SITE}${video.contentUrl}`,
+      uploadDate: `${article.publishedDate}T09:00:00+08:00`,
+      duration: video.duration,
+      ...(article.collaborators?.length ? {
+        creator: article.collaborators.map((collaborator) => ({
+          "@type": "Person",
+          name: collaborator.handle,
+          sameAs: collaborator.url,
+        })),
+      } : {}),
+    }));
+  }
+  const schema = JSON.stringify(articleSchema).replaceAll("<", "\\u003c");
 
   return `<!DOCTYPE html>
 <!-- generated-by: build-camp-stories -->
@@ -213,18 +259,26 @@ if (!fs.existsSync(contentDir)) throw new Error(`找不到文章來源資料夾�
 const previousArticles = fs.existsSync(DATA_PATH)
   ? JSON.parse(fs.readFileSync(DATA_PATH, "utf8")).articles || []
   : [];
-const articles = loadArticles();
-const publicArticles = articles.map(publicItem);
+const sourceArticles = loadArticles();
+const sourceSlugs = new Set(sourceArticles.map((item) => item.slug));
+const sourceStoryIds = new Set(sourceArticles.map((item) => item.storyId));
+const preservedArticles = mergeExisting
+  ? previousArticles.filter((item) => !sourceSlugs.has(item.slug) && !sourceStoryIds.has(item.storyId))
+  : [];
+const relatedPool = [...sourceArticles, ...preservedArticles]
+  .sort((a, b) => b.publishedDate.localeCompare(a.publishedDate));
+const publicArticles = [...sourceArticles.map(publicItem), ...preservedArticles]
+  .sort((a, b) => b.publishedDate.localeCompare(a.publishedDate));
 fs.writeFileSync(DATA_PATH, JSON.stringify({ schemaVersion: 1, articles: publicArticles }, null, 2) + "\n");
 fs.mkdirSync(STORIES_DIR, { recursive: true });
-for (const article of articles) {
+for (const article of sourceArticles) {
   const outputDir = path.join(STORIES_DIR, article.slug);
   fs.mkdirSync(outputDir, { recursive: true });
-  const related = articles.filter((item) => item.slug !== article.slug).slice(0, 3);
+  const related = relatedPool.filter((item) => item.slug !== article.slug).slice(0, 3);
   fs.writeFileSync(path.join(outputDir, "index.html"), articlePage(article, related));
 }
 const currentSlugs = new Set(publicArticles.map((item) => item.slug));
-for (const previous of previousArticles) {
+for (const previous of mergeExisting ? [] : previousArticles) {
   if (currentSlugs.has(previous.slug)) continue;
   const previousDir = path.join(STORIES_DIR, previous.slug);
   const previousPage = path.join(previousDir, "index.html");
@@ -233,4 +287,4 @@ for (const previous of previousArticles) {
   }
 }
 ensureHubInSitemap(publicArticles);
-console.log(`森林故事建置完成：${articles.length} 篇，來源 ${contentDir}`);
+console.log(`森林故事建置完成：新增／更新 ${sourceArticles.length} 篇，公開共 ${publicArticles.length} 篇，來源 ${contentDir}`);

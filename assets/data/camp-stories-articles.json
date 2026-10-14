@@ -2,6 +2,114 @@
   "schemaVersion": 1,
   "articles": [
     {
+      "storyId": "ig-20261008-17",
+      "slug": "four-pomeranians-pet-friendly-private-stay-taoyuan",
+      "status": "published",
+      "privacy": "public",
+      "title": "四隻博美的寵物友善包場旅行｜桃園毛孩住宿",
+      "description": "四隻博美從圓頂帳篷內一路玩到私人草地與森林木棧道，記錄多犬家庭的桃園包場旅行。",
+      "publishedDate": "2026-10-08",
+      "modifiedDate": "2026-10-14",
+      "category": "森林故事",
+      "tags": [
+        "寵物友善",
+        "多犬家庭",
+        "圓頂帳篷",
+        "私人草地",
+        "森林景觀"
+      ],
+      "coverImage": "/assets/images/stories/four-pomeranians-pet-friendly-private-stay-taoyuan/four-pomeranians-cloud-tent-indoor-poster.webp",
+      "coverImageAlt": "四隻不同毛色的博美犬在圓頂帳篷景觀窗前的椅子上排排坐",
+      "coverImageWidth": 675,
+      "coverImageHeight": 1200,
+      "thumbnailImage": "/assets/images/stories/four-pomeranians-pet-friendly-private-stay-taoyuan/four-pomeranians-cloud-tent-indoor-square-thumbnail.webp",
+      "thumbnailImageAlt": "四隻不同毛色的博美犬在圓頂帳篷景觀窗前的椅子上排排坐",
+      "thumbnailImageWidth": 800,
+      "thumbnailImageHeight": 800,
+      "featured": false,
+      "readingTime": "約 5 分鐘",
+      "collaborators": [
+        {
+          "handle": "@cookie_coffee_pom",
+          "url": "https://www.instagram.com/cookie_coffee_pom/"
+        }
+      ],
+      "path": "/stories/four-pomeranians-pet-friendly-private-stay-taoyuan/",
+      "url": "https://camp.8-ways.com/stories/four-pomeranians-pet-friendly-private-stay-taoyuan/"
+    },
+    {
+      "storyId": "ig-20261008-18",
+      "slug": "friends-pets-hotpot-private-party-taoyuan",
+      "status": "published",
+      "privacy": "public",
+      "title": "好友帶毛孩一起吃火鍋｜桃園寵物友善包場聚會",
+      "description": "朋友和毛孩圍坐戶外餐桌吃火鍋與烤肉，在森林夜色中完成一場寵物友善包場聚會。",
+      "publishedDate": "2026-10-08",
+      "modifiedDate": "2026-10-14",
+      "category": "森林故事",
+      "tags": [
+        "寵物友善",
+        "好友包場",
+        "烤肉 BBQ",
+        "戶外料理",
+        "戶外燈光"
+      ],
+      "coverImage": "/assets/images/stories/friends-pets-hotpot-private-party-taoyuan/friends-pets-hotpot-bbq-gathering-poster.webp",
+      "coverImageAlt": "朋友們與博美犬圍坐戶外餐桌，畫面帶到冒煙火鍋、烤肉與夜間森林",
+      "coverImageWidth": 675,
+      "coverImageHeight": 1200,
+      "thumbnailImage": "/assets/images/stories/friends-pets-hotpot-private-party-taoyuan/friends-pets-hotpot-bbq-gathering-square-thumbnail.webp",
+      "thumbnailImageAlt": "朋友們與博美犬圍坐戶外餐桌，畫面帶到冒煙火鍋、烤肉與夜間森林",
+      "thumbnailImageWidth": 800,
+      "thumbnailImageHeight": 800,
+      "featured": false,
+      "readingTime": "約 3 分鐘",
+      "collaborators": [
+        {
+          "handle": "@evenwang.0521",
+          "url": "https://www.instagram.com/evenwang.0521/"
+        }
+      ],
+      "path": "/stories/friends-pets-hotpot-private-party-taoyuan/",
+      "url": "https://camp.8-ways.com/stories/friends-pets-hotpot-private-party-taoyuan/"
+    },
+    {
+      "storyId": "ig-20261005-16",
+      "slug": "dog-friendly-girls-glamping-karaoke-taoyuan",
+      "status": "published",
+      "privacy": "public",
+      "title": "帶狗狗入住的寵物友善假期｜女孩寫真與好友歡唱夜",
+      "description": "女孩帶狗狗拍森林寫真、坐在圓頂帳篷窗前休息，再和好友一起安排歡唱夜。",
+      "publishedDate": "2026-10-05",
+      "modifiedDate": "2026-10-14",
+      "category": "森林故事",
+      "tags": [
+        "寵物友善",
+        "女孩寫真",
+        "KTV 歡唱",
+        "烤肉 BBQ",
+        "圓頂帳篷"
+      ],
+      "coverImage": "/assets/images/stories/dog-friendly-girls-glamping-karaoke-taoyuan/woman-dog-flower-wall-portrait-poster.webp",
+      "coverImageAlt": "穿白色洋裝的女孩抱著棕色狗狗坐在綠色花牆前，旁邊有粉色裝飾",
+      "coverImageWidth": 675,
+      "coverImageHeight": 1200,
+      "thumbnailImage": "/assets/images/stories/dog-friendly-girls-glamping-karaoke-taoyuan/woman-dog-flower-wall-portrait-square-thumbnail.webp",
+      "thumbnailImageAlt": "穿白色洋裝的女孩抱著棕色狗狗坐在綠色花牆前，旁邊有粉色裝飾",
+      "thumbnailImageWidth": 800,
+      "thumbnailImageHeight": 800,
+      "featured": false,
+      "readingTime": "約 5 分鐘",
+      "collaborators": [
+        {
+          "handle": "@soullychang",
+          "url": "https://www.instagram.com/soullychang/"
+        }
+      ],
+      "path": "/stories/dog-friendly-girls-glamping-karaoke-taoyuan/",
+      "url": "https://camp.8-ways.com/stories/dog-friendly-girls-glamping-karaoke-taoyuan/"
+    },
+    {
       "storyId": "20260928-001",
       "slug": "joyforest-work-log-september-facility-updates",
       "status": "published",
@@ -146,6 +254,154 @@
       "readingTime": "4 分鐘",
       "path": "/stories/cloud-tent-premium-gas-bbq-upgrade/",
       "url": "https://camp.8-ways.com/stories/cloud-tent-premium-gas-bbq-upgrade/"
+    },
+    {
+      "storyId": "ig-20260926-15",
+      "slug": "solo-man-mid-autumn-bbq-forest-stay-taoyuan",
+      "status": "published",
+      "privacy": "public",
+      "title": "男生獨旅中秋烤肉與森林放空｜桃園包場住宿",
+      "description": "男生在中秋夜獨自烤肉，隔天走訪帳篷與草地，把節慶儀式感和森林獨處排進同一趟旅行。",
+      "publishedDate": "2026-09-26",
+      "modifiedDate": "2026-10-14",
+      "category": "森林故事",
+      "tags": [
+        "一個人旅行",
+        "烤肉 BBQ",
+        "圓頂帳篷",
+        "私人草地",
+        "森林景觀"
+      ],
+      "coverImage": "/assets/images/stories/solo-man-mid-autumn-bbq-forest-stay-taoyuan/solo-man-mid-autumn-bbq-night-poster.webp",
+      "coverImageAlt": "男生在夜間燈串與戶外料理區自拍，鏡頭帶到烤網上的肉品與炭火",
+      "coverImageWidth": 675,
+      "coverImageHeight": 1200,
+      "thumbnailImage": "/assets/images/stories/solo-man-mid-autumn-bbq-forest-stay-taoyuan/solo-man-mid-autumn-bbq-night-square-thumbnail.webp",
+      "thumbnailImageAlt": "男生在夜間燈串與戶外料理區自拍，鏡頭帶到烤網上的肉品與炭火",
+      "thumbnailImageWidth": 800,
+      "thumbnailImageHeight": 800,
+      "featured": false,
+      "readingTime": "約 5 分鐘",
+      "collaborators": [
+        {
+          "handle": "@liao0908",
+          "url": "https://www.instagram.com/liao0908/"
+        }
+      ],
+      "path": "/stories/solo-man-mid-autumn-bbq-forest-stay-taoyuan/",
+      "url": "https://camp.8-ways.com/stories/solo-man-mid-autumn-bbq-forest-stay-taoyuan/"
+    },
+    {
+      "storyId": "ig-20260912-14",
+      "slug": "friends-private-movie-night-breakfast-taoyuan",
+      "status": "published",
+      "privacy": "public",
+      "title": "一群好友的包場電影夜與手作早餐｜桃園聚會住宿",
+      "description": "好友先在圓頂帳篷看電影聊天，隔天一起準備早餐，把桃園包場聚會延續到早晨。",
+      "publishedDate": "2026-09-12",
+      "modifiedDate": "2026-10-14",
+      "category": "森林故事",
+      "tags": [
+        "好友包場",
+        "戶外電影院",
+        "手作早餐",
+        "圓頂帳篷",
+        "戶外燈光"
+      ],
+      "coverImage": "/assets/images/stories/friends-private-movie-night-breakfast-taoyuan/cloud-tent-bathtub-room-tour-poster.webp",
+      "coverImageAlt": "影片依序拍攝圓頂帳篷的大片窗戶、木地板、白色浴缸與室內桌椅",
+      "coverImageWidth": 675,
+      "coverImageHeight": 1200,
+      "thumbnailImage": "/assets/images/stories/friends-private-movie-night-breakfast-taoyuan/cloud-tent-bathtub-room-tour-square-thumbnail.webp",
+      "thumbnailImageAlt": "影片依序拍攝圓頂帳篷的大片窗戶、木地板、白色浴缸與室內桌椅",
+      "thumbnailImageWidth": 800,
+      "thumbnailImageHeight": 800,
+      "featured": false,
+      "readingTime": "約 4 分鐘",
+      "collaborators": [
+        {
+          "handle": "@luce_429",
+          "url": "https://www.instagram.com/luce_429/"
+        }
+      ],
+      "path": "/stories/friends-private-movie-night-breakfast-taoyuan/",
+      "url": "https://camp.8-ways.com/stories/friends-private-movie-night-breakfast-taoyuan/"
+    },
+    {
+      "storyId": "ig-20260903-13",
+      "slug": "family-seven-private-glamping-bath-forest-retreat-taoyuan",
+      "status": "published",
+      "privacy": "public",
+      "title": "一家七口森林包場假期｜景觀浴缸、烤肉與圓頂帳篷",
+      "description": "一家七口從森林步道、兩款圓頂帳篷與景觀浴缸，一路體驗私人草地、烤肉與完整戶外料理設備。",
+      "publishedDate": "2026-09-03",
+      "modifiedDate": "2026-10-14",
+      "category": "森林故事",
+      "tags": [
+        "親子友善",
+        "家庭包場",
+        "景觀浴缸",
+        "烤肉 BBQ",
+        "戶外料理",
+        "圓頂帳篷",
+        "私人草地"
+      ],
+      "coverImage": "/assets/images/stories/family-seven-private-glamping-bath-forest-retreat-taoyuan/couple-glamping-lawn-arrival-poster.webp",
+      "coverImageAlt": "直式影片沿著木棧道拍攝綠色草地、樹木與白色圓頂帳篷",
+      "coverImageWidth": 675,
+      "coverImageHeight": 1200,
+      "thumbnailImage": "/assets/images/stories/family-seven-private-glamping-bath-forest-retreat-taoyuan/couple-glamping-lawn-arrival-square-thumbnail.webp",
+      "thumbnailImageAlt": "直式影片沿著木棧道拍攝綠色草地、樹木與白色圓頂帳篷",
+      "thumbnailImageWidth": 800,
+      "thumbnailImageHeight": 800,
+      "featured": false,
+      "readingTime": "約 8 分鐘",
+      "collaborators": [
+        {
+          "handle": "@kelly311430",
+          "url": "https://www.instagram.com/kelly311430/"
+        }
+      ],
+      "path": "/stories/family-seven-private-glamping-bath-forest-retreat-taoyuan/",
+      "url": "https://camp.8-ways.com/stories/family-seven-private-glamping-bath-forest-retreat-taoyuan/"
+    },
+    {
+      "storyId": "ig-20260830-12",
+      "slug": "solo-male-no-gear-glamping-projector-campfire",
+      "status": "published",
+      "privacy": "public",
+      "title": "男生獨旅的免裝備懶人露營｜投影與營火一次體驗",
+      "description": "一個人也能依照自己的節奏體驗泡澡、KTV、戶外投影、烤肉與營火，不必準備帳篷裝備。",
+      "publishedDate": "2026-08-30",
+      "modifiedDate": "2026-10-14",
+      "category": "森林故事",
+      "tags": [
+        "一個人旅行",
+        "免裝備露營",
+        "戶外電影院",
+        "景觀浴缸",
+        "KTV 歡唱",
+        "烤肉 BBQ",
+        "營火體驗"
+      ],
+      "coverImage": "/assets/images/stories/solo-male-no-gear-glamping-projector-campfire/solo-man-cloud-tent-karaoke-campfire-poster.webp",
+      "coverImageAlt": "男生依序出現在圓頂帳篷浴缸、KTV麥克風、戶外投影與營火旁",
+      "coverImageWidth": 675,
+      "coverImageHeight": 1200,
+      "thumbnailImage": "/assets/images/stories/solo-male-no-gear-glamping-projector-campfire/solo-man-cloud-tent-karaoke-campfire-square-thumbnail.webp",
+      "thumbnailImageAlt": "男生依序出現在圓頂帳篷浴缸、KTV麥克風、戶外投影與營火旁",
+      "thumbnailImageWidth": 800,
+      "thumbnailImageHeight": 800,
+      "featured": false,
+      "readingTime": "約 3 分鐘",
+      "collaborators": [
+        {
+          "handle": "@turtle_c1028",
+          "url": "https://www.instagram.com/turtle_c1028/"
+        }
+      ],
+      "path": "/stories/solo-male-no-gear-glamping-projector-campfire/",
+      "url": "https://camp.8-ways.com/stories/solo-male-no-gear-glamping-projector-campfire/"
     },
     {
       "storyId": "20260509-001",
@@ -295,6 +551,403 @@
       "readingTime": "8 分鐘",
       "path": "/stories/xinyue-forest-english-staff-retreat/",
       "url": "https://camp.8-ways.com/stories/xinyue-forest-english-staff-retreat/"
+    },
+    {
+      "storyId": "ig-20260812-11",
+      "slug": "family-craft-campfire-private-stay-taoyuan",
+      "status": "published",
+      "privacy": "public",
+      "title": "親子手作體驗與營火夜｜桃園親子包場住宿",
+      "description": "親子家庭白天在草地活動、一起做手作，晚上圍著營火看投影，完成充實的桃園包場旅行。",
+      "publishedDate": "2026-08-12",
+      "modifiedDate": "2026-10-14",
+      "category": "森林故事",
+      "tags": [
+        "親子友善",
+        "家庭包場",
+        "親子手作",
+        "營火體驗",
+        "戶外電影院"
+      ],
+      "coverImage": "/assets/images/stories/family-craft-campfire-private-stay-taoyuan/parent-child-craft-glamping-day-poster.webp",
+      "coverImageAlt": "直式拼貼呈現家長陪孩子在草地活動、桌邊做手作與帳篷內互動",
+      "coverImageWidth": 540,
+      "coverImageHeight": 960,
+      "thumbnailImage": "/assets/images/stories/family-craft-campfire-private-stay-taoyuan/parent-child-craft-glamping-day-square-thumbnail.webp",
+      "thumbnailImageAlt": "直式拼貼呈現家長陪孩子在草地活動、桌邊做手作與帳篷內互動",
+      "thumbnailImageWidth": 800,
+      "thumbnailImageHeight": 800,
+      "featured": false,
+      "readingTime": "約 4 分鐘",
+      "collaborators": [
+        {
+          "handle": "@ashlens_story_station",
+          "url": "https://www.instagram.com/ashlens_story_station/"
+        }
+      ],
+      "path": "/stories/family-craft-campfire-private-stay-taoyuan/",
+      "url": "https://camp.8-ways.com/stories/family-craft-campfire-private-stay-taoyuan/"
+    },
+    {
+      "storyId": "ig-20260810-10",
+      "slug": "dome-tent-family-photo-studio-taoyuan",
+      "status": "published",
+      "privacy": "public",
+      "title": "圓頂帳篷變身自然光親子攝影棚｜桃園場地租借",
+      "description": "攝影師在圓頂帳篷內架設白色背景，利用自然光拍攝親子互動與家庭合照。",
+      "publishedDate": "2026-08-10",
+      "modifiedDate": "2026-10-14",
+      "category": "森林故事",
+      "tags": [
+        "親子友善",
+        "親子攝影",
+        "場地租借",
+        "圓頂帳篷",
+        "森林景觀"
+      ],
+      "coverImage": "/assets/images/stories/dome-tent-family-photo-studio-taoyuan/dome-tent-family-photography-session-poster.webp",
+      "coverImageAlt": "攝影師在圓頂帳篷內架設白色背景，媽媽與兩名孩子坐在背景前拍攝親子照",
+      "coverImageWidth": 675,
+      "coverImageHeight": 1200,
+      "thumbnailImage": "/assets/images/stories/dome-tent-family-photo-studio-taoyuan/dome-tent-family-photography-session-square-thumbnail.webp",
+      "thumbnailImageAlt": "攝影師在圓頂帳篷內架設白色背景，媽媽與兩名孩子坐在背景前拍攝親子照",
+      "thumbnailImageWidth": 800,
+      "thumbnailImageHeight": 800,
+      "featured": false,
+      "readingTime": "約 3 分鐘",
+      "collaborators": [
+        {
+          "handle": "@jimphotooo",
+          "url": "https://www.instagram.com/jimphotooo/"
+        }
+      ],
+      "path": "/stories/dome-tent-family-photo-studio-taoyuan/",
+      "url": "https://camp.8-ways.com/stories/dome-tent-family-photo-studio-taoyuan/"
+    },
+    {
+      "storyId": "ig-20260801-09",
+      "slug": "family-private-glamping-bbq-taoyuan",
+      "status": "published",
+      "privacy": "public",
+      "title": "親子包場住宿與草地烤肉時光｜桃園親子懶人露營",
+      "description": "一家人在森林草地、圓頂帳篷與營火旁從白天玩到晚上，體驗親子友善的包場烤肉旅行。",
+      "publishedDate": "2026-08-01",
+      "modifiedDate": "2026-10-14",
+      "category": "森林故事",
+      "tags": [
+        "親子友善",
+        "家庭包場",
+        "烤肉 BBQ",
+        "營火體驗",
+        "私人草地"
+      ],
+      "coverImage": "/assets/images/stories/family-private-glamping-bbq-taoyuan/family-private-lawn-glamping-overview-poster.webp",
+      "coverImageAlt": "媽媽與孩子走過綠色草地，畫面標示懶人露營並帶到白色圓頂帳篷",
+      "coverImageWidth": 675,
+      "coverImageHeight": 1200,
+      "thumbnailImage": "/assets/images/stories/family-private-glamping-bbq-taoyuan/family-private-lawn-glamping-overview-square-thumbnail.webp",
+      "thumbnailImageAlt": "媽媽與孩子走過綠色草地，畫面標示懶人露營並帶到白色圓頂帳篷",
+      "thumbnailImageWidth": 800,
+      "thumbnailImageHeight": 800,
+      "featured": false,
+      "readingTime": "約 5 分鐘",
+      "collaborators": [
+        {
+          "handle": "@my.twins0202",
+          "url": "https://www.instagram.com/my.twins0202/"
+        }
+      ],
+      "path": "/stories/family-private-glamping-bbq-taoyuan/",
+      "url": "https://camp.8-ways.com/stories/family-private-glamping-bbq-taoyuan/"
+    },
+    {
+      "storyId": "ig-20260731-07",
+      "slug": "friends-movie-night-light-painting-party-taoyuan",
+      "status": "published",
+      "privacy": "public",
+      "title": "好友包場電影夜與光繪派對｜桃園夜間聚會住宿",
+      "description": "好友在帳篷裡看投影電影，再到夜間草地玩仙女棒光繪，完成一場桃園森林包場派對。",
+      "publishedDate": "2026-07-31",
+      "modifiedDate": "2026-10-14",
+      "category": "森林故事",
+      "tags": [
+        "好友包場",
+        "戶外電影院",
+        "戶外燈光",
+        "夜間派對",
+        "私人草地"
+      ],
+      "coverImage": "/assets/images/stories/friends-movie-night-light-painting-party-taoyuan/indoor-projector-movie-night-poster.webp",
+      "coverImageAlt": "圓頂帳篷內播放大畫面電影，桌邊有燈光與聚會用品",
+      "coverImageWidth": 675,
+      "coverImageHeight": 1200,
+      "thumbnailImage": "/assets/images/stories/friends-movie-night-light-painting-party-taoyuan/indoor-projector-movie-night-square-thumbnail.webp",
+      "thumbnailImageAlt": "圓頂帳篷內播放大畫面電影，桌邊有燈光與聚會用品",
+      "thumbnailImageWidth": 800,
+      "thumbnailImageHeight": 800,
+      "featured": false,
+      "readingTime": "約 6 分鐘",
+      "collaborators": [
+        {
+          "handle": "@kitty1010ki",
+          "url": "https://www.instagram.com/kitty1010ki/"
+        }
+      ],
+      "path": "/stories/friends-movie-night-light-painting-party-taoyuan/",
+      "url": "https://camp.8-ways.com/stories/friends-movie-night-light-painting-party-taoyuan/"
+    },
+    {
+      "storyId": "ig-20260731-08",
+      "slug": "couple-acoustic-music-glamping-date-taoyuan",
+      "status": "published",
+      "privacy": "public",
+      "title": "情侶草地彈唱的音樂系露營約會｜桃園包場住宿",
+      "description": "情侶坐在森林草地彈吉他唱歌，把圓頂帳篷前的午後變成兩個人的小型音樂會。",
+      "publishedDate": "2026-07-31",
+      "modifiedDate": "2026-10-14",
+      "category": "森林故事",
+      "tags": [
+        "情侶旅行",
+        "草地彈唱",
+        "私人草地",
+        "森林景觀"
+      ],
+      "coverImage": "/assets/images/stories/couple-acoustic-music-glamping-date-taoyuan/couple-acoustic-guitar-lawn-date-poster.webp",
+      "coverImageAlt": "男生彈奏木吉他，女生坐在粉色露營椅上唱歌，背景是森林草地與白色圓頂帳篷",
+      "coverImageWidth": 675,
+      "coverImageHeight": 1200,
+      "thumbnailImage": "/assets/images/stories/couple-acoustic-music-glamping-date-taoyuan/couple-acoustic-guitar-lawn-date-square-thumbnail.webp",
+      "thumbnailImageAlt": "男生彈奏木吉他，女生坐在粉色露營椅上唱歌，背景是森林草地與白色圓頂帳篷",
+      "thumbnailImageWidth": 800,
+      "thumbnailImageHeight": 800,
+      "featured": false,
+      "readingTime": "約 3 分鐘",
+      "collaborators": [
+        {
+          "handle": "@yulun_1.1.17",
+          "url": "https://www.instagram.com/yulun_1.1.17/"
+        },
+        {
+          "handle": "@jimmy801026",
+          "url": "https://www.instagram.com/jimmy801026/"
+        }
+      ],
+      "path": "/stories/couple-acoustic-music-glamping-date-taoyuan/",
+      "url": "https://camp.8-ways.com/stories/couple-acoustic-music-glamping-date-taoyuan/"
+    },
+    {
+      "storyId": "ig-20260708-06",
+      "slug": "solo-man-private-glamping-slow-travel-taoyuan",
+      "status": "published",
+      "privacy": "public",
+      "title": "男生一人包場的森林慢生活｜桃園懶人露營",
+      "description": "男生獨自在私人草地與圓頂帳篷之間慢慢散步、整理餐點，享受不趕行程的桃園森林時光。",
+      "publishedDate": "2026-07-08",
+      "modifiedDate": "2026-10-14",
+      "category": "森林故事",
+      "tags": [
+        "一個人旅行",
+        "免裝備露營",
+        "圓頂帳篷",
+        "私人草地",
+        "森林景觀"
+      ],
+      "coverImage": "/assets/images/stories/solo-man-private-glamping-slow-travel-taoyuan/man-private-lawn-slow-glamping-poster.webp",
+      "coverImageAlt": "男生在森林草地、戶外桌椅與白色圓頂帳篷之間慢慢活動",
+      "coverImageWidth": 675,
+      "coverImageHeight": 1200,
+      "thumbnailImage": "/assets/images/stories/solo-man-private-glamping-slow-travel-taoyuan/man-private-lawn-slow-glamping-square-thumbnail.webp",
+      "thumbnailImageAlt": "男生在森林草地、戶外桌椅與白色圓頂帳篷之間慢慢活動",
+      "thumbnailImageWidth": 800,
+      "thumbnailImageHeight": 800,
+      "featured": false,
+      "readingTime": "約 3 分鐘",
+      "collaborators": [
+        {
+          "handle": "@junting0905",
+          "url": "https://www.instagram.com/junting0905/"
+        }
+      ],
+      "path": "/stories/solo-man-private-glamping-slow-travel-taoyuan/",
+      "url": "https://camp.8-ways.com/stories/solo-man-private-glamping-slow-travel-taoyuan/"
+    },
+    {
+      "storyId": "ig-20260706-02",
+      "slug": "girls-dome-glamping-room-tour-taoyuan",
+      "status": "published",
+      "privacy": "public",
+      "title": "女孩入住開箱與森林系穿搭｜桃園圓頂帳篷住宿",
+      "description": "從雙床、木桌、雲朵燈到大片森林窗景，女孩用房間開箱與穿搭影片記錄圓頂帳篷入住體驗。",
+      "publishedDate": "2026-07-06",
+      "modifiedDate": "2026-10-14",
+      "category": "森林故事",
+      "tags": [
+        "女孩寫真",
+        "圓頂帳篷",
+        "森林景觀",
+        "景觀浴缸"
+      ],
+      "coverImage": "/assets/images/stories/girls-dome-glamping-room-tour-taoyuan/cloud-tent-panorama-room-tour-poster.webp",
+      "coverImageAlt": "圓頂帳篷內有兩張白色床鋪、木桌椅、雲朵燈與大片森林景觀窗",
+      "coverImageWidth": 675,
+      "coverImageHeight": 1200,
+      "thumbnailImage": "/assets/images/stories/girls-dome-glamping-room-tour-taoyuan/cloud-tent-panorama-room-tour-square-thumbnail.webp",
+      "thumbnailImageAlt": "圓頂帳篷內有兩張白色床鋪、木桌椅、雲朵燈與大片森林景觀窗",
+      "thumbnailImageWidth": 800,
+      "thumbnailImageHeight": 800,
+      "featured": false,
+      "readingTime": "約 4 分鐘",
+      "collaborators": [
+        {
+          "handle": "@yzn.2n",
+          "url": "https://www.instagram.com/yzn.2n/"
+        }
+      ],
+      "path": "/stories/girls-dome-glamping-room-tour-taoyuan/",
+      "url": "https://camp.8-ways.com/stories/girls-dome-glamping-room-tour-taoyuan/"
+    },
+    {
+      "storyId": "ig-20260706-03",
+      "slug": "solo-girl-dome-glamping-photo-taoyuan",
+      "status": "published",
+      "privacy": "public",
+      "title": "女孩森林系圓頂帳篷寫真｜桃園包場住宿",
+      "description": "女孩利用圓頂帳篷的大面窗、白色床鋪與森林自然光，拍下一個人的輕旅行寫真。",
+      "publishedDate": "2026-07-06",
+      "modifiedDate": "2026-10-14",
+      "category": "森林故事",
+      "tags": [
+        "一個人旅行",
+        "女孩寫真",
+        "圓頂帳篷",
+        "森林景觀"
+      ],
+      "coverImage": "/assets/images/stories/solo-girl-dome-glamping-photo-taoyuan/woman-dome-window-portrait-poster.webp",
+      "coverImageAlt": "女孩在圓頂帳篷的大片窗戶與白色床鋪旁自拍，窗外是綠色樹林",
+      "coverImageWidth": 675,
+      "coverImageHeight": 1200,
+      "thumbnailImage": "/assets/images/stories/solo-girl-dome-glamping-photo-taoyuan/woman-dome-window-portrait-square-thumbnail.webp",
+      "thumbnailImageAlt": "女孩在圓頂帳篷的大片窗戶與白色床鋪旁自拍，窗外是綠色樹林",
+      "thumbnailImageWidth": 800,
+      "thumbnailImageHeight": 800,
+      "featured": false,
+      "readingTime": "約 3 分鐘",
+      "collaborators": [
+        {
+          "handle": "@yxy_0923",
+          "url": "https://www.instagram.com/yxy_0923/"
+        }
+      ],
+      "path": "/stories/solo-girl-dome-glamping-photo-taoyuan/",
+      "url": "https://camp.8-ways.com/stories/solo-girl-dome-glamping-photo-taoyuan/"
+    },
+    {
+      "storyId": "ig-20260706-04",
+      "slug": "couple-bbq-private-dome-glamping-taoyuan",
+      "status": "published",
+      "privacy": "public",
+      "title": "情侶森林烤肉約會｜桃園圓頂帳篷包場住宿",
+      "description": "情侶在森林草地與圓頂帳篷之間放慢步調，一起準備烤肉，安排兩個人的桃園包場約會。",
+      "publishedDate": "2026-07-06",
+      "modifiedDate": "2026-10-14",
+      "category": "森林故事",
+      "tags": [
+        "情侶旅行",
+        "烤肉 BBQ",
+        "圓頂帳篷",
+        "私人草地",
+        "森林景觀"
+      ],
+      "coverImage": "/assets/images/stories/couple-bbq-private-dome-glamping-taoyuan/couple-private-lawn-bbq-date-poster.webp",
+      "coverImageAlt": "女孩在森林草地自拍，同行伴侶在白色圓頂帳篷前操作烤肉設備",
+      "coverImageWidth": 675,
+      "coverImageHeight": 1200,
+      "thumbnailImage": "/assets/images/stories/couple-bbq-private-dome-glamping-taoyuan/couple-private-lawn-bbq-date-square-thumbnail.webp",
+      "thumbnailImageAlt": "女孩在森林草地自拍，同行伴侶在白色圓頂帳篷前操作烤肉設備",
+      "thumbnailImageWidth": 800,
+      "thumbnailImageHeight": 800,
+      "featured": false,
+      "readingTime": "約 3 分鐘",
+      "collaborators": [
+        {
+          "handle": "@qienn1116",
+          "url": "https://www.instagram.com/qienn1116/"
+        }
+      ],
+      "path": "/stories/couple-bbq-private-dome-glamping-taoyuan/",
+      "url": "https://camp.8-ways.com/stories/couple-bbq-private-dome-glamping-taoyuan/"
+    },
+    {
+      "storyId": "ig-20260706-05",
+      "slug": "girls-private-party-forest-glamping-taoyuan",
+      "status": "published",
+      "privacy": "public",
+      "title": "閨蜜包場聚會與草地寫真｜桃園森林系住宿",
+      "description": "好友們在圓頂帳篷裡聊天合照，隔天到森林草地拍寫真，留下桃園閨蜜包場旅行的日夜紀錄。",
+      "publishedDate": "2026-07-06",
+      "modifiedDate": "2026-10-14",
+      "category": "森林故事",
+      "tags": [
+        "好友包場",
+        "女孩寫真",
+        "圓頂帳篷",
+        "私人草地",
+        "戶外燈光"
+      ],
+      "coverImage": "/assets/images/stories/girls-private-party-forest-glamping-taoyuan/friends-night-gathering-dome-tent-poster.webp",
+      "coverImageAlt": "女孩們在圓頂帳篷內聊天合照，暖色燈光營造輕鬆聚會氣氛",
+      "coverImageWidth": 675,
+      "coverImageHeight": 1200,
+      "thumbnailImage": "/assets/images/stories/girls-private-party-forest-glamping-taoyuan/friends-night-gathering-dome-tent-square-thumbnail.webp",
+      "thumbnailImageAlt": "女孩們在圓頂帳篷內聊天合照，暖色燈光營造輕鬆聚會氣氛",
+      "thumbnailImageWidth": 800,
+      "thumbnailImageHeight": 800,
+      "featured": false,
+      "readingTime": "約 4 分鐘",
+      "collaborators": [
+        {
+          "handle": "@moon_t96",
+          "url": "https://www.instagram.com/moon_t96/"
+        }
+      ],
+      "path": "/stories/girls-private-party-forest-glamping-taoyuan/",
+      "url": "https://camp.8-ways.com/stories/girls-private-party-forest-glamping-taoyuan/"
+    },
+    {
+      "storyId": "ig-20260705-01",
+      "slug": "pet-friendly-friends-private-glamping-taoyuan",
+      "status": "published",
+      "privacy": "public",
+      "title": "帶毛孩入住的朋友包場假期｜桃園寵物友善森林住宿",
+      "description": "女孩帶著毛孩和朋友入住森林系圓頂帳篷，在草地活動、共享餐點，體驗桃園寵物友善的私人包場住宿。",
+      "publishedDate": "2026-07-05",
+      "modifiedDate": "2026-10-14",
+      "category": "森林故事",
+      "tags": [
+        "寵物友善",
+        "好友包場",
+        "圓頂帳篷",
+        "私人草地",
+        "森林景觀"
+      ],
+      "coverImage": "/assets/images/stories/pet-friendly-friends-private-glamping-taoyuan/woman-dog-dome-tent-collage-poster.webp",
+      "coverImageAlt": "女孩抱著毛孩坐在花牆前，畫面穿插白色圓頂帳篷與森林草地",
+      "coverImageWidth": 540,
+      "coverImageHeight": 960,
+      "thumbnailImage": "/assets/images/stories/pet-friendly-friends-private-glamping-taoyuan/woman-dog-dome-tent-collage-square-thumbnail.webp",
+      "thumbnailImageAlt": "女孩抱著毛孩坐在花牆前，畫面穿插白色圓頂帳篷與森林草地",
+      "thumbnailImageWidth": 800,
+      "thumbnailImageHeight": 800,
+      "featured": false,
+      "readingTime": "約 5 分鐘",
+      "collaborators": [
+        {
+          "handle": "@yiching8526",
+          "url": "https://www.instagram.com/yiching8526/"
+        }
+      ],
+      "path": "/stories/pet-friendly-friends-private-glamping-taoyuan/",
+      "url": "https://camp.8-ways.com/stories/pet-friendly-friends-private-glamping-taoyuan/"
     }
   ]
 }
