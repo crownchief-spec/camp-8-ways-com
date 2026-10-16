@@ -197,6 +197,28 @@ test("asks for a complete campervan range and always includes the live availabil
   assert.match(result.reply, /https:\/\/van\.joyforest\.tw\/pages\/availability/);
 });
 
+test("treats a single campsite date as a one-night stay and checks both rooms", async () => {
+  const originalFetch = globalThis.fetch;
+  globalThis.fetch = async () => new Response("BEGIN:VCALENDAR\r\nEND:VCALENDAR", { status: 200 });
+  try {
+    const result = await answerAvailabilityQuestion({
+      JOYFOREST_CAMP_ICS_URL: "https://calendar.example/camp.ics",
+      JOYFOREST_RV_ICS_URL: "https://calendar.example/rv.ics"
+    }, {
+      text: "請問 11 月 5 日露營區有空嗎？",
+      service: "campsite",
+      today: "2026-10-16"
+    });
+    assert.equal(result.pause, false);
+    assert.match(result.reply, /11 月 5 日入住、11 月 6 日退房/);
+    assert.match(result.reply, /熱氣球房：目前尚有空房/);
+    assert.match(result.reply, /雲朵房：目前尚有空房/);
+    assert.match(result.reply, /https:\/\/camp\.8-ways\.com\/pages\/availability\.html/);
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
+});
+
 test("rejects campervan ranges shorter than the three-day two-night minimum", async () => {
   const result = await answerAvailabilityQuestion({}, {
     text: "露營車 11/5 到 11/6 有空嗎？",

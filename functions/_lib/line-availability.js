@@ -154,11 +154,20 @@ function campsiteReply(result) {
 export async function answerAvailabilityQuestion(env, { text, service, today }) {
   const parsed = parseAvailabilityDates(text, today || taipeiToday());
   if (parsed.invalid) {
+    const availabilityUrl = service === "campervan"
+      ? CAMPERVAN_AVAILABILITY_URL
+      : service === "campsite"
+        ? CAMPSITE_AVAILABILITY_URL
+        : `${CAMPSITE_AVAILABILITY_URL}\n露營車檔期：${CAMPERVAN_AVAILABILITY_URL}`;
     return {
-      reply: `${friendlyLead()}\n日期好像有一點不完整，請再告訴我們完整的月份與日期，我們就能立即幫您查看。`,
+      reply: `${friendlyLead()}\n日期好像有一點不完整，請再告訴我們完整的月份與日期，我們就能立即幫您查看。\n\n查看即時檔期：${availabilityUrl}`,
       pause: false,
       service
     };
+  }
+  if (service === "campsite" && parsed.startDate && !parsed.endDate) {
+    parsed.endDate = addDays(parsed.startDate, 1);
+    parsed.dateCount = 2;
   }
   if (!service || !parsed.startDate || !parsed.endDate) {
     return { reply: incompleteDateReply(service, parsed), pause: false, service };
@@ -188,8 +197,9 @@ export async function answerAvailabilityQuestion(env, { text, service, today }) 
     };
   } catch (error) {
     console.error("Availability lookup failed", error);
+    const availabilityUrl = service === "campervan" ? CAMPERVAN_AVAILABILITY_URL : CAMPSITE_AVAILABILITY_URL;
     return {
-      reply: `${friendlyLead()}\n已收到您想查詢的日期，我們會先確認最新檔期，再回覆您，謝謝稍候。`,
+      reply: `${friendlyLead()}\n已收到您想查詢的日期，我們會先確認最新檔期，再回覆您，謝謝稍候。\n\n您也可以先查看即時檔期：${availabilityUrl}`,
       pause: true,
       pauseReason: "availability_lookup_failed",
       service
