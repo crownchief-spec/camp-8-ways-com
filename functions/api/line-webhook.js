@@ -80,6 +80,7 @@ function reasonLabel(reason) {
   if (reason === "availability_request") return "客人詢問檔期／空房";
   if (reason === "availability_lookup_failed") return "即時檔期暫時無法讀取";
   if (reason === "special_request") return "客人提出特殊需求";
+  if (reason === "customer_complaint") return "客人反映價格或服務感受";
   if (reason === "booking_confirmation") return "客人準備預訂";
   if (reason === "payment_confirmation") return "客人表示已付款";
   if (reason === "image_or_payment_confirmation") return "客人傳送圖片或付款資料";

@@ -36,6 +36,7 @@ test("routes special requests, booking and payment to the human gate but not ava
   assert.equal(isAvailabilityQuestion("請問 11 月 5 日還有空房嗎？"), true);
   assert.equal(needsHumanBookingGate("可以讓我延後到下午兩點退房嗎？"), true);
   assert.equal(needsHumanBookingGate("你們這幾天很貴耶，可以再算便宜一點嗎？"), true);
+  assert.equal(needsHumanBookingGate("你們這個價格根本在搶錢吧"), true);
   assert.equal(needsHumanBookingGate("可以幫忙做抓周佈置嗎？"), true);
   assert.equal(needsHumanBookingGate("好的，我想預訂熱氣球房"), true);
   assert.equal(needsHumanBookingGate("現在可以預訂了嗎？"), true);
@@ -51,6 +52,10 @@ test("availability stays automatic and special requests pause with a polite edit
   const discount = detectHumanGate("你們這幾天很貴耶，可以再算便宜一點嗎？");
   assert.equal(discount.reason, "special_request");
   assert.match(discount.reply, /預算考量.*老闆/);
+  const complaint = detectHumanGate("你們這個價格根本在搶錢吧");
+  assert.equal(complaint.reason, "customer_complaint");
+  assert.match(complaint.reply, /很抱歉.*感受.*老闆/);
+  assert.doesNotMatch(complaint.reply, /搶錢|坑人|垃圾|反駁/);
 });
 
 test("customer hold messages do not expose automation or an internal handoff", () => {
