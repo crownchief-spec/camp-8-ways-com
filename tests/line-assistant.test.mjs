@@ -85,6 +85,21 @@ test("answers approved common questions without waiting for the AI model", async
   assert.equal(result.service, "campervan");
 });
 
+test("adds the most relevant website page when an AI fallback omits a link", async () => {
+  const result = await generateLineAssistantReply(
+    {
+      AI: {
+        async run() {
+          return { response: "露營車最低租期是 3 天 2 夜。" };
+        }
+      }
+    },
+    { text: "請問露營車最低要租幾天？", history: [], previousService: "campervan" }
+  );
+  assert.equal(result.pause, false);
+  assert.match(result.reply, /https:\/\/van\.joyforest\.tw\/pages\/campervan/);
+});
+
 test("returns only sanitized campsite availability status", () => {
   const campIcs = [
     "BEGIN:VCALENDAR",

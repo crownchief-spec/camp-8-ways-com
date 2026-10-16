@@ -72,6 +72,30 @@ function extractWorkersAiText(result) {
   return "";
 }
 
+function relevantPage(text, service) {
+  const value = String(text || "");
+  if (service === "campervan") {
+    if (/保險|押金|事故|車損|刮傷|撞到/.test(value)) return "https://van.joyforest.tw/pages/campervan-insurance";
+    if (/教學|操作|怎麼用|使用說明|駕駛|安全|衛浴|冷氣|充電|補水|床/.test(value)) return "https://van.joyforest.tw/pages/booking-guide";
+    if (/預約|預訂|送車|交車地點/.test(value)) return "https://van.joyforest.tw/booking";
+    return "https://van.joyforest.tw/pages/campervan";
+  }
+  if (service === "campsite") {
+    if (/派對|抓周|求婚|活動|時租|佈置/.test(value)) return "https://camp.8-ways.com/pages/party-event-space.html";
+    if (/空房|檔期|價格|費用|多少錢/.test(value)) return "https://camp.8-ways.com/pages/availability.html";
+    if (/熱氣球房/.test(value)) return "https://camp.8-ways.com/pages/balloon-tent";
+    if (/雲朵房/.test(value)) return "https://camp.8-ways.com/pages/cloud-tent";
+    if (/設備|廚房|烤肉|衛浴|浴巾|餐點|早餐|晚餐/.test(value)) return "https://camp.8-ways.com/pages/facilities.html";
+    return "https://camp.8-ways.com/";
+  }
+  return "https://camp.8-ways.com/\n露營車：https://van.joyforest.tw/";
+}
+
+function ensureRelevantPage(reply, text, service) {
+  if (!reply || /https?:\/\//i.test(reply)) return reply;
+  return `${reply.trim()}\n\n相關資訊：${relevantPage(text, service)}`;
+}
+
 function fallbackReply(text, service) {
   const value = String(text || "");
   if (/電話|聯絡/.test(value)) return "您好～很高興收到您的訊息！可以直接在這裡留言，或來電 0911-252-302。\n\n露營區：https://camp.8-ways.com/\n露營車：https://van.joyforest.tw/";
@@ -149,6 +173,7 @@ export async function generateLineAssistantReply(env, { text, history, previousS
     reply = extractWorkersAiText(result);
   }
   if (!reply) return { reply: null, pause: true, pauseReason: "unmatched_question", service };
+  reply = ensureRelevantPage(reply, text, service);
   if (reply === "NEEDS_REVIEW" || UNSAFE_OUTPUT_RE.test(reply)) {
     return { reply: null, pause: true, pauseReason: "assistant_output_review", service };
   }
