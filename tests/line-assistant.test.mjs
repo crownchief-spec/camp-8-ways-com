@@ -119,7 +119,22 @@ test("keeps the internal NEEDS_REVIEW marker private and pauses the conversation
   );
   assert.equal(result.pause, true);
   assert.equal(result.pauseReason, "assistant_output_review");
-  assert.equal(result.reply, null);
+  assert.match(result.reply, /小編.*老闆/);
+  assert.doesNotMatch(result.reply, /NEEDS_REVIEW|AI|機器人|自動|人工|轉接/i);
+});
+
+test("never leaves the customer staring at silence when review is required", async () => {
+  const unmatched = await generateLineAssistantReply(
+    {},
+    { text: "現場能接量子同步器嗎？", history: [], previousService: "campsite" }
+  );
+  assert.equal(unmatched.pause, true);
+  assert.equal(unmatched.pauseReason, "unmatched_question");
+  assert.match(unmatched.reply, /小編.*老闆/);
+
+  const failed = createErrorHumanGateResult();
+  assert.equal(failed.pause, true);
+  assert.match(failed.reply, /小編.*老闆/);
 });
 
 test("returns only sanitized campsite availability status", () => {

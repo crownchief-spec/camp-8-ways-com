@@ -9,6 +9,7 @@ const HOLD_REPLY = "太好了，謝謝您！小編先幫您整理預訂資料，
 const IMAGE_HOLD_REPLY = "謝謝您，圖片已收到！小編先幫您跟老闆確認資料與入帳狀態，確認後會盡快回覆您。";
 const SPECIAL_HOLD_REPLY = "謝謝您跟小編說明需求～這部分需要再確認，小編會先幫您詢問老闆，確認後再回覆您。";
 const DISCOUNT_HOLD_REPLY = "謝謝您直接告訴小編預算考量～小編會先幫您整理日期、人數與需求，再跟老闆確認是否有適合的方案；確認後會再回覆您。";
+const REVIEW_HOLD_REPLY = "謝謝您詢問～這部分小編想先幫您確認清楚，會再跟老闆確認資料後回覆您。";
 
 const BOOKING_ACTION_RE = /我要(?:預訂|訂房|訂車|下訂)|想(?:預訂|訂房|訂車|下訂)|確認(?:預訂|訂房|訂車|下訂)|幫我(?:保留|預訂|訂房|訂車)|可以(?:下訂|預訂|訂房|訂車)(?:了)?嗎|決定要(?:住|租|訂)|確定要(?:住|租|訂)|就訂這個|保留檔期/i;
 const PAYMENT_COMPLETED_RE = /(?:已經?|完成)(?:付款|匯款|轉帳)|(?:付款|匯款|轉帳)(?:完成|好了|成功)|訂金(?:已付|付了|已匯)|匯款截圖|付款截圖/i;
@@ -175,9 +176,9 @@ export async function generateLineAssistantReply(env, { text, history, previousS
     ]);
     reply = extractWorkersAiText(result);
   }
-  if (!reply) return { reply: null, pause: true, pauseReason: "unmatched_question", service };
+  if (!reply) return { reply: REVIEW_HOLD_REPLY, pause: true, pauseReason: "unmatched_question", service };
   if (reply.trim() === "NEEDS_REVIEW" || UNSAFE_OUTPUT_RE.test(reply)) {
-    return { reply: null, pause: true, pauseReason: "assistant_output_review", service };
+    return { reply: REVIEW_HOLD_REPLY, pause: true, pauseReason: "assistant_output_review", service };
   }
   reply = ensureRelevantPage(reply, text, service);
 
@@ -199,5 +200,5 @@ export function createImageHumanGateResult() {
 }
 
 export function createErrorHumanGateResult() {
-  return { reply: null, pause: true, pauseReason: "assistant_error" };
+  return { reply: REVIEW_HOLD_REPLY, pause: true, pauseReason: "assistant_error" };
 }
