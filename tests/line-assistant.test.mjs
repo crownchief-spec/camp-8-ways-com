@@ -100,6 +100,22 @@ test("adds the most relevant website page when an AI fallback omits a link", asy
   assert.match(result.reply, /https:\/\/van\.joyforest\.tw\/pages\/campervan/);
 });
 
+test("keeps the internal NEEDS_REVIEW marker private and pauses the conversation", async () => {
+  const result = await generateLineAssistantReply(
+    {
+      AI: {
+        async run() {
+          return { response: "NEEDS_REVIEW" };
+        }
+      }
+    },
+    { text: "這個狀況可以特例處理嗎？", history: [], previousService: "campsite" }
+  );
+  assert.equal(result.pause, true);
+  assert.equal(result.pauseReason, "assistant_output_review");
+  assert.equal(result.reply, null);
+});
+
 test("returns only sanitized campsite availability status", () => {
   const campIcs = [
     "BEGIN:VCALENDAR",

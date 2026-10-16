@@ -173,10 +173,10 @@ export async function generateLineAssistantReply(env, { text, history, previousS
     reply = extractWorkersAiText(result);
   }
   if (!reply) return { reply: null, pause: true, pauseReason: "unmatched_question", service };
-  reply = ensureRelevantPage(reply, text, service);
-  if (reply === "NEEDS_REVIEW" || UNSAFE_OUTPUT_RE.test(reply)) {
+  if (reply.trim() === "NEEDS_REVIEW" || UNSAFE_OUTPUT_RE.test(reply)) {
     return { reply: null, pause: true, pauseReason: "assistant_output_review", service };
   }
+  reply = ensureRelevantPage(reply, text, service);
 
   return {
     reply: reply.slice(0, 4800),
