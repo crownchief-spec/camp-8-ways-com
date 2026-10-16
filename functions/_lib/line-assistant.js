@@ -180,7 +180,7 @@ export async function generateLineAssistantReply(env, { text, history, previousS
     reply = extractWorkersAiText(result);
   }
   if (!reply) return { reply: REVIEW_HOLD_REPLY, pause: true, pauseReason: "unmatched_question", service };
-  if (reply.trim() === "NEEDS_REVIEW" || UNSAFE_OUTPUT_RE.test(reply)) {
+  if (/\bNEEDS_REVIEW\b/i.test(reply) || UNSAFE_OUTPUT_RE.test(reply)) {
     return { reply: REVIEW_HOLD_REPLY, pause: true, pauseReason: "assistant_output_review", service };
   }
   reply = ensureRelevantPage(reply, text, service);

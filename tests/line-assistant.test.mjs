@@ -135,6 +135,22 @@ test("keeps the internal NEEDS_REVIEW marker private and pauses the conversation
   assert.doesNotMatch(result.reply, /NEEDS_REVIEW|AI|機器人|自動|人工|轉接/i);
 });
 
+test("blocks a malformed review marker instead of exposing it to the customer", async () => {
+  const result = await generateLineAssistantReply(
+    {
+      AI: {
+        async run() {
+          return { response: "NEEDS_REVIEW：需要再確認這個例外。" };
+        }
+      }
+    },
+    { text: "這個例外可以嗎？", history: [], previousService: "campsite" }
+  );
+  assert.equal(result.pause, true);
+  assert.equal(result.pauseReason, "assistant_output_review");
+  assert.doesNotMatch(result.reply, /NEEDS_REVIEW/i);
+});
+
 test("never leaves the customer staring at silence when review is required", async () => {
   const unmatched = await generateLineAssistantReply(
     {},
