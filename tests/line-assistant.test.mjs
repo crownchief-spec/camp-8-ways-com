@@ -69,6 +69,13 @@ test("customer hold messages do not expose automation or an internal handoff", (
   assert.match(instructions, /只輸出「NEEDS_REVIEW」/);
 });
 
+test("treats a generic image as something to review, not as proof of payment", () => {
+  const imageResult = createImageHumanGateResult();
+  assert.equal(imageResult.pause, true);
+  assert.match(imageResult.reply, /圖片內容與相關資料/);
+  assert.doesNotMatch(imageResult.reply, /已付款|已匯款|入帳/);
+});
+
 test("infers campsite and campervan service context", () => {
   assert.equal(inferService("熱氣球房可以住六個人嗎？"), "campsite");
   assert.equal(inferService("露營車需要什麼駕照？"), "campervan");

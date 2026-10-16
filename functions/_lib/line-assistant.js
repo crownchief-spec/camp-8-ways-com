@@ -6,7 +6,7 @@ import {
 } from "./line-knowledge-store.js";
 
 const HOLD_REPLY = "太好了，謝謝您！小編先幫您整理預訂資料，再跟老闆確認檔期與下一步，確認後會盡快回覆您。";
-const IMAGE_HOLD_REPLY = "謝謝您，圖片已收到！小編先幫您跟老闆確認資料與入帳狀態，確認後會盡快回覆您。";
+const IMAGE_HOLD_REPLY = "謝謝您，圖片已收到！小編先幫您跟老闆確認圖片內容與相關資料，確認後會盡快回覆您。";
 const SPECIAL_HOLD_REPLY = "謝謝您跟小編說明需求～這部分需要再確認，小編會先幫您詢問老闆，確認後再回覆您。";
 const DISCOUNT_HOLD_REPLY = "謝謝您直接告訴小編預算考量～小編會先幫您整理日期、人數與需求，再跟老闆確認是否有適合的方案；確認後會再回覆您。";
 const REVIEW_HOLD_REPLY = "謝謝您詢問～這部分小編想先幫您確認清楚，會再跟老闆確認資料後回覆您。";
