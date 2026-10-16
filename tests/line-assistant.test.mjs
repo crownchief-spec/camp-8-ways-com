@@ -35,7 +35,10 @@ test("routes special requests, booking and payment to the human gate but not ava
   assert.equal(needsHumanBookingGate("請問 11 月 5 日還有空房嗎？"), false);
   assert.equal(isAvailabilityQuestion("請問 11 月 5 日還有空房嗎？"), true);
   assert.equal(needsHumanBookingGate("可以讓我延後到下午兩點退房嗎？"), true);
+  assert.equal(needsHumanBookingGate("你們這幾天很貴耶，可以再算便宜一點嗎？"), true);
+  assert.equal(needsHumanBookingGate("可以幫忙做抓周佈置嗎？"), true);
   assert.equal(needsHumanBookingGate("好的，我想預訂熱氣球房"), true);
+  assert.equal(needsHumanBookingGate("現在可以預訂了嗎？"), true);
   assert.equal(needsHumanBookingGate("訂金我已經匯款完成"), true);
   assert.equal(needsHumanBookingGate("請問訂金怎麼計算？"), false);
 });
