@@ -48,6 +48,9 @@ test("availability stays automatic and special requests pause with a polite edit
   const special = detectHumanGate("可以提早入住嗎？");
   assert.equal(special.reason, "special_request");
   assert.match(special.reply, /小編.*老闆/);
+  const discount = detectHumanGate("你們這幾天很貴耶，可以再算便宜一點嗎？");
+  assert.equal(discount.reason, "special_request");
+  assert.match(discount.reply, /預算考量.*老闆/);
 });
 
 test("customer hold messages do not expose automation or an internal handoff", () => {
