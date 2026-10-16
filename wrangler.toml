@@ -1,3 +1,10 @@
 name = "camp-8-ways-com"
 compatibility_date = "2026-07-16"
 pages_build_output_dir = "."
+
+[ai]
+binding = "AI"
+
+[[kv_namespaces]]
+binding = "LINE_CHAT_STATE"
+id = "3ed672886a4049d6bdb8db178711b305"
