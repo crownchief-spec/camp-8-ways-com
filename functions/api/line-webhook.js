@@ -5,8 +5,10 @@ import {
   detectHumanGate,
   generateLineAssistantReply,
   inferService,
+  isAvailabilityQuestion,
   needsHumanBookingGate
 } from "../_lib/line-assistant.js";
+import { answerAvailabilityQuestion } from "../_lib/line-availability.js";
 import { getLineProfile, pushLineText, replyLineText } from "../_lib/line-api.js";
 import { verifyLineSignature } from "../_lib/line-signature.js";
 
@@ -76,6 +78,7 @@ function serviceLabel(service) {
 
 function reasonLabel(reason) {
   if (reason === "availability_request") return "客人詢問檔期／空房";
+  if (reason === "availability_lookup_failed") return "即時檔期暫時無法讀取";
   if (reason === "special_request") return "客人提出特殊需求";
   if (reason === "booking_confirmation") return "客人準備預訂";
   if (reason === "payment_confirmation") return "客人表示已付款";
@@ -130,7 +133,7 @@ async function handleMessageEvent(env, event) {
     const suppliedCode = messageText.slice("管理員綁定 ".length).trim();
     if (env.OWNER_BIND_CODE && suppliedCode === env.OWNER_BIND_CODE) {
       await env.LINE_CHAT_STATE.put("system:owner_line_user_id", userId);
-      await replyLineText(env, event.replyToken, "管理員通知已啟用。之後遇到檔期、特殊需求、預訂或付款確認時，會由這個官方帳號通知您。");
+      await replyLineText(env, event.replyToken, "管理員通知已啟用。之後遇到特殊需求、預訂、付款確認，或即時檔期暫時無法讀取時，會由這個官方帳號通知您。");
     } else {
       await replyLineText(env, event.replyToken, "管理員驗證碼不正確。");
     }
@@ -184,6 +187,11 @@ async function handleMessageEvent(env, event) {
     };
   } else if (detectHumanGate(messageText) || needsHumanBookingGate(messageText)) {
     result = createHumanGateResult(messageText);
+  } else if (isAvailabilityQuestion(messageText)) {
+    result = await answerAvailabilityQuestion(env, {
+      text: messageText,
+      service: inferService(messageText, state.service)
+    });
   } else {
     try {
       result = await generateLineAssistantReply(env, {

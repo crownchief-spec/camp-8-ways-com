@@ -1,7 +1,13 @@
 import { buildAssistantInstructions } from "./line-knowledge.js";
+import {
+  directKnowledgeReply,
+  findRelevantLineKnowledge,
+  formatRetrievedKnowledge
+} from "./line-knowledge-store.js";
 
-const HOLD_REPLY = "好的，我們會先確認預訂資料，確認完成後會再回覆您，謝謝稍候。";
-const IMAGE_HOLD_REPLY = "圖片已收到，我們會先確認資料與入帳狀態，確認完成後會再回覆您，謝謝。";
+const HOLD_REPLY = "太好了，謝謝您！小編先幫您整理預訂資料，再跟老闆確認檔期與下一步，確認後會盡快回覆您。";
+const IMAGE_HOLD_REPLY = "謝謝您，圖片已收到！小編先幫您跟老闆確認資料與入帳狀態，確認後會盡快回覆您。";
+const SPECIAL_HOLD_REPLY = "謝謝您跟小編說明需求～這部分需要再確認，小編會先幫您詢問老闆，確認後再回覆您。";
 
 const BOOKING_ACTION_RE = /我要(?:預訂|訂房|訂車|下訂)|想(?:預訂|訂房|訂車|下訂)|確認(?:預訂|訂房|訂車|下訂)|幫我(?:保留|預訂|訂房|訂車)|可以下訂|決定要(?:住|租|訂)|確定要(?:住|租|訂)|就訂這個|保留檔期/i;
 const PAYMENT_COMPLETED_RE = /(?:已經?|完成)(?:付款|匯款|轉帳)|(?:付款|匯款|轉帳)(?:完成|好了|成功)|訂金(?:已付|付了|已匯)|匯款截圖|付款截圖/i;
@@ -24,9 +30,12 @@ export function detectHumanGate(text) {
   const value = String(text || "");
   if (PAYMENT_COMPLETED_RE.test(value)) return { reason: "payment_confirmation", reply: IMAGE_HOLD_REPLY };
   if (BOOKING_ACTION_RE.test(value)) return { reason: "booking_confirmation", reply: HOLD_REPLY };
-  if (AVAILABILITY_RE.test(value)) return { reason: "availability_request", reply: null };
-  if (SPECIAL_REQUEST_RE.test(value)) return { reason: "special_request", reply: null };
+  if (SPECIAL_REQUEST_RE.test(value)) return { reason: "special_request", reply: SPECIAL_HOLD_REPLY };
   return null;
+}
+
+export function isAvailabilityQuestion(text) {
+  return AVAILABILITY_RE.test(String(text || ""));
 }
 
 export function needsHumanBookingGate(text) {
@@ -36,6 +45,14 @@ export function needsHumanBookingGate(text) {
 export function inferService(text, previousService = null) {
   const hasCampsite = CAMPSITE_RE.test(text || "");
   const hasCampervan = CAMPERVAN_RE.test(text || "");
+  if (
+    previousService === "campervan" &&
+    hasCampsite &&
+    !hasCampervan &&
+    /(?:一定要|需要|可以|能不能|想要|安排|找).{0,8}(?:住|停|去)?露營區|露營區.{0,8}(?:過夜|接電|補水|洗澡)/i.test(text || "")
+  ) {
+    return "campervan";
+  }
   if (hasCampsite && !hasCampervan) return "campsite";
   if (hasCampervan && !hasCampsite) return "campervan";
   return previousService;
@@ -57,19 +74,41 @@ function extractWorkersAiText(result) {
 
 function fallbackReply(text, service) {
   const value = String(text || "");
-  if (/電話|聯絡/.test(value)) return "可以直接在這裡留言，或來電 0911-252-302。完整資訊也可以查看露營區官網 https://camp.8-ways.com/ 與露營車官網 https://van.joyforest.tw/ 。";
-  if (/寵物|狗狗|貓咪|毛孩/.test(value)) return "露營區兩個房型都可以帶毛孩，但預訂前請先告知種類、數量與體型；毛孩請勿上床、沙發及寢具。完整規定請看 https://camp.8-ways.com/ 。";
-  if (/入住|退房|幾點/.test(value) && service !== "campervan") return "露營區下午 3:00 入住，中午 12:00 退房。若有提早入住或延後退房需求，我們需要另外確認。";
-  if (/幾人|人數|六人|6人|床型|幾張床/.test(value) && service !== "campervan") return "熱氣球房與雲朵房都可安排 1～6 人入住，4 人最舒適。熱氣球房有雙人床、雙人沙發床，第 5、6 位加設雙人床墊；雲朵房有 2 張雙人床，第 5、6 位加設雙人床墊。";
-  if (/駕照|幾人|人數|床|設備|衛浴|冷氣|冰箱|清水/.test(value) && service === "campervan") return "露營車是自排自走式，一般小客車駕照即可駕駛，合法乘坐 6 人；車內有兩張雙人床、冷暖氣、冰箱、簡易衛浴與約 110 公升清水。建議睡 5 位成人或 4 位成人加 2 位兒童。詳情：https://van.joyforest.tw/pages/campervan";
-  if (/價格|費用|多少錢/.test(value) && service === "campervan") return "露營車平日 3 天 2 夜／48 小時 NT$11,800 起，正式費用會依日期、交還車時間、送車地點、天數與加購項目確認。價格與車款：https://van.joyforest.tw/pages/campervan";
-  if (/價格|費用|多少錢/.test(value)) return "露營區一般日期參考：熱氣球房官網直訂 NT$5,800，雲朵房打卡優惠 NT$5,000；連續假期、跨年與春節請以空房日曆顯示為準。詳情：https://camp.8-ways.com/";
-  if (/網址|官網|介紹|資料/.test(value)) return "露營區官網：https://camp.8-ways.com/\n露營車官網：https://van.joyforest.tw/\n有想看的房型、設備或租車資訊，也可以直接告訴我們。";
+  if (/電話|聯絡/.test(value)) return "您好～很高興收到您的訊息！可以直接在這裡留言，或來電 0911-252-302。\n\n露營區：https://camp.8-ways.com/\n露營車：https://van.joyforest.tw/";
+  if (/寵物|狗狗|貓咪|毛孩/.test(value)) return "您好～謝謝您詢問毛孩同行！露營區兩個房型都可以帶毛孩，預訂前請告知種類、數量與體型；毛孩請勿上床、沙發及寢具。\n\n詳細說明：https://camp.8-ways.com/pages/faq.html";
+  if (/入住|退房|幾點/.test(value) && service !== "campervan") return "您好～露營區下午 3:00 入住，中午 12:00 退房。若想提早入住或延後退房，小編會再幫您跟老闆確認。\n\n住宿說明：https://camp.8-ways.com/pages/faq.html";
+  if (/幾人|人數|六人|6人|床型|幾張床/.test(value) && service !== "campervan") return "您好～兩個房型都可安排 1～6 人入住，4 人最舒適。熱氣球房有雙人床、雙人沙發床，第 5、6 位加設雙人床墊；雲朵房有 2 張雙人床，第 5、6 位加設雙人床墊。\n\n房型介紹：https://camp.8-ways.com/";
+  if (/駕照|幾人|人數|床|設備|衛浴|冷氣|冰箱|清水/.test(value) && service === "campervan") return "您好～露營車是自排自走式，一般小客車駕照即可駕駛，合法乘坐 6 人；車內有兩張雙人床、冷暖氣、冰箱、簡易衛浴與約 110 公升清水。建議睡 5 位成人或 4 位成人加 2 位兒童。\n\n車款與設備：https://van.joyforest.tw/pages/campervan";
+  if (/價格|費用|多少錢/.test(value) && service === "campervan") return "您好～謝謝您詢問！露營車平日 3 天 2 夜／48 小時 NT$11,800 起，實際費用會依日期、交還車時間、送車地點、天數與加購項目確認。\n\n價格與車款：https://van.joyforest.tw/pages/campervan";
+  if (/價格|費用|多少錢/.test(value)) return "您好～謝謝您詢問！露營區一般日期參考：熱氣球房官網直訂 NT$5,800，雲朵房打卡優惠 NT$5,000；連續假期、跨年與春節請以空房日曆顯示為準。\n\n空房與價格：https://camp.8-ways.com/pages/availability.html";
+  if (/網址|官網|介紹|資料/.test(value)) return "您好～很高興收到您的訊息！\n露營區官網：https://camp.8-ways.com/\n露營車官網：https://van.joyforest.tw/\n\n想看房型、設備、檔期或租車資訊，都可以直接告訴小編。";
   return null;
 }
 
 export async function generateLineAssistantReply(env, { text, history, previousService }) {
   const service = inferService(text, previousService);
+  let retrievedEntries = [];
+  try {
+    retrievedEntries = await findRelevantLineKnowledge(env, { text, service });
+  } catch (error) {
+    console.error("D1 knowledge lookup failed", error);
+  }
+  if (
+    retrievedEntries[0]?.score >= 6 &&
+    (!retrievedEntries[1] || retrievedEntries[0].score > retrievedEntries[1].score)
+  ) {
+    const reply = directKnowledgeReply(retrievedEntries[0]);
+    return {
+      reply,
+      pause: false,
+      service,
+      history: [
+        ...sanitizeHistory(history),
+        { role: "user", content: text },
+        { role: "assistant", content: reply }
+      ].slice(-8)
+    };
+  }
   const deterministicReply = fallbackReply(text, service);
   if (deterministicReply) {
     return {
@@ -89,7 +128,8 @@ export async function generateLineAssistantReply(env, { text, history, previousS
       role: "system",
       content: buildAssistantInstructions({
         today: taipeiToday(),
-        serviceContext: service === "campsite" ? "露營區" : service === "campervan" ? "露營車" : null
+        serviceContext: service === "campsite" ? "露營區" : service === "campervan" ? "露營車" : null,
+        retrievedKnowledge: formatRetrievedKnowledge(retrievedEntries)
       })
     },
     ...sanitizeHistory(history),

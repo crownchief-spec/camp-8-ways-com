@@ -8,3 +8,8 @@ binding = "AI"
 [[kv_namespaces]]
 binding = "LINE_CHAT_STATE"
 id = "3ed672886a4049d6bdb8db178711b305"
+
+[[d1_databases]]
+binding = "LINE_KNOWLEDGE"
+database_name = "joyforest-line-knowledge"
+database_id = "01ab896a-49b5-41c3-a8d7-ec0395bd9c8c"
