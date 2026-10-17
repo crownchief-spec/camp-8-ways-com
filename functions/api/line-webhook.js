@@ -188,7 +188,7 @@ async function handleMessageEvent(env, event) {
     };
   } else if (detectHumanGate(messageText) || needsHumanBookingGate(messageText)) {
     result = createHumanGateResult(messageText);
-  } else if (isAvailabilityQuestion(messageText)) {
+  } else if (isAvailabilityQuestion(messageText, state.service)) {
     result = await answerAvailabilityQuestion(env, {
       text: messageText,
       service: inferService(messageText, state.service)

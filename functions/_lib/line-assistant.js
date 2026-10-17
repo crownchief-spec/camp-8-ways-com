@@ -17,6 +17,7 @@ const PAYMENT_COMPLETED_RE = /(?:已經?|完成)(?:付款|匯款|轉帳)|(?:付�
 const DISCOUNT_REQUEST_RE = /議價|便宜(?:一點|一些)|算便宜|殺價|打折|(?:可以|能不能|可不可以|能否|幫我|再).{0,6}(?:優惠|折扣)|(?:優惠|折扣).{0,6}(?:一點|一些|多一點|再多|可以嗎|行嗎)/i;
 const COMPLAINT_RE = /太貴|很貴|這麼貴|價格.{0,4}(?:太高|很高|誇張)|搶錢|坑人|坑錢|爛透|客服.{0,4}很爛|騙人|垃圾/i;
 const AVAILABILITY_RE = /檔期|空房|有空|有房|哪(?:一)?天(?:可以|能|有)|幾號(?:可以|能|有)|日期.*(?:可以|能|有空|預訂)|(?:明天|後天|下週|下個月|週[一二三四五六日天]|星期[一二三四五六日天]|禮拜[一二三四五六日天]|\d{1,2}[\/月\-]\d{1,2}).*(?:有空|有房|可以(?:住|租|預約|訂)|能(?:住|租|預約|訂))/i;
+const AVAILABILITY_RANGE_FOLLOWUP_RE = /^(?:那|那麼|那請問)?\s*\d{1,2}\s*(?:[\/\-]\s*\d{1,2}|月\s*\d{1,2}\s*日?)\s*(?:到|至|[-~～])\s*\d{1,2}\s*(?:[\/\-]\s*\d{1,2}|月\s*\d{1,2}\s*日?)(?:\s*(?:呢|可以嗎|如何|有嗎))?[？?]?$/i;
 const SPECIAL_REQUEST_RE = /特殊需求|例外|通融|議價|優惠一點|便宜(?:一點|一些)|算便宜|殺價|打折|客製佈置|幫忙.{0,4}佈置|抓周佈置|生日佈置|求婚佈置|(?:提前|提早).{0,8}入住|(?:延後|晚點|延遲).{0,8}退房|(?:提早|提前).{0,8}交車|延後.{0,8}還車|異地還車|甲租乙還|長租|包月|企業合作|品牌合作|商業拍攝|婚禮|大型活動|無障礙|輪椅|醫療設備|特殊飲食|開發票|打統編|報帳/i;
 const CAMPSITE_RE = /露營區|熱氣球房|雲朵房|圓頂帳篷|豪華露營|包場|住宿|入住|退房/i;
 const CAMPERVAN_RE = /露營車|租車|還車|交車|自走式|車宿|駕照/i;
@@ -41,8 +42,9 @@ export function detectHumanGate(text) {
   return null;
 }
 
-export function isAvailabilityQuestion(text) {
-  return AVAILABILITY_RE.test(String(text || ""));
+export function isAvailabilityQuestion(text, previousService = null) {
+  const value = String(text || "").trim();
+  return AVAILABILITY_RE.test(value) || Boolean(previousService && AVAILABILITY_RANGE_FOLLOWUP_RE.test(value));
 }
 
 export function needsHumanBookingGate(text) {

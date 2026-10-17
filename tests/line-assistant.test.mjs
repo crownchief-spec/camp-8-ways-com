@@ -34,6 +34,8 @@ test("verifies LINE webhook signatures", async () => {
 test("routes special requests, booking and payment to the human gate but not availability", () => {
   assert.equal(needsHumanBookingGate("請問 11 月 5 日還有空房嗎？"), false);
   assert.equal(isAvailabilityQuestion("請問 11 月 5 日還有空房嗎？"), true);
+  assert.equal(isAvailabilityQuestion("那 11 月 5 日到 11 月 7 日呢？", "campervan"), true);
+  assert.equal(isAvailabilityQuestion("那 11 月 5 日到 11 月 7 日呢？"), false);
   assert.equal(needsHumanBookingGate("可以讓我延後到下午兩點退房嗎？"), true);
   assert.equal(needsHumanBookingGate("你們這幾天很貴耶，可以再算便宜一點嗎？"), true);
   assert.equal(needsHumanBookingGate("露營區雲朵房打卡優惠多少？"), false);
