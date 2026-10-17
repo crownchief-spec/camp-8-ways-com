@@ -1339,10 +1339,106 @@ p:last-child { margin-bottom: 0; }
   color: #fff;
 }
 
+.admin-manual-library {
+  margin-bottom: 26px;
+  padding: 20px;
+  border: 1px solid #ccd8c8;
+  border-radius: 18px;
+  background: #f4f7f1;
+}
+
+.admin-manual-library__heading {
+  margin-bottom: 16px;
+}
+
+.admin-manual-library__heading h2 {
+  margin: 0 0 6px;
+  color: #29472f;
+  font-size: 1.35rem;
+}
+
+.admin-manual-library__heading p:last-child {
+  margin: 0;
+  color: #596454;
+  line-height: 1.65;
+}
+
+.admin-manual-library__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.admin-manual-summary-card {
+  display: grid;
+  grid-template-columns: 112px minmax(0, 1fr);
+  gap: 14px;
+  align-items: start;
+  padding: 14px;
+  border: 1px solid #d7dfd3;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 4px 14px rgba(40, 66, 43, 0.07);
+}
+
+.admin-manual-summary-card__media {
+  display: block;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #eee9dc;
+}
+
+.admin-manual-summary-card__media img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+}
+
+.admin-manual-summary-card__meta {
+  margin: 0 0 4px;
+  color: #6a7665;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.admin-manual-summary-card h3 {
+  margin: 0 0 7px;
+  color: #29472f;
+  font-size: 1.03rem;
+}
+
+.admin-manual-summary-card p:not(.admin-manual-summary-card__meta) {
+  margin: 0 0 10px;
+  color: #4d584b;
+  font-size: 0.86rem;
+  line-height: 1.62;
+}
+
+.design-idea-open-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 6px 11px;
+  border-radius: 8px;
+  background: #3d5c3a;
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.design-idea-open-link:hover,
+.design-idea-open-link:focus-visible {
+  background: #29472f;
+  color: #fff;
+}
+
 .design-idea-list {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 22px;
+  gap: 14px;
 }
 
 .design-idea-card {
@@ -1454,8 +1550,12 @@ p:last-child { margin-bottom: 0; }
 }
 
 .design-idea-card__body {
+  display: grid;
+  grid-template-columns: minmax(150px, 220px) minmax(0, 1fr);
+  gap: 18px;
+  align-items: start;
   min-width: 0;
-  padding: 18px;
+  padding: 14px;
 }
 
 .design-idea-card figure {
@@ -1469,15 +1569,19 @@ p:last-child { margin-bottom: 0; }
 .design-idea-card img {
   display: block;
   width: 100%;
-  height: auto;
-  max-height: 88vh;
+  height: 170px;
+  max-height: none;
   object-fit: contain;
   margin: 0 auto;
 }
 
 .design-idea-gallery {
-  display: grid;
+  display: block;
   gap: 14px;
+}
+
+.design-idea-gallery figure:not(:first-child) {
+  display: none;
 }
 
 .design-idea-gallery figcaption {
@@ -1489,7 +1593,7 @@ p:last-child { margin-bottom: 0; }
 }
 
 .design-idea-summary {
-  padding: 16px 4px 2px;
+  padding: 2px 4px;
 }
 
 .design-idea-summary h2 {
@@ -1507,6 +1611,148 @@ p:last-child { margin-bottom: 0; }
 
 .design-idea-summary p + p {
   margin-top: 0.8rem;
+}
+
+/* ── Admin equipment manuals ── */
+.admin-manual-app {
+  max-width: 980px;
+}
+
+.admin-manual-header {
+  margin-bottom: 18px;
+}
+
+.admin-manual-alert {
+  margin-top: 14px;
+  padding: 12px 14px;
+  border-left: 4px solid #92712f;
+  border-radius: 8px;
+  background: #fff8e8;
+  color: #514522;
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+.admin-manual-content {
+  padding: clamp(18px, 4vw, 42px);
+  border: 1px solid #d7dfd3;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 5px 18px rgba(40, 66, 43, 0.08);
+  color: #384236;
+  line-height: 1.78;
+}
+
+.admin-manual-content h2,
+.admin-manual-content h3,
+.admin-manual-content h4,
+.admin-manual-content h5,
+.admin-manual-content h6 {
+  color: #29472f;
+  line-height: 1.35;
+}
+
+.admin-manual-content h2 {
+  margin: 0 0 1rem;
+  font-size: clamp(1.35rem, 3vw, 1.85rem);
+}
+
+.admin-manual-content h3 {
+  margin: 2rem 0 0.7rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid #dce4d8;
+  font-size: 1.25rem;
+}
+
+.admin-manual-content h4 {
+  margin: 1.35rem 0 0.55rem;
+  font-size: 1.08rem;
+}
+
+.admin-manual-content p,
+.admin-manual-content li {
+  font-size: 0.94rem;
+}
+
+.admin-manual-content ul,
+.admin-manual-content ol {
+  padding-left: 1.4rem;
+}
+
+.admin-manual-content code {
+  padding: 0.12em 0.35em;
+  border-radius: 5px;
+  background: #edf2ea;
+  color: #29472f;
+}
+
+.admin-manual-content pre {
+  overflow: auto;
+  padding: 14px;
+  border-radius: 10px;
+  background: #263128;
+  color: #fff;
+}
+
+.admin-manual-note {
+  margin: 1rem 0;
+  padding: 12px 14px;
+  border-left: 4px solid #7a9474;
+  border-radius: 8px;
+  background: #eef4eb;
+}
+
+.admin-manual-note p {
+  margin: 0;
+}
+
+.admin-manual-note p + p {
+  margin-top: 0.55rem;
+}
+
+.admin-manual-table-wrap {
+  overflow-x: auto;
+  margin: 1rem 0 1.35rem;
+}
+
+.admin-manual-table-wrap table {
+  width: 100%;
+  min-width: 520px;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+
+.admin-manual-table-wrap th,
+.admin-manual-table-wrap td {
+  padding: 9px 10px;
+  border: 1px solid #d6dfd2;
+  text-align: left;
+  vertical-align: top;
+}
+
+.admin-manual-table-wrap th {
+  background: #e8eee5;
+  color: #29472f;
+}
+
+.admin-manual-figure {
+  margin: 1rem auto 1.5rem;
+  text-align: center;
+}
+
+.admin-manual-figure img {
+  display: block;
+  width: min(100%, 720px);
+  height: auto;
+  margin: 0 auto;
+  border-radius: 12px;
+  box-shadow: 0 5px 18px rgba(40, 66, 43, 0.1);
+}
+
+.admin-manual-figure figcaption {
+  margin-top: 8px;
+  color: #667264;
+  font-size: 0.8rem;
 }
 
 @media (max-width: 600px) {
@@ -1552,11 +1798,13 @@ p:last-child { margin-bottom: 0; }
   }
 
   .design-idea-card__body {
+    grid-template-columns: 1fr;
+    gap: 10px;
     padding: 10px;
   }
 
   .design-idea-card img {
-    max-height: none;
+    height: 190px;
   }
 
   .design-idea-summary {
@@ -1570,6 +1818,24 @@ p:last-child { margin-bottom: 0; }
   .design-idea-summary p {
     font-size: 0.88rem;
     line-height: 1.68;
+  }
+
+  .admin-manual-library {
+    padding: 14px;
+  }
+
+  .admin-manual-library__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-manual-summary-card {
+    grid-template-columns: 90px minmax(0, 1fr);
+    padding: 11px;
+  }
+
+  .admin-manual-content {
+    padding: 16px;
+    border-radius: 14px;
   }
 }
 
