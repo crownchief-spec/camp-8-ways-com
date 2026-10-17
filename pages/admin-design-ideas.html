@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/main.css?v=20261003-unit-bath">
+  <link rel="stylesheet" href="../assets/css/main.css?v=20261018-equipment-manuals">
 </head>
 <body class="staff-availability-page admin-design-page" hidden>
   <div class="staff-app admin-design-app">
@@ -26,11 +26,42 @@
         </div>
         <a href="admin.html" class="staff-btn staff-btn--ghost">回管理首頁</a>
       </div>
-      <p class="admin-design-intro">每張圖片都是尚未定案的視覺或空間構想。按住卡片左側的三條線上下拖曳，即可調整參考優先順序；若構想放錯，也可以直接按「刪除」。排序與刪除結果都會自動保存在目前這台裝置的瀏覽器中。</p>
+      <p class="admin-design-intro">本頁改為摘要列表，先快速瀏覽每一項內容；長篇設備說明可點入獨立頁面閱讀。設計構想仍可按住卡片左側三條線排序，排序與刪除結果會自動保存在目前這台裝置的瀏覽器中。</p>
       <p id="design-save-status" class="admin-design-save-status" aria-live="polite">共 48 項構想</p>
     </header>
 
     <main>
+      <section id="equipment-manuals" class="admin-manual-library" aria-labelledby="equipment-manuals-title">
+        <div class="admin-manual-library__heading">
+          <p class="admin-design-eyebrow">Equipment Manuals</p>
+          <h2 id="equipment-manuals-title">設備完整說明書</h2>
+          <p>列表只顯示摘要；點擊後進入獨立長文頁，避免整個設計構想頁過長。</p>
+        </div>
+        <div class="admin-manual-library__grid">
+          <article class="admin-manual-summary-card">
+            <a class="admin-manual-summary-card__media" href="admin-manual-gas-bbq-ks14074.html">
+              <img src="../assets/images/cloud-tent-gas-bbq/cloud-tent-natural-gas-american-bbq-grill-open.webp" alt="熱氣球房與雲朵房使用的四爐頭美式瓦斯烤肉爐，右側設有煮鍋爐頭" title="美式瓦斯烤肉爐 KS14074 完整說明書" width="900" height="1200" loading="eager" decoding="async">
+            </a>
+            <div>
+              <p class="admin-manual-summary-card__meta">美式瓦斯烤肉爐｜KS14074</p>
+              <h3>原廠完整使用說明紀錄</h3>
+              <p>現有第 13～18 頁完整文字，涵蓋點火、側邊爐、烹調、安全、關火、清潔、收納及故障排除。兩個房區皆使用瓦斯桶供氣。</p>
+              <a class="design-idea-open-link" href="admin-manual-gas-bbq-ks14074.html">開啟完整說明書</a>
+            </div>
+          </article>
+          <article class="admin-manual-summary-card">
+            <a class="admin-manual-summary-card__media" href="admin-manual-brush-cutter-bg-series.html">
+              <img src="../assets/manuals/brush-cutter-bg-series/images/huashengtaishan-brush-cutter-manual-cover.webp" alt="華盛泰山 BG330H、BG430、BG40 背負式割草機原廠說明書封面" title="華盛泰山背負式割草機完整說明書" width="1152" height="1536" loading="eager" decoding="async">
+            </a>
+            <div>
+              <p class="admin-manual-summary-card__meta">背負式割草機｜BG330H／BG430／BG40</p>
+              <h3>原廠完整說明紀錄</h3>
+              <p>保存目前收到的封面與第 4～12 頁，含 10 張原始頁面、規格、組裝、刀具、安全、燃油比例及起動前段說明；缺頁不推測。</p>
+              <a class="design-idea-open-link" href="admin-manual-brush-cutter-bg-series.html">開啟完整說明書</a>
+            </div>
+          </article>
+        </div>
+      </section>
       <div id="design-idea-list" class="design-idea-list">
         <article class="design-idea-card" data-design-id="fence-scenery">
           <aside class="design-idea-sort" aria-label="排序工具">
@@ -274,6 +305,6 @@
     </main>
   </div>
   <script src="../assets/js/admin-gate.js"></script>
-  <script src="../assets/js/admin-design-ideas.js?v=20261003-48"></script>
+  <script src="../assets/js/admin-design-ideas.js?v=20261018-summary-list"></script>
 </body>
 </html>
