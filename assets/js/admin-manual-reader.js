@@ -1,8 +1,4 @@
 (function () {
-  var Gate = window.JoyforestAdminGate;
-  var isLocalPreview = (window.location.hostname === "127.0.0.1" || window.location.hostname === "localhost") && new URLSearchParams(window.location.search).get("preview") === "1";
-  if (!Gate || (!isLocalPreview && !Gate.requireAuth("admin.html"))) return;
-
   var reader = document.querySelector("[data-manual-src]");
   if (!reader) return;
 

@@ -30,13 +30,37 @@
   }
 
   function apiFetch(path) {
-    return fetch(API_BASE + path, {
-      cache: "no-store",
-      headers: { "Content-Type": "application/json" }
-    }).then(function (res) {
-      return res.json().then(function (data) {
-        return { res: res, data: data };
-      });
+    return new Promise(function (resolve, reject) {
+      var xhr = new XMLHttpRequest();
+      try {
+        xhr.open("GET", API_BASE + path, true);
+      } catch (err) {
+        reject(err);
+        return;
+      }
+      xhr.setRequestHeader("Accept", "application/json");
+      xhr.setRequestHeader("Cache-Control", "no-cache");
+      xhr.onload = function () {
+        var data;
+        try {
+          data = JSON.parse(xhr.responseText || "{}");
+        } catch (err) {
+          reject(new Error("行事曆資料格式錯誤，請重新整理。"));
+          return;
+        }
+        resolve({
+          res: { status: xhr.status, ok: xhr.status >= 200 && xhr.status < 300 },
+          data: data
+        });
+      };
+      xhr.onerror = function () {
+        reject(new Error("網路連線失敗，請重新整理。"));
+      };
+      xhr.ontimeout = function () {
+        reject(new Error("載入時間較久，請按重新整理。"));
+      };
+      xhr.timeout = 20000;
+      xhr.send();
     });
   }
 

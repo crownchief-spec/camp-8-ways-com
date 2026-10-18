@@ -1,7 +1,4 @@
 (function () {
-  var Gate = window.JoyforestAdminGate;
-  var LOGIN_URL = "admin.html?next=admin-revenue.html";
-  if (!Gate || !Gate.requireAuth(LOGIN_URL)) return;
   var RevenueRules = window.JoyforestRevenueRules;
   if (!RevenueRules) return;
 
@@ -561,21 +558,40 @@
     };
   }
 
-  function apiFetch(path) {
-    return fetch(API_BASE + path, {
-      credentials: "same-origin",
-      cache: "no-store",
-      headers: { "Content-Type": "application/json" }
-    }).then(function (res) {
-      if (res.status === 401) {
-        Gate.clearLocalSession();
-        window.location.replace(LOGIN_URL);
-        throw new Error("登入狀態已失效，請重新登入。");
+  function getJson(url) {
+    return new Promise(function (resolve, reject) {
+      var xhr = new XMLHttpRequest();
+      try {
+        xhr.open("GET", url, true);
+      } catch (err) {
+        reject(err);
+        return;
       }
-      return res.json().then(function (data) {
-        return { res: res, data: data };
-      });
+      xhr.setRequestHeader("Accept", "application/json");
+      xhr.setRequestHeader("Cache-Control", "no-cache");
+      xhr.onload = function () {
+        try {
+          resolve({
+            res: { status: xhr.status, ok: xhr.status >= 200 && xhr.status < 300 },
+            data: JSON.parse(xhr.responseText || "{}")
+          });
+        } catch (err) {
+          reject(new Error("資料格式錯誤，請重新整理。"));
+        }
+      };
+      xhr.onerror = function () {
+        reject(new Error("網路連線失敗，請重新整理。"));
+      };
+      xhr.ontimeout = function () {
+        reject(new Error("載入時間較久，請重新整理。"));
+      };
+      xhr.timeout = 20000;
+      xhr.send();
     });
+  }
+
+  function apiFetch(path) {
+    return getJson(API_BASE + path);
   }
 
   function updateRangeLabel() {
@@ -949,14 +965,14 @@
 
     return Promise.all([
       apiFetch(
-      "/staff-calendar/events?from=" +
+      "/staff-calendar/public-events?from=" +
         encodeURIComponent(rangeFromYmd) +
         "&until=" +
         encodeURIComponent(rangeUntilYmd)
       ),
-      fetch("/data/revenue-reconciliation-2026.json", { cache: "no-store" })
+      getJson("/data/revenue-reconciliation-2026.json")
         .then(function (response) {
-          return response.ok ? response.json() : officialReconciliation;
+          return response.res.ok ? response.data : officialReconciliation;
         })
         .catch(function () {
           return officialReconciliation;

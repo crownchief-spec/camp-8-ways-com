@@ -1,8 +1,4 @@
 (function () {
-  var Gate = window.JoyforestAdminGate;
-  var isLocalPreview = (window.location.hostname === "127.0.0.1" || window.location.hostname === "localhost") && new URLSearchParams(window.location.search).get("preview") === "1";
-  if (!Gate || (!isLocalPreview && !Gate.requireAuth("admin.html"))) return;
-
   var STORAGE_KEY = "joyforest_admin_design_ideas_order_v1";
   var DELETED_STORAGE_KEY = "joyforest_admin_design_ideas_deleted_v1";
   var list = document.getElementById("design-idea-list");
