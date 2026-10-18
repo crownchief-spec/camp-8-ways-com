@@ -1,8 +1,4 @@
 (function () {
-  var Gate = window.JoyforestAdminGate;
-  var LOGIN_URL = "admin.html?next=staff-availability.html";
-  if (!Gate || !Gate.requireAuth(LOGIN_URL)) return;
-
   var API_BASE = "/api";
   var eventsCache = [];
   var rangeFrom = "";
@@ -35,15 +31,9 @@
 
   function apiFetch(path) {
     return fetch(API_BASE + path, {
-      credentials: "same-origin",
       cache: "no-store",
       headers: { "Content-Type": "application/json" }
     }).then(function (res) {
-      if (res.status === 401) {
-        Gate.clearLocalSession();
-        window.location.replace(LOGIN_URL);
-        throw new Error("登入狀態已失效，請重新登入。");
-      }
       return res.json().then(function (data) {
         return { res: res, data: data };
       });
@@ -267,7 +257,7 @@
     statusEl.textContent = "載入中…";
     showFetchError("");
 
-    return apiFetch("/staff-calendar/events")
+    return apiFetch("/staff-calendar/public-events")
       .then(function (result) {
         if (!result.data.ok) {
           throw new Error(result.data.error || "載入失敗");

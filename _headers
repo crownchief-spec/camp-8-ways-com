@@ -14,7 +14,16 @@
   X-Robots-Tag: noindex, nofollow, noarchive, nosnippet
   Cache-Control: no-store
 
+/pages/admin*
+  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet
+  Cache-Control: no-store
+
+/pages/housekeeping*
+  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet
+  Cache-Control: no-store
+
 /api/staff-calendar/*
+  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet
   Cache-Control: private, no-store, no-cache, must-revalidate
 
 /api/staff-auth/*
