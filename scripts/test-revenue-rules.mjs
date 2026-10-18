@@ -55,7 +55,7 @@ assert.equal(
   5000
 );
 
-const ics = fs.readFileSync(new URL("../data/calendar-basic.ics", import.meta.url), "utf8");
+const ics = fs.readFileSync(new URL("../tests/fixtures/revenue-history-sample.ics", import.meta.url), "utf8");
 const events = mergeAndParseCalendars(ics, "").filter(
   (event) => event.checkInYmd >= "2026-02-01" && event.checkInYmd <= "2026-12-31"
 );

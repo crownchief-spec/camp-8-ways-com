@@ -3,7 +3,7 @@ import {
   getStaffDisplayRangeYmd,
   mergeAndParseCalendars
 } from "../../_lib/ics-parser.js";
-import { jsonResponse } from "../../_lib/staff-auth.js";
+import { jsonResponse, requireStaffSession } from "../../_lib/staff-auth.js";
 
 function isValidYmd(value) {
   if (!value || !/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
@@ -19,6 +19,10 @@ function isValidYmd(value) {
 
 export async function onRequestGet(context) {
   const { request, env } = context;
+
+  if (!(await requireStaffSession(request, env))) {
+    return jsonResponse({ ok: false, error: "unauthorized" }, 401);
+  }
 
   try {
     const { campIcs, rvIcs } = await fetchCalendarSources(env);
