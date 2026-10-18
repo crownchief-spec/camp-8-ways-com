@@ -1,6 +1,7 @@
 (function () {
   var Gate = window.JoyforestAdminGate;
-  if (!Gate || !Gate.requireAuth("admin.html")) return;
+  var LOGIN_URL = "admin.html?next=admin-revenue.html";
+  if (!Gate || !Gate.requireAuth(LOGIN_URL)) return;
   var RevenueRules = window.JoyforestRevenueRules;
   if (!RevenueRules) return;
 
@@ -566,6 +567,11 @@
       cache: "no-store",
       headers: { "Content-Type": "application/json" }
     }).then(function (res) {
+      if (res.status === 401) {
+        Gate.clearLocalSession();
+        window.location.replace(LOGIN_URL);
+        throw new Error("登入狀態已失效，請重新登入。");
+      }
       return res.json().then(function (data) {
         return { res: res, data: data };
       });

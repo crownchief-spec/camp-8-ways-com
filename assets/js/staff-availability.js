@@ -1,4 +1,8 @@
 (function () {
+  var Gate = window.JoyforestAdminGate;
+  var LOGIN_URL = "admin.html?next=staff-availability.html";
+  if (!Gate || !Gate.requireAuth(LOGIN_URL)) return;
+
   var API_BASE = "/api";
   var eventsCache = [];
   var rangeFrom = "";
@@ -35,6 +39,11 @@
       cache: "no-store",
       headers: { "Content-Type": "application/json" }
     }).then(function (res) {
+      if (res.status === 401) {
+        Gate.clearLocalSession();
+        window.location.replace(LOGIN_URL);
+        throw new Error("登入狀態已失效，請重新登入。");
+      }
       return res.json().then(function (data) {
         return { res: res, data: data };
       });

@@ -14,8 +14,7 @@
     loginError.hidden = !msg;
   }
 
-  function render() {
-    var authed = Gate.isAuthed();
+  function render(authed) {
     loginSection.hidden = authed;
     hubSection.hidden = !authed;
     logoutBtn.hidden = !authed;
@@ -27,22 +26,49 @@
     }
   }
 
+  function safeNextPage() {
+    var next = new URLSearchParams(window.location.search).get("next") || "";
+    var allowed = [
+      "staff-availability.html",
+      "admin-revenue.html",
+      "admin-cleaning-sop.html",
+      "admin-design-ideas.html"
+    ];
+    return allowed.indexOf(next) !== -1 ? next : "";
+  }
+
   loginForm.addEventListener("submit", function (e) {
     e.preventDefault();
-    if (Gate.tryLogin(passwordInput.value)) {
-      passwordInput.value = "";
-      showLoginError("");
-      render();
-      return;
-    }
-    showLoginError("密碼錯誤，請再試一次。");
-    passwordInput.select();
+    var submitButton = loginForm.querySelector('button[type="submit"]');
+    submitButton.disabled = true;
+    showLoginError("");
+
+    Gate.login(passwordInput.value).then(function (result) {
+      submitButton.disabled = false;
+      if (result.ok) {
+        passwordInput.value = "";
+        var next = safeNextPage();
+        if (next) {
+          window.location.replace(next);
+          return;
+        }
+        render(true);
+        return;
+      }
+      showLoginError(result.error || "密碼錯誤，請再試一次。");
+      passwordInput.select();
+    });
   });
 
   logoutBtn.addEventListener("click", function () {
-    Gate.logout();
-    render();
+    logoutBtn.disabled = true;
+    Gate.logout().then(function () {
+      logoutBtn.disabled = false;
+      render(false);
+    });
   });
 
-  render();
+  Gate.checkSession().then(function (authed) {
+    render(authed);
+  });
 })();
