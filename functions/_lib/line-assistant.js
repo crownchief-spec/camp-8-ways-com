@@ -7,6 +7,7 @@ import {
 
 const HOLD_REPLY = "太好了，謝謝您！小編先幫您整理預訂資料，再跟老闆確認檔期與下一步，確認後會盡快回覆您。";
 const IMAGE_HOLD_REPLY = "謝謝您，圖片已收到！小編先幫您跟老闆確認圖片內容與相關資料，確認後會盡快回覆您。";
+const PAYMENT_HOLD_REPLY = "謝謝您，付款訊息已收到！小編會先幫您核對付款資料與預訂內容，確認後會盡快回覆您。";
 const SPECIAL_HOLD_REPLY = "謝謝您跟小編說明需求～這部分需要再確認，小編會先幫您詢問老闆，確認後再回覆您。";
 const DISCOUNT_HOLD_REPLY = "謝謝您直接告訴小編預算考量～小編會先幫您整理日期、人數與需求，再跟老闆確認是否有適合的方案；確認後會再回覆您。";
 const COMPLAINT_HOLD_REPLY = "很抱歉讓您有這樣的感受，也謝謝您直接告訴小編。小編會先整理您在意的地方，再跟老闆確認後回覆您。";
@@ -41,7 +42,7 @@ function taipeiToday() {
 export function detectHumanGate(text) {
   const value = String(text || "");
   if (LIVE_INCIDENT_RE.test(value)) return { reason: "live_incident", reply: INCIDENT_HOLD_REPLY };
-  if (PAYMENT_COMPLETED_RE.test(value)) return { reason: "payment_confirmation", reply: IMAGE_HOLD_REPLY };
+  if (PAYMENT_COMPLETED_RE.test(value)) return { reason: "payment_confirmation", reply: PAYMENT_HOLD_REPLY };
   if (BOOKING_ACTION_RE.test(value)) return { reason: "booking_confirmation", reply: HOLD_REPLY };
   if (POLICY_RE.test(value)) return { reason: "booking_policy", reply: POLICY_HOLD_REPLY };
   if (CHILD_SEAT_RE.test(value)) return { reason: "child_seat_request", reply: CHILD_SEAT_HOLD_REPLY };

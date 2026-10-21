@@ -76,7 +76,10 @@ test("new campervan safety and policy gates pause only when owner confirmation i
   assert.match(incident.reply, /安全位置.*報警.*119/);
 
   assert.equal(detectHumanGate("如果不小心擦撞，保險怎麼處理？"), null);
-  assert.equal(detectHumanGate("我已經付訂金了").reason, "payment_confirmation");
+  const payment = detectHumanGate("我已經付訂金了");
+  assert.equal(payment.reason, "payment_confirmation");
+  assert.match(payment.reply, /付款訊息已收到.*核對付款資料/);
+  assert.doesNotMatch(payment.reply, /圖片已收到/);
   assert.equal(isAvailabilityQuestion("日曆有空就算正式保留嗎？", "campervan"), false);
   assert.equal(inferService("第一晚為什麼建議住正規露營區？", "campervan"), "campervan");
 });

@@ -156,7 +156,7 @@ export const campervanPersonas = [
       { text: "輕微樹枝刮痕也會收費嗎？", expect: /正常使用|不會隨意收費/ },
       { text: "押金五千是不是代表最多只賠五千？", expect: /不是事故責任上限/ },
       { text: "如果取消或改期，要怎麼處理？", expect: /小編.*老闆.*確認|核對/, pause: true, reason: "booking_policy" },
-      { text: "我已經付訂金了。", expect: /圖片內容與相關資料|老闆.*確認/, pause: true, reason: "payment_confirmation", resumeBefore: true }
+      { text: "我已經付訂金了。", expect: /付款訊息已收到.*核對付款資料/, pause: true, reason: "payment_confirmation", resumeBefore: true }
     ]
   }
 ];
