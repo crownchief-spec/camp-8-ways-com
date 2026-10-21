@@ -118,12 +118,16 @@ async function notifyOwner(env, state, result, messageText, messageType) {
 
   try {
     await pushLineText(env, ownerUserId, notice);
+    console.log("Owner LINE notification delivered", {
+      service: serviceLabel(state.service),
+      reason: result.pauseReason
+    });
   } catch (error) {
     console.error("Owner LINE notification failed", error);
   }
 }
 
-async function handleMessageEvent(env, event) {
+async function handleMessageEvent(env, event, context) {
   const userId = event.source?.userId;
   if (!userId || !event.replyToken || !event.message) return;
   if (await isDuplicateEvent(env, event.webhookEventId)) return;
@@ -227,7 +231,9 @@ async function handleMessageEvent(env, event) {
   }
   await saveState(env, userId, state);
   if (result.pause) {
-    await notifyOwner(env, state, result, messageText, event.message.type);
+    const notification = notifyOwner(env, state, result, messageText, event.message.type);
+    if (typeof context?.waitUntil === "function") context.waitUntil(notification);
+    else await notification;
   }
 }
 
@@ -235,7 +241,8 @@ export async function onRequestGet() {
   return json({ ok: true, service: "joyforest-line-webhook" });
 }
 
-export async function onRequestPost({ request, env }) {
+export async function onRequestPost(context) {
+  const { request, env } = context;
   if (!env.LINE_CHANNEL_SECRET || !env.LINE_CHANNEL_ACCESS_TOKEN || !env.LINE_CHAT_STATE || !env.AI) {
     return json({ ok: false, error: "server_not_configured" }, 503);
   }
@@ -254,7 +261,7 @@ export async function onRequestPost({ request, env }) {
   }
 
   for (const event of payload.events || []) {
-    if (event.type === "message") await handleMessageEvent(env, event);
+    if (event.type === "message") await handleMessageEvent(env, event, context);
   }
   return json({ ok: true });
 }
