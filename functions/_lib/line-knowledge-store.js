@@ -48,5 +48,15 @@ export function formatRetrievedKnowledge(entries) {
 
 export function directKnowledgeReply(entry) {
   if (!entry) return null;
-  return `您好～謝謝您詢問！\n${entry.answer}\n\n詳細資訊：${entry.url}`;
+  const openers = [
+    "您好～謝謝您詢問！",
+    "收到～小編先幫您整理如下：",
+    "您好～這個問題很多第一次租的客人也會問，先跟您說明："
+  ];
+  const seed = [...String(entry.id || entry.question || "")].reduce(
+    (total, character) => total + character.codePointAt(0),
+    0
+  );
+  const opener = openers[seed % openers.length];
+  return `${opener}\n${entry.answer}\n\n詳細資訊：${entry.url}`;
 }

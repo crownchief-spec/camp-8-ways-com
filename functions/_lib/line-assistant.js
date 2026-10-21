@@ -11,11 +11,17 @@ const SPECIAL_HOLD_REPLY = "謝謝您跟小編說明需求～這部分需要再�
 const DISCOUNT_HOLD_REPLY = "謝謝您直接告訴小編預算考量～小編會先幫您整理日期、人數與需求，再跟老闆確認是否有適合的方案；確認後會再回覆您。";
 const COMPLAINT_HOLD_REPLY = "很抱歉讓您有這樣的感受，也謝謝您直接告訴小編。小編會先整理您在意的地方，再跟老闆確認後回覆您。";
 const REVIEW_HOLD_REPLY = "謝謝您詢問～這部分小編想先幫您確認清楚，會再跟老闆確認資料後回覆您。";
+const POLICY_HOLD_REPLY = "謝謝您詢問～取消、退款、改期或付款相關規定需要依這次預約內容確認，小編會先幫您跟老闆核對，再回覆您。";
+const CHILD_SEAT_HOLD_REPLY = "謝謝您先確認兒童乘車安全～安全座椅要依小朋友年齡、體型與當次配置確認，小編會先幫您跟老闆核對，再回覆您。";
+const INCIDENT_HOLD_REPLY = "先請把車停在安全位置並確認人員狀況；若有事故或受傷請立即報警，必要時撥 119，也請不要私下和解。小編會立刻幫您通知老闆，請再傳目前位置與現場照片。";
 
 const BOOKING_ACTION_RE = /我要(?:預訂|訂房|訂車|下訂)|想(?:預訂|訂房|訂車|下訂)|確認(?:預訂|訂房|訂車|下訂)|幫我(?:保留|預訂|訂房|訂車)|可以(?:下訂|預訂|訂房|訂車)(?:了)?嗎|決定要(?:住|租|訂)|確定要(?:住|租|訂)|就訂這個|保留檔期/i;
-const PAYMENT_COMPLETED_RE = /(?:已經?|完成)(?:付款|匯款|轉帳)|(?:付款|匯款|轉帳)(?:完成|好了|成功)|訂金(?:已付|付了|已匯)|匯款截圖|付款截圖/i;
+const PAYMENT_COMPLETED_RE = /(?:已經?|完成)(?:付款|匯款|轉帳)|(?:付款|匯款|轉帳)(?:完成|好了|成功)|(?:已經?)?付(?:了)?訂金|訂金(?:已付|付了|已匯)|匯款截圖|付款截圖/i;
 const DISCOUNT_REQUEST_RE = /議價|便宜(?:一點|一些)|算便宜|殺價|打折|(?:可以|能不能|可不可以|能否|幫我|再).{0,6}(?:優惠|折扣)|(?:優惠|折扣).{0,6}(?:一點|一些|多一點|再多|可以嗎|行嗎)/i;
 const COMPLAINT_RE = /太貴|很貴|這麼貴|價格.{0,4}(?:太高|很高|誇張)|搶錢|坑人|坑錢|爛透|客服.{0,4}很爛|騙人|垃圾/i;
+const POLICY_RE = /取消|退訂|退款|退費|改期|延期|訂金(?:多少|怎麼付|付款)|付款方式|匯款方式/i;
+const CHILD_SEAT_RE = /兒童安全座椅|嬰兒安全座椅|安全座椅|嬰兒座椅|汽座/i;
+const LIVE_INCIDENT_RE = /(?:我|我們|剛剛|現在|目前).{0,12}(?:撞到|擦撞|出車禍|發生事故|拋錨|故障|漏水|爆胎|受傷)|(?:撞到了|擦撞了|出車禍了|車壞了|發不動了)/i;
 const AVAILABILITY_RE = /檔期|空房|有空|有房|哪(?:一)?天(?:可以|能|有)|幾號(?:可以|能|有)|日期.*(?:可以|能|有空|預訂)|(?:明天|後天|下週|下個月|週[一二三四五六日天]|星期[一二三四五六日天]|禮拜[一二三四五六日天]|\d{1,2}[\/月\-]\d{1,2}).*(?:有空|有房|可以(?:住|租|預約|訂)|能(?:住|租|預約|訂))/i;
 const AVAILABILITY_RANGE_FOLLOWUP_RE = /^(?:那|那麼|那請問)?\s*\d{1,2}\s*(?:[\/\-]\s*\d{1,2}|月\s*\d{1,2}\s*日?)\s*(?:到|至|[-~～])\s*\d{1,2}\s*(?:[\/\-]\s*\d{1,2}|月\s*\d{1,2}\s*日?)(?:\s*(?:呢|可以嗎|如何|有嗎))?[？?]?$/i;
 const SPECIAL_REQUEST_RE = /特殊需求|例外|通融|議價|優惠一點|便宜(?:一點|一些)|算便宜|殺價|打折|客製佈置|幫忙.{0,4}佈置|抓周佈置|生日佈置|求婚佈置|(?:提前|提早).{0,8}入住|(?:延後|晚點|延遲).{0,8}退房|(?:提早|提前).{0,8}交車|延後.{0,8}還車|異地還車|甲租乙還|長租|包月|企業合作|品牌合作|商業拍攝|婚禮|大型活動|無障礙|輪椅|醫療設備|特殊飲食|開發票|打統編|報帳/i;
@@ -34,8 +40,11 @@ function taipeiToday() {
 
 export function detectHumanGate(text) {
   const value = String(text || "");
+  if (LIVE_INCIDENT_RE.test(value)) return { reason: "live_incident", reply: INCIDENT_HOLD_REPLY };
   if (PAYMENT_COMPLETED_RE.test(value)) return { reason: "payment_confirmation", reply: IMAGE_HOLD_REPLY };
   if (BOOKING_ACTION_RE.test(value)) return { reason: "booking_confirmation", reply: HOLD_REPLY };
+  if (POLICY_RE.test(value)) return { reason: "booking_policy", reply: POLICY_HOLD_REPLY };
+  if (CHILD_SEAT_RE.test(value)) return { reason: "child_seat_request", reply: CHILD_SEAT_HOLD_REPLY };
   if (DISCOUNT_REQUEST_RE.test(value)) return { reason: "special_request", reply: DISCOUNT_HOLD_REPLY };
   if (COMPLAINT_RE.test(value)) return { reason: "customer_complaint", reply: COMPLAINT_HOLD_REPLY };
   if (SPECIAL_REQUEST_RE.test(value)) return { reason: "special_request", reply: SPECIAL_HOLD_REPLY };
@@ -44,6 +53,9 @@ export function detectHumanGate(text) {
 
 export function isAvailabilityQuestion(text, previousService = null) {
   const value = String(text || "").trim();
+  if (/(?:日曆|檔期|有空).{0,12}(?:正式保留|算預訂成功|代表什麼|是什麼意思)/i.test(value)) {
+    return false;
+  }
   return AVAILABILITY_RE.test(value) || Boolean(previousService && AVAILABILITY_RANGE_FOLLOWUP_RE.test(value));
 }
 
@@ -58,7 +70,7 @@ export function inferService(text, previousService = null) {
     previousService === "campervan" &&
     hasCampsite &&
     !hasCampervan &&
-    /(?:一定要|需要|可以|能不能|想要|安排|找).{0,8}(?:住|停|去)?露營區|露營區.{0,8}(?:過夜|接電|補水|洗澡)/i.test(text || "")
+    /(?:一定要|需要|可以|能不能|想要|安排|找|建議).{0,12}(?:住|停|去)?(?:正規)?露營區|(?:第一晚|新手).{0,10}(?:住|選)?(?:正規)?露營區|露營區.{0,12}(?:過夜|接電|補水|洗澡|熟悉設備)/i.test(text || "")
   ) {
     return "campervan";
   }
@@ -71,7 +83,7 @@ function sanitizeHistory(history) {
   if (!Array.isArray(history)) return [];
   return history
     .filter((item) => item && (item.role === "user" || item.role === "assistant"))
-    .slice(-8)
+    .slice(-20)
     .map((item) => ({ role: item.role, content: String(item.content || "").slice(0, 1600) }));
 }
 
@@ -107,7 +119,9 @@ function ensureRelevantPage(reply, text, service) {
 
 function fallbackReply(text, service) {
   const value = String(text || "");
+  if (/電話|聯絡/.test(value) && service === "campervan") return "您好～可以直接在這個 LINE 官方帳號留言，或來電 0911-252-302；國際旅客也可使用 WhatsApp：+886 911 252 302。\n\n露營車預約：https://van.joyforest.tw/booking";
   if (/電話|聯絡/.test(value)) return "您好～很高興收到您的訊息！可以直接在這裡留言，或來電 0911-252-302。\n\n露營區：https://camp.8-ways.com/\n露營車：https://van.joyforest.tw/";
+  if (/寵物|狗狗|貓咪|毛孩/.test(value) && service === "campervan") return "您好～露營車目前公開規則確認可帶中小型犬，需事先告知並完成基本美容，寵物清潔費 NT$800／次；其他寵物種類會再依當次狀況確認。\n\n詳細說明：https://van.joyforest.tw/pages/booking-guide";
   if (/寵物|狗狗|貓咪|毛孩/.test(value)) return "您好～謝謝您詢問毛孩同行！露營區兩個房型都可以帶毛孩，預訂前請告知種類、數量與體型；毛孩請勿上床、沙發及寢具。\n\n詳細說明：https://camp.8-ways.com/pages/faq.html";
   if (/入住|退房|幾點/.test(value) && service !== "campervan") return "您好～露營區下午 3:00 入住，中午 12:00 退房。若想提早入住或延後退房，小編會再幫您跟老闆確認。\n\n住宿說明：https://camp.8-ways.com/pages/faq.html";
   if (/幾人|人數|六人|6人|床型|幾張床/.test(value) && service !== "campervan") return "您好～兩個房型都可安排 1～6 人入住，4 人最舒適。熱氣球房有雙人床、雙人沙發床，第 5、6 位加設雙人床墊；雲朵房有 2 張雙人床，第 5、6 位加設雙人床墊。\n\n房型介紹：https://camp.8-ways.com/";
@@ -139,7 +153,7 @@ export async function generateLineAssistantReply(env, { text, history, previousS
         ...sanitizeHistory(history),
         { role: "user", content: text },
         { role: "assistant", content: reply }
-      ].slice(-8)
+      ].slice(-20)
     };
   }
   const deterministicReply = fallbackReply(text, service);
@@ -152,7 +166,7 @@ export async function generateLineAssistantReply(env, { text, history, previousS
         ...sanitizeHistory(history),
         { role: "user", content: text },
         { role: "assistant", content: deterministicReply }
-      ].slice(-8)
+      ].slice(-20)
     };
   }
 
@@ -191,7 +205,7 @@ export async function generateLineAssistantReply(env, { text, history, previousS
     reply: reply.slice(0, 4800),
     pause: false,
     service,
-    history: [...sanitizeHistory(history), { role: "user", content: text }, { role: "assistant", content: reply }].slice(-8)
+    history: [...sanitizeHistory(history), { role: "user", content: text }, { role: "assistant", content: reply }].slice(-20)
   };
 }
 

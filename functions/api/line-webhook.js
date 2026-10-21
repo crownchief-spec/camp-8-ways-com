@@ -81,6 +81,9 @@ function reasonLabel(reason) {
   if (reason === "availability_lookup_failed") return "即時檔期暫時無法讀取";
   if (reason === "special_request") return "客人提出特殊需求";
   if (reason === "customer_complaint") return "客人反映價格或服務感受";
+  if (reason === "booking_policy") return "客人詢問取消、退款、改期或付款規定";
+  if (reason === "child_seat_request") return "客人詢問兒童安全座椅";
+  if (reason === "live_incident") return "客人回報事故、故障或緊急狀況";
   if (reason === "booking_confirmation") return "客人準備預訂";
   if (reason === "payment_confirmation") return "客人表示已付款";
   if (reason === "image_or_payment_confirmation") return "客人傳送圖片或付款資料";
@@ -211,7 +214,7 @@ async function handleMessageEvent(env, event) {
   state.service = result.service || inferService(messageText, state.service);
   if (result.history) state.history = result.history;
   else if (messageText) {
-    state.history = [...(state.history || []), { role: "user", content: messageText }, { role: "assistant", content: result.reply }].slice(-12);
+    state.history = [...(state.history || []), { role: "user", content: messageText }, { role: "assistant", content: result.reply }].slice(-20);
   }
   if (result.pause) {
     state.paused = true;

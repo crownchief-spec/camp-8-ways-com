@@ -2,7 +2,8 @@
   "name": "camp-8-ways-com",
   "private": true,
   "scripts": {
-    "test:line-assistant": "node --test tests/line-assistant.test.mjs",
+    "test:line-assistant": "node --test tests/line-assistant.test.mjs tests/line-campervan-multiturn.test.mjs",
+    "report:line-campervan": "node scripts/run-line-campervan-multiturn.mjs",
     "build:calendar-pricing": "esbuild src/bundle/campCalendarPricing.ts --bundle --format=iife --outfile=assets/js/camp-calendar-pricing.js",
     "build:stories": "node scripts/build-camp-stories.mjs",
     "build": "npm run build:calendar-pricing && npm run build:stories",

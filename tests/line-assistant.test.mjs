@@ -62,6 +62,25 @@ test("availability stays automatic and special requests pause with a polite edit
   assert.doesNotMatch(complaint.reply, /搶錢|坑人|垃圾|反駁/);
 });
 
+test("new campervan safety and policy gates pause only when owner confirmation is needed", () => {
+  const childSeat = detectHumanGate("你們會提供兒童安全座椅嗎？");
+  assert.equal(childSeat.reason, "child_seat_request");
+  assert.match(childSeat.reply, /小朋友年齡.*老闆/);
+
+  const policy = detectHumanGate("如果臨時取消可以退款嗎？");
+  assert.equal(policy.reason, "booking_policy");
+  assert.match(policy.reply, /預約內容.*老闆/);
+
+  const incident = detectHumanGate("我們剛剛擦撞了，現在該怎麼辦？");
+  assert.equal(incident.reason, "live_incident");
+  assert.match(incident.reply, /安全位置.*報警.*119/);
+
+  assert.equal(detectHumanGate("如果不小心擦撞，保險怎麼處理？"), null);
+  assert.equal(detectHumanGate("我已經付訂金了").reason, "payment_confirmation");
+  assert.equal(isAvailabilityQuestion("日曆有空就算正式保留嗎？", "campervan"), false);
+  assert.equal(inferService("第一晚為什麼建議住正規露營區？", "campervan"), "campervan");
+});
+
 test("customer hold messages do not expose automation or an internal handoff", () => {
   const publicReplies = [
     createHumanGateResult("我想預訂").reply,
