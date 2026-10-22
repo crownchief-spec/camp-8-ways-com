@@ -14,7 +14,7 @@ const results = await Promise.all(targets.map(async ([name, url, expectedType]) 
   if (url.includes("campervan-availability")) {
     try {
       const data = JSON.parse(body);
-      valid = valid && Array.isArray(data?.bookedDates) && Array.isArray(data?.pendingDates);
+      valid = valid && Array.isArray(data?.bookedDates) && Array.isArray(data?.waitlistDates);
     } catch {
       valid = false;
     }
