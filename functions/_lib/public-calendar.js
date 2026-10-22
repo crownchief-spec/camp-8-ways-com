@@ -151,6 +151,7 @@ function classifyRvBlock(block, dates) {
 }
 
 function collectRvDates(rvIcs, today) {
+  const isPublicSnapshot = unfoldIcs(rvIcs).includes("X-JOYFOREST-PUBLIC:1");
   const states = {
     booked: new Set(),
     unavailable: new Set(),
@@ -158,6 +159,7 @@ function collectRvDates(rvIcs, today) {
   };
 
   for (const block of eventBlocks(rvIcs)) {
+    if (isPublicSnapshot && !propertyValues(block, "X-JOYFOREST-TAG").includes("rv")) continue;
     const dates = expandDates(propertyDate(block, "DTSTART"), propertyDate(block, "DTEND"))
       .filter((date) => date >= today);
     if (!dates.length) continue;
@@ -181,7 +183,7 @@ function collectRvDates(rvIcs, today) {
 export function buildPublicAvailabilityIcs({ campIcs, rvIcs, now = new Date() }) {
   const range = publicRange(now);
   const lines = buildHeader();
-  let index = 0;
+  const campRanges = new Map();
 
   // 這條路徑會在 Cloudflare Worker 內處理完整 Google Calendar。
   // 只擷取公開檔期必要欄位，避免逐筆 Intl/客戶資料剖析導致 CPU 1102。
@@ -192,11 +194,17 @@ export function buildPublicAvailabilityIcs({ campIcs, rvIcs, now = new Date() })
     if (!startDate || !tags.length || /^[？?]/.test(summary)) continue;
     const endDate = safeEndDate(startDate, propertyDate(block, "DTEND"));
     if (!inRange(startDate, endDate, range)) continue;
+    tags.sort();
+    const key = `${startDate}|${endDate}|${tags.join("-")}`;
+    campRanges.set(key, { startDate, endDate, tags });
+  }
+
+  for (const [key, event] of [...campRanges].sort(([a], [b]) => a.localeCompare(b))) {
     lines.push(...eventLines({
-      id: `camp-${startDate}-${endDate}-${tags.join("-")}-${index++}`,
-      startDate,
-      endDate,
-      tags
+      id: `camp-${key.replaceAll("|", "-")}`,
+      startDate: event.startDate,
+      endDate: event.endDate,
+      tags: event.tags
     }));
   }
 
