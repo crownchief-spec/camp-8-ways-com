@@ -411,6 +411,7 @@
     var errEl = root.querySelector("[data-availability-error]");
     var tableMount = root.querySelector("[data-availability-table]");
     var icsUrl = root.getAttribute("data-ics-url") || "/api/public-calendar";
+    var fallbackIcsUrl = root.getAttribute("data-ics-fallback-url") || "/data/calendar-basic.ics";
 
     if (typeof window.CampCalendarPricing === "undefined") {
       if (statusEl) statusEl.textContent = "";
@@ -428,6 +429,10 @@
     errEl.textContent = "";
 
     fetch(buildIcsRequestUrl(icsUrl), { cache: "no-store" })
+      .then(function (r) {
+        if (r.ok) return r;
+        return fetch(buildIcsRequestUrl(fallbackIcsUrl), { cache: "no-store" });
+      })
       .then(function (r) {
         if (!r.ok) throw new Error("HTTP " + r.status);
         return r.text();

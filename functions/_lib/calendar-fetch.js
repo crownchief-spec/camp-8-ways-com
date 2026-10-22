@@ -1,4 +1,5 @@
 const PUBLIC_CALENDAR_FALLBACK_URL = "https://camp.8-ways.com/data/calendar-basic.ics";
+const PUBLIC_CALENDAR_ASSET_URL = "https://assets.local/data/calendar-basic.ics";
 
 async function fetchCalendar(url, label) {
   const response = await fetch(url, {
@@ -8,8 +9,19 @@ async function fetchCalendar(url, label) {
   return response.text();
 }
 
-async function fetchPublicSnapshot() {
-  const ics = await fetchCalendar(PUBLIC_CALENDAR_FALLBACK_URL, "Public fallback");
+async function readCalendarResponse(response, label) {
+  if (!response.ok) throw new Error(`${label} calendar fetch failed: HTTP ${response.status}`);
+  return response.text();
+}
+
+export async function fetchPublicSnapshot(env) {
+  let ics;
+  if (env?.ASSETS?.fetch) {
+    const response = await env.ASSETS.fetch(PUBLIC_CALENDAR_ASSET_URL);
+    ics = await readCalendarResponse(response, "Bundled public fallback");
+  } else {
+    ics = await fetchCalendar(PUBLIC_CALENDAR_FALLBACK_URL, "Public fallback");
+  }
   if (!ics.includes("X-JOYFOREST-PUBLIC:1")) {
     throw new Error("Public fallback calendar is not a sanitized snapshot");
   }
@@ -25,7 +37,7 @@ export async function fetchRvCalendarSource(env) {
       console.warn("RV calendar unavailable; using sanitized public snapshot", error);
     }
   }
-  return fetchPublicSnapshot();
+  return fetchPublicSnapshot(env);
 }
 
 export async function fetchCalendarSources(env) {
@@ -43,6 +55,6 @@ export async function fetchCalendarSources(env) {
     }
   }
 
-  const snapshot = await fetchPublicSnapshot();
+  const snapshot = await fetchPublicSnapshot(env);
   return { campIcs: snapshot, rvIcs: snapshot };
 }
