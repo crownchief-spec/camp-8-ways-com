@@ -274,7 +274,10 @@ test("asks for a complete campervan range and always includes the live availabil
 
 test("treats a single campsite date as a one-night stay and checks both rooms", async () => {
   const originalFetch = globalThis.fetch;
-  globalThis.fetch = async () => new Response("BEGIN:VCALENDAR\r\nEND:VCALENDAR", { status: 200 });
+  globalThis.fetch = async () => new Response(
+    "BEGIN:VCALENDAR\r\nX-JOYFOREST-PUBLIC:1\r\nEND:VCALENDAR",
+    { status: 200 }
+  );
   try {
     const result = await answerAvailabilityQuestion({
       JOYFOREST_CAMP_ICS_URL: "https://calendar.example/camp.ics",
@@ -306,19 +309,18 @@ test("rejects campervan ranges shorter than the three-day two-night minimum", as
 
 test("answers a complete campervan range from live-calendar-shaped data without exposing titles", async () => {
   const originalFetch = globalThis.fetch;
-  globalThis.fetch = async (url) => {
-    const isRv = String(url).includes("rv.ics");
-    const body = isRv
-      ? [
-          "BEGIN:VCALENDAR",
-          "BEGIN:VEVENT",
-          "DTSTART;VALUE=DATE:20261105",
-          "DTEND;VALUE=DATE:20261108",
-          "SUMMARY:露營車 私密客人姓名",
-          "END:VEVENT",
-          "END:VCALENDAR"
-        ].join("\r\n")
-      : "BEGIN:VCALENDAR\r\nEND:VCALENDAR";
+  globalThis.fetch = async () => {
+    const body = [
+      "BEGIN:VCALENDAR",
+      "X-JOYFOREST-PUBLIC:1",
+      "BEGIN:VEVENT",
+      "DTSTART;VALUE=DATE:20261105",
+      "DTEND;VALUE=DATE:20261108",
+      "SUMMARY:已預訂 露營車",
+      "X-JOYFOREST-TAG:rv",
+      "END:VEVENT",
+      "END:VCALENDAR"
+    ].join("\r\n");
     return new Response(body, { status: 200 });
   };
   try {

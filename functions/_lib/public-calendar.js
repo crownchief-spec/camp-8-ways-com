@@ -1,4 +1,3 @@
-import { buildPublicCampervanAvailability } from "./campervan-availability.js";
 import { mergeAndParseCalendars } from "./ics-parser.js";
 
 const taipeiDateFormatter = new Intl.DateTimeFormat("en-CA", {
@@ -74,6 +73,107 @@ function finish(lines) {
   return `${[...lines, "END:VCALENDAR"].join("\r\n")}\r\n`;
 }
 
+function unfoldIcs(text) {
+  return String(text || "").replace(/\r\n/g, "\n").replace(/\n[\t ]/g, "");
+}
+
+function eventBlocks(ics) {
+  const blocks = [];
+  const input = unfoldIcs(ics);
+  const pattern = /BEGIN:VEVENT\n([\s\S]*?)\nEND:VEVENT/g;
+  let match;
+  while ((match = pattern.exec(input))) blocks.push(match[1]);
+  return blocks;
+}
+
+function propertyValues(block, name) {
+  const prefix = `${name.toUpperCase()}`;
+  const values = [];
+  for (const line of block.split("\n")) {
+    const colon = line.indexOf(":");
+    if (colon === -1) continue;
+    const key = line.slice(0, colon).split(";", 1)[0].toUpperCase();
+    if (key === prefix) values.push(line.slice(colon + 1));
+  }
+  return values;
+}
+
+function firstProperty(block, name) {
+  return propertyValues(block, name)[0] || "";
+}
+
+function propertyDate(block, name) {
+  const match = firstProperty(block, name).match(/^(\d{4})(\d{2})(\d{2})/);
+  return match ? `${match[1]}-${match[2]}-${match[3]}` : "";
+}
+
+function campTags(block) {
+  const text = [
+    firstProperty(block, "SUMMARY"),
+    firstProperty(block, "DESCRIPTION")
+  ].join("\n");
+  const tags = new Set(propertyValues(block, "X-JOYFOREST-TAG"));
+  if (text.includes("包場")) {
+    tags.add("balloon");
+    tags.add("cloud");
+  }
+  if (text.includes("熱氣球")) tags.add("balloon");
+  if (text.includes("雲朵")) tags.add("cloud");
+  return [...tags].filter((tag) => tag === "balloon" || tag === "cloud");
+}
+
+function expandDates(startDate, endDate) {
+  if (!startDate) return [];
+  const end = safeEndDate(startDate, endDate);
+  const dates = [];
+  for (let cursor = startDate; cursor < end; cursor = addDays(cursor, 1)) dates.push(cursor);
+  return dates;
+}
+
+function classifyRvBlock(block, dates) {
+  const title = firstProperty(block, "SUMMARY").trim();
+  const text = [
+    title,
+    firstProperty(block, "DESCRIPTION"),
+    firstProperty(block, "COMMENT")
+  ].filter(Boolean).join("\n");
+  const hasCampervanWord = /露營車|camper\s*van|campervan|\brv\b/i.test(text);
+  const isPending = /^[？?]/.test(title);
+  const isExplicitBlackout = /不可預訂|不可预约|停租|暫停出租|暂停出租|停止出租|自用不外租/i.test(text);
+  const isRoutineReminder = /驗車|验车|車檢|车检|檢查|检查|整理|清潔|清洁|洗車|洗车|維修|维修|保養|保养|整備|整备|收納|收纳|補給|补给|加油|換油|换油|設備檢查|设备检查/i.test(title);
+  const isUnrelatedTravel = !hasCampervanWord && /酒店|飯店|饭店|旅館|旅馆|住宿|機票|机票|航班|出國|出国|石垣島|石垣岛|日本旅遊|日本旅游/i.test(title);
+
+  if (isExplicitBlackout) return "unavailable";
+  if (isRoutineReminder || isUnrelatedTravel) return "ignore";
+  if (isPending) return "waitlist";
+  if (hasCampervanWord || dates.length >= 2) return "booked";
+  return "ignore";
+}
+
+function collectRvDates(rvIcs, today) {
+  const states = {
+    booked: new Set(),
+    unavailable: new Set(),
+    waitlist: new Set()
+  };
+
+  for (const block of eventBlocks(rvIcs)) {
+    const dates = expandDates(propertyDate(block, "DTSTART"), propertyDate(block, "DTEND"))
+      .filter((date) => date >= today);
+    if (!dates.length) continue;
+    const state = classifyRvBlock(block, dates);
+    if (!states[state]) continue;
+    for (const date of dates) states[state].add(date);
+  }
+
+  for (const date of states.unavailable) {
+    states.booked.delete(date);
+    states.waitlist.delete(date);
+  }
+  for (const date of states.booked) states.waitlist.delete(date);
+  return states;
+}
+
 /**
  * 將私人 Google 日曆轉為前台安全版本，只保留日期、房型與空房狀態。
  * 不輸出姓名、電話、身分證字號、備註、地點、原始 UID 或金額。
@@ -81,29 +181,28 @@ function finish(lines) {
 export function buildPublicAvailabilityIcs({ campIcs, rvIcs, now = new Date() }) {
   const range = publicRange(now);
   const lines = buildHeader();
-  const campEvents = mergeAndParseCalendars(campIcs, "");
   let index = 0;
 
-  for (const event of campEvents) {
-    const tags = event.roomTags.filter((tag) => tag === "balloon" || tag === "cloud");
-    if (!tags.length || /^[？?]/.test(String(event.summary || "").trim())) continue;
-    const endDate = safeEndDate(event.checkInYmd, event.checkOutYmd);
-    if (!inRange(event.checkInYmd, endDate, range)) continue;
+  // 這條路徑會在 Cloudflare Worker 內處理完整 Google Calendar。
+  // 只擷取公開檔期必要欄位，避免逐筆 Intl/客戶資料剖析導致 CPU 1102。
+  for (const block of eventBlocks(campIcs)) {
+    const summary = firstProperty(block, "SUMMARY").trim();
+    const tags = campTags(block);
+    const startDate = propertyDate(block, "DTSTART");
+    if (!startDate || !tags.length || /^[？?]/.test(summary)) continue;
+    const endDate = safeEndDate(startDate, propertyDate(block, "DTEND"));
+    if (!inRange(startDate, endDate, range)) continue;
     lines.push(...eventLines({
-      id: `camp-${event.checkInYmd}-${endDate}-${tags.join("-")}-${index++}`,
-      startDate: event.checkInYmd,
+      id: `camp-${startDate}-${endDate}-${tags.join("-")}-${index++}`,
+      startDate,
       endDate,
       tags
     }));
   }
 
-  const rv = buildPublicCampervanAvailability(rvIcs, now);
-  for (const [state, dates] of [
-    ["booked", rv.bookedDates],
-    ["unavailable", rv.unavailableDates],
-    ["waitlist", rv.waitlistDates]
-  ]) {
-    for (const date of dates) {
+  const rvStates = collectRvDates(rvIcs, taipeiDateFormatter.format(now));
+  for (const state of ["booked", "unavailable", "waitlist"]) {
+    for (const date of [...rvStates[state]].sort()) {
       if (!inRange(date, addDays(date, 1), range)) continue;
       lines.push(...eventLines({
         id: `rv-${state}-${date}`,

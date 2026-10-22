@@ -6,10 +6,12 @@ ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 OUT="$ROOT/data/calendar-basic.ics"
 TASK_TMP_DIR="${TMPDIR:-/tmp}"
 TMP_ICS="$TASK_TMP_DIR/joyforest-public-calendar.ics"
-PUBLIC_CALENDAR_URL="${JOYFOREST_PUBLIC_CALENDAR_URL:-https://camp.8-ways.com/api/public-calendar}"
+TMP_HEADERS="$TASK_TMP_DIR/joyforest-public-calendar.headers"
+PUBLIC_CALENDAR_URL="${JOYFOREST_PUBLIC_CALENDAR_URL:-https://camp.8-ways.com/api/public-calendar?source=live}"
 
-curl -fsSL --retry 3 --retry-delay 5 "$PUBLIC_CALENDAR_URL" -o "$TMP_ICS"
+curl -fsSL --retry 3 --retry-delay 5 -D "$TMP_HEADERS" "$PUBLIC_CALENDAR_URL" -o "$TMP_ICS"
 
+grep -Eqi '^x-joyforest-live-refresh:[[:space:]]*1' "$TMP_HEADERS"
 grep -q '^BEGIN:VCALENDAR' "$TMP_ICS"
 grep -q '^X-JOYFOREST-PUBLIC:1' "$TMP_ICS"
 if grep -Eq '^(DESCRIPTION|LOCATION|ATTENDEE|ORGANIZER|CONTACT):' "$TMP_ICS"; then

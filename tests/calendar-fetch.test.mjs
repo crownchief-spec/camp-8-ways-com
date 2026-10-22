@@ -3,6 +3,7 @@ import test from "node:test";
 
 import {
   fetchCalendarSources,
+  fetchLiveCalendarSources,
   fetchPublicSnapshot,
   fetchRvCalendarSource
 } from "../functions/_lib/calendar-fetch.js";
@@ -37,10 +38,10 @@ test("uses the bundled sanitized snapshot when calendar bindings are absent", as
   assert.deepEqual(await fetchCalendarSources(env), { campIcs: snapshot, rvIcs: snapshot });
 });
 
-test("falls back to the bundled snapshot when live calendars fail", async () => {
+test("customer lookups stay on the bundled snapshot even when live bindings exist", async () => {
   const originalFetch = globalThis.fetch;
   globalThis.fetch = async () => {
-    throw new Error("live calendar unavailable");
+    throw new Error("customer lookup must not fetch a private calendar");
   };
 
   try {
@@ -50,6 +51,7 @@ test("falls back to the bundled snapshot when live calendars fail", async () => 
       JOYFOREST_RV_ICS_URL: "https://calendar.invalid/rv.ics"
     };
     assert.deepEqual(await fetchCalendarSources(env), { campIcs: snapshot, rvIcs: snapshot });
+    await assert.rejects(() => fetchLiveCalendarSources(env), /customer lookup must not fetch/);
   } finally {
     globalThis.fetch = originalFetch;
   }

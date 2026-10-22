@@ -246,6 +246,7 @@ function getStayStatus(now, start, end) {
 
 function parseIcsEvents(icsText, calendarName, isRvCalendar) {
   const raw = unfoldIcs(icsText);
+  const isPublicSnapshot = raw.includes("X-JOYFOREST-PUBLIC:1");
   const parts = raw.split(/BEGIN:VEVENT\r?\n/);
   const events = [];
 
@@ -261,7 +262,7 @@ function parseIcsEvents(icsText, calendarName, isRvCalendar) {
     const tags = classifyTags(
       summary,
       description,
-      isRvCalendar,
+      isRvCalendar && !isPublicSnapshot,
       props["X-JOYFOREST-TAG"]
     );
     if (!tags.length) continue;
@@ -383,6 +384,10 @@ export function getStaffDisplayRangeYmd(now = new Date()) {
 
 export function mergeAndParseCalendars(campIcs, rvIcs) {
   const campEvents = parseIcsEvents(campIcs, CAMP_CALENDAR_NAME, false);
+  if (campIcs === rvIcs && String(campIcs || "").includes("X-JOYFOREST-PUBLIC:1")) {
+    campEvents.sort((a, b) => a.checkInSort - b.checkInSort);
+    return campEvents;
+  }
   const rvEvents = parseIcsEvents(rvIcs, RV_CALENDAR_NAME, true);
   const all = campEvents.concat(rvEvents);
   all.sort((a, b) => a.checkInSort - b.checkInSort);

@@ -58,17 +58,20 @@ function mockD1(entries) {
 
 const rvIcs = [
   "BEGIN:VCALENDAR",
+  "X-JOYFOREST-PUBLIC:1",
   "BEGIN:VEVENT",
   "UID:waitlist-test",
   "DTSTART;VALUE=DATE:20261120",
   "DTEND;VALUE=DATE:20261123",
   "SUMMARY:？測試候補（不得外洩）",
+  "X-JOYFOREST-TAG:rv",
   "END:VEVENT",
   "BEGIN:VEVENT",
   "UID:booked-test",
   "DTSTART;VALUE=DATE:20261110",
   "DTEND;VALUE=DATE:20261113",
   "SUMMARY:測試已預訂（不得外洩）",
+  "X-JOYFOREST-TAG:rv",
   "END:VEVENT",
   "END:VCALENDAR"
 ].join("\r\n");
@@ -146,12 +149,7 @@ export async function runCampervanSimulation() {
   };
 
   const originalFetch = globalThis.fetch;
-  globalThis.fetch = async (url) => {
-    const content = String(url).includes("rv.ics")
-      ? rvIcs
-      : "BEGIN:VCALENDAR\r\nEND:VCALENDAR";
-    return new Response(content, { status: 200 });
-  };
+  globalThis.fetch = async () => new Response(rvIcs, { status: 200 });
 
   const personaResults = [];
   try {
