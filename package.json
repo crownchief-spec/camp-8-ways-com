@@ -2,6 +2,7 @@
   "name": "camp-8-ways-com",
   "private": true,
   "scripts": {
+    "check:availability-live": "node scripts/check-public-availability.mjs",
     "test:line-assistant": "node --test tests/line-assistant.test.mjs tests/line-campervan-multiturn.test.mjs",
     "report:line-campervan": "node scripts/run-line-campervan-multiturn.mjs",
     "build:calendar-pricing": "esbuild src/bundle/campCalendarPricing.ts --bundle --format=iife --outfile=assets/js/camp-calendar-pricing.js",
