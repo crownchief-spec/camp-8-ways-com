@@ -1,6 +1,8 @@
 (function () {
   var RevenueRules = window.JoyforestRevenueRules;
-  if (!RevenueRules) return;
+  var AdminGate = window.JoyforestAdminGate;
+  if (!RevenueRules || !AdminGate) return;
+  if (!AdminGate.requireAuth("admin.html?next=admin-revenue.html")) return;
 
   var API_BASE = "/api";
   var RULES_KEY = "joyforest_admin_pricing_rules";
@@ -965,7 +967,7 @@
 
     return Promise.all([
       apiFetch(
-      "/staff-calendar/public-events?from=" +
+      "/staff-calendar/events?from=" +
         encodeURIComponent(rangeFromYmd) +
         "&until=" +
         encodeURIComponent(rangeUntilYmd)
@@ -980,6 +982,11 @@
     ])
       .then(function (results) {
         var result = results[0];
+        if (result.res.status === 401) {
+          AdminGate.clearLocalSession();
+          window.location.replace("admin.html?next=admin-revenue.html");
+          return;
+        }
         officialReconciliation = results[1] || officialReconciliation;
         renderReconciliationTables();
         renderReconciliationCharts();

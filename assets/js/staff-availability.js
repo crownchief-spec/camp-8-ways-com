@@ -1,4 +1,8 @@
 (function () {
+  var AdminGate = window.JoyforestAdminGate;
+  if (!AdminGate) return;
+  if (!AdminGate.requireAuth("admin.html?next=staff-availability.html")) return;
+
   var API_BASE = "/api";
   var eventsCache = [];
   var rangeFrom = "";
@@ -281,8 +285,13 @@
     statusEl.textContent = "載入中…";
     showFetchError("");
 
-    return apiFetch("/staff-calendar/public-events")
+    return apiFetch("/staff-calendar/events")
       .then(function (result) {
+        if (result.res.status === 401) {
+          AdminGate.clearLocalSession();
+          window.location.replace("admin.html?next=staff-availability.html");
+          return;
+        }
         if (!result.data.ok) {
           throw new Error(result.data.error || "載入失敗");
         }

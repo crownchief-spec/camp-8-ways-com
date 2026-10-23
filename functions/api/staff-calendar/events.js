@@ -1,4 +1,4 @@
-import { fetchCalendarSources } from "../../_lib/calendar-fetch.js";
+import { fetchLiveCalendarSources } from "../../_lib/calendar-fetch.js";
 import {
   getStaffDisplayRangeYmd,
   mergeAndParseCalendars
@@ -25,7 +25,9 @@ export async function onRequestGet(context) {
   }
 
   try {
-    const { campIcs, rvIcs } = await fetchCalendarSources(env);
+    // 這是經過登入驗證的內部端點。營收與房務需要完整 Google Calendar
+    // 內容中的金額、來源與備註；公開檔期快照已去識別，不能用於內部報表。
+    const { campIcs, rvIcs } = await fetchLiveCalendarSources(env);
     const events = mergeAndParseCalendars(campIcs, rvIcs);
     const url = new URL(request.url);
     const fromParam = url.searchParams.get("from");

@@ -6,7 +6,17 @@
 
 檔期 API 必須保留同一個 Pages 部署內的靜態安全快照備援；不可只依賴 Cloudflare 環境變數、Google Calendar 或另一個網站的 API。
 
-這項檢查必須同時確認以下兩組公開頁面及 API 正常；任一失敗都不可回報完成：
+這項檢查必須同時確認以下五個使用面正常；任一失敗都不可回報完成：
+
+- 已登入的 `https://camp.8-ways.com/pages/admin-revenue` 能讀到完整案件與營收資料，但不得在檢查輸出顯示私人內容。
+- 已登入的 `https://camp.8-ways.com/pages/staff-availability` 能讀到完整訂房資料，但不得在檢查輸出顯示私人內容。
+- 獨立 LINE Worker 能從安全公開快照回答露營車與露營區檔期，不得把私人行事曆內容交給 LINE。
+- 露營車公開檔期頁與 API 正常。
+- 露營區公開檔期頁與 API 正常。
+
+公開檔期與 LINE Worker 使用去識別的安全快照；營收後台只能在登入驗證後讀取完整 Google Calendar。不得為了共用而讓營收後台改讀公開快照，也不得讓公開頁面或 LINE 讀取完整私人行事曆。
+
+公開檔期的具體檢查網址如下：
 
 - `https://van.joyforest.tw/pages/availability`
 - `https://van.joyforest.tw/api/campervan-availability`
