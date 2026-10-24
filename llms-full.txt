@@ -17,7 +17,7 @@ Business type: Forest glamping venue in Taoyuan Yangmei, Taiwan
 - Reviews: https://camp.8-ways.com/reviews/
 
 ## Booking/contact
-- LINE booking link: https://line.me/ti/p/F2MWlK47xD
+- LINE booking link: https://line.me/R/ti/p/@281uducw
 - Reservation is required
 - Check-in and location details are provided after booking confirmation
 - Optional availability reference page loads `data/calendar-basic.ics` (synced from Google Calendar); events mentioning 熱氣球 / 雲朵 / 露營車 are labeled for balloon tent, cloud tent, and campervan respectively. Not a substitute for LINE confirmation.
