@@ -2049,6 +2049,12 @@ p:last-child { margin-bottom: 0; }
   object-fit: cover;
 }
 
+.admin-sop-gallery--guide img {
+  max-height: none;
+  object-fit: contain;
+  background: #f5f4eb;
+}
+
 .admin-sop-gallery figcaption,
 .admin-sop-layout figcaption,
 .admin-sop-bed-standard figcaption {
