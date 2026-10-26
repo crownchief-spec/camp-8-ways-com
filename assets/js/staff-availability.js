@@ -137,7 +137,9 @@
       if (ev.children != null) sub.push("兒童 " + ev.children);
       parts.push(sub.join("／"));
     }
-    if (!parts.length) return "";
+    if (!parts.length) {
+      return '<p class="staff-day-booking__guest">人數未填</p>';
+    }
     return (
       '<p class="staff-day-booking__guest">' +
       escapeHtml(parts.join("｜")) +

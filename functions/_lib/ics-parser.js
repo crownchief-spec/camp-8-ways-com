@@ -326,9 +326,9 @@ function parseIcsEvents(icsText, calendarName, isRvCalendar) {
     if (tentTags.length === 1 && guestCountsByRoom[tentTags[0]] == null && guestInfo.totalGuests != null) {
       guestCountsByRoom[tentTags[0]] = guestInfo.totalGuests;
     }
-    if (guestInfo.totalGuests == null) {
-      const roomCounts = Object.values(guestCountsByRoom);
-      if (roomCounts.length) guestInfo.totalGuests = roomCounts.reduce((sum, count) => sum + count, 0);
+    const roomCounts = Object.values(guestCountsByRoom);
+    if (roomCounts.length >= 2 || (roomCounts.length && guestInfo.totalGuests == null)) {
+      guestInfo.totalGuests = roomCounts.reduce((sum, count) => sum + count, 0);
     }
     const bookingSource = parseBookingSource(combinedText);
     const statedPrice = parseStatedPriceFromText(combinedText, bookingSource);

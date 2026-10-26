@@ -1,4 +1,7 @@
-import { fetchCalendarSources } from "../../_lib/calendar-fetch.js";
+import {
+  fetchCalendarSources,
+  fetchLiveCalendarSources
+} from "../../_lib/calendar-fetch.js";
 import {
   getStaffDisplayRangeYmd,
   mergeAndParseCalendars
@@ -17,7 +20,7 @@ function isValidYmd(value) {
   );
 }
 
-function toPublicStaffEvent(event) {
+function toPublicStaffEvent(event, index) {
   const roomTags = event.roomTags.filter((tag) => ["cloud", "balloon", "rv"].includes(tag));
   const roomLabels = roomTags.map((tag) => ({
     cloud: "雲朵房",
@@ -31,11 +34,11 @@ function toPublicStaffEvent(event) {
   }
 
   return {
-    id: event.id,
+    id: `staff-${event.checkInYmd}-${roomTags.join("-")}-${index}`,
     roomTags,
     roomLabels,
     roomLabel: roomLabels.join("＋"),
-    summary: `已預訂 ${roomLabels.join("＋")}`,
+    summary: event.summary || `已預訂 ${roomLabels.join("＋")}`,
     guestCount: Number.isInteger(event.guestCount) ? event.guestCount : null,
     guestCountsByRoom,
     checkInDate: event.checkInDate,
@@ -54,9 +57,18 @@ function toPublicStaffEvent(event) {
   };
 }
 
+async function fetchSharedStaffSources(env) {
+  try {
+    return { ...(await fetchLiveCalendarSources(env)), source: "live" };
+  } catch (error) {
+    console.error("Shared staff calendar live fetch failed; using safe snapshot", error);
+    return { ...(await fetchCalendarSources(env)), source: "snapshot" };
+  }
+}
+
 export async function onRequestGet(context) {
   try {
-    const { campIcs, rvIcs } = await fetchCalendarSources(context.env);
+    const { campIcs, rvIcs, source } = await fetchSharedStaffSources(context.env);
     const events = mergeAndParseCalendars(campIcs, rvIcs);
     const url = new URL(context.request.url);
     const fromParam = url.searchParams.get("from");
@@ -86,6 +98,7 @@ export async function onRequestGet(context) {
         fetchedAt: new Date().toISOString(),
         fromYmd,
         untilYmd,
+        source,
         count: filtered.length,
         events: filtered.map(toPublicStaffEvent)
       },
