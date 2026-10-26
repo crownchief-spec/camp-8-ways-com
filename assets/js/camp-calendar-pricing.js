@@ -81,7 +81,7 @@
       originalPrice: 6800,
       weekday: 5800,
       weekend: 5800,
-      longHoliday: 6e3,
+      longHoliday: 7800,
       showPrice: true
     },
     cloud: {
@@ -90,7 +90,7 @@
       originalPrice: 7800,
       weekday: 5e3,
       weekend: 5e3,
-      longHoliday: 6e3,
+      longHoliday: 7800,
       showPrice: true
     },
     rv: {
@@ -102,14 +102,7 @@
 
   // src/data/calendar/calendarSpecialNightlyPrices.ts
   var calendarSpecialNightlyPrices = {
-    "2027-01-01": 6800,
-    "2027-02-03": 7800,
-    "2027-02-04": 7800,
-    "2027-02-05": 7800,
-    "2027-02-06": 7800,
-    "2027-02-07": 7800,
-    "2027-02-08": 7800,
-    "2027-02-09": 7800
+    "2027-02-03": 7800
   };
 
   // src/lib/date/datePricingUtils.ts

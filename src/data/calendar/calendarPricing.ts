@@ -37,7 +37,7 @@ export const calendarResourcePricing: {
     originalPrice: 6800,
     weekday: 5800,
     weekend: 5800,
-    longHoliday: 6000,
+    longHoliday: 7800,
     showPrice: true,
   },
   cloud: {
@@ -46,7 +46,7 @@ export const calendarResourcePricing: {
     originalPrice: 7800,
     weekday: 5000,
     weekend: 5000,
-    longHoliday: 6000,
+    longHoliday: 7800,
     showPrice: true,
   },
   rv: {
