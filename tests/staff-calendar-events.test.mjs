@@ -5,25 +5,20 @@ import test from "node:test";
 import { createSessionToken } from "../functions/_lib/staff-auth.js";
 import { onRequestGet } from "../functions/api/staff-calendar/events.js";
 
-test("internal revenue and staff pages use the authenticated full-calendar endpoint", async () => {
-  const files = [
-    "../assets/js/admin-revenue.js",
-    "../assets/js/staff-availability.js"
-  ];
-  for (const path of files) {
-    const source = await readFile(new URL(path, import.meta.url), "utf8");
-    assert.match(source, /\/staff-calendar\/events/);
-    assert.doesNotMatch(source, /\/staff-calendar\/public-events/);
-  }
+test("revenue stays private while the staff schedule uses sanitized public data", async () => {
+  const revenueScript = await readFile(new URL("../assets/js/admin-revenue.js", import.meta.url), "utf8");
+  assert.match(revenueScript, /\/staff-calendar\/events/);
+  assert.doesNotMatch(revenueScript, /\/staff-calendar\/public-events/);
 
-  const pages = [
-    "../pages/admin-revenue.html",
-    "../pages/staff-availability.html"
-  ];
-  for (const path of pages) {
-    const source = await readFile(new URL(path, import.meta.url), "utf8");
-    assert.match(source, /admin-gate\.js/);
-  }
+  const staffScript = await readFile(new URL("../assets/js/staff-availability.js", import.meta.url), "utf8");
+  assert.match(staffScript, /\/staff-calendar\/public-events/);
+  assert.doesNotMatch(staffScript, /\/staff-calendar\/events/);
+  assert.doesNotMatch(staffScript, /requireAuth|clearLocalSession/);
+
+  const revenuePage = await readFile(new URL("../pages/admin-revenue.html", import.meta.url), "utf8");
+  const staffPage = await readFile(new URL("../pages/staff-availability.html", import.meta.url), "utf8");
+  assert.match(revenuePage, /admin-gate\.js/);
+  assert.doesNotMatch(staffPage, /admin-gate\.js/);
 });
 
 function calendar(summary, description, tag) {

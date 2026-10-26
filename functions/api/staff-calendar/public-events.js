@@ -17,6 +17,43 @@ function isValidYmd(value) {
   );
 }
 
+function toPublicStaffEvent(event) {
+  const roomTags = event.roomTags.filter((tag) => ["cloud", "balloon", "rv"].includes(tag));
+  const roomLabels = roomTags.map((tag) => ({
+    cloud: "雲朵房",
+    balloon: "熱氣球房",
+    rv: "露營車"
+  })[tag]);
+  const guestCountsByRoom = {};
+  for (const tag of roomTags) {
+    const count = event.guestCountsByRoom?.[tag];
+    if (Number.isInteger(count)) guestCountsByRoom[tag] = count;
+  }
+
+  return {
+    id: event.id,
+    roomTags,
+    roomLabels,
+    roomLabel: roomLabels.join("＋"),
+    summary: `已預訂 ${roomLabels.join("＋")}`,
+    guestCount: Number.isInteger(event.guestCount) ? event.guestCount : null,
+    guestCountsByRoom,
+    checkInDate: event.checkInDate,
+    checkInTime: event.checkInTime,
+    checkOutDate: event.checkOutDate,
+    checkOutTime: event.checkOutTime,
+    nights: event.nights,
+    stayStatus: event.stayStatus,
+    isAllDay: event.isAllDay,
+    hasStartTime: event.hasStartTime,
+    hasEndTime: event.hasEndTime,
+    checkInSort: event.checkInSort,
+    checkInYmd: event.checkInYmd,
+    checkOutYmd: event.checkOutYmd,
+    checkInYm: event.checkInYm
+  };
+}
+
 export async function onRequestGet(context) {
   try {
     const { campIcs, rvIcs } = await fetchCalendarSources(context.env);
@@ -50,7 +87,7 @@ export async function onRequestGet(context) {
         fromYmd,
         untilYmd,
         count: filtered.length,
-        events: filtered
+        events: filtered.map(toPublicStaffEvent)
       },
       200,
       { "X-Robots-Tag": "noindex, nofollow, noarchive, nosnippet" }

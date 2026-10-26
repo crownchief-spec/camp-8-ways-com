@@ -94,10 +94,16 @@ function parseEventBlock(chunk) {
   return props;
 }
 
+const PACKAGE_BOOKING_NEGATION_RE = /(?:沒(?:有)?|未|不|非|不是|並非)\s*包場/g;
+
+export function hasPositivePackageBooking(text) {
+  return String(text || "").replace(PACKAGE_BOOKING_NEGATION_RE, "").includes("包場");
+}
+
 function classifyTags(summary, description, isRvCalendar, xTag) {
   const text = (summary || "") + "\n" + (description || "");
   const tags = [];
-  if (text.indexOf("包場") !== -1) {
+  if (hasPositivePackageBooking(text)) {
     tags.push("balloon");
     tags.push("cloud");
   }
@@ -110,7 +116,35 @@ function classifyTags(summary, description, isRvCalendar, xTag) {
   return [...new Set(tags)];
 }
 
-function parseGuestInfo(text) {
+function parseGuestNumber(value) {
+  if (/^\d+$/.test(value)) return parseInt(value, 10);
+  const digits = { 一: 1, 二: 2, 兩: 2, 三: 3, 四: 4, 五: 5, 六: 6, 七: 7, 八: 8, 九: 9 };
+  if (value === "十") return 10;
+  if (value.includes("十")) {
+    const [tens, ones] = value.split("十");
+    return (tens ? digits[tens] : 1) * 10 + (ones ? digits[ones] : 0);
+  }
+  return digits[value] ?? null;
+}
+
+export function parseRoomGuestCounts(text) {
+  const counts = {};
+  const source = String(text || "");
+  const number = "(\\d+|[一二兩三四五六七八九十]+)";
+  const patterns = {
+    cloud: new RegExp("(?:雲朵房?|左邊(?:帳篷)?)\\s*(?:入住)?\\s*" + number + "\\s*(?:個)?\\s*(?:人|位)?"),
+    balloon: new RegExp("(?:熱氣球房?|右邊(?:帳篷)?)\\s*(?:入住)?\\s*" + number + "\\s*(?:個)?\\s*(?:人|位)?")
+  };
+  for (const [room, pattern] of Object.entries(patterns)) {
+    const match = source.match(pattern);
+    if (!match) continue;
+    const count = parseGuestNumber(match[1]);
+    if (count != null) counts[room] = count;
+  }
+  return counts;
+}
+
+export function parseGuestInfo(text) {
   const info = {
     totalGuests: null,
     adults: null,
@@ -132,10 +166,8 @@ function parseGuestInfo(text) {
     info.totalGuests = info.adults;
   }
 
-  const ren = text.match(/(\d+)\s*人/);
-  const wei = text.match(/(\d+)\s*位/);
-  if (ren && info.totalGuests == null) info.totalGuests = parseInt(ren[1], 10);
-  if (wei && info.totalGuests == null) info.totalGuests = parseInt(wei[1], 10);
+  const people = text.match(/(\d+|[一二兩三四五六七八九十]+)\s*(?:個)?\s*(?:人|位)/);
+  if (people && info.totalGuests == null) info.totalGuests = parseGuestNumber(people[1]);
 
   const adultLabel = text.match(/成人\s*[:：]?\s*(\d+)/);
   const childLabel = text.match(/兒童\s*[:：]?\s*(\d+)/);
@@ -284,6 +316,20 @@ function parseIcsEvents(icsText, calendarName, isRvCalendar) {
 
     const combinedText = [summary, description, comment].filter(Boolean).join("\n");
     const guestInfo = parseGuestInfo(combinedText);
+    const guestCountsByRoom = parseRoomGuestCounts(combinedText);
+    for (const room of ["cloud", "balloon", "rv"]) {
+      const prop = props[`X-JOYFOREST-GUEST-${room.toUpperCase()}`];
+      if (!prop || !/^\d+$/.test(prop.value.trim())) continue;
+      guestCountsByRoom[room] = parseInt(prop.value.trim(), 10);
+    }
+    const tentTags = tags.filter((tag) => tag === "cloud" || tag === "balloon");
+    if (tentTags.length === 1 && guestCountsByRoom[tentTags[0]] == null && guestInfo.totalGuests != null) {
+      guestCountsByRoom[tentTags[0]] = guestInfo.totalGuests;
+    }
+    if (guestInfo.totalGuests == null) {
+      const roomCounts = Object.values(guestCountsByRoom);
+      if (roomCounts.length) guestInfo.totalGuests = roomCounts.reduce((sum, count) => sum + count, 0);
+    }
     const bookingSource = parseBookingSource(combinedText);
     const statedPrice = parseStatedPriceFromText(combinedText, bookingSource);
     const isPrivate = isPrivateBookingText(combinedText);
@@ -306,6 +352,7 @@ function parseIcsEvents(icsText, calendarName, isRvCalendar) {
       statedPrice,
       isPrivate,
       guestCount: guestInfo.totalGuests,
+      guestCountsByRoom,
       adults: guestInfo.adults,
       children: guestInfo.children,
       checkInDate: formatDateTaipei(start),

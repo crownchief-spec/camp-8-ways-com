@@ -1,4 +1,9 @@
-import { mergeAndParseCalendars } from "./ics-parser.js";
+import {
+  hasPositivePackageBooking,
+  mergeAndParseCalendars,
+  parseGuestInfo,
+  parseRoomGuestCounts
+} from "./ics-parser.js";
 
 const taipeiDateFormatter = new Intl.DateTimeFormat("en-CA", {
   timeZone: "Asia/Taipei",
@@ -24,7 +29,7 @@ function roomLabel(tags) {
   return labels.join("＋");
 }
 
-function eventLines({ id, startDate, endDate, tags, state = "booked" }) {
+function eventLines({ id, startDate, endDate, tags, guestCountsByRoom = {}, state = "booked" }) {
   const prefix = state === "waitlist" ? "？候補" : state === "unavailable" ? "暫不開放" : "已預訂";
   const summary = `${prefix} ${roomLabel(tags)}`;
   return [
@@ -34,6 +39,9 @@ function eventLines({ id, startDate, endDate, tags, state = "booked" }) {
     `DTEND;VALUE=DATE:${toIcsDate(endDate)}`,
     `SUMMARY:${summary}`,
     ...tags.map((tag) => `X-JOYFOREST-TAG:${tag}`),
+    ...tags
+      .filter((tag) => Number.isInteger(guestCountsByRoom[tag]))
+      .map((tag) => `X-JOYFOREST-GUEST-${tag.toUpperCase()}:${guestCountsByRoom[tag]}`),
     "STATUS:CONFIRMED",
     "TRANSP:OPAQUE",
     "END:VEVENT"
@@ -113,13 +121,28 @@ function campTags(block) {
     firstProperty(block, "DESCRIPTION")
   ].join("\n");
   const tags = new Set(propertyValues(block, "X-JOYFOREST-TAG"));
-  if (text.includes("包場")) {
+  if (hasPositivePackageBooking(text)) {
     tags.add("balloon");
     tags.add("cloud");
   }
   if (text.includes("熱氣球")) tags.add("balloon");
   if (text.includes("雲朵")) tags.add("cloud");
   return [...tags].filter((tag) => tag === "balloon" || tag === "cloud");
+}
+
+function campGuestCounts(block, tags) {
+  const text = [
+    firstProperty(block, "SUMMARY"),
+    firstProperty(block, "DESCRIPTION"),
+    firstProperty(block, "COMMENT")
+  ].filter(Boolean).join("\n");
+  const counts = parseRoomGuestCounts(text);
+  const tentTags = tags.filter((tag) => tag === "balloon" || tag === "cloud");
+  if (tentTags.length === 1 && counts[tentTags[0]] == null) {
+    const total = parseGuestInfo(text).totalGuests;
+    if (total != null) counts[tentTags[0]] = total;
+  }
+  return counts;
 }
 
 function expandDates(startDate, endDate) {
@@ -190,13 +213,23 @@ export function buildPublicAvailabilityIcs({ campIcs, rvIcs, now = new Date() })
   for (const block of eventBlocks(campIcs)) {
     const summary = firstProperty(block, "SUMMARY").trim();
     const tags = campTags(block);
+    const guestCountsByRoom = campGuestCounts(block, tags);
     const startDate = propertyDate(block, "DTSTART");
     if (!startDate || !tags.length || /^[？?]/.test(summary)) continue;
     const endDate = safeEndDate(startDate, propertyDate(block, "DTEND"));
     if (!inRange(startDate, endDate, range)) continue;
     tags.sort();
     const key = `${startDate}|${endDate}|${tags.join("-")}`;
-    campRanges.set(key, { startDate, endDate, tags });
+    const previous = campRanges.get(key);
+    campRanges.set(key, {
+      startDate,
+      endDate,
+      tags,
+      guestCountsByRoom: {
+        ...(previous?.guestCountsByRoom || {}),
+        ...guestCountsByRoom
+      }
+    });
   }
 
   for (const [key, event] of [...campRanges].sort(([a], [b]) => a.localeCompare(b))) {
@@ -204,7 +237,8 @@ export function buildPublicAvailabilityIcs({ campIcs, rvIcs, now = new Date() })
       id: `camp-${key.replaceAll("|", "-")}`,
       startDate: event.startDate,
       endDate: event.endDate,
-      tags: event.tags
+      tags: event.tags,
+      guestCountsByRoom: event.guestCountsByRoom
     }));
   }
 
@@ -241,7 +275,8 @@ export function sanitizeLegacyCombinedIcs(ics, now = new Date()) {
       id: `legacy-${event.checkInYmd}-${endDate}-${tags.join("-")}-${index++}`,
       startDate: event.checkInYmd,
       endDate,
-      tags
+      tags,
+      guestCountsByRoom: event.guestCountsByRoom
     }));
   }
 

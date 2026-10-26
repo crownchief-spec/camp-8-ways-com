@@ -1,8 +1,4 @@
 (function () {
-  var AdminGate = window.JoyforestAdminGate;
-  if (!AdminGate) return;
-  if (!AdminGate.requireAuth("admin.html?next=staff-availability.html")) return;
-
   var API_BASE = "/api";
   var eventsCache = [];
   var rangeFrom = "";
@@ -120,10 +116,22 @@
     return ymd >= ev.checkInYmd && ymd <= lastNight;
   }
 
-  function renderGuestInfo(ev) {
+  function renderGuestInfo(ev, roomTag) {
     var parts = [];
-    if (ev.guestCount != null) parts.push(ev.guestCount + " 人");
-    if (ev.adults != null || ev.children != null) {
+    var roomCount =
+      ev.guestCountsByRoom && ev.guestCountsByRoom[roomTag] != null
+        ? ev.guestCountsByRoom[roomTag]
+        : null;
+    var isTwoRoomBooking =
+      ev.roomTags.indexOf("cloud") !== -1 &&
+      ev.roomTags.indexOf("balloon") !== -1;
+    if (roomCount != null) parts.push(roomCount + " 人");
+    else if (ev.guestCount != null) {
+      parts.push(
+        isTwoRoomBooking ? "兩房合計 " + ev.guestCount + " 人" : ev.guestCount + " 人"
+      );
+    }
+    if (!isTwoRoomBooking && (ev.adults != null || ev.children != null)) {
       var sub = [];
       if (ev.adults != null) sub.push("成人 " + ev.adults);
       if (ev.children != null) sub.push("兒童 " + ev.children);
@@ -137,7 +145,7 @@
     );
   }
 
-  function renderBookingBlock(ev) {
+  function renderBookingBlock(ev, roomTag) {
     var statusClass =
       ev.stayStatus === "checked-out" ? " staff-day-booking--past" : "";
     var notesParts = [];
@@ -166,7 +174,7 @@
       '<h3 class="staff-day-booking__title">' +
       formatMultiline(ev.summary || "（無標題）") +
       "</h3>" +
-      renderGuestInfo(ev) +
+      renderGuestInfo(ev, roomTag) +
       (ev.bookingSource
         ? '<p class="staff-day-booking__meta">來源：' +
           escapeHtml(ev.bookingSource) +
@@ -182,11 +190,13 @@
     );
   }
 
-  function renderRoomCell(events) {
+  function renderRoomCell(events, roomTag) {
     if (!events.length) {
       return '<p class="staff-day-empty">空房</p>';
     }
-    return events.map(renderBookingBlock).join("");
+    return events.map(function (ev) {
+      return renderBookingBlock(ev, roomTag);
+    }).join("");
   }
 
   function renderRvSection(rvEvents) {
@@ -195,7 +205,9 @@
       '<section class="staff-rv-section">' +
       "<h2>露營車（同期間）</h2>" +
       '<div class="staff-rv-list">' +
-      rvEvents.map(renderBookingBlock).join("") +
+      rvEvents.map(function (ev) {
+        return renderBookingBlock(ev, "rv");
+      }).join("") +
       "</div>" +
       "</section>"
     );
@@ -259,11 +271,11 @@
           "</div>" +
           '<div class="staff-day-col staff-day-col--cloud">' +
           '<p class="staff-day-col-label">雲朵房（左邊帳篷）</p>' +
-          renderRoomCell(cloud) +
+          renderRoomCell(cloud, "cloud") +
           "</div>" +
           '<div class="staff-day-col staff-day-col--balloon">' +
           '<p class="staff-day-col-label">熱氣球房（右邊帳篷）</p>' +
-          renderRoomCell(balloon) +
+          renderRoomCell(balloon, "balloon") +
           "</div>" +
           "</div>"
       );
@@ -285,13 +297,8 @@
     statusEl.textContent = "載入中…";
     showFetchError("");
 
-    return apiFetch("/staff-calendar/events")
+    return apiFetch("/staff-calendar/public-events")
       .then(function (result) {
-        if (result.res.status === 401) {
-          AdminGate.clearLocalSession();
-          window.location.replace("admin.html?next=staff-availability.html");
-          return;
-        }
         if (!result.data.ok) {
           throw new Error(result.data.error || "載入失敗");
         }

@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import { buildPublicAvailabilityIcs } from "../functions/_lib/public-calendar.js";
+import { mergeAndParseCalendars } from "../functions/_lib/ics-parser.js";
 
 const campIcs = [
   "BEGIN:VCALENDAR",
@@ -65,4 +66,38 @@ test("public calendar output is stable when Google changes event order", () => {
 
   assert.equal(first, second);
   assert.equal((first.match(/SUMMARY:已預訂 熱氣球房/g) || []).length, 1);
+});
+
+test("room counts stay separate and negated package text does not occupy both rooms", () => {
+  const twoRooms = [
+    "BEGIN:VEVENT",
+    "DTSTART;VALUE=DATE:20261026",
+    "DTEND;VALUE=DATE:20261027",
+    "SUMMARY:雲朵房2、熱氣球房2",
+    "END:VEVENT"
+  ].join("\r\n");
+  const cloudOnly = [
+    "BEGIN:VEVENT",
+    "DTSTART;VALUE=DATE:20261027",
+    "DTEND;VALUE=DATE:20261028",
+    "SUMMARY:雲朵房包區沒包場，兩個人",
+    "END:VEVENT"
+  ].join("\r\n");
+  const source = ["BEGIN:VCALENDAR", twoRooms, cloudOnly, "END:VCALENDAR"].join("\r\n");
+  const publicIcs = buildPublicAvailabilityIcs({
+    campIcs: source,
+    rvIcs: "BEGIN:VCALENDAR\r\nEND:VCALENDAR",
+    now: new Date("2026-10-26T00:00:00+08:00")
+  });
+  const events = mergeAndParseCalendars(publicIcs, publicIcs);
+  const oct26 = events.find((event) => event.checkInYmd === "2026-10-26");
+  const oct27 = events.find((event) => event.checkInYmd === "2026-10-27");
+
+  assert.deepEqual(oct26.roomTags.sort(), ["balloon", "cloud"]);
+  assert.deepEqual(oct26.guestCountsByRoom, { balloon: 2, cloud: 2 });
+  assert.equal(oct26.guestCount, 4);
+  assert.deepEqual(oct27.roomTags, ["cloud"]);
+  assert.deepEqual(oct27.guestCountsByRoom, { cloud: 2 });
+  assert.equal(oct27.guestCount, 2);
+  assert.doesNotMatch(publicIcs, /沒包場/);
 });
