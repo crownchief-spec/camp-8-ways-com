@@ -39,7 +39,6 @@
   var sourceTotalSummaryEl = document.getElementById("source-total-summary");
   var sourceRevenueTableEl = document.getElementById("source-revenue-table");
   var futureSourceSummaryEl = document.getElementById("future-source-summary");
-  var bookingSourceTableEl = document.getElementById("booking-source-table");
   var sumTotal = document.getElementById("sum-total");
   var sumTent = document.getElementById("sum-tent");
   var sumRv = document.getElementById("sum-rv");
@@ -146,38 +145,42 @@
     return Number(parts[1]) + " 月";
   }
 
-  function sourceCell(count, total) {
-    var percentage = total ? (Number(count || 0) / total) * 100 : 0;
-    return escapeHtml(String(count || 0)) + '<span class="admin-analysis-percent">' + percentage.toFixed(1) + "%</span>";
-  }
-
-  function revenueSourceCell(amount, total) {
-    var percentage = total ? (Number(amount || 0) / total) * 100 : 0;
-    return escapeHtml(formatMoney(amount)) + '<span class="admin-analysis-percent">' + percentage.toFixed(1) + "%</span>";
+  function revenueAndCasesCell(amount, cases) {
+    return escapeHtml(formatMoney(amount)) + '<span class="admin-analysis-percent">（' + Number(cases || 0) + " 筆）</span>";
   }
 
   function renderReconciliationTables() {
     var monthlySourceRevenue = officialReconciliation.monthlySourceRevenue || [];
+    var monthlySourceCases = officialReconciliation.monthlySourceCases || [];
+    var sourceCasesByMonth = {};
+    monthlySourceCases.forEach(function (row) {
+      sourceCasesByMonth[row.month] = row;
+    });
     if (sourceRevenueTableEl) {
       if (!monthlySourceRevenue.length) {
         sourceRevenueTableEl.innerHTML = '<p class="staff-empty">尚無營收來源資料。</p>';
       } else {
         var revenueTotals = { total: 0, airbnb: 0, agoda: 0, direct: 0 };
+        var caseTotals = { total: 0, airbnb: 0, agoda: 0, direct: 0 };
         var sourceRevenueRows = monthlySourceRevenue.map(function (row) {
-          if (!row.future) Object.keys(revenueTotals).forEach(function (key) { revenueTotals[key] += Number(row[key] || 0); });
+          var cases = sourceCasesByMonth[row.month] || {};
+          if (!row.future) {
+            Object.keys(revenueTotals).forEach(function (key) { revenueTotals[key] += Number(row[key] || 0); });
+            Object.keys(caseTotals).forEach(function (key) { caseTotals[key] += Number(cases[key] || 0); });
+          }
           return '<tr class="' + (row.future ? "admin-analysis-row--future" : "") + '">' +
             "<td>" + escapeHtml(formatMonth(row.month)) + (row.future ? '<span class="admin-analysis-percent">目前已預訂</span>' : "") + "</td>" +
-            '<td class="admin-month-table__total">' + escapeHtml(formatMoney(row.total)) + "</td>" +
-            "<td>" + revenueSourceCell(row.airbnb, row.total) + "</td>" +
-            "<td>" + revenueSourceCell(row.agoda, row.total) + "</td>" +
-            "<td>" + revenueSourceCell(row.direct, row.total) + "</td>" +
+            '<td class="admin-month-table__total">' + revenueAndCasesCell(row.total, cases.total) + "</td>" +
+            "<td>" + revenueAndCasesCell(row.airbnb, cases.airbnb) + "</td>" +
+            "<td>" + revenueAndCasesCell(row.agoda, cases.agoda) + "</td>" +
+            "<td>" + revenueAndCasesCell(row.direct, cases.direct) + "</td>" +
             "</tr>";
         }).join("");
         sourceRevenueTableEl.innerHTML =
           '<table class="admin-month-table admin-analysis-table">' +
           "<thead><tr><th>月份</th><th>淨營收</th><th>Airbnb</th><th>Agoda</th><th>私下接單</th></tr></thead>" +
           "<tbody>" + sourceRevenueRows + "</tbody>" +
-          '<tfoot><tr><th>2–10 月合計</th><th>' + escapeHtml(formatMoney(revenueTotals.total)) + "</th><th>" + revenueSourceCell(revenueTotals.airbnb, revenueTotals.total) + "</th><th>" + revenueSourceCell(revenueTotals.agoda, revenueTotals.total) + "</th><th>" + revenueSourceCell(revenueTotals.direct, revenueTotals.total) + "</th></tr></tfoot>" +
+          '<tfoot><tr><th>2–10 月合計</th><th>' + revenueAndCasesCell(revenueTotals.total, caseTotals.total) + "</th><th>" + revenueAndCasesCell(revenueTotals.airbnb, caseTotals.airbnb) + "</th><th>" + revenueAndCasesCell(revenueTotals.agoda, caseTotals.agoda) + "</th><th>" + revenueAndCasesCell(revenueTotals.direct, caseTotals.direct) + "</th></tr></tfoot>" +
           "</table>";
       }
     }
@@ -220,31 +223,6 @@
         '<p class="admin-analysis-note">另有待訂金暫訂 ' + Number(future.tentativeCases || 0) + ' 筆，金額 ' + escapeHtml(formatMoney(future.tentativeRevenue || 0)) + '，未放入上方比例。</p></div>';
     }
 
-    var monthlySources = officialReconciliation.monthlySourceCases || [];
-    if (bookingSourceTableEl) {
-      if (!monthlySources.length) {
-        bookingSourceTableEl.innerHTML = '<p class="staff-empty">尚無訂單來源資料。</p>';
-      } else {
-        var totals = { total: 0, airbnb: 0, agoda: 0, unknown: 0, direct: 0 };
-        var sourceRows = monthlySources.map(function (row) {
-          if (!row.future) Object.keys(totals).forEach(function (key) { totals[key] += Number(row[key] || 0); });
-          return '<tr class="' + (row.future ? "admin-analysis-row--future" : "") + '">' +
-            "<td>" + escapeHtml(formatMonth(row.month)) + (row.future ? '<span class="admin-analysis-percent">目前已預訂</span>' : "") + "</td>" +
-            "<td>" + escapeHtml(String(row.total)) + "</td>" +
-            "<td>" + sourceCell(row.airbnb, row.total) + "</td>" +
-            "<td>" + sourceCell(row.agoda, row.total) + "</td>" +
-            "<td>" + sourceCell(row.direct, row.total) + "</td>" +
-            "<td>" + (row.future ? Number(row.tentative || 0) : "—") + "</td>" +
-            "</tr>";
-        }).join("");
-        bookingSourceTableEl.innerHTML =
-          '<table class="admin-month-table admin-analysis-table">' +
-          "<thead><tr><th>月份</th><th>有效案件</th><th>Airbnb</th><th>Agoda</th><th>私下接單</th><th>待訂金暫訂</th></tr></thead>" +
-          "<tbody>" + sourceRows + "</tbody>" +
-          '<tfoot><tr><th>2–10 月合計</th><th>' + totals.total + "</th><th>" + sourceCell(totals.airbnb, totals.total) + "</th><th>" + sourceCell(totals.agoda, totals.total) + "</th><th>" + sourceCell(totals.direct, totals.total) + "</th><th>—</th></tr></tfoot>" +
-          "</table>";
-      }
-    }
   }
 
   function chartMonthLabel(month) {
