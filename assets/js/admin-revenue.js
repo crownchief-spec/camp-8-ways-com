@@ -39,8 +39,6 @@
   var sourceTotalSummaryEl = document.getElementById("source-total-summary");
   var sourceRevenueTableEl = document.getElementById("source-revenue-table");
   var futureSourceSummaryEl = document.getElementById("future-source-summary");
-  var campervanReconciliationEl = document.getElementById("campervan-reconciliation");
-  var revenueGrowthTableEl = document.getElementById("revenue-growth-table");
   var bookingSourceTableEl = document.getElementById("booking-source-table");
   var sumTotal = document.getElementById("sum-total");
   var sumTent = document.getElementById("sum-tent");
@@ -148,18 +146,6 @@
     return Number(parts[1]) + " 月";
   }
 
-  function formatSignedMoney(n) {
-    var num = Math.round(Number(n) || 0);
-    if (num === 0) return "$0";
-    return (num > 0 ? "+" : "−") + formatMoney(Math.abs(num));
-  }
-
-  function formatGrowth(n) {
-    if (n == null) return "—";
-    var num = Number(n) || 0;
-    return (num > 0 ? "+" : num < 0 ? "−" : "") + Math.abs(num).toFixed(1) + "%";
-  }
-
   function sourceCell(count, total) {
     var percentage = total ? (Number(count || 0) / total) * 100 : 0;
     return escapeHtml(String(count || 0)) + '<span class="admin-analysis-percent">' + percentage.toFixed(1) + "%</span>";
@@ -171,35 +157,6 @@
   }
 
   function renderReconciliationTables() {
-    var monthlyRevenue = officialReconciliation.monthlyRevenue || [];
-    if (revenueGrowthTableEl) {
-      if (!monthlyRevenue.length) {
-        revenueGrowthTableEl.innerHTML = '<p class="staff-empty">尚無正式對帳資料。</p>';
-      } else {
-        var revenueRows = monthlyRevenue.map(function (row) {
-          var differenceClass = row.difference == null ? "" : row.difference < 0 ? " admin-analysis-value--down" : row.difference > 0 ? " admin-analysis-value--up" : "";
-          var growthClass = row.growth < 0 ? " admin-analysis-value--down" : row.growth > 0 ? " admin-analysis-value--up" : "";
-          return '<tr class="' + (row.future ? "admin-analysis-row--future" : "") + '">' +
-            "<td>" + escapeHtml(formatMonth(row.month)) + (row.future ? '<span class="admin-analysis-percent">目前已預訂</span>' : "") + "</td>" +
-            "<td>" + (row.original == null ? "—" : escapeHtml(formatMoney(row.original))) + "</td>" +
-            '<td class="admin-month-table__total">' + escapeHtml(formatMoney(row.revised)) + "</td>" +
-            '<td class="' + differenceClass.trim() + '">' + (row.difference == null ? "—" : escapeHtml(formatSignedMoney(row.difference))) + "</td>" +
-            '<td class="' + growthClass.trim() + '">' + escapeHtml(formatGrowth(row.growth)) + "</td>" +
-            "<td>" + escapeHtml(formatMoney(row.cumulative)) + "</td>" +
-            "</tr>";
-        }).join("");
-        var actualRevenueRows = monthlyRevenue.filter(function (row) { return !row.future; });
-        var originalTotal = actualRevenueRows.reduce(function (sum, row) { return sum + Number(row.original || 0); }, 0);
-        var revisedTotal = actualRevenueRows.reduce(function (sum, row) { return sum + Number(row.revised || 0); }, 0);
-        revenueGrowthTableEl.innerHTML =
-          '<table class="admin-month-table admin-analysis-table">' +
-          "<thead><tr><th>月份</th><th>原估營收</th><th>修正後營收</th><th>修正差額</th><th>月成長率</th><th>累計營收</th></tr></thead>" +
-          "<tbody>" + revenueRows + "</tbody>" +
-          '<tfoot><tr><th>對帳合計</th><th><span class="admin-analysis-percent">原估僅 2–8 月</span>' + escapeHtml(formatMoney(originalTotal)) + '</th><th><span class="admin-analysis-percent">實際 2–10 月</span>' + escapeHtml(formatMoney(revisedTotal)) + '</th><th>—</th><th>—</th><th>' + escapeHtml(formatMoney(revisedTotal)) + "</th></tr></tfoot>" +
-          "</table>";
-      }
-    }
-
     var monthlySourceRevenue = officialReconciliation.monthlySourceRevenue || [];
     if (sourceRevenueTableEl) {
       if (!monthlySourceRevenue.length) {
@@ -261,19 +218,6 @@
           return '<div><span class="admin-future-source__swatch" style="background:' + item.color + '"></span><strong>' + item.label + '</strong><span>' + escapeHtml(formatMoney(amount)) + ' · ' + percent.toFixed(1) + '% · ' + Number(future[item.key + "Cases"] || 0) + ' 筆</span></div>';
         }).join("") + '</div><p class="admin-future-source__total">已確認合計 ' + escapeHtml(formatMoney(futureTotal)) + '（' + (Number(future.airbnbCases || 0) + Number(future.agodaCases || 0) + Number(future.directCases || 0)) + ' 筆）</p>' +
         '<p class="admin-analysis-note">另有待訂金暫訂 ' + Number(future.tentativeCases || 0) + ' 筆，金額 ' + escapeHtml(formatMoney(future.tentativeRevenue || 0)) + '，未放入上方比例。</p></div>';
-    }
-
-    if (campervanReconciliationEl) {
-      var campervanRows = officialReconciliation.campervanMonthlyRevenue || [];
-      var campervanTotals = officialReconciliation.campervanTotals || {};
-      campervanReconciliationEl.innerHTML =
-        '<table class="admin-month-table admin-analysis-table">' +
-        '<thead><tr><th>月份</th><th>收費案件</th><th>租金收入</th></tr></thead>' +
-        '<tbody>' + campervanRows.map(function (row) {
-          return '<tr><td>' + escapeHtml(formatMonth(row.month)) + '</td><td>' + Number(row.cases || 0) + '</td><td class="admin-month-table__total">' + escapeHtml(formatMoney(row.revenue)) + '</td></tr>';
-        }).join("") + '</tbody>' +
-        '<tfoot><tr><th>合計</th><th>' + Number(campervanTotals.cases || 0) + '</th><th>' + escapeHtml(formatMoney(campervanTotals.revenue || 0)) + '</th></tr></tfoot>' +
-        '</table><p class="admin-analysis-note">另有 ' + Number(campervanTotals.unresolved || 0) + ' 筆只有名稱、沒有租金或訂金資料，暫不列帳；教學提醒不算收入。</p>';
     }
 
     var monthlySources = officialReconciliation.monthlySourceCases || [];
