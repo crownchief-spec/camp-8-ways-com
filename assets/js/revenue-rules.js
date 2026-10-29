@@ -157,14 +157,47 @@
     return Number(rules.cloudNightly || rules.tentNightly) || 5000;
   }
 
+  function addYmdDays(ymd, days) {
+    var parts = String(ymd || "").split("-").map(Number);
+    if (parts.length !== 3 || !parts[0] || !parts[1] || !parts[2]) return "";
+    var date = new Date(Date.UTC(parts[0], parts[1] - 1, parts[2] + days));
+    return date.getUTCFullYear() + "-" + String(date.getUTCMonth() + 1).padStart(2, "0") + "-" + String(date.getUTCDate()).padStart(2, "0");
+  }
+
+  /** 完整 24 小時都留在週一至週四才算平日，因此起始日須為週一至週三。 */
+  function isRvWeekdayExtraPeriod(startYmd) {
+    var parts = String(startYmd || "").split("-").map(Number);
+    if (parts.length !== 3 || !parts[0] || !parts[1] || !parts[2]) return false;
+    var day = new Date(Date.UTC(parts[0], parts[1] - 1, parts[2])).getUTCDay();
+    return day >= 1 && day <= 3;
+  }
+
+  function rvExtraDaysEstimate(event, rules, baseNights, nights) {
+    var extraCount = Math.max(0, nights - baseNights);
+    if (!extraCount) return 0;
+
+    var effectiveYmd = String(rules.rvRateEffectiveYmd || "2026-10-29");
+    var checkInYmd = String(event.checkInYmd || "");
+    var legacyRate = Number(rules.rvLegacyExtraDay || rules.rvExtraDay) || 2800;
+    if (!checkInYmd || checkInYmd < effectiveYmd) return extraCount * legacyRate;
+
+    var weekdayRate = Number(rules.rvWeekdayExtraDay) || 4800;
+    var weekendRate = Number(rules.rvWeekendExtraDay) || 5800;
+    var total = 0;
+    for (var i = 0; i < extraCount; i += 1) {
+      var extraStartYmd = addYmdDays(checkInYmd, baseNights + i);
+      total += isRvWeekdayExtraPeriod(extraStartYmd) ? weekdayRate : weekendRate;
+    }
+    return total;
+  }
+
   function computeEstimate(event, rules) {
     var nights = eventNights(event);
     if (isRvEvent(event)) {
       var baseNights = Number(rules.rvBaseNights) || 2;
       var base = Number(rules.rvBase) || 13800;
-      var extra = Number(rules.rvExtraDay) || 2800;
       return {
-        amount: nights <= baseNights ? base : base + (nights - baseNights) * extra,
+        amount: base + rvExtraDaysEstimate(event, rules, baseNights, nights),
         source: "estimate",
         label: "露營車估算"
       };
@@ -186,6 +219,7 @@
     exclusionReason: exclusionReason,
     isDuplicateBooking: isDuplicateBooking,
     isRvEvent: isRvEvent,
+    isRvWeekdayExtraPeriod: isRvWeekdayExtraPeriod,
     isTwoTentPackage: isTwoTentPackage,
     normalizeBookingSummary: normalizeBookingSummary
   };

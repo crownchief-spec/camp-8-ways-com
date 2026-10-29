@@ -16,7 +16,10 @@
     balloonNightly: 5800,
     fullSiteNightly: 9800,
     rvBase: 13800,
-    rvExtraDay: 2800,
+    rvLegacyExtraDay: 2800,
+    rvWeekdayExtraDay: 4800,
+    rvWeekendExtraDay: 5800,
+    rvRateEffectiveYmd: "2026-10-29",
     rvBaseNights: 2
   };
 
@@ -46,7 +49,8 @@
   var balloonNightInput = document.getElementById("price-balloon-night");
   var fullSiteInput = document.getElementById("price-full-site-night");
   var rvBaseInput = document.getElementById("price-rv-base");
-  var rvExtraInput = document.getElementById("price-rv-extra");
+  var rvWeekdayExtraInput = document.getElementById("price-rv-weekday-extra");
+  var rvWeekendExtraInput = document.getElementById("price-rv-weekend-extra");
   var applyBtn = document.getElementById("price-apply-btn");
   var resetOverridesBtn = document.getElementById("price-reset-overrides-btn");
 
@@ -358,7 +362,10 @@
         balloonNightly: Number(parsed.balloonNightly) || DEFAULT_RULES.balloonNightly,
         fullSiteNightly: Number(parsed.fullSiteNightly) || DEFAULT_RULES.fullSiteNightly,
         rvBase: Number(parsed.rvBase) || DEFAULT_RULES.rvBase,
-        rvExtraDay: Number(parsed.rvExtraDay) || DEFAULT_RULES.rvExtraDay,
+        rvLegacyExtraDay: Number(parsed.rvLegacyExtraDay || parsed.rvExtraDay) || DEFAULT_RULES.rvLegacyExtraDay,
+        rvWeekdayExtraDay: Number(parsed.rvWeekdayExtraDay) || DEFAULT_RULES.rvWeekdayExtraDay,
+        rvWeekendExtraDay: Number(parsed.rvWeekendExtraDay) || DEFAULT_RULES.rvWeekendExtraDay,
+        rvRateEffectiveYmd: DEFAULT_RULES.rvRateEffectiveYmd,
         rvBaseNights: DEFAULT_RULES.rvBaseNights
       };
     } catch (err) {
@@ -376,7 +383,10 @@
         balloonNightly: rules.balloonNightly,
         fullSiteNightly: rules.fullSiteNightly,
         rvBase: rules.rvBase,
-        rvExtraDay: rules.rvExtraDay
+        rvLegacyExtraDay: rules.rvLegacyExtraDay,
+        rvWeekdayExtraDay: rules.rvWeekdayExtraDay,
+        rvWeekendExtraDay: rules.rvWeekendExtraDay,
+        rvRateEffectiveYmd: DEFAULT_RULES.rvRateEffectiveYmd
       })
     );
   }
@@ -401,7 +411,8 @@
     balloonNightInput.value = rules.balloonNightly;
     fullSiteInput.value = rules.fullSiteNightly;
     rvBaseInput.value = rules.rvBase;
-    rvExtraInput.value = rules.rvExtraDay;
+    rvWeekdayExtraInput.value = rules.rvWeekdayExtraDay;
+    rvWeekendExtraInput.value = rules.rvWeekendExtraDay;
   }
 
   function readRulesFromInputs() {
@@ -412,7 +423,10 @@
       balloonNightly: Math.max(0, Number(balloonNightInput.value) || 0),
       fullSiteNightly: Math.max(0, Number(fullSiteInput.value) || 0),
       rvBase: Math.max(0, Number(rvBaseInput.value) || 0),
-      rvExtraDay: Math.max(0, Number(rvExtraInput.value) || 0),
+      rvLegacyExtraDay: DEFAULT_RULES.rvLegacyExtraDay,
+      rvWeekdayExtraDay: Math.max(0, Number(rvWeekdayExtraInput.value) || 0),
+      rvWeekendExtraDay: Math.max(0, Number(rvWeekendExtraInput.value) || 0),
+      rvRateEffectiveYmd: DEFAULT_RULES.rvRateEffectiveYmd,
       rvBaseNights: DEFAULT_RULES.rvBaseNights
     };
   }

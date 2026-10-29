@@ -12,7 +12,10 @@ const defaults = {
   balloonNightly: 5800,
   fullSiteNightly: 9800,
   rvBase: 13800,
-  rvExtraDay: 2800,
+  rvLegacyExtraDay: 2800,
+  rvWeekdayExtraDay: 4800,
+  rvWeekendExtraDay: 5800,
+  rvRateEffectiveYmd: "2026-10-29",
   rvBaseNights: 2
 };
 
@@ -53,6 +56,26 @@ assert.equal(
 assert.equal(
   Rules.computeEstimate({ checkInYmd: "2026-08-22", nights: 1, roomTags: ["balloon", "cloud"], guestCount: 2, summary: "雲朵房兩人 Airbnb", description: "因時間調整，補償讓你們包場，兩間帳篷都可使用" }, defaults).amount,
   5000
+);
+assert.equal(
+  Rules.computeEstimate({ checkInYmd: "2026-10-28", nights: 3, roomTags: ["rv"] }, defaults).amount,
+  16600,
+  "生效日前的缺價露營車案件仍以舊制 2,800 估算"
+);
+assert.equal(
+  Rules.computeEstimate({ checkInYmd: "2026-11-02", nights: 3, roomTags: ["rv"] }, defaults).amount,
+  18600,
+  "生效日後完整落在週一至週四的加日使用 4,800"
+);
+assert.equal(
+  Rules.computeEstimate({ checkInYmd: "2026-10-30", nights: 3, roomTags: ["rv"] }, defaults).amount,
+  19600,
+  "生效日後進入週五至週日的加日使用 5,800"
+);
+assert.equal(
+  Rules.computeEstimate({ checkInYmd: "2026-11-02", nights: 4, roomTags: ["rv"] }, defaults).amount,
+  24400,
+  "同一租期可分別套用平日 4,800 與假日 5,800"
 );
 
 const ics = fs.readFileSync(new URL("../tests/fixtures/revenue-history-sample.ics", import.meta.url), "utf8");

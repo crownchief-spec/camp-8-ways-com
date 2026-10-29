@@ -390,7 +390,7 @@ test("answers at least twenty campervan and twenty campsite FAQ variations from 
   const cases = [
     ["campervan", "露營車最低租期多久？", /3 天 2 夜/],
     ["campervan", "露營車平日價格多少錢？", /11,800/],
-    ["campervan", "加租一天怎麼算？", /2,800/],
+    ["campervan", "加租一天怎麼算？", /4,800.*5,800/],
     ["campervan", "押金是拿來做什麼的？", /5,000/],
     ["campervan", "一般小客車駕照可以開嗎？", /一般小客車駕照/],
     ["campervan", "露營車高度多少？", /3 公尺/],
@@ -428,7 +428,7 @@ test("answers at least twenty campervan and twenty campsite FAQ variations from 
     ["campsite", "戶外廚房能烤肉嗎？", /美式烤肉爐/],
     ["campsite", "住宿有附早餐嗎？", /不包含餐點/],
     ["campsite", "有獨立衛浴跟浴巾嗎？", /浴巾/],
-    ["campsite", "露營區可以帶毛孩嗎？", /歡迎毛孩/],
+    ["campsite", "露營區可以帶毛孩嗎？", /寵物友善/],
     ["campsite", "嬰兒可以一起入住嗎？", /嬰幼兒年齡/],
     ["campsite", "卡拉 OK 可以唱到幾點？", /晚上 10:00/],
     ["campsite", "帳篷裡可以吸菸嗎？", /全面禁菸/],
