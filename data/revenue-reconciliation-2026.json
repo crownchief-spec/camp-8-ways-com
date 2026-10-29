@@ -1934,6 +1934,46 @@
       "difference": null,
       "growth": -6.58,
       "cumulative": 711932.47
+    },
+    {
+      "month": "2026-11",
+      "original": null,
+      "revised": 17139.86,
+      "difference": null,
+      "growth": null,
+      "cumulative": 729072.33,
+      "future": true,
+      "status": "目前已預訂"
+    },
+    {
+      "month": "2026-12",
+      "original": null,
+      "revised": 13965.45,
+      "difference": null,
+      "growth": null,
+      "cumulative": 743037.78,
+      "future": true,
+      "status": "目前已預訂"
+    },
+    {
+      "month": "2027-01",
+      "original": null,
+      "revised": 0,
+      "difference": null,
+      "growth": null,
+      "cumulative": 743037.78,
+      "future": true,
+      "status": "目前已預訂"
+    },
+    {
+      "month": "2027-02",
+      "original": null,
+      "revised": 0,
+      "difference": null,
+      "growth": null,
+      "cumulative": 743037.78,
+      "future": true,
+      "status": "目前已預訂"
     }
   ],
   "monthlySourceCases": [
@@ -2008,6 +2048,42 @@
       "agoda": 6,
       "unknown": 0,
       "direct": 3
+    },
+    {
+      "month": "2026-11",
+      "total": 4,
+      "airbnb": 3,
+      "agoda": 1,
+      "unknown": 0,
+      "direct": 0,
+      "future": true
+    },
+    {
+      "month": "2026-12",
+      "total": 2,
+      "airbnb": 1,
+      "agoda": 0,
+      "unknown": 0,
+      "direct": 1,
+      "future": true
+    },
+    {
+      "month": "2027-01",
+      "total": 0,
+      "airbnb": 0,
+      "agoda": 0,
+      "unknown": 0,
+      "direct": 0,
+      "future": true
+    },
+    {
+      "month": "2027-02",
+      "total": 0,
+      "airbnb": 0,
+      "agoda": 0,
+      "unknown": 0,
+      "direct": 0,
+      "future": true
     }
   ],
   "monthlySourceRevenue": [
@@ -2073,6 +2149,38 @@
       "airbnb": 39900.9,
       "agoda": 30430,
       "direct": 18600
+    },
+    {
+      "month": "2026-11",
+      "total": 17139.86,
+      "airbnb": 12496.34,
+      "agoda": 4643.52,
+      "direct": 0,
+      "future": true
+    },
+    {
+      "month": "2026-12",
+      "total": 13965.45,
+      "airbnb": 4165.45,
+      "agoda": 0,
+      "direct": 9800,
+      "future": true
+    },
+    {
+      "month": "2027-01",
+      "total": 0,
+      "airbnb": 0,
+      "agoda": 0,
+      "direct": 0,
+      "future": true
+    },
+    {
+      "month": "2027-02",
+      "total": 0,
+      "airbnb": 0,
+      "agoda": 0,
+      "direct": 0,
+      "future": true
     }
   ],
   "sourceRevenueTotals": {
@@ -2112,12 +2220,12 @@
     {
       "month": "2026-11",
       "airbnb": 12496.34,
-      "agoda": 0,
+      "agoda": 4643.52,
       "direct": 0,
       "airbnbCases": 3,
-      "agodaCases": 0,
+      "agodaCases": 1,
       "directCases": 0,
-      "total": 12496.34
+      "total": 17139.86
     },
     {
       "month": "2026-12",
@@ -2132,12 +2240,12 @@
   ],
   "futureTotals": {
     "airbnb": 16661.79,
-    "agoda": 0,
+    "agoda": 4643.52,
     "direct": 19600,
     "airbnbCases": 4,
-    "agodaCases": 0,
+    "agodaCases": 1,
     "directCases": 2,
-    "total": 36261.79
+    "total": 40905.31
   },
   "platformTotals": {
     "airbnb": {
@@ -2156,7 +2264,7 @@
   },
   "notes": [
     "Airbnb 兩筆糾紛調整合計 -NT$4,380，已扣回 7 月與 8 月。",
-    "Agoda 2026/10/30 與 2026/11/1 行事曆事件未出現在本次正式已確認報表，暫不列入營收。",
-    "未來 Airbnb 尚無正式結算金額，預估採截至 2026/10/29 每案平均淨額。"
+    "Agoda 2026/10/30 已確認取消；2026/11/1 仍保留為未來行事曆訂單，金額採歷史平均淨額估算。",
+    "未來 Airbnb 與 Agoda 尚無正式結算金額，預估採截至 2026/10/29 各平台每案平均淨額。"
   ]
 }

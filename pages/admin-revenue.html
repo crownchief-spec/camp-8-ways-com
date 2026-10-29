@@ -144,20 +144,20 @@
 
     <section class="admin-month-breakdown" aria-labelledby="revenue-chart-title">
       <h2 id="revenue-chart-title" class="admin-panel-title">營收成長曲線</h2>
-      <p class="admin-analysis-note">2026 年 2 月至 10 月 29 日實際淨營收；Agoda、Airbnb 採正式報表扣費後淨額，私下接單採行事曆描述金額。</p>
+      <p class="admin-analysis-note">2026 年 2 月至 10 月 29 日為實際淨營收；11月、12月及2027年1月、2月以淡色虛線顯示目前已登記的預訂，並非完整月營收預測。</p>
       <div id="revenue-trend-chart" class="admin-chart-wrap" aria-live="polite"></div>
     </section>
 
     <section class="admin-month-breakdown" aria-labelledby="source-chart-title">
       <h2 id="source-chart-title" class="admin-panel-title">每月營收來源比例變化</h2>
-      <p class="admin-analysis-note">每根柱子代表該月實際淨營收的來源比例；互惠收入為 0 元，不列入營收分母。</p>
+      <p class="admin-analysis-note">每根柱子代表該月營收來源比例；未來月份以淡色、虛線邊框顯示目前已登記預訂。互惠收入為0元，不列入營收分母。</p>
       <div id="source-total-summary" class="admin-revenue-summary admin-source-summary" aria-live="polite"></div>
       <div id="booking-source-chart" class="admin-chart-wrap" aria-live="polite"></div>
     </section>
 
     <section class="admin-month-breakdown" aria-labelledby="source-revenue-title">
       <h2 id="source-revenue-title" class="admin-panel-title">每月營收來源明細</h2>
-      <p class="admin-analysis-note">金額為扣除平台費用後的實收淨額；比例按各月營收計算。</p>
+      <p class="admin-analysis-note">已入住月份為扣除平台費用後的實收淨額；未來月份為目前預訂估值，使用淡色列顯示。</p>
       <div id="source-revenue-table" class="admin-month-table-wrap" aria-live="polite"></div>
     </section>
 
@@ -169,13 +169,13 @@
 
     <section class="admin-month-breakdown" aria-labelledby="revenue-growth-title">
       <h2 id="revenue-growth-title" class="admin-panel-title">每月營收成長與修正</h2>
-      <p class="admin-analysis-note">截至 2026/10/29 正式對帳。Agoda 與 Airbnb 均採本次台幣正式報表淨額，私下接單採行事曆實收；互惠與重複提醒不計收入。</p>
+      <p class="admin-analysis-note">截至2026/10/29為正式對帳；11月、12月及2027年1月、2月另以淡色列出目前已預訂金額。未來平台金額採歷史平均淨額估算。</p>
       <div id="revenue-growth-table" class="admin-month-table-wrap" aria-live="polite"></div>
     </section>
 
     <section class="admin-month-breakdown" aria-labelledby="booking-source-title">
       <h2 id="booking-source-title" class="admin-panel-title">每月訂單來源比例</h2>
-      <p class="admin-analysis-note">以下按有收入的有效案件數計算，不是收入金額，僅作訂單量輔助觀察；互惠與重複提醒不計入。</p>
+      <p class="admin-analysis-note">以下按有效收費案件數計算，不是收入金額；未來月份以淡色列出目前已登記訂單。互惠、取消案與重複提醒不計入。</p>
       <div id="booking-source-table" class="admin-month-table-wrap" aria-live="polite"></div>
     </section>
 
@@ -203,6 +203,6 @@
   <script src="../assets/js/stated-price.js"></script>
   <script src="../assets/js/revenue-rules.js?v=20261004-history"></script>
   <script src="../assets/js/admin-gate.js?v=20261023-private"></script>
-  <script src="../assets/js/admin-revenue.js?v=20261029-reconciliation"></script>
+  <script src="../assets/js/admin-revenue.js?v=20261029-future-pipeline"></script>
 </body>
 </html>

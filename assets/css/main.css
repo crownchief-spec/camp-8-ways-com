@@ -6191,6 +6191,10 @@ footer a:hover { color: #ffffff; }
   font-size: 13px;
 }
 
+.admin-chart-axis-label--future {
+  opacity: 0.55;
+}
+
 .admin-chart-legend-label {
   fill: #344132;
   font-size: 13px;
@@ -6233,6 +6237,13 @@ footer a:hover { color: #ffffff; }
   opacity: 0.45;
 }
 
+.admin-chart-bar--future {
+  opacity: 0.42;
+  stroke: #5f685d;
+  stroke-dasharray: 4 3;
+  stroke-width: 1;
+}
+
 .admin-analysis-table tfoot th {
   padding: 11px 12px;
   border-top: 2px solid #ccd8c8;
@@ -6261,6 +6272,16 @@ footer a:hover { color: #ffffff; }
 .admin-analysis-value--down {
   color: #a04436;
   font-weight: 700;
+}
+
+.admin-analysis-row--future td {
+  color: #737c70;
+  background: #f7f9f6;
+  border-top-style: dashed;
+}
+
+.admin-analysis-row--future .admin-month-table__total {
+  color: #5f685d;
 }
 
 .admin-source-summary {
