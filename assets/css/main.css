@@ -6263,6 +6263,83 @@ footer a:hover { color: #ffffff; }
   font-weight: 700;
 }
 
+.admin-source-summary {
+  margin: 4px 0 18px;
+}
+
+.admin-summary-card--airbnb {
+  border-top-color: #4078d4;
+}
+
+.admin-summary-card--agoda {
+  border-top-color: #d99627;
+}
+
+.admin-summary-card--direct {
+  border-top-color: #3a6f4f;
+}
+
+.admin-source-card-meta {
+  margin: 4px 0 0;
+  color: #5a6558;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.admin-future-source {
+  min-width: 620px;
+  padding: 8px 0 2px;
+}
+
+.admin-future-source__bar {
+  display: flex;
+  width: 100%;
+  height: 28px;
+  overflow: hidden;
+  background: #e7ece5;
+  border-radius: 6px;
+}
+
+.admin-future-source__bar > span {
+  display: block;
+  min-width: 0;
+}
+
+.admin-future-source__legend {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.admin-future-source__legend > div {
+  display: grid;
+  grid-template-columns: 12px minmax(0, 1fr);
+  align-items: center;
+  column-gap: 8px;
+  row-gap: 2px;
+  color: #344132;
+}
+
+.admin-future-source__legend > div > span:last-child {
+  grid-column: 2;
+  color: #5a6558;
+  font-size: 0.8rem;
+}
+
+.admin-future-source__swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+}
+
+.admin-future-source__total {
+  margin: 14px 0 0;
+  color: #344132;
+  font-weight: 700;
+  text-align: right;
+}
+
 .admin-month-subtotal {
   margin: -0.5rem 0 1rem;
   text-align: center;

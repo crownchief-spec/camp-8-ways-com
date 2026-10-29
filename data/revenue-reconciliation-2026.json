@@ -1,197 +1,1241 @@
 {
-  "updatedAt": "2026-09-14",
+  "updatedAt": "2026-10-29",
+  "cutoffDate": "2026-10-29",
+  "accountingBasis": "已入住案件採平台正式扣費後淨額；私下接單採行事曆描述實收；互惠為零且不列入營收比例。",
   "overrides": {
-    "ta97dkkt59omo01rqnl00ftmrg@google.com": {
+    "D73727A9-5F9D-4AA1-87CF-F85DB1E98393": {
+      "amount": 3800,
+      "label": "行事曆實收"
+    },
+    "4huogo1shfc2tktubgpd3vhgm0@google.com": {
+      "amount": 7600,
+      "label": "行事曆實收"
+    },
+    "i4m6dpgmplfnpf52i9t07i8pqc@google.com": {
+      "amount": 4800,
+      "label": "行事曆實收"
+    },
+    "9dnrvppomlodgfctubjb7ndjdk@google.com": {
+      "amount": 9800,
+      "label": "行事曆實收"
+    },
+    "lf1rf8qn6s6u2ekl97c6qlndnk@google.com": {
+      "amount": 9800,
+      "label": "行事曆實收"
+    },
+    "07EECCE6-A9B8-43BF-87C0-85FEC3642B7D": {
+      "amount": 10000,
+      "label": "行事曆實收"
+    },
+    "79509C59-7556-49EA-92DF-219C70C67143": {
+      "amount": 6090,
+      "label": "行事曆實收"
+    },
+    "vr7edu9iguru0noc8nmrr0eur0@google.com": {
+      "amount": 3800,
+      "label": "行事曆實收"
+    },
+    "opvdf1ne8t98b71imhl2tff6ek@google.com": {
+      "amount": 5000,
+      "label": "行事曆實收"
+    },
+    "5ul3te4lbhsi6q5ei4r2f542dg@google.com": {
+      "amount": 3800,
+      "label": "行事曆實收"
+    },
+    "odlq524frnua7dlh588737s3eg@google.com": {
+      "amount": 3400,
+      "label": "行事曆實收"
+    },
+    "brk7hac5s8vrtp8kj3uh6hu8j4@google.com": {
+      "amount": 5800,
+      "label": "行事曆實收"
+    },
+    "7nun0g4lek7qf939jbhqpi40rc@google.com": {
+      "amount": 4800,
+      "label": "行事曆實收"
+    },
+    "1867FC3C-78C2-4048-A447-6E6ED006480E": {
+      "amount": 4800,
+      "label": "行事曆實收"
+    },
+    "4lc5590qns23gdljn5v0vlbqn8@google.com": {
+      "amount": 5600,
+      "label": "行事曆實收"
+    },
+    "4F5E4365-0B68-48E0-BB0C-87581037CC7A": {
+      "amount": 9600,
+      "label": "行事曆實收"
+    },
+    "EF39648D-1B13-45E7-9724-B6A382F17131": {
+      "amount": 4800,
+      "label": "行事曆實收"
+    },
+    "7162CF5D-8E7B-4530-8C59-8D2E05D2D80E": {
+      "amount": 5000,
+      "label": "行事曆實收"
+    },
+    "a57uob2ke46udfam8ghhjjre4k@google.com": {
+      "amount": 19600,
+      "label": "行事曆實收"
+    },
+    "F2D4A761-818B-4390-AB89-5092D070D6A4": {
+      "amount": 16840,
+      "label": "行事曆實收"
+    },
+    "CAB1938E-D30D-4CDD-B2D9-205B4B1E9F03": {
+      "amount": 13400,
+      "label": "行事曆實收"
+    },
+    "p5vtp4uf6prctr6l7o0mfslv7o@google.com": {
+      "amount": 5800,
+      "label": "行事曆實收"
+    },
+    "7c46dnq7lt548srnjio46kn0fs@google.com": {
+      "amount": 9000,
+      "label": "行事曆實收"
+    },
+    "kh3a8nds7ugbsnkrkae3el79dg@google.com": {
+      "amount": 5000,
+      "label": "行事曆實收"
+    },
+    "84ij28tnojbl0r66q798nthsds@google.com": {
+      "amount": 10000,
+      "label": "行事曆實收"
+    },
+    "aiuj9hkakqga391ff8eiek4a40@google.com": {
+      "amount": 9800,
+      "label": "行事曆實收"
+    },
+    "rg1f62kb6gq0cflmld1f1i4bco@google.com": {
+      "amount": 5800,
+      "label": "行事曆實收"
+    },
+    "A919A6C3-1FC6-4739-96B6-D1ACDBDCCDAB": {
+      "amount": 5000,
+      "label": "行事曆實收"
+    },
+    "37b5snghm74um18t6v033dc5do@google.com": {
+      "amount": 5000,
+      "label": "行事曆實收"
+    },
+    "cunomv7m8t28th3uisi15n2h6c@google.com": {
+      "amount": 10000,
+      "label": "行事曆實收"
+    },
+    "45808676-B205-45A7-8189-DCF3C2FF3EA7": {
+      "amount": 5000,
+      "label": "行事曆實收"
+    },
+    "2053C68B-833A-49DA-BD54-2EE615FC8B6C": {
+      "amount": 5000,
+      "label": "行事曆實收"
+    },
+    "BD73ABF5-189F-4A1B-AC5B-D6F8D859614F": {
+      "amount": 5000,
+      "label": "行事曆實收"
+    },
+    "8obrs2krn3ioh9h6vid11t4kko@google.com": {
+      "amount": 5000,
+      "label": "行事曆實收"
+    },
+    "inel18c82g47berp0l3pv4u23g@google.com": {
+      "amount": 6800,
+      "label": "行事曆實收"
+    },
+    "j00vffkid2t7nr15aehr1dufns@google.com": {
+      "amount": 9800,
+      "label": "行事曆實收"
+    },
+    "po90m3ql01js9oe10vmirelsmg@google.com": {
+      "amount": 5000,
+      "label": "行事曆實收"
+    },
+    "9a9ouq82hekuvr7oh4hl2eq63c@google.com": {
+      "amount": 5000,
+      "label": "行事曆實收"
+    },
+    "53E65A31-169D-4FB9-A9B9-344D6C4E44B6": {
+      "amount": 5000,
+      "label": "行事曆實收"
+    },
+    "9325A7F0-133E-4C6C-B52B-26429B65D839": {
+      "amount": 5000,
+      "label": "行事曆實收"
+    },
+    "B20161A1-E7D0-4309-A2A9-5D783696AFB8": {
+      "amount": 5800,
+      "label": "行事曆實收"
+    },
+    "F1DD80CC-5542-473E-82A5-1F5A325635A6": {
+      "amount": 3000,
+      "label": "行事曆實收"
+    },
+    "v11rag59ed010u8514j231rblo@google.com": {
+      "amount": 9800,
+      "label": "行事曆實收"
+    },
+    "airbnb-HMT8C2X55P": {
+      "amount": 5746,
+      "label": "Airbnb 正式淨額",
+      "bookingId": "HMT8C2X55P"
+    },
+    "airbnb-HMXFH8F2C4": {
+      "amount": 3920.8,
+      "label": "Airbnb 正式淨額",
+      "bookingId": "HMXFH8F2C4"
+    },
+    "airbnb-HMPBTQ3JJ8": {
+      "amount": 9802,
+      "label": "Airbnb 正式淨額",
+      "bookingId": "HMPBTQ3JJ8"
+    },
+    "airbnb-HM3J5JXFRH": {
+      "amount": 4884.1,
+      "label": "Airbnb 正式淨額",
+      "bookingId": "HM3J5JXFRH"
+    },
+    "airbnb-HMZRE9WJZM": {
+      "amount": 4901,
+      "label": "Airbnb 正式淨額",
+      "bookingId": "HMZRE9WJZM"
+    },
+    "airbnb-HMDT9P44W9": {
+      "amount": 4901,
+      "label": "Airbnb 正式淨額",
+      "bookingId": "HMDT9P44W9"
+    },
+    "airbnb-HMWKN23K5Y": {
+      "amount": 5746,
+      "label": "Airbnb 正式淨額",
+      "bookingId": "HMWKN23K5Y"
+    },
+    "airbnb-HMNSFDC8M3": {
+      "amount": 4869.4,
+      "label": "Airbnb 正式淨額",
+      "bookingId": "HMNSFDC8M3"
+    },
+    "airbnb-HM9FPXCDCJ": {
+      "amount": 5626,
+      "label": "Airbnb 正式淨額",
+      "bookingId": "HM9FPXCDCJ"
+    },
+    "airbnb-HM3WZ2ZN3C": {
+      "amount": 3658.85,
+      "label": "Airbnb 正式淨額",
+      "bookingId": "HM3WZ2ZN3C"
+    },
+    "airbnb-HMS35FRR3K": {
+      "amount": 4165.85,
+      "label": "Airbnb 正式淨額",
+      "bookingId": "HMS35FRR3K"
+    },
+    "airbnb-HMHSNXMZXF": {
+      "amount": 3395,
+      "label": "Airbnb 正式淨額",
+      "bookingId": "HMHSNXMZXF"
+    },
+    "airbnb-HMRW4XTTFM": {
+      "amount": 5626,
+      "label": "Airbnb 正式淨額",
+      "bookingId": "HMRW4XTTFM"
+    },
+    "airbnb-HM8NHTXBRH": {
+      "amount": 5626,
+      "label": "Airbnb 正式淨額",
+      "bookingId": "HM8NHTXBRH"
+    },
+    "airbnb-HM5QKYRMZ2": {
+      "amount": 500,
+      "label": "Airbnb 正式淨額",
+      "bookingId": "HM5QKYRMZ2"
+    },
+    "airbnb-HM9SM8JR2H": {
+      "amount": 3395,
+      "label": "Airbnb 正式淨額",
+      "bookingId": "HM9SM8JR2H"
+    },
+    "airbnb-HMPA8HKDCA": {
+      "amount": 3395.21,
+      "label": "Airbnb 正式淨額",
+      "bookingId": "HMPA8HKDCA"
+    },
+    "airbnb-HMJB9EDCSD": {
+      "amount": 5626,
+      "label": "Airbnb 正式淨額",
+      "bookingId": "HMJB9EDCSD"
+    },
+    "airbnb-HMF485BHAJ": {
+      "amount": 3055.69,
+      "label": "Airbnb 正式淨額",
+      "bookingId": "HMF485BHAJ"
+    },
+    "airbnb-HMEMS94DCZ": {
+      "amount": 2716.17,
+      "label": "Airbnb 正式淨額",
+      "bookingId": "HMEMS94DCZ"
+    },
+    "airbnb-HM9JFXMERD": {
+      "amount": 4122.5,
+      "label": "Airbnb 正式淨額",
+      "bookingId": "HM9JFXMERD"
+    },
+    "airbnb-HMJ3RW2DZ5": {
+      "amount": 3055.5,
+      "label": "Airbnb 正式淨額",
+      "bookingId": "HMJ3RW2DZ5"
+    },
+    "airbnb-HM8NKMAJRH": {
+      "amount": 2395,
+      "label": "Airbnb 正式淨額",
+      "bookingId": "HM8NKMAJRH"
+    },
+    "airbnb-HMCBZ8YYYC": {
+      "amount": 2716,
+      "label": "Airbnb 正式淨額",
+      "bookingId": "HMCBZ8YYYC"
+    },
+    "airbnb-HM5BXD8B43": {
+      "amount": 4947,
+      "label": "Airbnb 正式淨額",
+      "bookingId": "HM5BXD8B43"
+    },
+    "airbnb-HMRREJSSQ5": {
+      "amount": 4947,
+      "label": "Airbnb 正式淨額",
+      "bookingId": "HMRREJSSQ5"
+    },
+    "airbnb-HMRMJWEW3T": {
+      "amount": 2716,
+      "label": "Airbnb 正式淨額",
+      "bookingId": "HMRMJWEW3T"
+    },
+    "airbnb-HM2FP2PMWN": {
+      "amount": 5044,
+      "label": "Airbnb 正式淨額",
+      "bookingId": "HM2FP2PMWN"
+    },
+    "airbnb-HMWZ82RQ5D": {
+      "amount": 5063.4,
+      "label": "Airbnb 正式淨額",
+      "bookingId": "HMWZ82RQ5D"
+    },
+    "airbnb-HM8QNJATES": {
+      "amount": 2716,
+      "label": "Airbnb 正式淨額",
+      "bookingId": "HM8QNJATES"
+    },
+    "airbnb-HMF8WN58C9": {
+      "amount": 2716,
+      "label": "Airbnb 正式淨額",
+      "bookingId": "HMF8WN58C9"
+    },
+    "airbnb-HMK38ZNBBF": {
+      "amount": 4122.5,
+      "label": "Airbnb 正式淨額",
+      "bookingId": "HMK38ZNBBF"
+    },
+    "airbnb-HMN8H2AZ4X": {
+      "amount": 2716,
+      "label": "Airbnb 正式淨額",
+      "bookingId": "HMN8H2AZ4X"
+    },
+    "airbnb-HMNZ8THPTD": {
+      "amount": 3055.5,
+      "label": "Airbnb 正式淨額",
+      "bookingId": "HMNZ8THPTD"
+    },
+    "airbnb-HMKSDKJ4QF": {
+      "amount": 4947,
+      "label": "Airbnb 正式淨額",
+      "bookingId": "HMKSDKJ4QF"
+    },
+    "airbnb-HMH5S3DZ4D": {
+      "amount": 2716,
+      "label": "Airbnb 正式淨額",
+      "bookingId": "HMH5S3DZ4D"
+    },
+    "airbnb-HM5D5PFPNS": {
+      "amount": 3298,
+      "label": "Airbnb 正式淨額",
+      "bookingId": "HM5D5PFPNS"
+    },
+    "airbnb-HMXPKC49YB": {
+      "amount": 4947,
+      "label": "Airbnb 正式淨額",
+      "bookingId": "HMXPKC49YB"
+    },
+    "airbnb-HMCQ2FMYKD": {
+      "amount": 4656,
+      "label": "Airbnb 正式淨額",
+      "bookingId": "HMCQ2FMYKD"
+    },
+    "agoda-1696644124": {
       "amount": 4080,
       "label": "Agoda 正式淨額",
-      "bookingId": "1726378883"
+      "bookingId": "1696644124"
     },
-    "pfvggoe1kifsb0terhjvqdi1t0@google.com": {
+    "agoda-1696645334": {
       "amount": 4080,
       "label": "Agoda 正式淨額",
-      "bookingId": "1726526630"
+      "bookingId": "1696645334"
     },
-    "0o08rbao989ms4h67frbilci28@google.com": {
+    "agoda-1699075837": {
       "amount": 4080,
       "label": "Agoda 正式淨額",
-      "bookingId": "1727456363"
+      "bookingId": "1699075837"
     },
-    "jkul9lo117851blr7686sugnes@google.com": {
+    "agoda-1700826412": {
       "amount": 4080,
       "label": "Agoda 正式淨額",
-      "bookingId": "1728562829"
+      "bookingId": "1700826412"
     },
-    "6D269BE7-B0C4-4ECA-8A82-D93FC7D17FB9": {
+    "agoda-1701760034": {
       "amount": 4080,
       "label": "Agoda 正式淨額",
-      "bookingId": "1728827311"
+      "bookingId": "1701760034"
     },
-    "h32llmvr997lnmgrvh7h8ieoes@google.com": {
-      "amount": 4080,
-      "label": "Agoda 正式淨額",
-      "bookingId": "1729504369"
-    },
-    "ibmk57b0f6aamjaerbog4jmo98@google.com": {
-      "amount": 4080,
-      "label": "Agoda 正式淨額",
-      "bookingId": "1730436400"
-    },
-    "n0rn0i1usvmf5mplohideflpk0@google.com": {
-      "amount": 4080,
-      "label": "Agoda 正式淨額",
-      "bookingId": "1732369378"
-    },
-    "v7tpvl1o5j6aqfnuk0kqecqug0@google.com": {
-      "amount": 4080,
-      "label": "Agoda 正式淨額",
-      "bookingId": "1733933843"
-    },
-    "59CEAFCE-9C4B-4497-8A7F-F5D3BA7E97AB": {
-      "amount": 4080,
-      "label": "Agoda 正式淨額",
-      "bookingId": "1735467341"
-    },
-    "839DBEE4-06E8-47D9-B021-355151B4C7F0": {
-      "amount": 4930,
-      "label": "Agoda 正式淨額",
-      "bookingId": "1739121397"
-    },
-    "CB8BE7FE-E683-45CB-962C-424D7178E9C7": {
-      "amount": 4930,
-      "label": "Agoda 正式淨額",
-      "bookingId": "1740218749"
-    },
-    "214E4B44-AD07-4A7F-B3B8-525AC54D8BCF": {
-      "amount": 4930,
-      "label": "Agoda 正式淨額",
-      "bookingId": "1740555624"
-    },
-    "0820C669-1189-4E64-947B-7287E7118135": {
-      "amount": 4930,
-      "label": "Agoda 正式淨額",
-      "bookingId": "1745262094"
-    },
-    "D3BF6A8B-58DC-4423-96CB-CBC97C22D9BD": {
-      "amount": 4930,
-      "label": "Agoda 正式淨額",
-      "bookingId": "1748206268"
-    },
-    "72E87476-3B19-4E8B-9E39-4FA5B1519C38": {
-      "amount": 4930,
-      "label": "Agoda 正式淨額",
-      "bookingId": "1752946839"
-    },
-    "sbtt486vhjl16etgt7upi4h1d8@google.com": {
-      "amount": 4930,
-      "label": "Agoda 正式淨額",
-      "bookingId": "1753837172"
-    },
-    "qphnnasbc3nk1dnlfr6fmmfgm4@google.com": {
+    "agoda-1703945440": {
       "amount": 4080,
       "label": "Agoda 正式淨額",
       "bookingId": "1703945440"
     },
-    "pk1c2j45n7flqr7hr1gd8klfek@google.com": {
+    "agoda-1704436570": {
+      "amount": 4080,
+      "label": "Agoda 正式淨額",
+      "bookingId": "1704436570"
+    },
+    "agoda-1704632615": {
       "amount": 4080,
       "label": "Agoda 正式淨額",
       "bookingId": "1704632615"
     },
-    "DE92E498-65C7-4F94-A073-CE50D705147D": {
+    "agoda-1705675758": {
       "amount": 4080,
       "label": "Agoda 正式淨額",
       "bookingId": "1705675758"
     },
-    "905C3A98-A9FF-42A6-A958-70D7B755916E": {
+    "agoda-1708702935": {
       "amount": 4080,
       "label": "Agoda 正式淨額",
       "bookingId": "1708702935"
     },
-    "ldfidn6dd8l1sb378safip5jh8@google.com": {
+    "agoda-1709455231": {
+      "amount": 4080,
+      "label": "Agoda 正式淨額",
+      "bookingId": "1709455231"
+    },
+    "agoda-1710316658": {
       "amount": 4080,
       "label": "Agoda 正式淨額",
       "bookingId": "1710316658"
     },
-    "0j5j09abnuf0pj1k5uaiqll480@google.com": {
+    "agoda-1712475999": {
       "amount": 4080,
       "label": "Agoda 正式淨額",
       "bookingId": "1712475999"
     },
-    "1F815D23-6995-40EF-98EC-E129462DBBE6": {
+    "agoda-1714511710": {
       "amount": 4080,
       "label": "Agoda 正式淨額",
       "bookingId": "1714511710"
     },
-    "D557D08C-AF58-45E5-A752-62AFDF12F038": {
+    "agoda-1715892754": {
       "amount": 4080,
       "label": "Agoda 正式淨額",
       "bookingId": "1715892754"
     },
-    "qi0p4j71cud04r8pbkibggp35c@google.com": {
+    "agoda-1718054329": {
       "amount": 4930,
       "label": "Agoda 正式淨額",
       "bookingId": "1718054329"
     },
-    "pqtkh02drfvf95u415td0kedsc@google.com": {
+    "agoda-1722792937": {
       "amount": 9860,
       "label": "Agoda 正式淨額",
       "bookingId": "1722792937"
     },
-    "7B14CCE0-7121-475C-B940-5A67F6A3E294": {
+    "agoda-1725743714": {
       "amount": 4930,
       "label": "Agoda 正式淨額",
       "bookingId": "1725743714"
     },
-    "C29E0103-DEF6-4129-AFEE-51DDD6D52D4D": {
+    "agoda-1729502532": {
       "amount": 4930,
       "label": "Agoda 正式淨額",
       "bookingId": "1729502532"
     },
-    "28422C75-C496-4BC3-B451-EB723F2C5643": {
+    "agoda-1744476370": {
+      "amount": 4930,
+      "label": "Agoda 正式淨額",
+      "bookingId": "1744476370"
+    },
+    "agoda-1744335233": {
+      "amount": 4930,
+      "label": "Agoda 正式淨額",
+      "bookingId": "1744335233"
+    },
+    "agoda-1745747451": {
       "amount": 4930,
       "label": "Agoda 正式淨額",
       "bookingId": "1745747451"
     },
-    "EF72BC9B-2C20-41D5-97CD-1E222E243D8E": {
+    "agoda-1748362385": {
+      "amount": 4930,
+      "label": "Agoda 正式淨額",
+      "bookingId": "1748362385"
+    },
+    "agoda-1748375596": {
       "amount": 4930,
       "label": "Agoda 正式淨額",
       "bookingId": "1748375596"
     },
-    "A19A34E0-2FCA-4ED5-B52C-024861515A41": {
+    "agoda-1749694759": {
       "amount": 4930,
       "label": "Agoda 正式淨額",
       "bookingId": "1749694759"
     },
-    "2D1787B9-9FC5-4099-8DC8-D5773CAD16C1": {
+    "agoda-1753733881": {
+      "amount": 4930,
+      "label": "Agoda 正式淨額",
+      "bookingId": "1753733881"
+    },
+    "agoda-1757523415": {
       "amount": 4930,
       "label": "Agoda 正式淨額",
       "bookingId": "1757523415"
+    },
+    "agoda-1771867235": {
+      "amount": 4930,
+      "label": "Agoda 正式淨額",
+      "bookingId": "1771867235"
+    },
+    "agoda-1786430973": {
+      "amount": 5780,
+      "label": "Agoda 正式淨額",
+      "bookingId": "1786430973"
+    },
+    "agoda-1726378883": {
+      "amount": 4080,
+      "label": "Agoda 正式淨額",
+      "bookingId": "1726378883"
+    },
+    "agoda-1726526630": {
+      "amount": 4080,
+      "label": "Agoda 正式淨額",
+      "bookingId": "1726526630"
+    },
+    "agoda-1727456363": {
+      "amount": 4080,
+      "label": "Agoda 正式淨額",
+      "bookingId": "1727456363"
+    },
+    "agoda-1728562829": {
+      "amount": 4080,
+      "label": "Agoda 正式淨額",
+      "bookingId": "1728562829"
+    },
+    "agoda-1728827311": {
+      "amount": 4080,
+      "label": "Agoda 正式淨額",
+      "bookingId": "1728827311"
+    },
+    "agoda-1729504369": {
+      "amount": 4080,
+      "label": "Agoda 正式淨額",
+      "bookingId": "1729504369"
+    },
+    "agoda-1730436400": {
+      "amount": 4080,
+      "label": "Agoda 正式淨額",
+      "bookingId": "1730436400"
+    },
+    "agoda-1732369378": {
+      "amount": 4080,
+      "label": "Agoda 正式淨額",
+      "bookingId": "1732369378"
+    },
+    "agoda-1733933843": {
+      "amount": 4080,
+      "label": "Agoda 正式淨額",
+      "bookingId": "1733933843"
+    },
+    "agoda-1735467341": {
+      "amount": 4080,
+      "label": "Agoda 正式淨額",
+      "bookingId": "1735467341"
+    },
+    "agoda-1739121397": {
+      "amount": 4930,
+      "label": "Agoda 正式淨額",
+      "bookingId": "1739121397"
+    },
+    "agoda-1740218749": {
+      "amount": 4930,
+      "label": "Agoda 正式淨額",
+      "bookingId": "1740218749"
+    },
+    "agoda-1740555624": {
+      "amount": 4930,
+      "label": "Agoda 正式淨額",
+      "bookingId": "1740555624"
+    },
+    "agoda-1745262094": {
+      "amount": 4930,
+      "label": "Agoda 正式淨額",
+      "bookingId": "1745262094"
+    },
+    "agoda-1746040716": {
+      "amount": 4930,
+      "label": "Agoda 正式淨額",
+      "bookingId": "1746040716"
+    },
+    "agoda-1747915000": {
+      "amount": 4930,
+      "label": "Agoda 正式淨額",
+      "bookingId": "1747915000"
+    },
+    "agoda-1748206268": {
+      "amount": 4930,
+      "label": "Agoda 正式淨額",
+      "bookingId": "1748206268"
+    },
+    "agoda-1749048338": {
+      "amount": 4930,
+      "label": "Agoda 正式淨額",
+      "bookingId": "1749048338"
+    },
+    "agoda-1752946839": {
+      "amount": 4930,
+      "label": "Agoda 正式淨額",
+      "bookingId": "1752946839"
+    },
+    "agoda-1753837172": {
+      "amount": 4930,
+      "label": "Agoda 正式淨額",
+      "bookingId": "1753837172"
+    },
+    "agoda-1768510587": {
+      "amount": 4930,
+      "label": "Agoda 正式淨額",
+      "bookingId": "1768510587"
+    },
+    "agoda-1769354709": {
+      "amount": 4930,
+      "label": "Agoda 正式淨額",
+      "bookingId": "1769354709"
+    },
+    "agoda-1770672382": {
+      "amount": 4930,
+      "label": "Agoda 正式淨額",
+      "bookingId": "1770672382"
+    },
+    "agoda-1781108934": {
+      "amount": 4930,
+      "label": "Agoda 正式淨額",
+      "bookingId": "1781108934"
+    },
+    "agoda-1783462708": {
+      "amount": 4930,
+      "label": "Agoda 正式淨額",
+      "bookingId": "1783462708"
     }
   },
   "excludedEventIds": [
-    "dsd6aebp07be96ukbcufuau3fg@google.com",
-    "71018BF6-2B8C-42BA-B34F-6784B4E867BA",
+    "pk1c2j45n7flqr7hr1gd8klfek@google.com",
+    "qphnnasbc3nk1dnlfr6fmmfgm4@google.com",
+    "p587al4ps8266r060s0fdvup2g@google.com",
+    "905C3A98-A9FF-42A6-A958-70D7B755916E",
+    "0j5j09abnuf0pj1k5uaiqll480@google.com",
+    "DE92E498-65C7-4F94-A073-CE50D705147D",
+    "1F815D23-6995-40EF-98EC-E129462DBBE6",
+    "ldfidn6dd8l1sb378safip5jh8@google.com",
+    "qi0p4j71cud04r8pbkibggp35c@google.com",
+    "D557D08C-AF58-45E5-A752-62AFDF12F038",
+    "pqtkh02drfvf95u415td0kedsc@google.com",
+    "ta97dkkt59omo01rqnl00ftmrg@google.com",
+    "888EAF62-0D32-4E6A-93F8-34DEB7E26F3C",
+    "m5sn4rbq63ljpcspr5o70pj34c@google.com",
+    "lbe9aafiqum0hea2albg19lfss@google.com",
+    "0o08rbao989ms4h67frbilci28@google.com",
+    "ibmk57b0f6aamjaerbog4jmo98@google.com",
+    "7B14CCE0-7121-475C-B940-5A67F6A3E294",
+    "cuadqig3eiruv3907b7ov54fg4@google.com",
+    "rfg8a1kppiqen7vhv3q1mk45h8@google.com",
+    "F6CE8F3A-2E2D-4B17-A406-912B71F0DD14",
+    "h32llmvr997lnmgrvh7h8ieoes@google.com",
+    "ftnatc9igh168o5orcatvem4ag@google.com",
+    "n2hc3na0ul6dkbj1avkp3kvqro@google.com",
+    "cfnvo0142b7iuvj44a15ta7mpo@google.com",
+    "f6h3qomp9dne6caq9062uvnapg@google.com",
+    "jkul9lo117851blr7686sugnes@google.com",
+    "C29E0103-DEF6-4129-AFEE-51DDD6D52D4D",
+    "v7tpvl1o5j6aqfnuk0kqecqug0@google.com",
+    "judoa711tftfgvb30q9v8f4q70@google.com",
+    "if5ci23dveu5cuoteil87c9v70@google.com",
+    "2i03i97pok10732vvs0cqmvkhs@google.com",
+    "lli5n4mk91ntlqscoog3b8njb8@google.com",
+    "v443nm2ar7akkj47huhn4t9oeo@google.com",
+    "mp9v52j7km6ucc8128gjgt9m80@google.com",
+    "6D269BE7-B0C4-4ECA-8A82-D93FC7D17FB9",
     "cukujtjtvtnmmi98se9uopvvao@google.com",
-    "k4c7fc3boll5hhri6f2fjlrlng@google.com"
+    "A6AA76D2-3C2D-4B9F-8A1B-FABD3114F227",
+    "7mp43qnt4lvqcq01r3oh50o828@google.com",
+    "71018BF6-2B8C-42BA-B34F-6784B4E867BA",
+    "0493A611-4CBD-40E7-9D3C-3F2C6887D1CB",
+    "dsd6aebp07be96ukbcufuau3fg@google.com",
+    "CB8BE7FE-E683-45CB-962C-424D7178E9C7",
+    "23pai9sfkau5b92qfippf7prlg@google.com",
+    "1F5E13D0-A71B-42B9-A117-F88B2C49A9BD",
+    "pfvggoe1kifsb0terhjvqdi1t0@google.com",
+    "k4c7fc3boll5hhri6f2fjlrlng@google.com",
+    "28422C75-C496-4BC3-B451-EB723F2C5643",
+    "6vtkosso9fn8fkntvvtpg0iluk@google.com",
+    "477032F2-CB9D-4C06-A5EF-6087DF78B7EA",
+    "D3BF6A8B-58DC-4423-96CB-CBC97C22D9BD",
+    "EF72BC9B-2C20-41D5-97CD-1E222E243D8E",
+    "59CEAFCE-9C4B-4497-8A7F-F5D3BA7E97AB",
+    "F7A4E8A3-07DE-42AF-A694-7142CBFB957C",
+    "98354047-4EAC-4DC2-8429-F781A2ECE3C1",
+    "ECAC2F8D-09B9-46C2-91AB-99CB917B9ACE",
+    "A19A34E0-2FCA-4ED5-B52C-024861515A41",
+    "kmdp4tb9k1ibcj0mr89gckncco@google.com",
+    "v7pvmrl552gjn2quj08ml576b4@google.com",
+    "d0nn0fpcgi8buidcl13dh5rb88@google.com",
+    "n0rn0i1usvmf5mplohideflpk0@google.com",
+    "ofn5ag1dhlfecrbif9m2muoavc@google.com",
+    "C2A16F30-3C13-4D0E-9056-4682A9D242A1",
+    "03eqr1thqm6g24ehcni31l7e70@google.com",
+    "5AE01D0B-6B92-4442-A1D9-D897371CE02B",
+    "695690FA-91F1-4C54-8A9F-A04FE4D28D1D",
+    "0820C669-1189-4E64-947B-7287E7118135",
+    "214E4B44-AD07-4A7F-B3B8-525AC54D8BCF",
+    "9n8hujnaujf3462bvs8e78vljc@google.com",
+    "839DBEE4-06E8-47D9-B021-355151B4C7F0",
+    "2D1787B9-9FC5-4099-8DC8-D5773CAD16C1",
+    "frhuj027arbc3ki6glb54kgpkk@google.com",
+    "AC8DC7FA-082C-481F-BE4F-FE1737EAB65F",
+    "26D92126-189A-4FCB-A369-16B896075D6C",
+    "sbtt486vhjl16etgt7upi4h1d8@google.com",
+    "72E87476-3B19-4E8B-9E39-4FA5B1519C38",
+    "4CD5A464-0FA9-4C90-AFE1-636B9D11EC1D",
+    "7BD87278-AF2C-421D-87A2-E0FFC8397C9B",
+    "7fjqmd11g82mnrnoj5t8l92ino@google.com",
+    "778531D2-B31C-400B-A7C1-1DBC00446F0B",
+    "FA499D53-D4B8-4CBE-908F-5FFEAE061AFA",
+    "vj0o3tp67lantbtialqjfrmbks@google.com",
+    "11E57095-A337-46B2-AD50-1BD6BB8A185A",
+    "C9126CB0-B4FE-4DE1-9C3A-CABD0F880465",
+    "4DC15EC1-E754-40EE-B00F-DF1AE78A65F0",
+    "FF1DC624-D3DA-44CA-94C4-D7594BDDC52C",
+    "E6684C84-8E39-4054-99AA-14079F7EE5ED",
+    "EB8FE251-C2B6-4583-86D2-41084B57F0E3",
+    "D98562CE-21EA-4BD1-BB3F-CF5F0B1D0A82",
+    "l9j4lqcj8k8fqa63t6j0t4sjdk@google.com",
+    "089A4E2C-9E08-41AF-AE75-1392E0D5A809",
+    "980DAB3F-6CE5-4125-BC59-CFBF26B1B3E1",
+    "1E9C1226-0D8E-493B-9F15-435419D58B3A",
+    "llem4i5b9oqppfrm4282imjfss@google.com",
+    "C122CA49-F6F7-4532-A0A4-7ED0EC816492",
+    "F9B45AD4-B60D-4C5F-BEB5-9C1128E3BAE8",
+    "3630C652-17A3-442F-9E2F-25DE5DFBA765",
+    "77796C21-F42E-4A57-B363-8F490E39D93D",
+    "u50a408t8a6sar1iophf6kiuoc@google.com",
+    "4D17FC4B-94CE-49D5-89F7-CB649D379A52"
   ],
-  "excludedRules": [
-    { "checkInYmd": "2026-06-28", "roomTag": "cloud" },
-    { "checkInYmd": "2026-07-01", "roomTag": "cloud" },
-    { "checkInYmd": "2026-07-08" },
-    { "checkInYmd": "2026-07-29", "roomTag": "cloud" },
-    { "checkInYmd": "2026-08-14", "roomTag": "balloon" },
-    { "checkInYmd": "2026-08-28", "roomTag": "cloud" }
-  ],
+  "excludedRules": [],
   "virtualEvents": [
+    {
+      "id": "airbnb-HMT8C2X55P",
+      "checkInYmd": "2026-10-24",
+      "roomTags": [
+        "balloon"
+      ],
+      "summary": "熱氣球 Airbnb HMT8C2X55P",
+      "nights": 1,
+      "amount": 5746,
+      "label": "Airbnb 正式淨額",
+      "bookingSource": "Airbnb"
+    },
+    {
+      "id": "airbnb-HMXFH8F2C4",
+      "checkInYmd": "2026-10-23",
+      "roomTags": [
+        "cloud"
+      ],
+      "summary": "雲朵 Airbnb HMXFH8F2C4",
+      "nights": 1,
+      "amount": 3920.8,
+      "label": "Airbnb 正式淨額",
+      "bookingSource": "Airbnb"
+    },
+    {
+      "id": "airbnb-HMPBTQ3JJ8",
+      "checkInYmd": "2026-10-20",
+      "roomTags": [
+        "cloud"
+      ],
+      "summary": "雲朵 Airbnb HMPBTQ3JJ8",
+      "nights": 2,
+      "amount": 9802,
+      "label": "Airbnb 正式淨額",
+      "bookingSource": "Airbnb"
+    },
+    {
+      "id": "airbnb-HM3J5JXFRH",
+      "checkInYmd": "2026-10-18",
+      "roomTags": [
+        "balloon"
+      ],
+      "summary": "熱氣球 Airbnb HM3J5JXFRH",
+      "nights": 1,
+      "amount": 4884.1,
+      "label": "Airbnb 正式淨額",
+      "bookingSource": "Airbnb"
+    },
+    {
+      "id": "airbnb-HMZRE9WJZM",
+      "checkInYmd": "2026-10-17",
+      "roomTags": [
+        "balloon"
+      ],
+      "summary": "熱氣球 Airbnb HMZRE9WJZM",
+      "nights": 1,
+      "amount": 4901,
+      "label": "Airbnb 正式淨額",
+      "bookingSource": "Airbnb"
+    },
+    {
+      "id": "airbnb-HMDT9P44W9",
+      "checkInYmd": "2026-10-15",
+      "roomTags": [
+        "cloud"
+      ],
+      "summary": "雲朵 Airbnb HMDT9P44W9",
+      "nights": 1,
+      "amount": 4901,
+      "label": "Airbnb 正式淨額",
+      "bookingSource": "Airbnb"
+    },
+    {
+      "id": "airbnb-HMWKN23K5Y",
+      "checkInYmd": "2026-10-10",
+      "roomTags": [
+        "cloud"
+      ],
+      "summary": "雲朵 Airbnb HMWKN23K5Y",
+      "nights": 1,
+      "amount": 5746,
+      "label": "Airbnb 正式淨額",
+      "bookingSource": "Airbnb"
+    },
+    {
+      "id": "airbnb-HMNSFDC8M3",
+      "checkInYmd": "2026-09-26",
+      "roomTags": [
+        "balloon"
+      ],
+      "summary": "熱氣球 Airbnb HMNSFDC8M3",
+      "nights": 1,
+      "amount": 4869.4,
+      "label": "Airbnb 正式淨額",
+      "bookingSource": "Airbnb"
+    },
+    {
+      "id": "airbnb-HM9FPXCDCJ",
+      "checkInYmd": "2026-09-25",
+      "roomTags": [
+        "cloud"
+      ],
+      "summary": "雲朵 Airbnb HM9FPXCDCJ",
+      "nights": 1,
+      "amount": 5626,
+      "label": "Airbnb 正式淨額",
+      "bookingSource": "Airbnb"
+    },
+    {
+      "id": "airbnb-HM3WZ2ZN3C",
+      "checkInYmd": "2026-09-20",
+      "roomTags": [
+        "cloud"
+      ],
+      "summary": "雲朵 Airbnb HM3WZ2ZN3C",
+      "nights": 1,
+      "amount": 3658.85,
+      "label": "Airbnb 正式淨額",
+      "bookingSource": "Airbnb"
+    },
+    {
+      "id": "airbnb-HMS35FRR3K",
+      "checkInYmd": "2026-08-29",
+      "roomTags": [
+        "balloon"
+      ],
+      "summary": "熱氣球 Airbnb HMS35FRR3K",
+      "nights": 1,
+      "amount": 4165.85,
+      "label": "Airbnb 正式淨額",
+      "bookingSource": "Airbnb"
+    },
+    {
+      "id": "airbnb-HMHSNXMZXF",
+      "checkInYmd": "2026-08-24",
+      "roomTags": [
+        "balloon"
+      ],
+      "summary": "熱氣球 Airbnb HMHSNXMZXF",
+      "nights": 1,
+      "amount": 3395,
+      "label": "Airbnb 正式淨額",
+      "bookingSource": "Airbnb"
+    },
+    {
+      "id": "airbnb-HMRW4XTTFM",
+      "checkInYmd": "2026-08-22",
+      "roomTags": [
+        "cloud"
+      ],
+      "summary": "雲朵 Airbnb HMRW4XTTFM",
+      "nights": 1,
+      "amount": 5626,
+      "label": "Airbnb 正式淨額",
+      "bookingSource": "Airbnb"
+    },
+    {
+      "id": "airbnb-HM8NHTXBRH",
+      "checkInYmd": "2026-08-22",
+      "roomTags": [
+        "balloon"
+      ],
+      "summary": "熱氣球 Airbnb HM8NHTXBRH",
+      "nights": 1,
+      "amount": 5626,
+      "label": "Airbnb 正式淨額",
+      "bookingSource": "Airbnb"
+    },
+    {
+      "id": "airbnb-HM5QKYRMZ2",
+      "checkInYmd": "2026-08-12",
+      "roomTags": [
+        "cloud"
+      ],
+      "summary": "雲朵 Airbnb HM5QKYRMZ2",
+      "nights": 1,
+      "amount": 500,
+      "label": "Airbnb 正式淨額",
+      "bookingSource": "Airbnb"
+    },
+    {
+      "id": "airbnb-HM9SM8JR2H",
+      "checkInYmd": "2026-08-05",
+      "roomTags": [
+        "balloon"
+      ],
+      "summary": "熱氣球 Airbnb HM9SM8JR2H",
+      "nights": 1,
+      "amount": 3395,
+      "label": "Airbnb 正式淨額",
+      "bookingSource": "Airbnb"
+    },
+    {
+      "id": "airbnb-HMPA8HKDCA",
+      "checkInYmd": "2026-08-04",
+      "roomTags": [
+        "cloud"
+      ],
+      "summary": "雲朵 Airbnb HMPA8HKDCA",
+      "nights": 1,
+      "amount": 3395.21,
+      "label": "Airbnb 正式淨額",
+      "bookingSource": "Airbnb"
+    },
+    {
+      "id": "airbnb-HMJB9EDCSD",
+      "checkInYmd": "2026-08-01",
+      "roomTags": [
+        "balloon"
+      ],
+      "summary": "熱氣球 Airbnb HMJB9EDCSD",
+      "nights": 1,
+      "amount": 5626,
+      "label": "Airbnb 正式淨額",
+      "bookingSource": "Airbnb"
+    },
+    {
+      "id": "airbnb-HMF485BHAJ",
+      "checkInYmd": "2026-07-27",
+      "roomTags": [
+        "cloud"
+      ],
+      "summary": "雲朵 Airbnb HMF485BHAJ",
+      "nights": 1,
+      "amount": 3055.69,
+      "label": "Airbnb 正式淨額",
+      "bookingSource": "Airbnb"
+    },
+    {
+      "id": "airbnb-HMEMS94DCZ",
+      "checkInYmd": "2026-07-20",
+      "roomTags": [
+        "cloud"
+      ],
+      "summary": "雲朵 Airbnb HMEMS94DCZ",
+      "nights": 1,
+      "amount": 2716.17,
+      "label": "Airbnb 正式淨額",
+      "bookingSource": "Airbnb"
+    },
+    {
+      "id": "airbnb-HM9JFXMERD",
+      "checkInYmd": "2026-07-18",
+      "roomTags": [
+        "cloud"
+      ],
+      "summary": "雲朵 Airbnb HM9JFXMERD",
+      "nights": 1,
+      "amount": 4122.5,
+      "label": "Airbnb 正式淨額",
+      "bookingSource": "Airbnb"
+    },
+    {
+      "id": "airbnb-HMJ3RW2DZ5",
+      "checkInYmd": "2026-07-16",
+      "roomTags": [
+        "cloud"
+      ],
+      "summary": "雲朵 Airbnb HMJ3RW2DZ5",
+      "nights": 1,
+      "amount": 3055.5,
+      "label": "Airbnb 正式淨額",
+      "bookingSource": "Airbnb"
+    },
+    {
+      "id": "airbnb-HM8NKMAJRH",
+      "checkInYmd": "2026-07-01",
+      "roomTags": [
+        "balloon"
+      ],
+      "summary": "熱氣球 Airbnb HM8NKMAJRH",
+      "nights": 1,
+      "amount": 2395,
+      "label": "Airbnb 正式淨額",
+      "bookingSource": "Airbnb"
+    },
+    {
+      "id": "airbnb-HMCBZ8YYYC",
+      "checkInYmd": "2026-06-29",
+      "roomTags": [
+        "cloud"
+      ],
+      "summary": "雲朵 Airbnb HMCBZ8YYYC",
+      "nights": 1,
+      "amount": 2716,
+      "label": "Airbnb 正式淨額",
+      "bookingSource": "Airbnb"
+    },
+    {
+      "id": "airbnb-HM5BXD8B43",
+      "checkInYmd": "2026-06-27",
+      "roomTags": [
+        "balloon"
+      ],
+      "summary": "熱氣球 Airbnb HM5BXD8B43",
+      "nights": 1,
+      "amount": 4947,
+      "label": "Airbnb 正式淨額",
+      "bookingSource": "Airbnb"
+    },
+    {
+      "id": "airbnb-HMRREJSSQ5",
+      "checkInYmd": "2026-06-26",
+      "roomTags": [
+        "cloud"
+      ],
+      "summary": "雲朵 Airbnb HMRREJSSQ5",
+      "nights": 1,
+      "amount": 4947,
+      "label": "Airbnb 正式淨額",
+      "bookingSource": "Airbnb"
+    },
+    {
+      "id": "airbnb-HMRMJWEW3T",
+      "checkInYmd": "2026-06-23",
+      "roomTags": [
+        "cloud"
+      ],
+      "summary": "雲朵 Airbnb HMRMJWEW3T",
+      "nights": 1,
+      "amount": 2716,
+      "label": "Airbnb 正式淨額",
+      "bookingSource": "Airbnb"
+    },
+    {
+      "id": "airbnb-HM2FP2PMWN",
+      "checkInYmd": "2026-06-20",
+      "roomTags": [
+        "balloon"
+      ],
+      "summary": "熱氣球 Airbnb HM2FP2PMWN",
+      "nights": 1,
+      "amount": 5044,
+      "label": "Airbnb 正式淨額",
+      "bookingSource": "Airbnb"
+    },
+    {
+      "id": "airbnb-HMWZ82RQ5D",
+      "checkInYmd": "2026-06-20",
+      "roomTags": [
+        "cloud"
+      ],
+      "summary": "雲朵 Airbnb HMWZ82RQ5D",
+      "nights": 1,
+      "amount": 5063.4,
+      "label": "Airbnb 正式淨額",
+      "bookingSource": "Airbnb"
+    },
+    {
+      "id": "airbnb-HM8QNJATES",
+      "checkInYmd": "2026-06-17",
+      "roomTags": [
+        "cloud"
+      ],
+      "summary": "雲朵 Airbnb HM8QNJATES",
+      "nights": 1,
+      "amount": 2716,
+      "label": "Airbnb 正式淨額",
+      "bookingSource": "Airbnb"
+    },
+    {
+      "id": "airbnb-HMF8WN58C9",
+      "checkInYmd": "2026-06-14",
+      "roomTags": [
+        "balloon"
+      ],
+      "summary": "熱氣球 Airbnb HMF8WN58C9",
+      "nights": 1,
+      "amount": 2716,
+      "label": "Airbnb 正式淨額",
+      "bookingSource": "Airbnb"
+    },
+    {
+      "id": "airbnb-HMK38ZNBBF",
+      "checkInYmd": "2026-06-12",
+      "roomTags": [
+        "cloud"
+      ],
+      "summary": "雲朵 Airbnb HMK38ZNBBF",
+      "nights": 1,
+      "amount": 4122.5,
+      "label": "Airbnb 正式淨額",
+      "bookingSource": "Airbnb"
+    },
+    {
+      "id": "airbnb-HMN8H2AZ4X",
+      "checkInYmd": "2026-06-09",
+      "roomTags": [
+        "cloud"
+      ],
+      "summary": "雲朵 Airbnb HMN8H2AZ4X",
+      "nights": 1,
+      "amount": 2716,
+      "label": "Airbnb 正式淨額",
+      "bookingSource": "Airbnb"
+    },
+    {
+      "id": "airbnb-HMNZ8THPTD",
+      "checkInYmd": "2026-06-07",
+      "roomTags": [
+        "cloud"
+      ],
+      "summary": "雲朵 Airbnb HMNZ8THPTD",
+      "nights": 1,
+      "amount": 3055.5,
+      "label": "Airbnb 正式淨額",
+      "bookingSource": "Airbnb"
+    },
+    {
+      "id": "airbnb-HMKSDKJ4QF",
+      "checkInYmd": "2026-06-06",
+      "roomTags": [
+        "balloon"
+      ],
+      "summary": "熱氣球 Airbnb HMKSDKJ4QF",
+      "nights": 1,
+      "amount": 4947,
+      "label": "Airbnb 正式淨額",
+      "bookingSource": "Airbnb"
+    },
+    {
+      "id": "airbnb-HMH5S3DZ4D",
+      "checkInYmd": "2026-06-03",
+      "roomTags": [
+        "cloud"
+      ],
+      "summary": "雲朵 Airbnb HMH5S3DZ4D",
+      "nights": 1,
+      "amount": 2716,
+      "label": "Airbnb 正式淨額",
+      "bookingSource": "Airbnb"
+    },
+    {
+      "id": "airbnb-HM5D5PFPNS",
+      "checkInYmd": "2026-05-19",
+      "roomTags": [
+        "cloud"
+      ],
+      "summary": "雲朵 Airbnb HM5D5PFPNS",
+      "nights": 1,
+      "amount": 3298,
+      "label": "Airbnb 正式淨額",
+      "bookingSource": "Airbnb"
+    },
+    {
+      "id": "airbnb-HMXPKC49YB",
+      "checkInYmd": "2026-05-18",
+      "roomTags": [
+        "balloon"
+      ],
+      "summary": "熱氣球 Airbnb HMXPKC49YB",
+      "nights": 1,
+      "amount": 4947,
+      "label": "Airbnb 正式淨額",
+      "bookingSource": "Airbnb"
+    },
+    {
+      "id": "airbnb-HMCQ2FMYKD",
+      "checkInYmd": "2026-04-01",
+      "roomTags": [
+        "balloon"
+      ],
+      "summary": "熱氣球 Airbnb HMCQ2FMYKD",
+      "nights": 1,
+      "amount": 4656,
+      "label": "Airbnb 正式淨額",
+      "bookingSource": "Airbnb"
+    },
     {
       "id": "agoda-1696644124",
       "checkInYmd": "2026-02-19",
       "roomTags": [
         "balloon"
       ],
-      "summary": "熱氣球 Agoda CHI YEN LIU（兩晚）",
-      "nights": 2,
-      "amount": 8160,
-      "label": "Agoda 正式淨額"
+      "summary": "熱氣球 Agoda 1696644124",
+      "nights": 1,
+      "amount": 4080,
+      "label": "Agoda 正式淨額",
+      "bookingSource": "Agoda"
+    },
+    {
+      "id": "agoda-1696645334",
+      "checkInYmd": "2026-02-20",
+      "roomTags": [
+        "balloon"
+      ],
+      "summary": "熱氣球 Agoda 1696645334",
+      "nights": 1,
+      "amount": 4080,
+      "label": "Agoda 正式淨額",
+      "bookingSource": "Agoda"
     },
     {
       "id": "agoda-1699075837",
@@ -199,10 +1243,11 @@
       "roomTags": [
         "balloon"
       ],
-      "summary": "熱氣球 Agoda Hsin Chuan Wu",
+      "summary": "熱氣球 Agoda 1699075837",
       "nights": 1,
       "amount": 4080,
-      "label": "Agoda 正式淨額"
+      "label": "Agoda 正式淨額",
+      "bookingSource": "Agoda"
     },
     {
       "id": "agoda-1700826412",
@@ -210,10 +1255,11 @@
       "roomTags": [
         "balloon"
       ],
-      "summary": "熱氣球 Agoda Yuhan Lin",
+      "summary": "熱氣球 Agoda 1700826412",
       "nights": 1,
       "amount": 4080,
-      "label": "Agoda 正式淨額"
+      "label": "Agoda 正式淨額",
+      "bookingSource": "Agoda"
     },
     {
       "id": "agoda-1701760034",
@@ -221,10 +1267,23 @@
       "roomTags": [
         "balloon"
       ],
-      "summary": "熱氣球 Agoda YILING TSAI",
+      "summary": "熱氣球 Agoda 1701760034",
       "nights": 1,
       "amount": 4080,
-      "label": "Agoda 正式淨額"
+      "label": "Agoda 正式淨額",
+      "bookingSource": "Agoda"
+    },
+    {
+      "id": "agoda-1703945440",
+      "checkInYmd": "2026-03-21",
+      "roomTags": [
+        "balloon"
+      ],
+      "summary": "熱氣球 Agoda 1703945440",
+      "nights": 1,
+      "amount": 4080,
+      "label": "Agoda 正式淨額",
+      "bookingSource": "Agoda"
     },
     {
       "id": "agoda-1704436570",
@@ -232,10 +1291,47 @@
       "roomTags": [
         "balloon"
       ],
-      "summary": "熱氣球 Agoda ZI-TAO CAI",
+      "summary": "熱氣球 Agoda 1704436570",
       "nights": 1,
       "amount": 4080,
-      "label": "Agoda 正式淨額"
+      "label": "Agoda 正式淨額",
+      "bookingSource": "Agoda"
+    },
+    {
+      "id": "agoda-1704632615",
+      "checkInYmd": "2026-03-14",
+      "roomTags": [
+        "balloon"
+      ],
+      "summary": "熱氣球 Agoda 1704632615",
+      "nights": 1,
+      "amount": 4080,
+      "label": "Agoda 正式淨額",
+      "bookingSource": "Agoda"
+    },
+    {
+      "id": "agoda-1705675758",
+      "checkInYmd": "2026-04-05",
+      "roomTags": [
+        "balloon"
+      ],
+      "summary": "熱氣球 Agoda 1705675758",
+      "nights": 1,
+      "amount": 4080,
+      "label": "Agoda 正式淨額",
+      "bookingSource": "Agoda"
+    },
+    {
+      "id": "agoda-1708702935",
+      "checkInYmd": "2026-04-03",
+      "roomTags": [
+        "balloon"
+      ],
+      "summary": "熱氣球 Agoda 1708702935",
+      "nights": 1,
+      "amount": 4080,
+      "label": "Agoda 正式淨額",
+      "bookingSource": "Agoda"
     },
     {
       "id": "agoda-1709455231",
@@ -243,51 +1339,824 @@
       "roomTags": [
         "balloon"
       ],
-      "summary": "熱氣球 Agoda yun xi Phen",
+      "summary": "熱氣球 Agoda 1709455231",
       "nights": 1,
       "amount": 4080,
-      "label": "Agoda 正式淨額"
+      "label": "Agoda 正式淨額",
+      "bookingSource": "Agoda"
+    },
+    {
+      "id": "agoda-1710316658",
+      "checkInYmd": "2026-04-18",
+      "roomTags": [
+        "balloon"
+      ],
+      "summary": "熱氣球 Agoda 1710316658",
+      "nights": 1,
+      "amount": 4080,
+      "label": "Agoda 正式淨額",
+      "bookingSource": "Agoda"
+    },
+    {
+      "id": "agoda-1712475999",
+      "checkInYmd": "2026-04-04",
+      "roomTags": [
+        "balloon"
+      ],
+      "summary": "熱氣球 Agoda 1712475999",
+      "nights": 1,
+      "amount": 4080,
+      "label": "Agoda 正式淨額",
+      "bookingSource": "Agoda"
+    },
+    {
+      "id": "agoda-1714511710",
+      "checkInYmd": "2026-04-11",
+      "roomTags": [
+        "balloon"
+      ],
+      "summary": "熱氣球 Agoda 1714511710",
+      "nights": 1,
+      "amount": 4080,
+      "label": "Agoda 正式淨額",
+      "bookingSource": "Agoda"
+    },
+    {
+      "id": "agoda-1715892754",
+      "checkInYmd": "2026-04-30",
+      "roomTags": [
+        "balloon"
+      ],
+      "summary": "熱氣球 Agoda 1715892754",
+      "nights": 1,
+      "amount": 4080,
+      "label": "Agoda 正式淨額",
+      "bookingSource": "Agoda"
+    },
+    {
+      "id": "agoda-1718054329",
+      "checkInYmd": "2026-04-25",
+      "roomTags": [
+        "balloon"
+      ],
+      "summary": "熱氣球 Agoda 1718054329",
+      "nights": 1,
+      "amount": 4930,
+      "label": "Agoda 正式淨額",
+      "bookingSource": "Agoda"
+    },
+    {
+      "id": "agoda-1722792937",
+      "checkInYmd": "2026-05-15",
+      "roomTags": [
+        "balloon"
+      ],
+      "summary": "熱氣球 Agoda 1722792937",
+      "nights": 2,
+      "amount": 9860,
+      "label": "Agoda 正式淨額",
+      "bookingSource": "Agoda"
+    },
+    {
+      "id": "agoda-1725743714",
+      "checkInYmd": "2026-05-30",
+      "roomTags": [
+        "balloon"
+      ],
+      "summary": "熱氣球 Agoda 1725743714",
+      "nights": 1,
+      "amount": 4930,
+      "label": "Agoda 正式淨額",
+      "bookingSource": "Agoda"
+    },
+    {
+      "id": "agoda-1729502532",
+      "checkInYmd": "2026-06-13",
+      "roomTags": [
+        "balloon"
+      ],
+      "summary": "熱氣球 Agoda 1729502532",
+      "nights": 1,
+      "amount": 4930,
+      "label": "Agoda 正式淨額",
+      "bookingSource": "Agoda"
+    },
+    {
+      "id": "agoda-1744476370",
+      "checkInYmd": "2026-09-05",
+      "roomTags": [
+        "balloon"
+      ],
+      "summary": "熱氣球 Agoda 1744476370",
+      "nights": 1,
+      "amount": 4930,
+      "label": "Agoda 正式淨額",
+      "bookingSource": "Agoda"
+    },
+    {
+      "id": "agoda-1744335233",
+      "checkInYmd": "2026-09-25",
+      "roomTags": [
+        "balloon"
+      ],
+      "summary": "熱氣球 Agoda 1744335233",
+      "nights": 1,
+      "amount": 4930,
+      "label": "Agoda 正式淨額",
+      "bookingSource": "Agoda"
+    },
+    {
+      "id": "agoda-1745747451",
+      "checkInYmd": "2026-07-18",
+      "roomTags": [
+        "balloon"
+      ],
+      "summary": "熱氣球 Agoda 1745747451",
+      "nights": 1,
+      "amount": 4930,
+      "label": "Agoda 正式淨額",
+      "bookingSource": "Agoda"
+    },
+    {
+      "id": "agoda-1748362385",
+      "checkInYmd": "2026-09-27",
+      "roomTags": [
+        "balloon"
+      ],
+      "summary": "熱氣球 Agoda 1748362385",
+      "nights": 1,
+      "amount": 4930,
+      "label": "Agoda 正式淨額",
+      "bookingSource": "Agoda"
+    },
+    {
+      "id": "agoda-1748375596",
+      "checkInYmd": "2026-07-25",
+      "roomTags": [
+        "balloon"
+      ],
+      "summary": "熱氣球 Agoda 1748375596",
+      "nights": 1,
+      "amount": 4930,
+      "label": "Agoda 正式淨額",
+      "bookingSource": "Agoda"
+    },
+    {
+      "id": "agoda-1749694759",
+      "checkInYmd": "2026-07-27",
+      "roomTags": [
+        "balloon"
+      ],
+      "summary": "熱氣球 Agoda 1749694759",
+      "nights": 1,
+      "amount": 4930,
+      "label": "Agoda 正式淨額",
+      "bookingSource": "Agoda"
+    },
+    {
+      "id": "agoda-1753733881",
+      "checkInYmd": "2026-10-03",
+      "roomTags": [
+        "balloon"
+      ],
+      "summary": "熱氣球 Agoda 1753733881",
+      "nights": 1,
+      "amount": 4930,
+      "label": "Agoda 正式淨額",
+      "bookingSource": "Agoda"
+    },
+    {
+      "id": "agoda-1757523415",
+      "checkInYmd": "2026-08-21",
+      "roomTags": [
+        "balloon"
+      ],
+      "summary": "熱氣球 Agoda 1757523415",
+      "nights": 1,
+      "amount": 4930,
+      "label": "Agoda 正式淨額",
+      "bookingSource": "Agoda"
+    },
+    {
+      "id": "agoda-1771867235",
+      "checkInYmd": "2026-09-13",
+      "roomTags": [
+        "balloon"
+      ],
+      "summary": "熱氣球 Agoda 1771867235",
+      "nights": 1,
+      "amount": 4930,
+      "label": "Agoda 正式淨額",
+      "bookingSource": "Agoda"
+    },
+    {
+      "id": "agoda-1786430973",
+      "checkInYmd": "2026-10-28",
+      "roomTags": [
+        "balloon"
+      ],
+      "summary": "熱氣球 Agoda 1786430973",
+      "nights": 1,
+      "amount": 5780,
+      "label": "Agoda 正式淨額",
+      "bookingSource": "Agoda"
+    },
+    {
+      "id": "agoda-1726378883",
+      "checkInYmd": "2026-05-15",
+      "roomTags": [
+        "cloud"
+      ],
+      "summary": "雲朵 Agoda 1726378883",
+      "nights": 1,
+      "amount": 4080,
+      "label": "Agoda 正式淨額",
+      "bookingSource": "Agoda"
+    },
+    {
+      "id": "agoda-1726526630",
+      "checkInYmd": "2026-07-17",
+      "roomTags": [
+        "cloud"
+      ],
+      "summary": "雲朵 Agoda 1726526630",
+      "nights": 1,
+      "amount": 4080,
+      "label": "Agoda 正式淨額",
+      "bookingSource": "Agoda"
+    },
+    {
+      "id": "agoda-1727456363",
+      "checkInYmd": "2026-05-23",
+      "roomTags": [
+        "cloud"
+      ],
+      "summary": "雲朵 Agoda 1727456363",
+      "nights": 1,
+      "amount": 4080,
+      "label": "Agoda 正式淨額",
+      "bookingSource": "Agoda"
+    },
+    {
+      "id": "agoda-1728562829",
+      "checkInYmd": "2026-06-13",
+      "roomTags": [
+        "cloud"
+      ],
+      "summary": "雲朵 Agoda 1728562829",
+      "nights": 1,
+      "amount": 4080,
+      "label": "Agoda 正式淨額",
+      "bookingSource": "Agoda"
+    },
+    {
+      "id": "agoda-1728827311",
+      "checkInYmd": "2026-06-27",
+      "roomTags": [
+        "cloud"
+      ],
+      "summary": "雲朵 Agoda 1728827311",
+      "nights": 1,
+      "amount": 4080,
+      "label": "Agoda 正式淨額",
+      "bookingSource": "Agoda"
+    },
+    {
+      "id": "agoda-1729504369",
+      "checkInYmd": "2026-06-06",
+      "roomTags": [
+        "cloud"
+      ],
+      "summary": "雲朵 Agoda 1729504369",
+      "nights": 1,
+      "amount": 4080,
+      "label": "Agoda 正式淨額",
+      "bookingSource": "Agoda"
+    },
+    {
+      "id": "agoda-1730436400",
+      "checkInYmd": "2026-05-28",
+      "roomTags": [
+        "cloud"
+      ],
+      "summary": "雲朵 Agoda 1730436400",
+      "nights": 1,
+      "amount": 4080,
+      "label": "Agoda 正式淨額",
+      "bookingSource": "Agoda"
+    },
+    {
+      "id": "agoda-1732369378",
+      "checkInYmd": "2026-08-01",
+      "roomTags": [
+        "cloud"
+      ],
+      "summary": "雲朵 Agoda 1732369378",
+      "nights": 1,
+      "amount": 4080,
+      "label": "Agoda 正式淨額",
+      "bookingSource": "Agoda"
+    },
+    {
+      "id": "agoda-1733933843",
+      "checkInYmd": "2026-06-19",
+      "roomTags": [
+        "cloud"
+      ],
+      "summary": "雲朵 Agoda 1733933843",
+      "nights": 1,
+      "amount": 4080,
+      "label": "Agoda 正式淨額",
+      "bookingSource": "Agoda"
+    },
+    {
+      "id": "agoda-1735467341",
+      "checkInYmd": "2026-07-25",
+      "roomTags": [
+        "cloud"
+      ],
+      "summary": "雲朵 Agoda 1735467341",
+      "nights": 1,
+      "amount": 4080,
+      "label": "Agoda 正式淨額",
+      "bookingSource": "Agoda"
+    },
+    {
+      "id": "agoda-1739121397",
+      "checkInYmd": "2026-08-18",
+      "roomTags": [
+        "cloud"
+      ],
+      "summary": "雲朵 Agoda 1739121397",
+      "nights": 1,
+      "amount": 4930,
+      "label": "Agoda 正式淨額",
+      "bookingSource": "Agoda"
+    },
+    {
+      "id": "agoda-1740218749",
+      "checkInYmd": "2026-07-12",
+      "roomTags": [
+        "cloud"
+      ],
+      "summary": "雲朵 Agoda 1740218749",
+      "nights": 1,
+      "amount": 4930,
+      "label": "Agoda 正式淨額",
+      "bookingSource": "Agoda"
+    },
+    {
+      "id": "agoda-1740555624",
+      "checkInYmd": "2026-08-15",
+      "roomTags": [
+        "cloud"
+      ],
+      "summary": "雲朵 Agoda 1740555624",
+      "nights": 1,
+      "amount": 4930,
+      "label": "Agoda 正式淨額",
+      "bookingSource": "Agoda"
+    },
+    {
+      "id": "agoda-1745262094",
+      "checkInYmd": "2026-08-14",
+      "roomTags": [
+        "cloud"
+      ],
+      "summary": "雲朵 Agoda 1745262094",
+      "nights": 1,
+      "amount": 4930,
+      "label": "Agoda 正式淨額",
+      "bookingSource": "Agoda"
+    },
+    {
+      "id": "agoda-1746040716",
+      "checkInYmd": "2026-09-05",
+      "roomTags": [
+        "cloud"
+      ],
+      "summary": "雲朵 Agoda 1746040716",
+      "nights": 1,
+      "amount": 4930,
+      "label": "Agoda 正式淨額",
+      "bookingSource": "Agoda"
+    },
+    {
+      "id": "agoda-1747915000",
+      "checkInYmd": "2026-10-03",
+      "roomTags": [
+        "cloud"
+      ],
+      "summary": "雲朵 Agoda 1747915000",
+      "nights": 1,
+      "amount": 4930,
+      "label": "Agoda 正式淨額",
+      "bookingSource": "Agoda"
+    },
+    {
+      "id": "agoda-1748206268",
+      "checkInYmd": "2026-07-21",
+      "roomTags": [
+        "cloud"
+      ],
+      "summary": "雲朵 Agoda 1748206268",
+      "nights": 1,
+      "amount": 4930,
+      "label": "Agoda 正式淨額",
+      "bookingSource": "Agoda"
+    },
+    {
+      "id": "agoda-1749048338",
+      "checkInYmd": "2026-10-17",
+      "roomTags": [
+        "cloud"
+      ],
+      "summary": "雲朵 Agoda 1749048338",
+      "nights": 1,
+      "amount": 4930,
+      "label": "Agoda 正式淨額",
+      "bookingSource": "Agoda"
+    },
+    {
+      "id": "agoda-1752946839",
+      "checkInYmd": "2026-08-29",
+      "roomTags": [
+        "cloud"
+      ],
+      "summary": "雲朵 Agoda 1752946839",
+      "nights": 1,
+      "amount": 4930,
+      "label": "Agoda 正式淨額",
+      "bookingSource": "Agoda"
+    },
+    {
+      "id": "agoda-1753837172",
+      "checkInYmd": "2026-08-26",
+      "roomTags": [
+        "cloud"
+      ],
+      "summary": "雲朵 Agoda 1753837172",
+      "nights": 1,
+      "amount": 4930,
+      "label": "Agoda 正式淨額",
+      "bookingSource": "Agoda"
+    },
+    {
+      "id": "agoda-1768510587",
+      "checkInYmd": "2026-09-03",
+      "roomTags": [
+        "cloud"
+      ],
+      "summary": "雲朵 Agoda 1768510587",
+      "nights": 1,
+      "amount": 4930,
+      "label": "Agoda 正式淨額",
+      "bookingSource": "Agoda"
+    },
+    {
+      "id": "agoda-1769354709",
+      "checkInYmd": "2026-09-04",
+      "roomTags": [
+        "cloud"
+      ],
+      "summary": "雲朵 Agoda 1769354709",
+      "nights": 1,
+      "amount": 4930,
+      "label": "Agoda 正式淨額",
+      "bookingSource": "Agoda"
+    },
+    {
+      "id": "agoda-1770672382",
+      "checkInYmd": "2026-09-14",
+      "roomTags": [
+        "cloud"
+      ],
+      "summary": "雲朵 Agoda 1770672382",
+      "nights": 1,
+      "amount": 4930,
+      "label": "Agoda 正式淨額",
+      "bookingSource": "Agoda"
+    },
+    {
+      "id": "agoda-1781108934",
+      "checkInYmd": "2026-10-02",
+      "roomTags": [
+        "cloud"
+      ],
+      "summary": "雲朵 Agoda 1781108934",
+      "nights": 1,
+      "amount": 4930,
+      "label": "Agoda 正式淨額",
+      "bookingSource": "Agoda"
+    },
+    {
+      "id": "agoda-1783462708",
+      "checkInYmd": "2026-10-09",
+      "roomTags": [
+        "cloud"
+      ],
+      "summary": "雲朵 Agoda 1783462708",
+      "nights": 1,
+      "amount": 4930,
+      "label": "Agoda 正式淨額",
+      "bookingSource": "Agoda"
     }
   ],
   "monthlyRevenue": [
-    { "month": "2026-02", "original": 15200, "revised": 16320, "difference": 1120, "growth": null, "cumulative": 16320 },
-    { "month": "2026-03", "original": 21400, "revised": 20400, "difference": -1000, "growth": 25.0, "cumulative": 36720 },
-    { "month": "2026-04", "original": 55500, "revised": 50610, "difference": -4890, "growth": 148.1, "cumulative": 87330 },
-    { "month": "2026-05", "original": 93300, "revised": 92730, "difference": -570, "growth": 83.2, "cumulative": 180060 },
-    { "month": "2026-06", "original": 89400, "revised": 80650, "difference": -8750, "growth": -13.0, "cumulative": 260710 },
-    { "month": "2026-07", "original": 83800, "revised": 82610, "difference": -1190, "growth": 2.4, "cumulative": 343320 },
-    { "month": "2026-08", "original": 128400, "revised": 129060, "difference": 660, "growth": 56.2, "cumulative": 472380 }
-  ],
-  "revenueForecast": {
-    "createdAt": "2026-09-14",
-    "basis": "6–8 月加權平均約 NT$103,000／月，再套用旺淡季係數",
-    "months": [
-      { "month": "2026-09", "amount": 97900 },
-      { "month": "2026-10", "amount": 103000 },
-      { "month": "2026-11", "amount": 98900 },
-      { "month": "2026-12", "amount": 115400 },
-      { "month": "2027-01", "amount": 92700 },
-      { "month": "2027-02", "amount": 94800 }
-    ]
-  },
-  "monthlySourceCases": [
-    { "month": "2026-02", "total": 3, "airbnb": 0, "agoda": 3, "unknown": 0, "direct": 0 },
-    { "month": "2026-03", "total": 5, "airbnb": 0, "agoda": 5, "unknown": 0, "direct": 0 },
-    { "month": "2026-04", "total": 11, "airbnb": 1, "agoda": 7, "unknown": 0, "direct": 3 },
-    { "month": "2026-05", "total": 17, "airbnb": 2, "agoda": 5, "unknown": 4, "direct": 6 },
-    { "month": "2026-06", "total": 18, "airbnb": 11, "agoda": 5, "unknown": 0, "direct": 2 },
-    { "month": "2026-07", "total": 17, "airbnb": 4, "agoda": 7, "unknown": 3, "direct": 3 },
-    { "month": "2026-08", "total": 20, "airbnb": 6, "agoda": 7, "unknown": 2, "direct": 5 }
-  ],
-  "airbnbOfficialUsd": {
-    "net": 3400.5,
-    "bookedNights": 29,
-    "monthlyNet": {
-      "2026-04": 145.4,
-      "2026-05": 260.56,
-      "2026-06": 1527.66,
-      "2026-07": 475.51,
-      "2026-08": 991.36
+    {
+      "month": "2026-02",
+      "original": 15200,
+      "revised": 16320,
+      "difference": 1120,
+      "growth": null,
+      "cumulative": 16320
+    },
+    {
+      "month": "2026-03",
+      "original": 21400,
+      "revised": 20400,
+      "difference": -1000,
+      "growth": 25,
+      "cumulative": 36720
+    },
+    {
+      "month": "2026-04",
+      "original": 55500,
+      "revised": 50266,
+      "difference": -5234,
+      "growth": 146.4,
+      "cumulative": 86986
+    },
+    {
+      "month": "2026-05",
+      "original": 93300,
+      "revised": 97565,
+      "difference": 4265,
+      "growth": 94.1,
+      "cumulative": 184551
+    },
+    {
+      "month": "2026-06",
+      "original": 89400,
+      "revised": 80072.4,
+      "difference": -9327.6,
+      "growth": -17.93,
+      "cumulative": 264623.4
+    },
+    {
+      "month": "2026-07",
+      "original": 83800,
+      "revised": 67554.86,
+      "difference": -16245.14,
+      "growth": -15.63,
+      "cumulative": 332178.26
+    },
+    {
+      "month": "2026-08",
+      "original": 128400,
+      "revised": 195629.06,
+      "difference": 67229.06,
+      "growth": 189.59,
+      "cumulative": 527807.32
+    },
+    {
+      "month": "2026-09",
+      "original": null,
+      "revised": 95194.25,
+      "difference": null,
+      "growth": -51.34,
+      "cumulative": 623001.57
+    },
+    {
+      "month": "2026-10",
+      "original": null,
+      "revised": 88930.9,
+      "difference": null,
+      "growth": -6.58,
+      "cumulative": 711932.47
     }
-  }
+  ],
+  "monthlySourceCases": [
+    {
+      "month": "2026-02",
+      "total": 4,
+      "airbnb": 0,
+      "agoda": 4,
+      "unknown": 0,
+      "direct": 0
+    },
+    {
+      "month": "2026-03",
+      "total": 5,
+      "airbnb": 0,
+      "agoda": 5,
+      "unknown": 0,
+      "direct": 0
+    },
+    {
+      "month": "2026-04",
+      "total": 11,
+      "airbnb": 1,
+      "agoda": 7,
+      "unknown": 0,
+      "direct": 3
+    },
+    {
+      "month": "2026-05",
+      "total": 17,
+      "airbnb": 2,
+      "agoda": 5,
+      "unknown": 0,
+      "direct": 10
+    },
+    {
+      "month": "2026-06",
+      "total": 20,
+      "airbnb": 13,
+      "agoda": 5,
+      "unknown": 0,
+      "direct": 2
+    },
+    {
+      "month": "2026-07",
+      "total": 15,
+      "airbnb": 5,
+      "agoda": 7,
+      "unknown": 0,
+      "direct": 3
+    },
+    {
+      "month": "2026-08",
+      "total": 30,
+      "airbnb": 8,
+      "agoda": 7,
+      "unknown": 0,
+      "direct": 15
+    },
+    {
+      "month": "2026-09",
+      "total": 18,
+      "airbnb": 3,
+      "agoda": 8,
+      "unknown": 0,
+      "direct": 7
+    },
+    {
+      "month": "2026-10",
+      "total": 16,
+      "airbnb": 7,
+      "agoda": 6,
+      "unknown": 0,
+      "direct": 3
+    }
+  ],
+  "monthlySourceRevenue": [
+    {
+      "month": "2026-02",
+      "total": 16320,
+      "airbnb": 0,
+      "agoda": 16320,
+      "direct": 0
+    },
+    {
+      "month": "2026-03",
+      "total": 20400,
+      "airbnb": 0,
+      "agoda": 20400,
+      "direct": 0
+    },
+    {
+      "month": "2026-04",
+      "total": 50266,
+      "airbnb": 4656,
+      "agoda": 29410,
+      "direct": 16200
+    },
+    {
+      "month": "2026-05",
+      "total": 97565,
+      "airbnb": 8245,
+      "agoda": 27030,
+      "direct": 62290
+    },
+    {
+      "month": "2026-06",
+      "total": 80072.4,
+      "airbnb": 48422.4,
+      "agoda": 21250,
+      "direct": 10400
+    },
+    {
+      "month": "2026-07",
+      "total": 67554.86,
+      "airbnb": 15344.86,
+      "agoda": 32810,
+      "direct": 19400
+    },
+    {
+      "month": "2026-08",
+      "total": 195629.06,
+      "airbnb": 31729.06,
+      "agoda": 33660,
+      "direct": 130240
+    },
+    {
+      "month": "2026-09",
+      "total": 95194.25,
+      "airbnb": 14154.25,
+      "agoda": 39440,
+      "direct": 41600
+    },
+    {
+      "month": "2026-10",
+      "total": 88930.9,
+      "airbnb": 39900.9,
+      "agoda": 30430,
+      "direct": 18600
+    }
+  ],
+  "sourceRevenueTotals": {
+    "airbnb": {
+      "source": "Airbnb",
+      "cases": 39,
+      "revenue": 162452.47
+    },
+    "agoda": {
+      "source": "Agoda",
+      "cases": 54,
+      "revenue": 250750
+    },
+    "direct": {
+      "source": "私下接單",
+      "cases": 43,
+      "revenue": 298730
+    }
+  },
+  "recentRevenue": {
+    "airbnb": 85784.20999999999,
+    "agoda": 103530,
+    "direct": 190440,
+    "total": 379754.21
+  },
+  "futureSourceRevenue": [
+    {
+      "month": "2026-10",
+      "airbnb": 0,
+      "agoda": 0,
+      "direct": 9800,
+      "airbnbCases": 0,
+      "agodaCases": 0,
+      "directCases": 1,
+      "total": 9800
+    },
+    {
+      "month": "2026-11",
+      "airbnb": 12496.34,
+      "agoda": 0,
+      "direct": 0,
+      "airbnbCases": 3,
+      "agodaCases": 0,
+      "directCases": 0,
+      "total": 12496.34
+    },
+    {
+      "month": "2026-12",
+      "airbnb": 4165.45,
+      "agoda": 0,
+      "direct": 9800,
+      "airbnbCases": 1,
+      "agodaCases": 0,
+      "directCases": 1,
+      "total": 13965.45
+    }
+  ],
+  "futureTotals": {
+    "airbnb": 16661.79,
+    "agoda": 0,
+    "direct": 19600,
+    "airbnbCases": 4,
+    "agodaCases": 0,
+    "directCases": 2,
+    "total": 36261.79
+  },
+  "platformTotals": {
+    "airbnb": {
+      "cases": 39,
+      "gross": 180668.6,
+      "serviceFee": 13836.13,
+      "adjustments": -4380,
+      "net": 162452.47
+    },
+    "agoda": {
+      "cases": 54,
+      "gross": 295000,
+      "commission": 44250,
+      "net": 250750
+    }
+  },
+  "notes": [
+    "Airbnb 兩筆糾紛調整合計 -NT$4,380，已扣回 7 月與 8 月。",
+    "Agoda 2026/10/30 與 2026/11/1 行事曆事件未出現在本次正式已確認報表，暫不列入營收。",
+    "未來 Airbnb 尚無正式結算金額，預估採截至 2026/10/29 每案平均淨額。"
+  ]
 }

@@ -36,6 +36,9 @@
   var monthTableEl = document.getElementById("revenue-month-table");
   var revenueTrendChartEl = document.getElementById("revenue-trend-chart");
   var bookingSourceChartEl = document.getElementById("booking-source-chart");
+  var sourceTotalSummaryEl = document.getElementById("source-total-summary");
+  var sourceRevenueTableEl = document.getElementById("source-revenue-table");
+  var futureSourceSummaryEl = document.getElementById("future-source-summary");
   var revenueGrowthTableEl = document.getElementById("revenue-growth-table");
   var bookingSourceTableEl = document.getElementById("booking-source-table");
   var sumTotal = document.getElementById("sum-total");
@@ -161,6 +164,11 @@
     return escapeHtml(String(count || 0)) + '<span class="admin-analysis-percent">' + percentage.toFixed(1) + "%</span>";
   }
 
+  function revenueSourceCell(amount, total) {
+    var percentage = total ? (Number(amount || 0) / total) * 100 : 0;
+    return escapeHtml(formatMoney(amount)) + '<span class="admin-analysis-percent">' + percentage.toFixed(1) + "%</span>";
+  }
+
   function renderReconciliationTables() {
     var monthlyRevenue = officialReconciliation.monthlyRevenue || [];
     if (revenueGrowthTableEl) {
@@ -168,13 +176,13 @@
         revenueGrowthTableEl.innerHTML = '<p class="staff-empty">尚無正式對帳資料。</p>';
       } else {
         var revenueRows = monthlyRevenue.map(function (row) {
-          var differenceClass = row.difference < 0 ? " admin-analysis-value--down" : row.difference > 0 ? " admin-analysis-value--up" : "";
+          var differenceClass = row.difference == null ? "" : row.difference < 0 ? " admin-analysis-value--down" : row.difference > 0 ? " admin-analysis-value--up" : "";
           var growthClass = row.growth < 0 ? " admin-analysis-value--down" : row.growth > 0 ? " admin-analysis-value--up" : "";
           return "<tr>" +
             "<td>" + escapeHtml(formatMonth(row.month)) + "</td>" +
-            "<td>" + escapeHtml(formatMoney(row.original)) + "</td>" +
+            "<td>" + (row.original == null ? "—" : escapeHtml(formatMoney(row.original))) + "</td>" +
             '<td class="admin-month-table__total">' + escapeHtml(formatMoney(row.revised)) + "</td>" +
-            '<td class="' + differenceClass.trim() + '">' + escapeHtml(formatSignedMoney(row.difference)) + "</td>" +
+            '<td class="' + differenceClass.trim() + '">' + (row.difference == null ? "—" : escapeHtml(formatSignedMoney(row.difference))) + "</td>" +
             '<td class="' + growthClass.trim() + '">' + escapeHtml(formatGrowth(row.growth)) + "</td>" +
             "<td>" + escapeHtml(formatMoney(row.cumulative)) + "</td>" +
             "</tr>";
@@ -185,9 +193,71 @@
           '<table class="admin-month-table admin-analysis-table">' +
           "<thead><tr><th>月份</th><th>原估營收</th><th>修正後營收</th><th>修正差額</th><th>月成長率</th><th>累計營收</th></tr></thead>" +
           "<tbody>" + revenueRows + "</tbody>" +
-          '<tfoot><tr><th>2–8 月合計</th><th>' + escapeHtml(formatMoney(originalTotal)) + '</th><th>' + escapeHtml(formatMoney(revisedTotal)) + '</th><th class="admin-analysis-value--down">' + escapeHtml(formatSignedMoney(revisedTotal - originalTotal)) + '</th><th>—</th><th>' + escapeHtml(formatMoney(revisedTotal)) + "</th></tr></tfoot>" +
+          '<tfoot><tr><th>對帳合計</th><th><span class="admin-analysis-percent">原估僅 2–8 月</span>' + escapeHtml(formatMoney(originalTotal)) + '</th><th><span class="admin-analysis-percent">實際 2–10 月</span>' + escapeHtml(formatMoney(revisedTotal)) + '</th><th>—</th><th>—</th><th>' + escapeHtml(formatMoney(revisedTotal)) + "</th></tr></tfoot>" +
           "</table>";
       }
+    }
+
+    var monthlySourceRevenue = officialReconciliation.monthlySourceRevenue || [];
+    if (sourceRevenueTableEl) {
+      if (!monthlySourceRevenue.length) {
+        sourceRevenueTableEl.innerHTML = '<p class="staff-empty">尚無營收來源資料。</p>';
+      } else {
+        var revenueTotals = { total: 0, airbnb: 0, agoda: 0, direct: 0 };
+        var sourceRevenueRows = monthlySourceRevenue.map(function (row) {
+          Object.keys(revenueTotals).forEach(function (key) { revenueTotals[key] += Number(row[key] || 0); });
+          return "<tr>" +
+            "<td>" + escapeHtml(formatMonth(row.month)) + "</td>" +
+            '<td class="admin-month-table__total">' + escapeHtml(formatMoney(row.total)) + "</td>" +
+            "<td>" + revenueSourceCell(row.airbnb, row.total) + "</td>" +
+            "<td>" + revenueSourceCell(row.agoda, row.total) + "</td>" +
+            "<td>" + revenueSourceCell(row.direct, row.total) + "</td>" +
+            "</tr>";
+        }).join("");
+        sourceRevenueTableEl.innerHTML =
+          '<table class="admin-month-table admin-analysis-table">' +
+          "<thead><tr><th>月份</th><th>淨營收</th><th>Airbnb</th><th>Agoda</th><th>私下接單</th></tr></thead>" +
+          "<tbody>" + sourceRevenueRows + "</tbody>" +
+          '<tfoot><tr><th>2–10 月合計</th><th>' + escapeHtml(formatMoney(revenueTotals.total)) + "</th><th>" + revenueSourceCell(revenueTotals.airbnb, revenueTotals.total) + "</th><th>" + revenueSourceCell(revenueTotals.agoda, revenueTotals.total) + "</th><th>" + revenueSourceCell(revenueTotals.direct, revenueTotals.total) + "</th></tr></tfoot>" +
+          "</table>";
+      }
+    }
+
+    var sourceTotals = officialReconciliation.sourceRevenueTotals || {};
+    if (sourceTotalSummaryEl) {
+      var allRevenue = [sourceTotals.airbnb, sourceTotals.agoda, sourceTotals.direct].reduce(function (sum, row) {
+        return sum + Number((row || {}).revenue || 0);
+      }, 0);
+      sourceTotalSummaryEl.innerHTML = [
+        { row: sourceTotals.airbnb, label: "Airbnb", className: "admin-summary-card--airbnb" },
+        { row: sourceTotals.agoda, label: "Agoda", className: "admin-summary-card--agoda" },
+        { row: sourceTotals.direct, label: "私下接單", className: "admin-summary-card--direct" }
+      ].map(function (item) {
+        var revenue = Number((item.row || {}).revenue || 0);
+        var percent = allRevenue ? revenue / allRevenue * 100 : 0;
+        return '<div class="admin-summary-card ' + item.className + '"><p class="admin-summary-label">' + item.label + '</p><p class="admin-summary-value">' + escapeHtml(formatMoney(revenue)) + '</p><p class="admin-source-card-meta">' + percent.toFixed(1) + '% · ' + Number((item.row || {}).cases || 0) + ' 筆</p></div>';
+      }).join("");
+    }
+
+    if (futureSourceSummaryEl) {
+      var future = officialReconciliation.futureTotals || {};
+      var futureTotal = Number(future.total || 0);
+      var futureRows = [
+        { key: "airbnb", label: "Airbnb（估算）", color: "#4078d4" },
+        { key: "agoda", label: "Agoda", color: "#d99627" },
+        { key: "direct", label: "私下接單", color: "#3a6f4f" }
+      ];
+      futureSourceSummaryEl.innerHTML = '<div class="admin-future-source">' +
+        '<div class="admin-future-source__bar" aria-label="未來已預訂營收來源比例">' + futureRows.map(function (item) {
+          var amount = Number(future[item.key] || 0);
+          var percent = futureTotal ? amount / futureTotal * 100 : 0;
+          return '<span style="width:' + percent.toFixed(2) + '%;background:' + item.color + '"><span class="visually-hidden">' + item.label + ' ' + percent.toFixed(1) + '%</span></span>';
+        }).join("") + '</div>' +
+        '<div class="admin-future-source__legend">' + futureRows.map(function (item) {
+          var amount = Number(future[item.key] || 0);
+          var percent = futureTotal ? amount / futureTotal * 100 : 0;
+          return '<div><span class="admin-future-source__swatch" style="background:' + item.color + '"></span><strong>' + item.label + '</strong><span>' + escapeHtml(formatMoney(amount)) + ' · ' + percent.toFixed(1) + '% · ' + Number(future[item.key + "Cases"] || 0) + ' 筆</span></div>';
+        }).join("") + '</div><p class="admin-future-source__total">合計 ' + escapeHtml(formatMoney(futureTotal)) + '（' + (Number(future.airbnbCases || 0) + Number(future.agodaCases || 0) + Number(future.directCases || 0)) + ' 筆）</p></div>';
     }
 
     var monthlySources = officialReconciliation.monthlySourceCases || [];
@@ -203,15 +273,14 @@
             "<td>" + escapeHtml(String(row.total)) + "</td>" +
             "<td>" + sourceCell(row.airbnb, row.total) + "</td>" +
             "<td>" + sourceCell(row.agoda, row.total) + "</td>" +
-            "<td>" + sourceCell(row.unknown, row.total) + "</td>" +
             "<td>" + sourceCell(row.direct, row.total) + "</td>" +
             "</tr>";
         }).join("");
         bookingSourceTableEl.innerHTML =
           '<table class="admin-month-table admin-analysis-table">' +
-          "<thead><tr><th>月份</th><th>有效案件</th><th>Airbnb</th><th>Agoda</th><th>平台未註明</th><th>私下接單</th></tr></thead>" +
+          "<thead><tr><th>月份</th><th>有效案件</th><th>Airbnb</th><th>Agoda</th><th>私下接單</th></tr></thead>" +
           "<tbody>" + sourceRows + "</tbody>" +
-          '<tfoot><tr><th>2–8 月合計</th><th>' + totals.total + "</th><th>" + sourceCell(totals.airbnb, totals.total) + "</th><th>" + sourceCell(totals.agoda, totals.total) + "</th><th>" + sourceCell(totals.unknown, totals.total) + "</th><th>" + sourceCell(totals.direct, totals.total) + "</th></tr></tfoot>" +
+          '<tfoot><tr><th>2–10 月合計</th><th>' + totals.total + "</th><th>" + sourceCell(totals.airbnb, totals.total) + "</th><th>" + sourceCell(totals.agoda, totals.total) + "</th><th>" + sourceCell(totals.direct, totals.total) + "</th></tr></tfoot>" +
           "</table>";
       }
     }
@@ -232,17 +301,14 @@
   function renderRevenueTrendChart() {
     if (!revenueTrendChartEl) return;
     var actual = officialReconciliation.monthlyRevenue || [];
-    var forecast = (officialReconciliation.revenueForecast || {}).months || [];
     if (!actual.length) {
       revenueTrendChartEl.innerHTML = '<p class="staff-empty">尚無營收曲線資料。</p>';
       return;
     }
 
     var series = actual.map(function (row) {
-      return { month: row.month, amount: Number(row.revised || 0), forecast: false };
-    }).concat(forecast.map(function (row) {
-      return { month: row.month, amount: Number(row.amount || 0), forecast: true };
-    }));
+      return { month: row.month, amount: Number(row.revised || 0) };
+    });
     var width = 920;
     var height = 360;
     var left = 70;
@@ -261,8 +327,7 @@
         row: row
       };
     });
-    var actualPoints = points.slice(0, actual.length);
-    var forecastPoints = points.slice(Math.max(0, actual.length - 1));
+    var actualPoints = points.slice();
     var grid = [0, 1, 2, 3, 4].map(function (index) {
       var amount = yMax - (yMax / 4) * index;
       var y = top + (plotHeight / 4) * index;
@@ -275,27 +340,20 @@
     var actualDots = actualPoints.map(function (point) {
       return '<circle class="admin-chart-point--actual" cx="' + point.x.toFixed(1) + '" cy="' + point.y.toFixed(1) + '" r="5"><title>' + escapeHtml(chartMonthLabel(point.row.month) + " " + formatMoney(point.row.amount)) + "</title></circle>";
     }).join("");
-    var forecastDots = points.slice(actual.length).map(function (point) {
-      return '<circle class="admin-chart-point--forecast" cx="' + point.x.toFixed(1) + '" cy="' + point.y.toFixed(1) + '" r="5"><title>' + escapeHtml(chartMonthLabel(point.row.month) + " 預估 " + formatMoney(point.row.amount)) + "</title></circle>";
-    }).join("");
-    var forecastStartX = actual.length < series.length ? points[actual.length - 1].x + stepX / 2 : width - right;
     revenueTrendChartEl.innerHTML =
       '<svg class="admin-chart" viewBox="0 0 ' + width + " " + height + '" role="img" aria-labelledby="revenue-chart-svg-title revenue-chart-svg-desc">' +
-      '<title id="revenue-chart-svg-title">每月營收成長曲線與未來六個月預估</title>' +
-      '<desc id="revenue-chart-svg-desc">綠色實線為正式對帳資料，棕色淡色虛線為未來六個月預估。</desc>' +
-      '<rect class="admin-chart-forecast-zone" x="' + forecastStartX.toFixed(1) + '" y="' + top + '" width="' + Math.max(0, width - right - forecastStartX).toFixed(1) + '" height="' + plotHeight + '"></rect>' +
+      '<title id="revenue-chart-svg-title">每月實際淨營收成長曲線</title>' +
+      '<desc id="revenue-chart-svg-desc">綠色實線為 2026 年 2 月至 10 月 29 日正式對帳後的每月淨營收。</desc>' +
       grid +
-      '<line x1="70" y1="24" x2="102" y2="24" class="admin-chart-line--actual"></line><text x="112" y="29" class="admin-chart-legend-label">正式營收</text>' +
-      '<line x1="220" y1="24" x2="252" y2="24" class="admin-chart-line--forecast"></line><text x="262" y="29" class="admin-chart-legend-label">未來六個月預估</text>' +
+      '<line x1="70" y1="24" x2="102" y2="24" class="admin-chart-line--actual"></line><text x="112" y="29" class="admin-chart-legend-label">正式淨營收</text>' +
       '<path class="admin-chart-line--actual" d="' + svgPath(actualPoints) + '"></path>' +
-      (forecast.length ? '<path class="admin-chart-line--forecast" d="' + svgPath(forecastPoints) + '"></path>' : "") +
-      actualDots + forecastDots + labels +
+      actualDots + labels +
       "</svg>";
   }
 
   function renderBookingSourceChart() {
     if (!bookingSourceChartEl) return;
-    var rows = officialReconciliation.monthlySourceCases || [];
+    var rows = officialReconciliation.monthlySourceRevenue || [];
     if (!rows.length) {
       bookingSourceChartEl.innerHTML = '<p class="staff-empty">尚無訂單來源圖表資料。</p>';
       return;
@@ -303,7 +361,6 @@
     var categories = [
       { key: "airbnb", label: "Airbnb", color: "#4078d4" },
       { key: "agoda", label: "Agoda", color: "#d99627" },
-      { key: "unknown", label: "平台未註明", color: "#969c94" },
       { key: "direct", label: "私下接單", color: "#3a6f4f" }
     ];
     var width = 920;
@@ -325,23 +382,23 @@
       var x = left + slot * rowIndex + (slot - barWidth) / 2;
       var used = 0;
       var segments = categories.map(function (category) {
-        var count = Number(row[category.key] || 0);
-        var percent = row.total ? (count / row.total) * 100 : 0;
+        var amount = Number(row[category.key] || 0);
+        var percent = row.total ? (amount / row.total) * 100 : 0;
         var segmentHeight = (percent / 100) * plotHeight;
         var y = top + plotHeight - used - segmentHeight;
         used += segmentHeight;
-        return '<rect x="' + x.toFixed(1) + '" y="' + y.toFixed(1) + '" width="' + barWidth.toFixed(1) + '" height="' + segmentHeight.toFixed(1) + '" fill="' + category.color + '"><title>' + escapeHtml(category.label + "：" + count + " 筆（" + percent.toFixed(1) + "%）") + "</title></rect>";
+        return '<rect x="' + x.toFixed(1) + '" y="' + y.toFixed(1) + '" width="' + barWidth.toFixed(1) + '" height="' + segmentHeight.toFixed(1) + '" fill="' + category.color + '"><title>' + escapeHtml(category.label + "：" + formatMoney(amount) + "（" + percent.toFixed(1) + "%）") + "</title></rect>";
       }).join("");
       return segments + '<text class="admin-chart-axis-label" x="' + (x + barWidth / 2).toFixed(1) + '" y="' + (height - 20) + '" text-anchor="middle">' + escapeHtml(chartMonthLabel(row.month)) + "</text>";
     }).join("");
-    var legendX = [70, 210, 345, 530];
+    var legendX = [70, 210, 345];
     var legend = categories.map(function (category, index) {
       return '<rect x="' + legendX[index] + '" y="18" width="14" height="14" rx="2" fill="' + category.color + '"></rect><text x="' + (legendX[index] + 22) + '" y="30" class="admin-chart-legend-label">' + escapeHtml(category.label) + "</text>";
     }).join("");
     bookingSourceChartEl.innerHTML =
       '<svg class="admin-chart" viewBox="0 0 ' + width + " " + height + '" role="img" aria-labelledby="source-chart-svg-title source-chart-svg-desc">' +
-      '<title id="source-chart-svg-title">每月訂單來源比例變化</title>' +
-      '<desc id="source-chart-svg-desc">百分比堆疊柱狀圖，呈現 Airbnb、Agoda、平台未註明與私下接單的每月案件比例。</desc>' +
+      '<title id="source-chart-svg-title">每月營收來源比例變化</title>' +
+      '<desc id="source-chart-svg-desc">百分比堆疊柱狀圖，呈現 Airbnb、Agoda 與私下接單的每月實際淨營收比例。</desc>' +
       legend + grid + bars + "</svg>";
   }
 
