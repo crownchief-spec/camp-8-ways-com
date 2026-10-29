@@ -39,6 +39,7 @@
   var sourceTotalSummaryEl = document.getElementById("source-total-summary");
   var sourceRevenueTableEl = document.getElementById("source-revenue-table");
   var futureSourceSummaryEl = document.getElementById("future-source-summary");
+  var campervanReconciliationEl = document.getElementById("campervan-reconciliation");
   var revenueGrowthTableEl = document.getElementById("revenue-growth-table");
   var bookingSourceTableEl = document.getElementById("booking-source-table");
   var sumTotal = document.getElementById("sum-total");
@@ -83,11 +84,11 @@
     return { fromYmd: fromYmd, untilYmd: untilYmd };
   }
 
-  /** 今年二月一日 ～ 今年年底（含未來已訂月份） */
+  /** 今年一月一日 ～ 今年年底（含露營車開業初期收入） */
   function getReportRange() {
     var now = new Date();
     var year = now.getFullYear();
-    var fromYmd = year + "-02-01";
+    var fromYmd = year + "-01-01";
     var untilYmd = year + "-12-31";
     return { fromYmd: fromYmd, untilYmd: untilYmd, year: year };
   }
@@ -114,13 +115,13 @@
         endM = p.m;
       }
     });
-    if (endY < reportYear || (endY === reportYear && endM < 1)) {
+    if (endY < reportYear) {
       endY = reportYear;
-      endM = 1;
+      endM = 0;
     }
     var months = [];
     var y = reportYear;
-    var m = 1; // February
+    var m = 0; // January
     while (y < endY || (y === endY && m <= endM)) {
       months.push({ y: y, m: m });
       m += 1;
@@ -258,7 +259,21 @@
           var amount = Number(future[item.key] || 0);
           var percent = futureTotal ? amount / futureTotal * 100 : 0;
           return '<div><span class="admin-future-source__swatch" style="background:' + item.color + '"></span><strong>' + item.label + '</strong><span>' + escapeHtml(formatMoney(amount)) + ' · ' + percent.toFixed(1) + '% · ' + Number(future[item.key + "Cases"] || 0) + ' 筆</span></div>';
-        }).join("") + '</div><p class="admin-future-source__total">合計 ' + escapeHtml(formatMoney(futureTotal)) + '（' + (Number(future.airbnbCases || 0) + Number(future.agodaCases || 0) + Number(future.directCases || 0)) + ' 筆）</p></div>';
+        }).join("") + '</div><p class="admin-future-source__total">已確認合計 ' + escapeHtml(formatMoney(futureTotal)) + '（' + (Number(future.airbnbCases || 0) + Number(future.agodaCases || 0) + Number(future.directCases || 0)) + ' 筆）</p>' +
+        '<p class="admin-analysis-note">另有待訂金暫訂 ' + Number(future.tentativeCases || 0) + ' 筆，金額 ' + escapeHtml(formatMoney(future.tentativeRevenue || 0)) + '，未放入上方比例。</p></div>';
+    }
+
+    if (campervanReconciliationEl) {
+      var campervanRows = officialReconciliation.campervanMonthlyRevenue || [];
+      var campervanTotals = officialReconciliation.campervanTotals || {};
+      campervanReconciliationEl.innerHTML =
+        '<table class="admin-month-table admin-analysis-table">' +
+        '<thead><tr><th>月份</th><th>收費案件</th><th>租金收入</th></tr></thead>' +
+        '<tbody>' + campervanRows.map(function (row) {
+          return '<tr><td>' + escapeHtml(formatMonth(row.month)) + '</td><td>' + Number(row.cases || 0) + '</td><td class="admin-month-table__total">' + escapeHtml(formatMoney(row.revenue)) + '</td></tr>';
+        }).join("") + '</tbody>' +
+        '<tfoot><tr><th>合計</th><th>' + Number(campervanTotals.cases || 0) + '</th><th>' + escapeHtml(formatMoney(campervanTotals.revenue || 0)) + '</th></tr></tfoot>' +
+        '</table><p class="admin-analysis-note">另有 ' + Number(campervanTotals.unresolved || 0) + ' 筆只有名稱、沒有租金或訂金資料，暫不列帳；教學提醒不算收入。</p>';
     }
 
     var monthlySources = officialReconciliation.monthlySourceCases || [];
@@ -275,13 +290,14 @@
             "<td>" + sourceCell(row.airbnb, row.total) + "</td>" +
             "<td>" + sourceCell(row.agoda, row.total) + "</td>" +
             "<td>" + sourceCell(row.direct, row.total) + "</td>" +
+            "<td>" + (row.future ? Number(row.tentative || 0) : "—") + "</td>" +
             "</tr>";
         }).join("");
         bookingSourceTableEl.innerHTML =
           '<table class="admin-month-table admin-analysis-table">' +
-          "<thead><tr><th>月份</th><th>有效案件</th><th>Airbnb</th><th>Agoda</th><th>私下接單</th></tr></thead>" +
+          "<thead><tr><th>月份</th><th>有效案件</th><th>Airbnb</th><th>Agoda</th><th>私下接單</th><th>待訂金暫訂</th></tr></thead>" +
           "<tbody>" + sourceRows + "</tbody>" +
-          '<tfoot><tr><th>2–10 月合計</th><th>' + totals.total + "</th><th>" + sourceCell(totals.airbnb, totals.total) + "</th><th>" + sourceCell(totals.agoda, totals.total) + "</th><th>" + sourceCell(totals.direct, totals.total) + "</th></tr></tfoot>" +
+          '<tfoot><tr><th>2–10 月合計</th><th>' + totals.total + "</th><th>" + sourceCell(totals.airbnb, totals.total) + "</th><th>" + sourceCell(totals.agoda, totals.total) + "</th><th>" + sourceCell(totals.direct, totals.total) + "</th><th>—</th></tr></tfoot>" +
           "</table>";
       }
     }
@@ -685,7 +701,7 @@
       (rangeFromYmd || "—") +
       " ～ " +
       (rangeUntilYmd || "—") +
-      "（自今年二月起）";
+      "（自今年一月起）";
   }
 
   function summarizeEvents(events, rules, overrides) {
@@ -1039,6 +1055,18 @@
     bindPriceInputs();
   }
 
+  function reconciliationEventKey(ev) {
+    return String(ev.checkInYmd || "") + "|" + String(ev.summary || "")
+      .normalize("NFKC")
+      .replace(/\s+/g, "")
+      .toLowerCase();
+  }
+
+  function isHistoricalPlatformCalendarEvent(ev) {
+    if (!ev || !ev.checkInYmd || ev.checkInYmd > String(officialReconciliation.cutoffDate || "")) return false;
+    return /agoda|air\s*b\s*n\s*b|\bb\s*n\s*b\b/i.test(String(ev.summary || ""));
+  }
+
   function loadEvents() {
     var report = getReportRange();
     rangeFromYmd = report.fromYmd;
@@ -1075,22 +1103,26 @@
         if (!result.data.ok) {
           throw new Error(result.data.error || "載入失敗");
         }
-        eventsCache = (result.data.events || []).concat(
-          (officialReconciliation.virtualEvents || []).map(function (ev) {
+        var reconciledEvents = (officialReconciliation.virtualEvents || []).map(function (ev) {
             return {
               id: ev.id,
               roomTags: ev.roomTags || [],
               roomLabels: [],
               summary: ev.summary || "Agoda 正式訂單",
-              description: "Agoda 正式對帳補列",
+              description: ev.label || "正式對帳補列",
               comment: "",
-              bookingSource: "Agoda",
+              bookingSource: ev.bookingSource || "",
               checkInYmd: ev.checkInYmd,
               nights: ev.nights || 1,
               isPrivate: false
             };
-          })
-        );
+          });
+        var reconciledKeys = new Set(reconciledEvents.map(reconciliationEventKey));
+        var apiEvents = (result.data.events || []).filter(function (ev) {
+          if (isHistoricalPlatformCalendarEvent(ev)) return false;
+          return !reconciledKeys.has(reconciliationEventKey(ev));
+        });
+        eventsCache = apiEvents.concat(reconciledEvents);
         var analysis = RevenueRules.analyzeEvents(eventsCache);
         var counted = revenueEvents(eventsCache).length;
         var officialSkipped = analysis.included.filter(isOfficiallyExcluded).length;

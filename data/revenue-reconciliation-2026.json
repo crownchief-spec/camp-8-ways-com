@@ -1,180 +1,17 @@
 {
   "updatedAt": "2026-10-29",
   "cutoffDate": "2026-10-29",
-  "accountingBasis": "已入住案件採平台正式扣費後淨額；私下接單採行事曆描述實收；互惠為零且不列入營收比例。",
+  "calendarSource": {
+    "name": "Joyforest露營區",
+    "app": "macOS 行事曆 App",
+    "exportedEvents": 278,
+    "range": [
+      "2026-01-20",
+      "2027-02-27"
+    ]
+  },
+  "accountingBasis": "已入住平台案件採官方 CSV 扣費後淨額；私下接單採 macOS 行事曆 App 描述實收；互惠為零且不列入營收比例。未來暫訂與已確認分開。",
   "overrides": {
-    "D73727A9-5F9D-4AA1-87CF-F85DB1E98393": {
-      "amount": 3800,
-      "label": "行事曆實收"
-    },
-    "4huogo1shfc2tktubgpd3vhgm0@google.com": {
-      "amount": 7600,
-      "label": "行事曆實收"
-    },
-    "i4m6dpgmplfnpf52i9t07i8pqc@google.com": {
-      "amount": 4800,
-      "label": "行事曆實收"
-    },
-    "9dnrvppomlodgfctubjb7ndjdk@google.com": {
-      "amount": 9800,
-      "label": "行事曆實收"
-    },
-    "lf1rf8qn6s6u2ekl97c6qlndnk@google.com": {
-      "amount": 9800,
-      "label": "行事曆實收"
-    },
-    "07EECCE6-A9B8-43BF-87C0-85FEC3642B7D": {
-      "amount": 10000,
-      "label": "行事曆實收"
-    },
-    "79509C59-7556-49EA-92DF-219C70C67143": {
-      "amount": 6090,
-      "label": "行事曆實收"
-    },
-    "vr7edu9iguru0noc8nmrr0eur0@google.com": {
-      "amount": 3800,
-      "label": "行事曆實收"
-    },
-    "opvdf1ne8t98b71imhl2tff6ek@google.com": {
-      "amount": 5000,
-      "label": "行事曆實收"
-    },
-    "5ul3te4lbhsi6q5ei4r2f542dg@google.com": {
-      "amount": 3800,
-      "label": "行事曆實收"
-    },
-    "odlq524frnua7dlh588737s3eg@google.com": {
-      "amount": 3400,
-      "label": "行事曆實收"
-    },
-    "brk7hac5s8vrtp8kj3uh6hu8j4@google.com": {
-      "amount": 5800,
-      "label": "行事曆實收"
-    },
-    "7nun0g4lek7qf939jbhqpi40rc@google.com": {
-      "amount": 4800,
-      "label": "行事曆實收"
-    },
-    "1867FC3C-78C2-4048-A447-6E6ED006480E": {
-      "amount": 4800,
-      "label": "行事曆實收"
-    },
-    "4lc5590qns23gdljn5v0vlbqn8@google.com": {
-      "amount": 5600,
-      "label": "行事曆實收"
-    },
-    "4F5E4365-0B68-48E0-BB0C-87581037CC7A": {
-      "amount": 9600,
-      "label": "行事曆實收"
-    },
-    "EF39648D-1B13-45E7-9724-B6A382F17131": {
-      "amount": 4800,
-      "label": "行事曆實收"
-    },
-    "7162CF5D-8E7B-4530-8C59-8D2E05D2D80E": {
-      "amount": 5000,
-      "label": "行事曆實收"
-    },
-    "a57uob2ke46udfam8ghhjjre4k@google.com": {
-      "amount": 19600,
-      "label": "行事曆實收"
-    },
-    "F2D4A761-818B-4390-AB89-5092D070D6A4": {
-      "amount": 16840,
-      "label": "行事曆實收"
-    },
-    "CAB1938E-D30D-4CDD-B2D9-205B4B1E9F03": {
-      "amount": 13400,
-      "label": "行事曆實收"
-    },
-    "p5vtp4uf6prctr6l7o0mfslv7o@google.com": {
-      "amount": 5800,
-      "label": "行事曆實收"
-    },
-    "7c46dnq7lt548srnjio46kn0fs@google.com": {
-      "amount": 9000,
-      "label": "行事曆實收"
-    },
-    "kh3a8nds7ugbsnkrkae3el79dg@google.com": {
-      "amount": 5000,
-      "label": "行事曆實收"
-    },
-    "84ij28tnojbl0r66q798nthsds@google.com": {
-      "amount": 10000,
-      "label": "行事曆實收"
-    },
-    "aiuj9hkakqga391ff8eiek4a40@google.com": {
-      "amount": 9800,
-      "label": "行事曆實收"
-    },
-    "rg1f62kb6gq0cflmld1f1i4bco@google.com": {
-      "amount": 5800,
-      "label": "行事曆實收"
-    },
-    "A919A6C3-1FC6-4739-96B6-D1ACDBDCCDAB": {
-      "amount": 5000,
-      "label": "行事曆實收"
-    },
-    "37b5snghm74um18t6v033dc5do@google.com": {
-      "amount": 5000,
-      "label": "行事曆實收"
-    },
-    "cunomv7m8t28th3uisi15n2h6c@google.com": {
-      "amount": 10000,
-      "label": "行事曆實收"
-    },
-    "45808676-B205-45A7-8189-DCF3C2FF3EA7": {
-      "amount": 5000,
-      "label": "行事曆實收"
-    },
-    "2053C68B-833A-49DA-BD54-2EE615FC8B6C": {
-      "amount": 5000,
-      "label": "行事曆實收"
-    },
-    "BD73ABF5-189F-4A1B-AC5B-D6F8D859614F": {
-      "amount": 5000,
-      "label": "行事曆實收"
-    },
-    "8obrs2krn3ioh9h6vid11t4kko@google.com": {
-      "amount": 5000,
-      "label": "行事曆實收"
-    },
-    "inel18c82g47berp0l3pv4u23g@google.com": {
-      "amount": 6800,
-      "label": "行事曆實收"
-    },
-    "j00vffkid2t7nr15aehr1dufns@google.com": {
-      "amount": 9800,
-      "label": "行事曆實收"
-    },
-    "po90m3ql01js9oe10vmirelsmg@google.com": {
-      "amount": 5000,
-      "label": "行事曆實收"
-    },
-    "9a9ouq82hekuvr7oh4hl2eq63c@google.com": {
-      "amount": 5000,
-      "label": "行事曆實收"
-    },
-    "53E65A31-169D-4FB9-A9B9-344D6C4E44B6": {
-      "amount": 5000,
-      "label": "行事曆實收"
-    },
-    "9325A7F0-133E-4C6C-B52B-26429B65D839": {
-      "amount": 5000,
-      "label": "行事曆實收"
-    },
-    "B20161A1-E7D0-4309-A2A9-5D783696AFB8": {
-      "amount": 5800,
-      "label": "行事曆實收"
-    },
-    "F1DD80CC-5542-473E-82A5-1F5A325635A6": {
-      "amount": 3000,
-      "label": "行事曆實收"
-    },
-    "v11rag59ed010u8514j231rblo@google.com": {
-      "amount": 9800,
-      "label": "行事曆實收"
-    },
     "airbnb-HMT8C2X55P": {
       "amount": 5746,
       "label": "Airbnb 正式淨額",
@@ -639,109 +476,347 @@
       "amount": 4930,
       "label": "Agoda 正式淨額",
       "bookingId": "1783462708"
+    },
+    "A4E224D7-36C3-4A74-B57E-D29CC69A6AB8": {
+      "amount": 3800,
+      "label": "行事曆 App 實收"
+    },
+    "4C16C16B-3192-468C-A7B5-21C988C42C96": {
+      "amount": 7600,
+      "label": "行事曆 App 實收"
+    },
+    "494A8FF4-49DD-41DB-9D37-39D401AFD176": {
+      "amount": 4800,
+      "label": "行事曆 App 實收"
+    },
+    "B492B0C5-A4B5-4FA4-A213-F11E0B56804C": {
+      "amount": 9800,
+      "label": "行事曆 App 實收"
+    },
+    "A040E051-BEB8-4A8B-8DE8-2F58A0698E72": {
+      "amount": 9800,
+      "label": "行事曆 App 實收"
+    },
+    "0D6F6FB5-96B4-47A5-8286-ECE49BAC081A": {
+      "amount": 10000,
+      "label": "行事曆 App 實收"
+    },
+    "DD270DE9-149F-4962-A801-52F79934E34F": {
+      "amount": 6090,
+      "label": "行事曆 App 實收"
+    },
+    "2BA10B35-9273-4266-8D57-F8A1BAA606FA": {
+      "amount": 3800,
+      "label": "行事曆 App 實收"
+    },
+    "6A75EACE-4DE6-4AB7-906E-A36AD2B6C875": {
+      "amount": 5000,
+      "label": "行事曆 App 實收"
+    },
+    "892828C6-38E7-4C4E-8029-8AB226C15580": {
+      "amount": 3800,
+      "label": "行事曆 App 實收"
+    },
+    "ACE9AA9F-CDA3-46F1-9DFF-AF057396CD7B": {
+      "amount": 3400,
+      "label": "行事曆 App 實收"
+    },
+    "AC730BF3-9EDE-460D-B5CF-2C8BC851F76D": {
+      "amount": 5800,
+      "label": "行事曆 App 實收"
+    },
+    "37CDDC55-7E00-4BA1-A96A-BDAFC3FF5AC8": {
+      "amount": 4800,
+      "label": "行事曆 App 實收"
+    },
+    "F2304174-7842-4183-994C-C58A5EA04648": {
+      "amount": 4800,
+      "label": "行事曆 App 實收"
+    },
+    "88890EA5-D897-4CF6-B0F0-A370C6742A43": {
+      "amount": 5600,
+      "label": "行事曆 App 實收"
+    },
+    "1425CA02-2B4F-4223-A944-4AE3402EEBA6-15": {
+      "amount": 9600,
+      "label": "行事曆 App 實收"
+    },
+    "1425CA02-2B4F-4223-A944-4AE3402EEBA6-16": {
+      "amount": 4800,
+      "label": "行事曆 App 實收"
+    },
+    "5E9E751B-B87C-4EAD-9C77-8A4C66B1DF8D": {
+      "amount": 5000,
+      "label": "行事曆 App 實收"
+    },
+    "165BD415-18FF-4D3C-8DF1-FB8A315A0413": {
+      "amount": 19600,
+      "label": "行事曆 App 實收"
+    },
+    "5E847E8D-946C-409A-B887-CB44ECF235AF": {
+      "amount": 16840,
+      "label": "行事曆 App 實收"
+    },
+    "1D6059E4-D064-4133-95DA-042B91A03555": {
+      "amount": 13400,
+      "label": "行事曆 App 實收"
+    },
+    "AC8600AB-1B19-4687-A777-413529C0D8E8": {
+      "amount": 5800,
+      "label": "行事曆 App 實收"
+    },
+    "DB55D144-696E-4BD5-9413-1C5C13799B10": {
+      "amount": 9000,
+      "label": "行事曆 App 實收"
+    },
+    "8BBD535A-76CC-4D32-91A8-DA33B55E16E3": {
+      "amount": 5000,
+      "label": "行事曆 App 實收"
+    },
+    "A9100789-8040-4E65-AFD7-8825F85DA5B6": {
+      "amount": 10000,
+      "label": "行事曆 App 實收"
+    },
+    "AFAC2D66-6C22-4C22-A867-805412C4243E": {
+      "amount": 9800,
+      "label": "行事曆 App 實收"
+    },
+    "BD06C89B-83BA-4577-83B1-048D0E9A14DF": {
+      "amount": 5800,
+      "label": "行事曆 App 實收"
+    },
+    "C7A4652C-C1B6-4E7A-98E9-2D96935EC88C": {
+      "amount": 5000,
+      "label": "行事曆 App 實收"
+    },
+    "BA8A30EF-DE43-43B0-B8B1-BE0CC017C693": {
+      "amount": 5000,
+      "label": "行事曆 App 實收"
+    },
+    "A2AFA8F4-CBB5-455C-A343-CDD1EE0D897C": {
+      "amount": 5000,
+      "label": "行事曆 App 實收"
+    },
+    "842F5EEE-1244-4D24-B734-4B6C39A4A717": {
+      "amount": 5000,
+      "label": "行事曆 App 實收"
+    },
+    "0D4E85E9-B6BC-4DB2-A0CE-2B81E151C041": {
+      "amount": 10000,
+      "label": "行事曆 App 實收"
+    },
+    "BF4198B0-93A4-4C39-B117-DE019C33F80E": {
+      "amount": 5000,
+      "label": "行事曆 App 實收"
+    },
+    "7A6A554A-ABC9-4AD9-8694-3AD57E300858": {
+      "amount": 5000,
+      "label": "行事曆 App 實收"
+    },
+    "185A86C6-ED31-4CE8-A0F8-C9F823DAFBFD": {
+      "amount": 5000,
+      "label": "行事曆 App 實收"
+    },
+    "02500ABB-6729-44AF-9C52-356234B49F0D": {
+      "amount": 6800,
+      "label": "行事曆 App 實收"
+    },
+    "8E09FB39-C067-44BD-B232-2B6753F6B49E": {
+      "amount": 9800,
+      "label": "行事曆 App 實收"
+    },
+    "0B84137D-58D9-406A-AE1A-F5435BC3B26B": {
+      "amount": 9800,
+      "label": "行事曆 App 實收"
+    },
+    "25FFF769-65EC-46B6-AF05-3D3D9E170F97": {
+      "amount": 5000,
+      "label": "行事曆 App 實收"
+    },
+    "DFF10E8E-A663-4DB3-A982-61D55A698A4C": {
+      "amount": 5000,
+      "label": "行事曆 App 實收"
+    },
+    "E3793AB4-D4D4-4FBF-88B5-0BD6FC1BD4E1": {
+      "amount": 5000,
+      "label": "行事曆 App 實收"
+    },
+    "A8B2F0E4-8CD1-4184-8FC2-94841D3875FC": {
+      "amount": 10000,
+      "label": "行事曆 App 實收"
+    },
+    "D5047A65-BAAD-460B-A03A-6BD4787297C6": {
+      "amount": 5000,
+      "label": "行事曆 App 實收"
+    },
+    "BA50CAA8-AA02-4582-964F-024655D5F411": {
+      "amount": 5000,
+      "label": "行事曆 App 實收"
+    },
+    "51E23142-C8CF-4CDB-A9AC-03E859EC75E9": {
+      "amount": 5000,
+      "label": "行事曆 App 實收"
+    },
+    "94D792E2-8F3A-4A0F-A585-EFA2A245EC4F": {
+      "amount": 5000,
+      "label": "行事曆 App 實收"
+    },
+    "7F4C6C73-B0B0-4052-97A8-CF9039E3329A": {
+      "amount": 9800,
+      "label": "行事曆 App 實收"
+    },
+    "71385B3E-6339-4484-97B3-552C35DDC24B": {
+      "amount": 5000,
+      "label": "行事曆 App 實收"
+    },
+    "58218E2B-8F6E-4536-AD85-4C69A8C93A9D": {
+      "amount": 5800,
+      "label": "行事曆 App 實收"
+    },
+    "95EF06E4-783B-4B1F-A675-984D3EE12222": {
+      "amount": 6000,
+      "label": "行事曆 App 實收"
+    },
+    "D9E3D666-8024-4B06-87E1-B9FD98A2B8F1": {
+      "amount": 5000,
+      "label": "行事曆 App 實收"
+    },
+    "3413AA31-46D5-46D1-A074-25BA3D5262D1": {
+      "amount": 4640,
+      "label": "行事曆 App 實收"
+    },
+    "3A234A78-A3FB-4D5B-AFB6-3F8E2C0CE47F": {
+      "amount": 5000,
+      "label": "行事曆 App 實收"
+    },
+    "8684FF5F-070B-44EA-B241-B15C0752A688": {
+      "amount": 3000,
+      "label": "行事曆 App 實收"
+    },
+    "F82381DE-C12B-47F1-BA17-1CE0C1D9B4BE": {
+      "amount": 9800,
+      "label": "行事曆 App 實收"
+    },
+    "6CEEEA45-ADBC-43A4-8BF1-9BACC0BA8A52": {
+      "amount": 10800,
+      "label": "行事曆 App 實收"
+    },
+    "7A498D74-4414-4A4F-A893-A36CD4D84F19": {
+      "amount": 5000,
+      "label": "行事曆 App 實收"
+    },
+    "AD229192-25C7-445D-9221-59FE6C8514FC": {
+      "amount": 5800,
+      "label": "行事曆 App 實收"
+    },
+    "campervan-31DBEDF4-31DD-48C5-B773-83C9A9C03FB4": {
+      "amount": 11800,
+      "label": "行事曆 App 露營車實收"
+    },
+    "campervan-51FFA2AF-81B7-46BD-9190-4D7B22ADC519": {
+      "amount": 22200,
+      "label": "行事曆 App 露營車實收"
+    },
+    "campervan-A7E1DD27-3EC9-48A3-9B05-36C2221BD796": {
+      "amount": 13800,
+      "label": "行事曆 App 露營車實收"
+    },
+    "campervan-8969B89C-C518-4DC0-820E-4F9436B221DA": {
+      "amount": 13800,
+      "label": "行事曆 App 露營車實收"
+    },
+    "campervan-30276A6D-B094-41AF-BA49-82B185E7726F": {
+      "amount": 18600,
+      "label": "行事曆 App 露營車實收"
+    },
+    "campervan-D69E091F-EA33-4757-9A03-9FB5D6D484C3": {
+      "amount": 35200,
+      "label": "行事曆 App 露營車實收"
+    },
+    "campervan-88DC6601-0701-49D1-B2C3-24210839B60B": {
+      "amount": 15300,
+      "label": "行事曆 App 露營車實收"
+    },
+    "campervan-53CD2892-AEEF-4DBA-88A7-12AD241BDEC3": {
+      "amount": 16600,
+      "label": "行事曆 App 露營車實收"
+    },
+    "campervan-DA8A7698-25F4-4B7D-9B7F-45E20B958478": {
+      "amount": 13800,
+      "label": "行事曆 App 露營車實收"
+    },
+    "campervan-BFA9F5E3-5007-4460-9A14-5999B11ABA55": {
+      "amount": 17600,
+      "label": "行事曆 App 露營車實收"
+    },
+    "campervan-31FDFC18-ABDD-406D-B742-113F6747AD88": {
+      "amount": 11800,
+      "label": "行事曆 App 露營車實收"
     }
   },
   "excludedEventIds": [
-    "pk1c2j45n7flqr7hr1gd8klfek@google.com",
-    "qphnnasbc3nk1dnlfr6fmmfgm4@google.com",
-    "p587al4ps8266r060s0fdvup2g@google.com",
-    "905C3A98-A9FF-42A6-A958-70D7B755916E",
-    "0j5j09abnuf0pj1k5uaiqll480@google.com",
-    "DE92E498-65C7-4F94-A073-CE50D705147D",
-    "1F815D23-6995-40EF-98EC-E129462DBBE6",
-    "ldfidn6dd8l1sb378safip5jh8@google.com",
-    "qi0p4j71cud04r8pbkibggp35c@google.com",
-    "D557D08C-AF58-45E5-A752-62AFDF12F038",
-    "pqtkh02drfvf95u415td0kedsc@google.com",
-    "ta97dkkt59omo01rqnl00ftmrg@google.com",
-    "888EAF62-0D32-4E6A-93F8-34DEB7E26F3C",
-    "m5sn4rbq63ljpcspr5o70pj34c@google.com",
-    "lbe9aafiqum0hea2albg19lfss@google.com",
-    "0o08rbao989ms4h67frbilci28@google.com",
-    "ibmk57b0f6aamjaerbog4jmo98@google.com",
-    "7B14CCE0-7121-475C-B940-5A67F6A3E294",
-    "cuadqig3eiruv3907b7ov54fg4@google.com",
-    "rfg8a1kppiqen7vhv3q1mk45h8@google.com",
-    "F6CE8F3A-2E2D-4B17-A406-912B71F0DD14",
-    "h32llmvr997lnmgrvh7h8ieoes@google.com",
-    "ftnatc9igh168o5orcatvem4ag@google.com",
-    "n2hc3na0ul6dkbj1avkp3kvqro@google.com",
-    "cfnvo0142b7iuvj44a15ta7mpo@google.com",
-    "f6h3qomp9dne6caq9062uvnapg@google.com",
-    "jkul9lo117851blr7686sugnes@google.com",
-    "C29E0103-DEF6-4129-AFEE-51DDD6D52D4D",
-    "v7tpvl1o5j6aqfnuk0kqecqug0@google.com",
-    "judoa711tftfgvb30q9v8f4q70@google.com",
-    "if5ci23dveu5cuoteil87c9v70@google.com",
-    "2i03i97pok10732vvs0cqmvkhs@google.com",
-    "lli5n4mk91ntlqscoog3b8njb8@google.com",
-    "v443nm2ar7akkj47huhn4t9oeo@google.com",
-    "mp9v52j7km6ucc8128gjgt9m80@google.com",
-    "6D269BE7-B0C4-4ECA-8A82-D93FC7D17FB9",
-    "cukujtjtvtnmmi98se9uopvvao@google.com",
-    "A6AA76D2-3C2D-4B9F-8A1B-FABD3114F227",
-    "7mp43qnt4lvqcq01r3oh50o828@google.com",
-    "71018BF6-2B8C-42BA-B34F-6784B4E867BA",
-    "0493A611-4CBD-40E7-9D3C-3F2C6887D1CB",
-    "dsd6aebp07be96ukbcufuau3fg@google.com",
-    "CB8BE7FE-E683-45CB-962C-424D7178E9C7",
-    "23pai9sfkau5b92qfippf7prlg@google.com",
-    "1F5E13D0-A71B-42B9-A117-F88B2C49A9BD",
-    "pfvggoe1kifsb0terhjvqdi1t0@google.com",
-    "k4c7fc3boll5hhri6f2fjlrlng@google.com",
-    "28422C75-C496-4BC3-B451-EB723F2C5643",
-    "6vtkosso9fn8fkntvvtpg0iluk@google.com",
-    "477032F2-CB9D-4C06-A5EF-6087DF78B7EA",
-    "D3BF6A8B-58DC-4423-96CB-CBC97C22D9BD",
-    "EF72BC9B-2C20-41D5-97CD-1E222E243D8E",
-    "59CEAFCE-9C4B-4497-8A7F-F5D3BA7E97AB",
-    "F7A4E8A3-07DE-42AF-A694-7142CBFB957C",
-    "98354047-4EAC-4DC2-8429-F781A2ECE3C1",
-    "ECAC2F8D-09B9-46C2-91AB-99CB917B9ACE",
-    "A19A34E0-2FCA-4ED5-B52C-024861515A41",
-    "kmdp4tb9k1ibcj0mr89gckncco@google.com",
-    "v7pvmrl552gjn2quj08ml576b4@google.com",
-    "d0nn0fpcgi8buidcl13dh5rb88@google.com",
-    "n0rn0i1usvmf5mplohideflpk0@google.com",
-    "ofn5ag1dhlfecrbif9m2muoavc@google.com",
-    "C2A16F30-3C13-4D0E-9056-4682A9D242A1",
-    "03eqr1thqm6g24ehcni31l7e70@google.com",
-    "5AE01D0B-6B92-4442-A1D9-D897371CE02B",
-    "695690FA-91F1-4C54-8A9F-A04FE4D28D1D",
-    "0820C669-1189-4E64-947B-7287E7118135",
-    "214E4B44-AD07-4A7F-B3B8-525AC54D8BCF",
-    "9n8hujnaujf3462bvs8e78vljc@google.com",
-    "839DBEE4-06E8-47D9-B021-355151B4C7F0",
-    "2D1787B9-9FC5-4099-8DC8-D5773CAD16C1",
-    "frhuj027arbc3ki6glb54kgpkk@google.com",
-    "AC8DC7FA-082C-481F-BE4F-FE1737EAB65F",
-    "26D92126-189A-4FCB-A369-16B896075D6C",
-    "sbtt486vhjl16etgt7upi4h1d8@google.com",
-    "72E87476-3B19-4E8B-9E39-4FA5B1519C38",
-    "4CD5A464-0FA9-4C90-AFE1-636B9D11EC1D",
-    "7BD87278-AF2C-421D-87A2-E0FFC8397C9B",
-    "7fjqmd11g82mnrnoj5t8l92ino@google.com",
-    "778531D2-B31C-400B-A7C1-1DBC00446F0B",
-    "FA499D53-D4B8-4CBE-908F-5FFEAE061AFA",
-    "vj0o3tp67lantbtialqjfrmbks@google.com",
-    "11E57095-A337-46B2-AD50-1BD6BB8A185A",
-    "C9126CB0-B4FE-4DE1-9C3A-CABD0F880465",
-    "4DC15EC1-E754-40EE-B00F-DF1AE78A65F0",
-    "FF1DC624-D3DA-44CA-94C4-D7594BDDC52C",
-    "E6684C84-8E39-4054-99AA-14079F7EE5ED",
-    "EB8FE251-C2B6-4583-86D2-41084B57F0E3",
-    "D98562CE-21EA-4BD1-BB3F-CF5F0B1D0A82",
-    "l9j4lqcj8k8fqa63t6j0t4sjdk@google.com",
-    "089A4E2C-9E08-41AF-AE75-1392E0D5A809",
-    "980DAB3F-6CE5-4125-BC59-CFBF26B1B3E1",
-    "1E9C1226-0D8E-493B-9F15-435419D58B3A",
-    "llem4i5b9oqppfrm4282imjfss@google.com",
-    "C122CA49-F6F7-4532-A0A4-7ED0EC816492",
-    "F9B45AD4-B60D-4C5F-BEB5-9C1128E3BAE8",
-    "3630C652-17A3-442F-9E2F-25DE5DFBA765",
-    "77796C21-F42E-4A57-B363-8F490E39D93D",
-    "u50a408t8a6sar1iophf6kiuoc@google.com",
-    "4D17FC4B-94CE-49D5-89F7-CB649D379A52"
+    "31DBEDF4-31DD-48C5-B773-83C9A9C03FB4",
+    "51FFA2AF-81B7-46BD-9190-4D7B22ADC519",
+    "A7E1DD27-3EC9-48A3-9B05-36C2221BD796",
+    "8969B89C-C518-4DC0-820E-4F9436B221DA",
+    "30276A6D-B094-41AF-BA49-82B185E7726F",
+    "D69E091F-EA33-4757-9A03-9FB5D6D484C3",
+    "88DC6601-0701-49D1-B2C3-24210839B60B",
+    "F2B2318C-9D90-4706-BB17-9BE7CAB037E3",
+    "53CD2892-AEEF-4DBA-88A7-12AD241BDEC3",
+    "C7CF70E6-FDEE-4D9E-8254-C969DD6F482D",
+    "D5F18539-0260-4B43-989B-DF49E558FBF8",
+    "ABF705C9-CC2E-4C9A-AC0A-5703146F0FFA",
+    "504E88AD-8EFD-4DAF-B0E5-8D95CC0D3CB6",
+    "DA8A7698-25F4-4B7D-9B7F-45E20B958478",
+    "076CEE65-90FC-4E52-AF47-7D83CC03C144",
+    "BFA9F5E3-5007-4460-9A14-5999B11ABA55",
+    "97D0D38E-6E6B-41A6-AFFD-9E063B79D688",
+    "31FDFC18-ABDD-406D-B742-113F6747AD88",
+    "0AE8410B-D2BB-484F-9A40-734FBE0CC0F0",
+    "281E396C-65C4-4C8B-94E6-448998C1C0A0",
+    "276680D4-C952-4627-83F4-62FB54F1A6FB",
+    "9E1BBD0B-4081-4CE3-B5D6-8E8527C4E7BC",
+    "47D22ECC-C4A7-447E-A302-90C20E9E9129",
+    "691B37A2-E246-441A-AD75-D1CA99151E80",
+    "9C721AEF-EC88-42C7-BE86-DF2F5F2B7C02",
+    "9463ECB2-8B86-428F-9AB8-4F9601B367D9",
+    "6336F52C-EC67-4A6E-B0FE-50FA5634F6D8",
+    "65EBC332-A78F-4F73-800B-47D250E9BB77",
+    "42992C03-E825-43A8-A309-9022E4968598",
+    "5170BF70-1AFD-4402-B1B1-D4DF797E6C41",
+    "B6DDADD8-5B3F-480D-ACE1-CFB0DAD0045B",
+    "6D34319A-FE93-44EF-956B-7BF45452C839",
+    "6BB17093-1AC2-49FA-B52B-1FF77D183808",
+    "242859E8-3C74-4E6A-BC1F-8339BFF53327",
+    "3391ED1E-D4EB-4D0D-9B64-0E6E72774B15",
+    "AE2D5F7C-F91B-44D2-8BE6-2617DD0E063A",
+    "E1C6219F-8E76-418C-8B9A-7B21A37FCB76",
+    "52F7C282-0490-4C1E-91DB-CCCB66CBA751",
+    "ECDB38B4-5357-48A7-9B47-3F2760398848",
+    "51D0BCB3-C76C-4591-8925-A9437662358E",
+    "62A3A891-2E44-47CF-B726-3687A9E9F615",
+    "551F9A0D-1320-447D-B67B-BF2851323782",
+    "8F1FE012-309D-4620-BBF3-D40EF844B222",
+    "9E0D5B6E-E67A-46C4-8926-CFCEDB172E40",
+    "9E8E6D80-D7CF-436F-B8C0-C827B3E8EEDC",
+    "6A940F46-F199-421E-BEFC-C4F0A8F1CAF3",
+    "0A6677B3-987F-446D-A82D-B60B79F4FA9A",
+    "AF314E27-7135-4971-A556-A976220CE5E7",
+    "0954B32F-7B6A-4513-957D-AE57EC4CA77D",
+    "D1D15C9B-42F7-4E05-A933-7FBE1CE0BFB8",
+    "E2B47DAF-999B-4613-8708-5B00689473F3",
+    "EAD5FDCE-A624-496F-A1F6-24C6714CA8AC",
+    "505DFA8D-6A9F-4FEC-9B9D-37A6B7BB5C9A",
+    "F0B0A3E3-19FC-4047-BD72-7FC31C16B592",
+    "A9ADC66E-BF8E-4738-BC6E-799C720562BF",
+    "B53F847C-9DBE-43EE-8E4D-7FFB54812F19",
+    "031595A7-5DEE-4842-A96C-64AD54A08B28",
+    "A90EE7DF-648F-4D59-8263-D9F5BC77C2EF",
+    "AEE2632F-6F84-453B-A2DC-CFD2CEAAF90C",
+    "E10B71AD-6892-4435-B0EA-156903D8D350",
+    "2F22E100-76E7-4CD3-825B-EA2F539D75F2",
+    "584BBE87-FA13-4661-8515-AF1191FA492C"
   ],
   "excludedRules": [],
   "virtualEvents": [
@@ -751,7 +826,7 @@
       "roomTags": [
         "balloon"
       ],
-      "summary": "熱氣球 Airbnb HMT8C2X55P",
+      "summary": "熱氣球房 Airbnb HMT8C2X55P",
       "nights": 1,
       "amount": 5746,
       "label": "Airbnb 正式淨額",
@@ -763,7 +838,7 @@
       "roomTags": [
         "cloud"
       ],
-      "summary": "雲朵 Airbnb HMXFH8F2C4",
+      "summary": "雲朵房 Airbnb HMXFH8F2C4",
       "nights": 1,
       "amount": 3920.8,
       "label": "Airbnb 正式淨額",
@@ -775,7 +850,7 @@
       "roomTags": [
         "cloud"
       ],
-      "summary": "雲朵 Airbnb HMPBTQ3JJ8",
+      "summary": "雲朵房 Airbnb HMPBTQ3JJ8",
       "nights": 2,
       "amount": 9802,
       "label": "Airbnb 正式淨額",
@@ -787,7 +862,7 @@
       "roomTags": [
         "balloon"
       ],
-      "summary": "熱氣球 Airbnb HM3J5JXFRH",
+      "summary": "熱氣球房 Airbnb HM3J5JXFRH",
       "nights": 1,
       "amount": 4884.1,
       "label": "Airbnb 正式淨額",
@@ -799,7 +874,7 @@
       "roomTags": [
         "balloon"
       ],
-      "summary": "熱氣球 Airbnb HMZRE9WJZM",
+      "summary": "熱氣球房 Airbnb HMZRE9WJZM",
       "nights": 1,
       "amount": 4901,
       "label": "Airbnb 正式淨額",
@@ -811,7 +886,7 @@
       "roomTags": [
         "cloud"
       ],
-      "summary": "雲朵 Airbnb HMDT9P44W9",
+      "summary": "雲朵房 Airbnb HMDT9P44W9",
       "nights": 1,
       "amount": 4901,
       "label": "Airbnb 正式淨額",
@@ -823,7 +898,7 @@
       "roomTags": [
         "cloud"
       ],
-      "summary": "雲朵 Airbnb HMWKN23K5Y",
+      "summary": "雲朵房 Airbnb HMWKN23K5Y",
       "nights": 1,
       "amount": 5746,
       "label": "Airbnb 正式淨額",
@@ -835,7 +910,7 @@
       "roomTags": [
         "balloon"
       ],
-      "summary": "熱氣球 Airbnb HMNSFDC8M3",
+      "summary": "熱氣球房 Airbnb HMNSFDC8M3",
       "nights": 1,
       "amount": 4869.4,
       "label": "Airbnb 正式淨額",
@@ -847,7 +922,7 @@
       "roomTags": [
         "cloud"
       ],
-      "summary": "雲朵 Airbnb HM9FPXCDCJ",
+      "summary": "雲朵房 Airbnb HM9FPXCDCJ",
       "nights": 1,
       "amount": 5626,
       "label": "Airbnb 正式淨額",
@@ -859,7 +934,7 @@
       "roomTags": [
         "cloud"
       ],
-      "summary": "雲朵 Airbnb HM3WZ2ZN3C",
+      "summary": "雲朵房 Airbnb HM3WZ2ZN3C",
       "nights": 1,
       "amount": 3658.85,
       "label": "Airbnb 正式淨額",
@@ -871,7 +946,7 @@
       "roomTags": [
         "balloon"
       ],
-      "summary": "熱氣球 Airbnb HMS35FRR3K",
+      "summary": "熱氣球房 Airbnb HMS35FRR3K",
       "nights": 1,
       "amount": 4165.85,
       "label": "Airbnb 正式淨額",
@@ -883,7 +958,7 @@
       "roomTags": [
         "balloon"
       ],
-      "summary": "熱氣球 Airbnb HMHSNXMZXF",
+      "summary": "熱氣球房 Airbnb HMHSNXMZXF",
       "nights": 1,
       "amount": 3395,
       "label": "Airbnb 正式淨額",
@@ -895,7 +970,7 @@
       "roomTags": [
         "cloud"
       ],
-      "summary": "雲朵 Airbnb HMRW4XTTFM",
+      "summary": "雲朵房 Airbnb HMRW4XTTFM",
       "nights": 1,
       "amount": 5626,
       "label": "Airbnb 正式淨額",
@@ -907,7 +982,7 @@
       "roomTags": [
         "balloon"
       ],
-      "summary": "熱氣球 Airbnb HM8NHTXBRH",
+      "summary": "熱氣球房 Airbnb HM8NHTXBRH",
       "nights": 1,
       "amount": 5626,
       "label": "Airbnb 正式淨額",
@@ -919,7 +994,7 @@
       "roomTags": [
         "cloud"
       ],
-      "summary": "雲朵 Airbnb HM5QKYRMZ2",
+      "summary": "雲朵房 Airbnb HM5QKYRMZ2",
       "nights": 1,
       "amount": 500,
       "label": "Airbnb 正式淨額",
@@ -931,7 +1006,7 @@
       "roomTags": [
         "balloon"
       ],
-      "summary": "熱氣球 Airbnb HM9SM8JR2H",
+      "summary": "熱氣球房 Airbnb HM9SM8JR2H",
       "nights": 1,
       "amount": 3395,
       "label": "Airbnb 正式淨額",
@@ -943,7 +1018,7 @@
       "roomTags": [
         "cloud"
       ],
-      "summary": "雲朵 Airbnb HMPA8HKDCA",
+      "summary": "雲朵房 Airbnb HMPA8HKDCA",
       "nights": 1,
       "amount": 3395.21,
       "label": "Airbnb 正式淨額",
@@ -955,7 +1030,7 @@
       "roomTags": [
         "balloon"
       ],
-      "summary": "熱氣球 Airbnb HMJB9EDCSD",
+      "summary": "熱氣球房 Airbnb HMJB9EDCSD",
       "nights": 1,
       "amount": 5626,
       "label": "Airbnb 正式淨額",
@@ -967,7 +1042,7 @@
       "roomTags": [
         "cloud"
       ],
-      "summary": "雲朵 Airbnb HMF485BHAJ",
+      "summary": "雲朵房 Airbnb HMF485BHAJ",
       "nights": 1,
       "amount": 3055.69,
       "label": "Airbnb 正式淨額",
@@ -979,7 +1054,7 @@
       "roomTags": [
         "cloud"
       ],
-      "summary": "雲朵 Airbnb HMEMS94DCZ",
+      "summary": "雲朵房 Airbnb HMEMS94DCZ",
       "nights": 1,
       "amount": 2716.17,
       "label": "Airbnb 正式淨額",
@@ -991,7 +1066,7 @@
       "roomTags": [
         "cloud"
       ],
-      "summary": "雲朵 Airbnb HM9JFXMERD",
+      "summary": "雲朵房 Airbnb HM9JFXMERD",
       "nights": 1,
       "amount": 4122.5,
       "label": "Airbnb 正式淨額",
@@ -1003,7 +1078,7 @@
       "roomTags": [
         "cloud"
       ],
-      "summary": "雲朵 Airbnb HMJ3RW2DZ5",
+      "summary": "雲朵房 Airbnb HMJ3RW2DZ5",
       "nights": 1,
       "amount": 3055.5,
       "label": "Airbnb 正式淨額",
@@ -1015,7 +1090,7 @@
       "roomTags": [
         "balloon"
       ],
-      "summary": "熱氣球 Airbnb HM8NKMAJRH",
+      "summary": "熱氣球房 Airbnb HM8NKMAJRH",
       "nights": 1,
       "amount": 2395,
       "label": "Airbnb 正式淨額",
@@ -1027,7 +1102,7 @@
       "roomTags": [
         "cloud"
       ],
-      "summary": "雲朵 Airbnb HMCBZ8YYYC",
+      "summary": "雲朵房 Airbnb HMCBZ8YYYC",
       "nights": 1,
       "amount": 2716,
       "label": "Airbnb 正式淨額",
@@ -1039,7 +1114,7 @@
       "roomTags": [
         "balloon"
       ],
-      "summary": "熱氣球 Airbnb HM5BXD8B43",
+      "summary": "熱氣球房 Airbnb HM5BXD8B43",
       "nights": 1,
       "amount": 4947,
       "label": "Airbnb 正式淨額",
@@ -1051,7 +1126,7 @@
       "roomTags": [
         "cloud"
       ],
-      "summary": "雲朵 Airbnb HMRREJSSQ5",
+      "summary": "雲朵房 Airbnb HMRREJSSQ5",
       "nights": 1,
       "amount": 4947,
       "label": "Airbnb 正式淨額",
@@ -1063,7 +1138,7 @@
       "roomTags": [
         "cloud"
       ],
-      "summary": "雲朵 Airbnb HMRMJWEW3T",
+      "summary": "雲朵房 Airbnb HMRMJWEW3T",
       "nights": 1,
       "amount": 2716,
       "label": "Airbnb 正式淨額",
@@ -1075,7 +1150,7 @@
       "roomTags": [
         "balloon"
       ],
-      "summary": "熱氣球 Airbnb HM2FP2PMWN",
+      "summary": "熱氣球房 Airbnb HM2FP2PMWN",
       "nights": 1,
       "amount": 5044,
       "label": "Airbnb 正式淨額",
@@ -1087,7 +1162,7 @@
       "roomTags": [
         "cloud"
       ],
-      "summary": "雲朵 Airbnb HMWZ82RQ5D",
+      "summary": "雲朵房 Airbnb HMWZ82RQ5D",
       "nights": 1,
       "amount": 5063.4,
       "label": "Airbnb 正式淨額",
@@ -1099,7 +1174,7 @@
       "roomTags": [
         "cloud"
       ],
-      "summary": "雲朵 Airbnb HM8QNJATES",
+      "summary": "雲朵房 Airbnb HM8QNJATES",
       "nights": 1,
       "amount": 2716,
       "label": "Airbnb 正式淨額",
@@ -1111,7 +1186,7 @@
       "roomTags": [
         "balloon"
       ],
-      "summary": "熱氣球 Airbnb HMF8WN58C9",
+      "summary": "熱氣球房 Airbnb HMF8WN58C9",
       "nights": 1,
       "amount": 2716,
       "label": "Airbnb 正式淨額",
@@ -1123,7 +1198,7 @@
       "roomTags": [
         "cloud"
       ],
-      "summary": "雲朵 Airbnb HMK38ZNBBF",
+      "summary": "雲朵房 Airbnb HMK38ZNBBF",
       "nights": 1,
       "amount": 4122.5,
       "label": "Airbnb 正式淨額",
@@ -1135,7 +1210,7 @@
       "roomTags": [
         "cloud"
       ],
-      "summary": "雲朵 Airbnb HMN8H2AZ4X",
+      "summary": "雲朵房 Airbnb HMN8H2AZ4X",
       "nights": 1,
       "amount": 2716,
       "label": "Airbnb 正式淨額",
@@ -1147,7 +1222,7 @@
       "roomTags": [
         "cloud"
       ],
-      "summary": "雲朵 Airbnb HMNZ8THPTD",
+      "summary": "雲朵房 Airbnb HMNZ8THPTD",
       "nights": 1,
       "amount": 3055.5,
       "label": "Airbnb 正式淨額",
@@ -1159,7 +1234,7 @@
       "roomTags": [
         "balloon"
       ],
-      "summary": "熱氣球 Airbnb HMKSDKJ4QF",
+      "summary": "熱氣球房 Airbnb HMKSDKJ4QF",
       "nights": 1,
       "amount": 4947,
       "label": "Airbnb 正式淨額",
@@ -1171,7 +1246,7 @@
       "roomTags": [
         "cloud"
       ],
-      "summary": "雲朵 Airbnb HMH5S3DZ4D",
+      "summary": "雲朵房 Airbnb HMH5S3DZ4D",
       "nights": 1,
       "amount": 2716,
       "label": "Airbnb 正式淨額",
@@ -1183,7 +1258,7 @@
       "roomTags": [
         "cloud"
       ],
-      "summary": "雲朵 Airbnb HM5D5PFPNS",
+      "summary": "雲朵房 Airbnb HM5D5PFPNS",
       "nights": 1,
       "amount": 3298,
       "label": "Airbnb 正式淨額",
@@ -1195,7 +1270,7 @@
       "roomTags": [
         "balloon"
       ],
-      "summary": "熱氣球 Airbnb HMXPKC49YB",
+      "summary": "熱氣球房 Airbnb HMXPKC49YB",
       "nights": 1,
       "amount": 4947,
       "label": "Airbnb 正式淨額",
@@ -1207,7 +1282,7 @@
       "roomTags": [
         "balloon"
       ],
-      "summary": "熱氣球 Airbnb HMCQ2FMYKD",
+      "summary": "熱氣球房 Airbnb HMCQ2FMYKD",
       "nights": 1,
       "amount": 4656,
       "label": "Airbnb 正式淨額",
@@ -1219,7 +1294,7 @@
       "roomTags": [
         "balloon"
       ],
-      "summary": "熱氣球 Agoda 1696644124",
+      "summary": "熱氣球房 Agoda 1696644124",
       "nights": 1,
       "amount": 4080,
       "label": "Agoda 正式淨額",
@@ -1231,7 +1306,7 @@
       "roomTags": [
         "balloon"
       ],
-      "summary": "熱氣球 Agoda 1696645334",
+      "summary": "熱氣球房 Agoda 1696645334",
       "nights": 1,
       "amount": 4080,
       "label": "Agoda 正式淨額",
@@ -1243,7 +1318,7 @@
       "roomTags": [
         "balloon"
       ],
-      "summary": "熱氣球 Agoda 1699075837",
+      "summary": "熱氣球房 Agoda 1699075837",
       "nights": 1,
       "amount": 4080,
       "label": "Agoda 正式淨額",
@@ -1255,7 +1330,7 @@
       "roomTags": [
         "balloon"
       ],
-      "summary": "熱氣球 Agoda 1700826412",
+      "summary": "熱氣球房 Agoda 1700826412",
       "nights": 1,
       "amount": 4080,
       "label": "Agoda 正式淨額",
@@ -1267,7 +1342,7 @@
       "roomTags": [
         "balloon"
       ],
-      "summary": "熱氣球 Agoda 1701760034",
+      "summary": "熱氣球房 Agoda 1701760034",
       "nights": 1,
       "amount": 4080,
       "label": "Agoda 正式淨額",
@@ -1279,7 +1354,7 @@
       "roomTags": [
         "balloon"
       ],
-      "summary": "熱氣球 Agoda 1703945440",
+      "summary": "熱氣球房 Agoda 1703945440",
       "nights": 1,
       "amount": 4080,
       "label": "Agoda 正式淨額",
@@ -1291,7 +1366,7 @@
       "roomTags": [
         "balloon"
       ],
-      "summary": "熱氣球 Agoda 1704436570",
+      "summary": "熱氣球房 Agoda 1704436570",
       "nights": 1,
       "amount": 4080,
       "label": "Agoda 正式淨額",
@@ -1303,7 +1378,7 @@
       "roomTags": [
         "balloon"
       ],
-      "summary": "熱氣球 Agoda 1704632615",
+      "summary": "熱氣球房 Agoda 1704632615",
       "nights": 1,
       "amount": 4080,
       "label": "Agoda 正式淨額",
@@ -1315,7 +1390,7 @@
       "roomTags": [
         "balloon"
       ],
-      "summary": "熱氣球 Agoda 1705675758",
+      "summary": "熱氣球房 Agoda 1705675758",
       "nights": 1,
       "amount": 4080,
       "label": "Agoda 正式淨額",
@@ -1327,7 +1402,7 @@
       "roomTags": [
         "balloon"
       ],
-      "summary": "熱氣球 Agoda 1708702935",
+      "summary": "熱氣球房 Agoda 1708702935",
       "nights": 1,
       "amount": 4080,
       "label": "Agoda 正式淨額",
@@ -1339,7 +1414,7 @@
       "roomTags": [
         "balloon"
       ],
-      "summary": "熱氣球 Agoda 1709455231",
+      "summary": "熱氣球房 Agoda 1709455231",
       "nights": 1,
       "amount": 4080,
       "label": "Agoda 正式淨額",
@@ -1351,7 +1426,7 @@
       "roomTags": [
         "balloon"
       ],
-      "summary": "熱氣球 Agoda 1710316658",
+      "summary": "熱氣球房 Agoda 1710316658",
       "nights": 1,
       "amount": 4080,
       "label": "Agoda 正式淨額",
@@ -1363,7 +1438,7 @@
       "roomTags": [
         "balloon"
       ],
-      "summary": "熱氣球 Agoda 1712475999",
+      "summary": "熱氣球房 Agoda 1712475999",
       "nights": 1,
       "amount": 4080,
       "label": "Agoda 正式淨額",
@@ -1375,7 +1450,7 @@
       "roomTags": [
         "balloon"
       ],
-      "summary": "熱氣球 Agoda 1714511710",
+      "summary": "熱氣球房 Agoda 1714511710",
       "nights": 1,
       "amount": 4080,
       "label": "Agoda 正式淨額",
@@ -1387,7 +1462,7 @@
       "roomTags": [
         "balloon"
       ],
-      "summary": "熱氣球 Agoda 1715892754",
+      "summary": "熱氣球房 Agoda 1715892754",
       "nights": 1,
       "amount": 4080,
       "label": "Agoda 正式淨額",
@@ -1399,7 +1474,7 @@
       "roomTags": [
         "balloon"
       ],
-      "summary": "熱氣球 Agoda 1718054329",
+      "summary": "熱氣球房 Agoda 1718054329",
       "nights": 1,
       "amount": 4930,
       "label": "Agoda 正式淨額",
@@ -1411,7 +1486,7 @@
       "roomTags": [
         "balloon"
       ],
-      "summary": "熱氣球 Agoda 1722792937",
+      "summary": "熱氣球房 Agoda 1722792937",
       "nights": 2,
       "amount": 9860,
       "label": "Agoda 正式淨額",
@@ -1423,7 +1498,7 @@
       "roomTags": [
         "balloon"
       ],
-      "summary": "熱氣球 Agoda 1725743714",
+      "summary": "熱氣球房 Agoda 1725743714",
       "nights": 1,
       "amount": 4930,
       "label": "Agoda 正式淨額",
@@ -1435,7 +1510,7 @@
       "roomTags": [
         "balloon"
       ],
-      "summary": "熱氣球 Agoda 1729502532",
+      "summary": "熱氣球房 Agoda 1729502532",
       "nights": 1,
       "amount": 4930,
       "label": "Agoda 正式淨額",
@@ -1447,7 +1522,7 @@
       "roomTags": [
         "balloon"
       ],
-      "summary": "熱氣球 Agoda 1744476370",
+      "summary": "熱氣球房 Agoda 1744476370",
       "nights": 1,
       "amount": 4930,
       "label": "Agoda 正式淨額",
@@ -1459,7 +1534,7 @@
       "roomTags": [
         "balloon"
       ],
-      "summary": "熱氣球 Agoda 1744335233",
+      "summary": "熱氣球房 Agoda 1744335233",
       "nights": 1,
       "amount": 4930,
       "label": "Agoda 正式淨額",
@@ -1471,7 +1546,7 @@
       "roomTags": [
         "balloon"
       ],
-      "summary": "熱氣球 Agoda 1745747451",
+      "summary": "熱氣球房 Agoda 1745747451",
       "nights": 1,
       "amount": 4930,
       "label": "Agoda 正式淨額",
@@ -1483,7 +1558,7 @@
       "roomTags": [
         "balloon"
       ],
-      "summary": "熱氣球 Agoda 1748362385",
+      "summary": "熱氣球房 Agoda 1748362385",
       "nights": 1,
       "amount": 4930,
       "label": "Agoda 正式淨額",
@@ -1495,7 +1570,7 @@
       "roomTags": [
         "balloon"
       ],
-      "summary": "熱氣球 Agoda 1748375596",
+      "summary": "熱氣球房 Agoda 1748375596",
       "nights": 1,
       "amount": 4930,
       "label": "Agoda 正式淨額",
@@ -1507,7 +1582,7 @@
       "roomTags": [
         "balloon"
       ],
-      "summary": "熱氣球 Agoda 1749694759",
+      "summary": "熱氣球房 Agoda 1749694759",
       "nights": 1,
       "amount": 4930,
       "label": "Agoda 正式淨額",
@@ -1519,7 +1594,7 @@
       "roomTags": [
         "balloon"
       ],
-      "summary": "熱氣球 Agoda 1753733881",
+      "summary": "熱氣球房 Agoda 1753733881",
       "nights": 1,
       "amount": 4930,
       "label": "Agoda 正式淨額",
@@ -1531,7 +1606,7 @@
       "roomTags": [
         "balloon"
       ],
-      "summary": "熱氣球 Agoda 1757523415",
+      "summary": "熱氣球房 Agoda 1757523415",
       "nights": 1,
       "amount": 4930,
       "label": "Agoda 正式淨額",
@@ -1543,7 +1618,7 @@
       "roomTags": [
         "balloon"
       ],
-      "summary": "熱氣球 Agoda 1771867235",
+      "summary": "熱氣球房 Agoda 1771867235",
       "nights": 1,
       "amount": 4930,
       "label": "Agoda 正式淨額",
@@ -1555,7 +1630,7 @@
       "roomTags": [
         "balloon"
       ],
-      "summary": "熱氣球 Agoda 1786430973",
+      "summary": "熱氣球房 Agoda 1786430973",
       "nights": 1,
       "amount": 5780,
       "label": "Agoda 正式淨額",
@@ -1567,7 +1642,7 @@
       "roomTags": [
         "cloud"
       ],
-      "summary": "雲朵 Agoda 1726378883",
+      "summary": "雲朵房 Agoda 1726378883",
       "nights": 1,
       "amount": 4080,
       "label": "Agoda 正式淨額",
@@ -1579,7 +1654,7 @@
       "roomTags": [
         "cloud"
       ],
-      "summary": "雲朵 Agoda 1726526630",
+      "summary": "雲朵房 Agoda 1726526630",
       "nights": 1,
       "amount": 4080,
       "label": "Agoda 正式淨額",
@@ -1591,7 +1666,7 @@
       "roomTags": [
         "cloud"
       ],
-      "summary": "雲朵 Agoda 1727456363",
+      "summary": "雲朵房 Agoda 1727456363",
       "nights": 1,
       "amount": 4080,
       "label": "Agoda 正式淨額",
@@ -1603,7 +1678,7 @@
       "roomTags": [
         "cloud"
       ],
-      "summary": "雲朵 Agoda 1728562829",
+      "summary": "雲朵房 Agoda 1728562829",
       "nights": 1,
       "amount": 4080,
       "label": "Agoda 正式淨額",
@@ -1615,7 +1690,7 @@
       "roomTags": [
         "cloud"
       ],
-      "summary": "雲朵 Agoda 1728827311",
+      "summary": "雲朵房 Agoda 1728827311",
       "nights": 1,
       "amount": 4080,
       "label": "Agoda 正式淨額",
@@ -1627,7 +1702,7 @@
       "roomTags": [
         "cloud"
       ],
-      "summary": "雲朵 Agoda 1729504369",
+      "summary": "雲朵房 Agoda 1729504369",
       "nights": 1,
       "amount": 4080,
       "label": "Agoda 正式淨額",
@@ -1639,7 +1714,7 @@
       "roomTags": [
         "cloud"
       ],
-      "summary": "雲朵 Agoda 1730436400",
+      "summary": "雲朵房 Agoda 1730436400",
       "nights": 1,
       "amount": 4080,
       "label": "Agoda 正式淨額",
@@ -1651,7 +1726,7 @@
       "roomTags": [
         "cloud"
       ],
-      "summary": "雲朵 Agoda 1732369378",
+      "summary": "雲朵房 Agoda 1732369378",
       "nights": 1,
       "amount": 4080,
       "label": "Agoda 正式淨額",
@@ -1663,7 +1738,7 @@
       "roomTags": [
         "cloud"
       ],
-      "summary": "雲朵 Agoda 1733933843",
+      "summary": "雲朵房 Agoda 1733933843",
       "nights": 1,
       "amount": 4080,
       "label": "Agoda 正式淨額",
@@ -1675,7 +1750,7 @@
       "roomTags": [
         "cloud"
       ],
-      "summary": "雲朵 Agoda 1735467341",
+      "summary": "雲朵房 Agoda 1735467341",
       "nights": 1,
       "amount": 4080,
       "label": "Agoda 正式淨額",
@@ -1687,7 +1762,7 @@
       "roomTags": [
         "cloud"
       ],
-      "summary": "雲朵 Agoda 1739121397",
+      "summary": "雲朵房 Agoda 1739121397",
       "nights": 1,
       "amount": 4930,
       "label": "Agoda 正式淨額",
@@ -1699,7 +1774,7 @@
       "roomTags": [
         "cloud"
       ],
-      "summary": "雲朵 Agoda 1740218749",
+      "summary": "雲朵房 Agoda 1740218749",
       "nights": 1,
       "amount": 4930,
       "label": "Agoda 正式淨額",
@@ -1711,7 +1786,7 @@
       "roomTags": [
         "cloud"
       ],
-      "summary": "雲朵 Agoda 1740555624",
+      "summary": "雲朵房 Agoda 1740555624",
       "nights": 1,
       "amount": 4930,
       "label": "Agoda 正式淨額",
@@ -1723,7 +1798,7 @@
       "roomTags": [
         "cloud"
       ],
-      "summary": "雲朵 Agoda 1745262094",
+      "summary": "雲朵房 Agoda 1745262094",
       "nights": 1,
       "amount": 4930,
       "label": "Agoda 正式淨額",
@@ -1735,7 +1810,7 @@
       "roomTags": [
         "cloud"
       ],
-      "summary": "雲朵 Agoda 1746040716",
+      "summary": "雲朵房 Agoda 1746040716",
       "nights": 1,
       "amount": 4930,
       "label": "Agoda 正式淨額",
@@ -1747,7 +1822,7 @@
       "roomTags": [
         "cloud"
       ],
-      "summary": "雲朵 Agoda 1747915000",
+      "summary": "雲朵房 Agoda 1747915000",
       "nights": 1,
       "amount": 4930,
       "label": "Agoda 正式淨額",
@@ -1759,7 +1834,7 @@
       "roomTags": [
         "cloud"
       ],
-      "summary": "雲朵 Agoda 1748206268",
+      "summary": "雲朵房 Agoda 1748206268",
       "nights": 1,
       "amount": 4930,
       "label": "Agoda 正式淨額",
@@ -1771,7 +1846,7 @@
       "roomTags": [
         "cloud"
       ],
-      "summary": "雲朵 Agoda 1749048338",
+      "summary": "雲朵房 Agoda 1749048338",
       "nights": 1,
       "amount": 4930,
       "label": "Agoda 正式淨額",
@@ -1783,7 +1858,7 @@
       "roomTags": [
         "cloud"
       ],
-      "summary": "雲朵 Agoda 1752946839",
+      "summary": "雲朵房 Agoda 1752946839",
       "nights": 1,
       "amount": 4930,
       "label": "Agoda 正式淨額",
@@ -1795,7 +1870,7 @@
       "roomTags": [
         "cloud"
       ],
-      "summary": "雲朵 Agoda 1753837172",
+      "summary": "雲朵房 Agoda 1753837172",
       "nights": 1,
       "amount": 4930,
       "label": "Agoda 正式淨額",
@@ -1807,7 +1882,7 @@
       "roomTags": [
         "cloud"
       ],
-      "summary": "雲朵 Agoda 1768510587",
+      "summary": "雲朵房 Agoda 1768510587",
       "nights": 1,
       "amount": 4930,
       "label": "Agoda 正式淨額",
@@ -1819,7 +1894,7 @@
       "roomTags": [
         "cloud"
       ],
-      "summary": "雲朵 Agoda 1769354709",
+      "summary": "雲朵房 Agoda 1769354709",
       "nights": 1,
       "amount": 4930,
       "label": "Agoda 正式淨額",
@@ -1831,7 +1906,7 @@
       "roomTags": [
         "cloud"
       ],
-      "summary": "雲朵 Agoda 1770672382",
+      "summary": "雲朵房 Agoda 1770672382",
       "nights": 1,
       "amount": 4930,
       "label": "Agoda 正式淨額",
@@ -1843,7 +1918,7 @@
       "roomTags": [
         "cloud"
       ],
-      "summary": "雲朵 Agoda 1781108934",
+      "summary": "雲朵房 Agoda 1781108934",
       "nights": 1,
       "amount": 4930,
       "label": "Agoda 正式淨額",
@@ -1855,11 +1930,857 @@
       "roomTags": [
         "cloud"
       ],
-      "summary": "雲朵 Agoda 1783462708",
+      "summary": "雲朵房 Agoda 1783462708",
       "nights": 1,
       "amount": 4930,
       "label": "Agoda 正式淨額",
       "bookingSource": "Agoda"
+    },
+    {
+      "id": "A4E224D7-36C3-4A74-B57E-D29CC69A6AB8",
+      "checkInYmd": "2026-04-02",
+      "roomTags": [
+        "balloon"
+      ],
+      "summary": "熱氣球 2大1狗 施宇航 私定",
+      "nights": 1,
+      "amount": 3800,
+      "label": "行事曆 App 私下接單實收",
+      "bookingSource": "私下接單"
+    },
+    {
+      "id": "4C16C16B-3192-468C-A7B5-21C988C42C96",
+      "checkInYmd": "2026-04-02",
+      "roomTags": [
+        "cloud"
+      ],
+      "summary": "雲朵房6大兩晚 露營區 品羚",
+      "nights": 1,
+      "amount": 7600,
+      "label": "行事曆 App 私下接單實收",
+      "bookingSource": "私下接單"
+    },
+    {
+      "id": "494A8FF4-49DD-41DB-9D37-39D401AFD176",
+      "checkInYmd": "2026-04-18",
+      "roomTags": [
+        "cloud"
+      ],
+      "summary": "雲朵房露營區劉承侑",
+      "nights": 1,
+      "amount": 4800,
+      "label": "行事曆 App 私下接單實收",
+      "bookingSource": "私下接單"
+    },
+    {
+      "id": "B492B0C5-A4B5-4FA4-A213-F11E0B56804C",
+      "checkInYmd": "2026-05-01",
+      "roomTags": [
+        "cloud",
+        "balloon"
+      ],
+      "summary": "包場露營區 惠茹🌹 熱氣球 雲朵",
+      "nights": 1,
+      "amount": 9800,
+      "label": "行事曆 App 私下接單實收",
+      "bookingSource": "私下接單"
+    },
+    {
+      "id": "A040E051-BEB8-4A8B-8DE8-2F58A0698E72",
+      "checkInYmd": "2026-05-02",
+      "roomTags": [
+        "cloud",
+        "balloon"
+      ],
+      "summary": "包場 熱氣球房雲朵房 露營區Lu’s",
+      "nights": 1,
+      "amount": 9800,
+      "label": "行事曆 App 私下接單實收",
+      "bookingSource": "私下接單"
+    },
+    {
+      "id": "0D6F6FB5-96B4-47A5-8286-ECE49BAC081A",
+      "checkInYmd": "2026-05-09",
+      "roomTags": [
+        "cloud",
+        "balloon"
+      ],
+      "summary": "志成2帳包場 熱氣球 雲朵",
+      "nights": 1,
+      "amount": 10000,
+      "label": "行事曆 App 私下接單實收",
+      "bookingSource": "私下接單"
+    },
+    {
+      "id": "DD270DE9-149F-4962-A801-52F79934E34F",
+      "checkInYmd": "2026-05-10",
+      "roomTags": [
+        "balloon"
+      ],
+      "summary": "熱氣球 私廚按摩",
+      "nights": 1,
+      "amount": 6090,
+      "label": "行事曆 App 私下接單實收",
+      "bookingSource": "私下接單"
+    },
+    {
+      "id": "2BA10B35-9273-4266-8D57-F8A1BAA606FA",
+      "checkInYmd": "2026-05-14",
+      "roomTags": [
+        "balloon"
+      ],
+      "summary": "熱氣球房平日兩人",
+      "nights": 1,
+      "amount": 3800,
+      "label": "行事曆 App 私下接單實收",
+      "bookingSource": "私下接單"
+    },
+    {
+      "id": "6A75EACE-4DE6-4AB7-906E-A36AD2B6C875",
+      "checkInYmd": "2026-05-16",
+      "roomTags": [
+        "cloud"
+      ],
+      "summary": "雲朵房2大3小",
+      "nights": 1,
+      "amount": 5000,
+      "label": "行事曆 App 私下接單實收",
+      "bookingSource": "私下接單"
+    },
+    {
+      "id": "892828C6-38E7-4C4E-8029-8AB226C15580",
+      "checkInYmd": "2026-05-21",
+      "roomTags": [
+        "cloud"
+      ],
+      "summary": "雲朵房2人 平常日方案",
+      "nights": 1,
+      "amount": 3800,
+      "label": "行事曆 App 私下接單實收",
+      "bookingSource": "私下接單"
+    },
+    {
+      "id": "ACE9AA9F-CDA3-46F1-9DFF-AF057396CD7B",
+      "checkInYmd": "2026-05-22",
+      "roomTags": [
+        "balloon"
+      ],
+      "summary": "露營區熱氣球 淑君 私下 五人包場",
+      "nights": 1,
+      "amount": 3400,
+      "label": "行事曆 App 私下接單實收",
+      "bookingSource": "私下接單"
+    },
+    {
+      "id": "AC730BF3-9EDE-460D-B5CF-2C8BC851F76D",
+      "checkInYmd": "2026-05-23",
+      "roomTags": [
+        "balloon"
+      ],
+      "summary": "熱氣球 Emma Chien露營區",
+      "nights": 1,
+      "amount": 5800,
+      "label": "行事曆 App 私下接單實收",
+      "bookingSource": "私下接單"
+    },
+    {
+      "id": "37CDDC55-7E00-4BA1-A96A-BDAFC3FF5AC8",
+      "checkInYmd": "2026-05-30",
+      "roomTags": [
+        "cloud"
+      ],
+      "summary": "雲朵房Kao露營區",
+      "nights": 1,
+      "amount": 4800,
+      "label": "行事曆 App 私下接單實收",
+      "bookingSource": "私下接單"
+    },
+    {
+      "id": "F2304174-7842-4183-994C-C58A5EA04648",
+      "checkInYmd": "2026-06-19",
+      "roomTags": [
+        "balloon"
+      ],
+      "summary": "熱氣球5 露營區 佳燁-黃怡甄",
+      "nights": 1,
+      "amount": 4800,
+      "label": "行事曆 App 私下接單實收",
+      "bookingSource": "私下接單"
+    },
+    {
+      "id": "88890EA5-D897-4CF6-B0F0-A370C6742A43",
+      "checkInYmd": "2026-06-22",
+      "roomTags": [
+        "cloud",
+        "balloon"
+      ],
+      "summary": "熱氣球 雲朵房 包場露營區 Sam同事Yumi❤️",
+      "nights": 1,
+      "amount": 5600,
+      "label": "行事曆 App 私下接單實收",
+      "bookingSource": "私下接單"
+    },
+    {
+      "id": "1425CA02-2B4F-4223-A944-4AE3402EEBA6-15",
+      "checkInYmd": "2026-07-03",
+      "roomTags": [
+        "cloud",
+        "balloon"
+      ],
+      "summary": "熱氣球房 露營區求婚 銘（熱氣球房兩晚）",
+      "nights": 1,
+      "amount": 9600,
+      "label": "行事曆 App 私下接單實收",
+      "bookingSource": "私下接單"
+    },
+    {
+      "id": "1425CA02-2B4F-4223-A944-4AE3402EEBA6-16",
+      "checkInYmd": "2026-07-03",
+      "roomTags": [
+        "cloud",
+        "balloon"
+      ],
+      "summary": "熱氣球房 露營區求婚 銘（雲朵房一晚）",
+      "nights": 1,
+      "amount": 4800,
+      "label": "行事曆 App 私下接單實收",
+      "bookingSource": "私下接單"
+    },
+    {
+      "id": "5E9E751B-B87C-4EAD-9C77-8A4C66B1DF8D",
+      "checkInYmd": "2026-07-17",
+      "roomTags": [
+        "balloon"
+      ],
+      "summary": "熱氣球私訂 2黃彥蓉",
+      "nights": 1,
+      "amount": 5000,
+      "label": "行事曆 App 私下接單實收",
+      "bookingSource": "私下接單"
+    },
+    {
+      "id": "165BD415-18FF-4D3C-8DF1-FB8A315A0413",
+      "checkInYmd": "2026-08-02",
+      "roomTags": [
+        "cloud",
+        "balloon"
+      ],
+      "summary": "露營區包場 熱氣球5人 雲朵4人 Queena（品惟.文智媽咪）",
+      "nights": 1,
+      "amount": 19600,
+      "label": "行事曆 App 私下接單實收",
+      "bookingSource": "私下接單"
+    },
+    {
+      "id": "5E847E8D-946C-409A-B887-CB44ECF235AF",
+      "checkInYmd": "2026-08-07",
+      "roomTags": [
+        "cloud",
+        "balloon"
+      ],
+      "summary": "露營區包場熱氣球5人雲朵5人 shmily 私訂",
+      "nights": 1,
+      "amount": 16840,
+      "label": "行事曆 App 私下接單實收",
+      "bookingSource": "私下接單"
+    },
+    {
+      "id": "1D6059E4-D064-4133-95DA-042B91A03555",
+      "checkInYmd": "2026-08-09",
+      "roomTags": [
+        "cloud",
+        "balloon"
+      ],
+      "summary": "露營區包場+攝影 芮 私訂 熱氣球4人 雲朵3人",
+      "nights": 1,
+      "amount": 13400,
+      "label": "行事曆 App 私下接單實收",
+      "bookingSource": "私下接單"
+    },
+    {
+      "id": "AC8600AB-1B19-4687-A777-413529C0D8E8",
+      "checkInYmd": "2026-08-10",
+      "roomTags": [
+        "cloud",
+        "balloon"
+      ],
+      "summary": "露營區包場𝒫𝑒𝑔𝑔𝓎❥ 平日一帳篷包場 熱氣球雲朵",
+      "nights": 1,
+      "amount": 5800,
+      "label": "行事曆 App 私下接單實收",
+      "bookingSource": "私下接單"
+    },
+    {
+      "id": "DB55D144-696E-4BD5-9413-1C5C13799B10",
+      "checkInYmd": "2026-08-12",
+      "roomTags": [
+        "balloon"
+      ],
+      "summary": "熱氣球2晚6人私定 Chu n z",
+      "nights": 1,
+      "amount": 9000,
+      "label": "行事曆 App 私下接單實收",
+      "bookingSource": "私下接單"
+    },
+    {
+      "id": "8BBD535A-76CC-4D32-91A8-DA33B55E16E3",
+      "checkInYmd": "2026-08-14",
+      "roomTags": [
+        "balloon"
+      ],
+      "summary": "熱氣球5人 私訂 靖豪Burnett",
+      "nights": 1,
+      "amount": 5000,
+      "label": "行事曆 App 私下接單實收",
+      "bookingSource": "私下接單"
+    },
+    {
+      "id": "A9100789-8040-4E65-AFD7-8825F85DA5B6",
+      "checkInYmd": "2026-08-15",
+      "roomTags": [
+        "balloon"
+      ],
+      "summary": "熱氣球4 吳亞倫 私定",
+      "nights": 1,
+      "amount": 10000,
+      "label": "行事曆 App 私下接單實收",
+      "bookingSource": "私下接單"
+    },
+    {
+      "id": "AFAC2D66-6C22-4C22-A867-805412C4243E",
+      "checkInYmd": "2026-08-16",
+      "roomTags": [
+        "cloud",
+        "balloon"
+      ],
+      "summary": "雲朵房4人 露營區Kelly chen兩天 私",
+      "nights": 1,
+      "amount": 9800,
+      "label": "行事曆 App 私下接單實收",
+      "bookingSource": "私下接單"
+    },
+    {
+      "id": "BD06C89B-83BA-4577-83B1-048D0E9A14DF",
+      "checkInYmd": "2026-08-19",
+      "roomTags": [
+        "balloon"
+      ],
+      "summary": "熱氣球平日包場Le 熱氣球",
+      "nights": 1,
+      "amount": 5800,
+      "label": "行事曆 App 私下接單實收",
+      "bookingSource": "私下接單"
+    },
+    {
+      "id": "C7A4652C-C1B6-4E7A-98E9-2D96935EC88C",
+      "checkInYmd": "2026-08-20",
+      "roomTags": [
+        "cloud"
+      ],
+      "summary": "雲朵平日包場陳威境 私訂",
+      "nights": 1,
+      "amount": 5000,
+      "label": "行事曆 App 私下接單實收",
+      "bookingSource": "私下接單"
+    },
+    {
+      "id": "BA8A30EF-DE43-43B0-B8B1-BE0CC017C693",
+      "checkInYmd": "2026-08-21",
+      "roomTags": [
+        "cloud"
+      ],
+      "summary": "雲朵4人 🌙佳其🌙 私",
+      "nights": 1,
+      "amount": 5000,
+      "label": "行事曆 App 私下接單實收",
+      "bookingSource": "私下接單"
+    },
+    {
+      "id": "A2AFA8F4-CBB5-455C-A343-CDD1EE0D897C",
+      "checkInYmd": "2026-08-23",
+      "roomTags": [
+        "balloon"
+      ],
+      "summary": "熱氣球𝒮𝒽𝒶𝓇𝑜𝓃曉筠 6 人私接",
+      "nights": 1,
+      "amount": 5000,
+      "label": "行事曆 App 私下接單實收",
+      "bookingSource": "私下接單"
+    },
+    {
+      "id": "842F5EEE-1244-4D24-B734-4B6C39A4A717",
+      "checkInYmd": "2026-08-23",
+      "roomTags": [
+        "cloud"
+      ],
+      "summary": "雲朵房 4人 私 菲",
+      "nights": 1,
+      "amount": 5000,
+      "label": "行事曆 App 私下接單實收",
+      "bookingSource": "私下接單"
+    },
+    {
+      "id": "0D4E85E9-B6BC-4DB2-A0CE-2B81E151C041",
+      "checkInYmd": "2026-08-27",
+      "roomTags": [
+        "cloud"
+      ],
+      "summary": "2晚雲朵房5人 平日包場1天 假日包區1天雅津 私定",
+      "nights": 1,
+      "amount": 10000,
+      "label": "行事曆 App 私下接單實收",
+      "bookingSource": "私下接單"
+    },
+    {
+      "id": "BF4198B0-93A4-4C39-B117-DE019C33F80E",
+      "checkInYmd": "2026-08-28",
+      "roomTags": [
+        "balloon"
+      ],
+      "summary": "熱氣球6人line ching_wang 私",
+      "nights": 1,
+      "amount": 5000,
+      "label": "行事曆 App 私下接單實收",
+      "bookingSource": "私下接單"
+    },
+    {
+      "id": "7A6A554A-ABC9-4AD9-8694-3AD57E300858",
+      "checkInYmd": "2026-08-31",
+      "roomTags": [
+        "cloud"
+      ],
+      "summary": "雲朵平日包場Qi  私定",
+      "nights": 1,
+      "amount": 5000,
+      "label": "行事曆 App 私下接單實收",
+      "bookingSource": "私下接單"
+    },
+    {
+      "id": "185A86C6-ED31-4CE8-A0F8-C9F823DAFBFD",
+      "checkInYmd": "2026-09-01",
+      "roomTags": [
+        "balloon"
+      ],
+      "summary": "熱氣球平日包場 私訂 林芯瑀",
+      "nights": 1,
+      "amount": 5000,
+      "label": "行事曆 App 私下接單實收",
+      "bookingSource": "私下接單"
+    },
+    {
+      "id": "02500ABB-6729-44AF-9C52-356234B49F0D",
+      "checkInYmd": "2026-09-06",
+      "roomTags": [
+        "balloon"
+      ],
+      "summary": "下午 派對包場YiCheng pm1-5",
+      "nights": 1,
+      "amount": 6800,
+      "label": "行事曆 App 私下接單實收",
+      "bookingSource": "私下接單"
+    },
+    {
+      "id": "8E09FB39-C067-44BD-B232-2B6753F6B49E",
+      "checkInYmd": "2026-09-11",
+      "roomTags": [
+        "cloud",
+        "balloon"
+      ],
+      "summary": "包場 雲朵熱氣球 汝",
+      "nights": 1,
+      "amount": 9800,
+      "label": "行事曆 App 私下接單實收",
+      "bookingSource": "私下接單"
+    },
+    {
+      "id": "0B84137D-58D9-406A-AE1A-F5435BC3B26B",
+      "checkInYmd": "2026-09-12",
+      "roomTags": [
+        "cloud",
+        "balloon"
+      ],
+      "summary": "包場雲朵8人熱氣球8人永雯",
+      "nights": 1,
+      "amount": 9800,
+      "label": "行事曆 App 私下接單實收",
+      "bookingSource": "私下接單"
+    },
+    {
+      "id": "25FFF769-65EC-46B6-AF05-3D3D9E170F97",
+      "checkInYmd": "2026-09-16",
+      "roomTags": [
+        "balloon"
+      ],
+      "summary": "熱氣球平日包場熱氣球四人 私 真Salara",
+      "nights": 1,
+      "amount": 5000,
+      "label": "行事曆 App 私下接單實收",
+      "bookingSource": "私下接單"
+    },
+    {
+      "id": "DFF10E8E-A663-4DB3-A982-61D55A698A4C",
+      "checkInYmd": "2026-09-19",
+      "roomTags": [
+        "balloon"
+      ],
+      "summary": "熱氣球 Wu 6人 私訂",
+      "nights": 1,
+      "amount": 5000,
+      "label": "行事曆 App 私下接單實收",
+      "bookingSource": "私下接單"
+    },
+    {
+      "id": "E3793AB4-D4D4-4FBF-88B5-0BD6FC1BD4E1",
+      "checkInYmd": "2026-09-19",
+      "roomTags": [
+        "cloud"
+      ],
+      "summary": "雲朵5人私定Ga",
+      "nights": 1,
+      "amount": 5000,
+      "label": "行事曆 App 私下接單實收",
+      "bookingSource": "私下接單"
+    },
+    {
+      "id": "A8B2F0E4-8CD1-4184-8FC2-94841D3875FC",
+      "checkInYmd": "2026-09-21",
+      "roomTags": [
+        "balloon"
+      ],
+      "summary": "包場7人 婉瑜",
+      "nights": 1,
+      "amount": 10000,
+      "label": "行事曆 App 私下接單實收",
+      "bookingSource": "私下接單"
+    },
+    {
+      "id": "D5047A65-BAAD-460B-A03A-6BD4787297C6",
+      "checkInYmd": "2026-09-26",
+      "roomTags": [
+        "cloud"
+      ],
+      "summary": "雲朵房4人私定 卡文Carven",
+      "nights": 1,
+      "amount": 5000,
+      "label": "行事曆 App 私下接單實收",
+      "bookingSource": "私下接單"
+    },
+    {
+      "id": "BA50CAA8-AA02-4582-964F-024655D5F411",
+      "checkInYmd": "2026-09-27",
+      "roomTags": [
+        "cloud"
+      ],
+      "summary": "雲朵5人 ShaSha莎莎",
+      "nights": 1,
+      "amount": 5000,
+      "label": "行事曆 App 私下接單實收",
+      "bookingSource": "私下接單"
+    },
+    {
+      "id": "51E23142-C8CF-4CDB-A9AC-03E859EC75E9",
+      "checkInYmd": "2026-09-28",
+      "roomTags": [
+        "cloud"
+      ],
+      "summary": "雲朵6人平日一帳包場Jean Lin",
+      "nights": 1,
+      "amount": 5000,
+      "label": "行事曆 App 私下接單實收",
+      "bookingSource": "私下接單"
+    },
+    {
+      "id": "94D792E2-8F3A-4A0F-A585-EFA2A245EC4F",
+      "checkInYmd": "2026-09-29",
+      "roomTags": [
+        "cloud"
+      ],
+      "summary": "平日包場雲朵2人Kelly私",
+      "nights": 1,
+      "amount": 5000,
+      "label": "行事曆 App 私下接單實收",
+      "bookingSource": "私下接單"
+    },
+    {
+      "id": "7F4C6C73-B0B0-4052-97A8-CF9039E3329A",
+      "checkInYmd": "2026-10-04",
+      "roomTags": [
+        "cloud",
+        "balloon"
+      ],
+      "summary": "包場雲朵四人熱氣球四人 私 周廷耀",
+      "nights": 1,
+      "amount": 9800,
+      "label": "行事曆 App 私下接單實收",
+      "bookingSource": "私下接單"
+    },
+    {
+      "id": "71385B3E-6339-4484-97B3-552C35DDC24B",
+      "checkInYmd": "2026-10-08",
+      "roomTags": [
+        "cloud",
+        "balloon"
+      ],
+      "summary": "雲朵三人熱氣球兩人 平日包場 Sunny",
+      "nights": 1,
+      "amount": 5000,
+      "label": "行事曆 App 私下接單實收",
+      "bookingSource": "私下接單"
+    },
+    {
+      "id": "58218E2B-8F6E-4536-AD85-4C69A8C93A9D",
+      "checkInYmd": "2026-10-09",
+      "roomTags": [
+        "balloon"
+      ],
+      "summary": "熱氣球7 Ava Huang 黃詠榆 私定",
+      "nights": 1,
+      "amount": 5800,
+      "label": "行事曆 App 私下接單實收",
+      "bookingSource": "私下接單"
+    },
+    {
+      "id": "95EF06E4-783B-4B1F-A675-984D3EE12222",
+      "checkInYmd": "2026-10-10",
+      "roomTags": [
+        "balloon"
+      ],
+      "summary": "熱氣球5人 私 汪 連假 ",
+      "nights": 1,
+      "amount": 6000,
+      "label": "行事曆 App 私下接單實收",
+      "bookingSource": "私下接單"
+    },
+    {
+      "id": "D9E3D666-8024-4B06-87E1-B9FD98A2B8F1",
+      "checkInYmd": "2026-10-11",
+      "roomTags": [
+        "cloud"
+      ],
+      "summary": "雲朵房Cathy Lin",
+      "nights": 1,
+      "amount": 5000,
+      "label": "行事曆 App 私下接單實收",
+      "bookingSource": "私下接單"
+    },
+    {
+      "id": "3413AA31-46D5-46D1-A074-25BA3D5262D1",
+      "checkInYmd": "2026-10-14",
+      "roomTags": [
+        "cloud",
+        "balloon"
+      ],
+      "summary": "平日熱氣球2人Kelly私4640",
+      "nights": 1,
+      "amount": 4640,
+      "label": "行事曆 App 私下接單實收",
+      "bookingSource": "私下接單"
+    },
+    {
+      "id": "3A234A78-A3FB-4D5B-AFB6-3F8E2C0CE47F",
+      "checkInYmd": "2026-10-18",
+      "roomTags": [
+        "cloud"
+      ],
+      "summary": "雲朵房四人 私 曾小婷🤍",
+      "nights": 1,
+      "amount": 5000,
+      "label": "行事曆 App 私下接單實收",
+      "bookingSource": "私下接單"
+    },
+    {
+      "id": "8684FF5F-070B-44EA-B241-B15C0752A688",
+      "checkInYmd": "2026-10-19",
+      "roomTags": [
+        "balloon"
+      ],
+      "summary": "熱氣球房兩人 私定粉專 Nina Hsueh",
+      "nights": 1,
+      "amount": 3000,
+      "label": "行事曆 App 私下接單實收",
+      "bookingSource": "私下接單"
+    },
+    {
+      "id": "F82381DE-C12B-47F1-BA17-1CE0C1D9B4BE",
+      "checkInYmd": "2026-10-25",
+      "roomTags": [
+        "cloud",
+        "balloon"
+      ],
+      "summary": "包場 熱氣球3 雲朵4 Susan 私",
+      "nights": 1,
+      "amount": 9800,
+      "label": "行事曆 App 私下接單實收",
+      "bookingSource": "私下接單"
+    },
+    {
+      "id": "6CEEEA45-ADBC-43A4-8BF1-9BACC0BA8A52",
+      "checkInYmd": "2026-10-26",
+      "roomTags": [
+        "cloud",
+        "balloon"
+      ],
+      "summary": "雲朵房2熱氣球房2 包場 樂派國際笑笑",
+      "nights": 1,
+      "amount": 10800,
+      "label": "行事曆 App 私下接單實收",
+      "bookingSource": "私下接單"
+    },
+    {
+      "id": "7A498D74-4414-4A4F-A893-A36CD4D84F19",
+      "checkInYmd": "2026-10-27",
+      "roomTags": [
+        "cloud"
+      ],
+      "summary": "雲朵房包區 沒包場Annie",
+      "nights": 1,
+      "amount": 5000,
+      "label": "行事曆 App 私下接單實收",
+      "bookingSource": "私下接單"
+    },
+    {
+      "id": "AD229192-25C7-445D-9221-59FE6C8514FC",
+      "checkInYmd": "2026-10-29",
+      "roomTags": [
+        "balloon"
+      ],
+      "summary": "派對活動+攝影Carina 不過夜",
+      "nights": 1,
+      "amount": 5800,
+      "label": "行事曆 App 私下接單實收",
+      "bookingSource": "私下接單"
+    },
+    {
+      "id": "campervan-31DBEDF4-31DD-48C5-B773-83C9A9C03FB4",
+      "checkInYmd": "2026-01-20",
+      "roomTags": [
+        "rv"
+      ],
+      "summary": "露營車 彤🥀 粉專Bunny ye",
+      "nights": 2,
+      "amount": 11800,
+      "label": "行事曆 App 露營車實收",
+      "bookingSource": "私下接單"
+    },
+    {
+      "id": "campervan-51FFA2AF-81B7-46BD-9190-4D7B22ADC519",
+      "checkInYmd": "2026-01-26",
+      "roomTags": [
+        "rv"
+      ],
+      "summary": "露營車 謝圻章（阿桂）2277",
+      "nights": 5,
+      "amount": 22200,
+      "label": "行事曆 App 露營車實收",
+      "bookingSource": "私下接單"
+    },
+    {
+      "id": "campervan-A7E1DD27-3EC9-48A3-9B05-36C2221BD796",
+      "checkInYmd": "2026-02-01",
+      "roomTags": [
+        "rv"
+      ],
+      "summary": "露營車 郭冠良",
+      "nights": 2,
+      "amount": 13800,
+      "label": "行事曆 App 露營車實收",
+      "bookingSource": "私下接單"
+    },
+    {
+      "id": "campervan-8969B89C-C518-4DC0-820E-4F9436B221DA",
+      "checkInYmd": "2026-02-06",
+      "roomTags": [
+        "rv"
+      ],
+      "summary": "露營車 小瑜 /粉專李珈瑜",
+      "nights": 2,
+      "amount": 13800,
+      "label": "行事曆 App 露營車實收",
+      "bookingSource": "私下接單"
+    },
+    {
+      "id": "campervan-30276A6D-B094-41AF-BA49-82B185E7726F",
+      "checkInYmd": "2026-02-12",
+      "roomTags": [
+        "rv"
+      ],
+      "summary": "露營車 蒙大慶",
+      "nights": 3,
+      "amount": 18600,
+      "label": "行事曆 App 露營車實收",
+      "bookingSource": "私下接單"
+    },
+    {
+      "id": "campervan-D69E091F-EA33-4757-9A03-9FB5D6D484C3",
+      "checkInYmd": "2026-02-17",
+      "roomTags": [
+        "rv"
+      ],
+      "summary": "露營車 尊翊🍎梓暘.晨睿.晨恩.梓瑄媽",
+      "nights": 4,
+      "amount": 35200,
+      "label": "行事曆 App 露營車實收",
+      "bookingSource": "私下接單"
+    },
+    {
+      "id": "campervan-88DC6601-0701-49D1-B2C3-24210839B60B",
+      "checkInYmd": "2026-02-27",
+      "roomTags": [
+        "rv"
+      ],
+      "summary": "露營車 IG 封卓穎",
+      "nights": 2,
+      "amount": 15300,
+      "label": "行事曆 App 露營車實收",
+      "bookingSource": "私下接單"
+    },
+    {
+      "id": "campervan-53CD2892-AEEF-4DBA-88A7-12AD241BDEC3",
+      "checkInYmd": "2026-03-06",
+      "roomTags": [
+        "rv"
+      ],
+      "summary": "露營車 宛螢Bless",
+      "nights": 3,
+      "amount": 16600,
+      "label": "行事曆 App 露營車實收",
+      "bookingSource": "私下接單"
+    },
+    {
+      "id": "campervan-DA8A7698-25F4-4B7D-9B7F-45E20B958478",
+      "checkInYmd": "2026-03-20",
+      "roomTags": [
+        "rv"
+      ],
+      "summary": "露營車Ewa🌺",
+      "nights": 2,
+      "amount": 13800,
+      "label": "行事曆 App 露營車實收",
+      "bookingSource": "私下接單"
+    },
+    {
+      "id": "campervan-BFA9F5E3-5007-4460-9A14-5999B11ABA55",
+      "checkInYmd": "2026-04-05",
+      "roomTags": [
+        "rv"
+      ],
+      "summary": "露營車🐟亞蓓",
+      "nights": 2,
+      "amount": 17600,
+      "label": "行事曆 App 露營車實收",
+      "bookingSource": "私下接單"
+    },
+    {
+      "id": "campervan-31FDFC18-ABDD-406D-B742-113F6747AD88",
+      "checkInYmd": "2026-04-18",
+      "roomTags": [
+        "rv"
+      ],
+      "summary": "露營車 鄭昌傑",
+      "nights": 2,
+      "amount": 11800,
+      "label": "行事曆 App 露營車實收",
+      "bookingSource": "私下接單"
     }
   ],
   "monthlyRevenue": [
@@ -1914,66 +2835,70 @@
     {
       "month": "2026-08",
       "original": 128400,
-      "revised": 195629.06,
-      "difference": 67229.06,
-      "growth": 189.59,
-      "cumulative": 527807.32
+      "revised": 200629.06,
+      "difference": 72229.06,
+      "growth": 196.99,
+      "cumulative": 532807.32
     },
     {
       "month": "2026-09",
       "original": null,
-      "revised": 95194.25,
+      "revised": 129994.25,
       "difference": null,
-      "growth": -51.34,
-      "cumulative": 623001.57
+      "growth": -35.21,
+      "cumulative": 662801.57
     },
     {
       "month": "2026-10",
       "original": null,
-      "revised": 88930.9,
+      "revised": 145970.9,
       "difference": null,
-      "growth": -6.58,
-      "cumulative": 711932.47
+      "growth": 12.29,
+      "cumulative": 808772.47
     },
     {
       "month": "2026-11",
       "original": null,
-      "revised": 17139.86,
+      "revised": 121022.51,
       "difference": null,
       "growth": null,
-      "cumulative": 729072.33,
+      "cumulative": 929794.98,
       "future": true,
-      "status": "目前已預訂"
+      "status": "已確認預訂",
+      "tentativeRevenue": 0
     },
     {
       "month": "2026-12",
       "original": null,
-      "revised": 13965.45,
+      "revised": 141767.86,
       "difference": null,
       "growth": null,
-      "cumulative": 743037.78,
+      "cumulative": 1071562.84,
       "future": true,
-      "status": "目前已預訂"
+      "status": "已確認預訂",
+      "tentativeRevenue": 5000
     },
     {
       "month": "2027-01",
       "original": null,
-      "revised": 0,
+      "revised": 67159.09,
       "difference": null,
       "growth": null,
-      "cumulative": 743037.78,
+      "cumulative": 1138721.93,
       "future": true,
-      "status": "目前已預訂"
+      "status": "已確認預訂",
+      "tentativeRevenue": 10800
     },
     {
       "month": "2027-02",
       "original": null,
-      "revised": 0,
+      "revised": 105959.16,
       "difference": null,
       "growth": null,
-      "cumulative": 743037.78,
+      "cumulative": 1244681.09,
       "future": true,
-      "status": "目前已預訂"
+      "status": "已確認預訂",
+      "tentativeRevenue": 7800
     }
   ],
   "monthlySourceCases": [
@@ -1982,108 +2907,112 @@
       "total": 4,
       "airbnb": 0,
       "agoda": 4,
-      "unknown": 0,
-      "direct": 0
+      "direct": 0,
+      "unknown": 0
     },
     {
       "month": "2026-03",
       "total": 5,
       "airbnb": 0,
       "agoda": 5,
-      "unknown": 0,
-      "direct": 0
+      "direct": 0,
+      "unknown": 0
     },
     {
       "month": "2026-04",
       "total": 11,
       "airbnb": 1,
       "agoda": 7,
-      "unknown": 0,
-      "direct": 3
+      "direct": 3,
+      "unknown": 0
     },
     {
       "month": "2026-05",
       "total": 17,
       "airbnb": 2,
       "agoda": 5,
-      "unknown": 0,
-      "direct": 10
+      "direct": 10,
+      "unknown": 0
     },
     {
       "month": "2026-06",
       "total": 20,
       "airbnb": 13,
       "agoda": 5,
-      "unknown": 0,
-      "direct": 2
+      "direct": 2,
+      "unknown": 0
     },
     {
       "month": "2026-07",
       "total": 15,
       "airbnb": 5,
       "agoda": 7,
-      "unknown": 0,
-      "direct": 3
+      "direct": 3,
+      "unknown": 0
     },
     {
       "month": "2026-08",
-      "total": 30,
+      "total": 31,
       "airbnb": 8,
       "agoda": 7,
-      "unknown": 0,
-      "direct": 15
+      "direct": 16,
+      "unknown": 0
     },
     {
       "month": "2026-09",
-      "total": 18,
+      "total": 23,
       "airbnb": 3,
       "agoda": 8,
-      "unknown": 0,
-      "direct": 7
+      "direct": 12,
+      "unknown": 0
     },
     {
       "month": "2026-10",
-      "total": 16,
+      "total": 25,
       "airbnb": 7,
       "agoda": 6,
-      "unknown": 0,
-      "direct": 3
+      "direct": 12,
+      "unknown": 0
     },
     {
       "month": "2026-11",
-      "total": 4,
-      "airbnb": 3,
-      "agoda": 1,
+      "total": 19,
+      "airbnb": 4,
+      "agoda": 3,
+      "direct": 12,
       "unknown": 0,
-      "direct": 0,
-      "future": true
+      "future": true,
+      "tentative": 0
     },
     {
       "month": "2026-12",
-      "total": 2,
-      "airbnb": 1,
+      "total": 14,
+      "airbnb": 4,
       "agoda": 0,
+      "direct": 10,
       "unknown": 0,
-      "direct": 1,
-      "future": true
+      "future": true,
+      "tentative": 1
     },
     {
       "month": "2027-01",
-      "total": 0,
+      "total": 6,
       "airbnb": 0,
-      "agoda": 0,
+      "agoda": 1,
+      "direct": 5,
       "unknown": 0,
-      "direct": 0,
-      "future": true
+      "future": true,
+      "tentative": 1
     },
     {
       "month": "2027-02",
-      "total": 0,
-      "airbnb": 0,
+      "total": 7,
+      "airbnb": 2,
       "agoda": 0,
+      "direct": 5,
       "unknown": 0,
-      "direct": 0,
-      "future": true
+      "future": true,
+      "tentative": 1
     }
   ],
   "monthlySourceRevenue": [
@@ -2131,56 +3060,60 @@
     },
     {
       "month": "2026-08",
-      "total": 195629.06,
+      "total": 200629.06,
       "airbnb": 31729.06,
       "agoda": 33660,
-      "direct": 130240
+      "direct": 135240
     },
     {
       "month": "2026-09",
-      "total": 95194.25,
+      "total": 129994.25,
       "airbnb": 14154.25,
       "agoda": 39440,
-      "direct": 41600
+      "direct": 76400
     },
     {
       "month": "2026-10",
-      "total": 88930.9,
+      "total": 145970.9,
       "airbnb": 39900.9,
       "agoda": 30430,
-      "direct": 18600
+      "direct": 75640
     },
     {
       "month": "2026-11",
-      "total": 17139.86,
-      "airbnb": 12496.34,
-      "agoda": 4643.52,
-      "direct": 0,
-      "future": true
+      "total": 121022.51,
+      "airbnb": 16245.24,
+      "agoda": 13677.27,
+      "direct": 91100,
+      "future": true,
+      "tentativeRevenue": 0
     },
     {
       "month": "2026-12",
-      "total": 13965.45,
-      "airbnb": 4165.45,
+      "total": 141767.86,
+      "airbnb": 24367.86,
       "agoda": 0,
-      "direct": 9800,
-      "future": true
+      "direct": 117400,
+      "future": true,
+      "tentativeRevenue": 5000
     },
     {
       "month": "2027-01",
-      "total": 0,
+      "total": 67159.09,
       "airbnb": 0,
-      "agoda": 0,
-      "direct": 0,
-      "future": true
+      "agoda": 4559.09,
+      "direct": 62600,
+      "future": true,
+      "tentativeRevenue": 10800
     },
     {
       "month": "2027-02",
-      "total": 0,
-      "airbnb": 0,
+      "total": 105959.16,
+      "airbnb": 17279.16,
       "agoda": 0,
-      "direct": 0,
-      "future": true
+      "direct": 88680,
+      "future": true,
+      "tentativeRevenue": 7800
     }
   ],
   "sourceRevenueTotals": {
@@ -2196,56 +3129,9 @@
     },
     "direct": {
       "source": "私下接單",
-      "cases": 43,
-      "revenue": 298730
+      "cases": 58,
+      "revenue": 395570
     }
-  },
-  "recentRevenue": {
-    "airbnb": 85784.20999999999,
-    "agoda": 103530,
-    "direct": 190440,
-    "total": 379754.21
-  },
-  "futureSourceRevenue": [
-    {
-      "month": "2026-10",
-      "airbnb": 0,
-      "agoda": 0,
-      "direct": 9800,
-      "airbnbCases": 0,
-      "agodaCases": 0,
-      "directCases": 1,
-      "total": 9800
-    },
-    {
-      "month": "2026-11",
-      "airbnb": 12496.34,
-      "agoda": 4643.52,
-      "direct": 0,
-      "airbnbCases": 3,
-      "agodaCases": 1,
-      "directCases": 0,
-      "total": 17139.86
-    },
-    {
-      "month": "2026-12",
-      "airbnb": 4165.45,
-      "agoda": 0,
-      "direct": 9800,
-      "airbnbCases": 1,
-      "agodaCases": 0,
-      "directCases": 1,
-      "total": 13965.45
-    }
-  ],
-  "futureTotals": {
-    "airbnb": 16661.79,
-    "agoda": 4643.52,
-    "direct": 19600,
-    "airbnbCases": 4,
-    "agodaCases": 1,
-    "directCases": 2,
-    "total": 40905.31
   },
   "platformTotals": {
     "airbnb": {
@@ -2262,9 +3148,1458 @@
       "net": 250750
     }
   },
+  "actualDirect": [
+    {
+      "id": "A4E224D7-36C3-4A74-B57E-D29CC69A6AB8",
+      "calendarUid": "A4E224D7-36C3-4A74-B57E-D29CC69A6AB8",
+      "date": "2026-04-02",
+      "month": "2026-04",
+      "source": "私下接單",
+      "amount": 3800,
+      "summary": "熱氣球 2大1狗 施宇航 私定",
+      "description": "",
+      "note": null
+    },
+    {
+      "id": "4C16C16B-3192-468C-A7B5-21C988C42C96",
+      "calendarUid": "4C16C16B-3192-468C-A7B5-21C988C42C96",
+      "date": "2026-04-02",
+      "month": "2026-04",
+      "source": "私下接單",
+      "amount": 7600,
+      "summary": "雲朵房6大兩晚 露營區 品羚",
+      "description": "1️⃣ 入住日期：4/2\n2️⃣ 退房日期：4/4\n3️⃣ 人數（大人／小孩）：6位大人\n4️⃣ 聯絡姓名：翁品羚\n5️⃣ 聯絡電話：0937713208\n金額兩晚7600已經付款",
+      "note": null
+    },
+    {
+      "id": "494A8FF4-49DD-41DB-9D37-39D401AFD176",
+      "calendarUid": "494A8FF4-49DD-41DB-9D37-39D401AFD176",
+      "date": "2026-04-18",
+      "month": "2026-04",
+      "source": "私下接單",
+      "amount": 4800,
+      "summary": "雲朵房露營區劉承侑",
+      "description": "《預訂資料確認》\n• 入住日期：4/18\n• 時間：下午三點入住，中午12點退房\n• 房型：雲朵房\n• 方案：假日包區\n• 住宿晚數：1晚\n• 入住人數：6人\n• 是否攜帶寵物：無\n• 費用：4800\n• 訂金：2400\n\n《請補充以下資料》\n• 訂房人姓名：劉承侑\n• 聯絡電話：0933457351\n• 特別需求備注：兩個卡式爐，會有三台車",
+      "note": null
+    },
+    {
+      "id": "B492B0C5-A4B5-4FA4-A213-F11E0B56804C",
+      "calendarUid": "B492B0C5-A4B5-4FA4-A213-F11E0B56804C",
+      "date": "2026-05-01",
+      "month": "2026-05",
+      "source": "私下接單",
+      "amount": 9800,
+      "summary": "包場露營區 惠茹🌹 熱氣球 雲朵",
+      "description": "《預訂資料確認》\n• 入住日期：5/1\n• 房型：熱氣球房+雲朵房\n• 方案：兩房預定全區包場\n• 住宿晚數：1晚\n• 入住人數：6大6小\n• 是否攜帶寵物：無\n• 金額：9800\n• 訂金：5000（確認已收到）\n\n《請補充以下資料》\n訂房人姓名：曹惠茹\n聯絡電話：0916290785",
+      "note": null
+    },
+    {
+      "id": "A040E051-BEB8-4A8B-8DE8-2F58A0698E72",
+      "calendarUid": "A040E051-BEB8-4A8B-8DE8-2F58A0698E72",
+      "date": "2026-05-02",
+      "month": "2026-05",
+      "source": "私下接單",
+      "amount": 9800,
+      "summary": "包場 熱氣球房雲朵房 露營區Lu’s",
+      "description": "《預訂資料確認》\n• 入住日期：5/2\n• 時間：下午三點入住，中午12點退房\n• 房型：熱氣球房、雲朵帳\n• 方案：假日包區包場\n• 住宿晚數：1晚\n• 入住人數：\n• 是否攜帶寵物：\n• 費用：9800\n• 訂金：4500\n\n《請補充以下資料》\n• 訂房人姓名：呂忻昀\n• 聯絡電話：0933394643\n• 特別需求備注：無",
+      "note": null
+    },
+    {
+      "id": "0D6F6FB5-96B4-47A5-8286-ECE49BAC081A",
+      "calendarUid": "0D6F6FB5-96B4-47A5-8286-ECE49BAC081A",
+      "date": "2026-05-09",
+      "month": "2026-05",
+      "source": "私下接單",
+      "amount": 10000,
+      "summary": "志成2帳包場 熱氣球 雲朵",
+      "description": "",
+      "note": null
+    },
+    {
+      "id": "DD270DE9-149F-4962-A801-52F79934E34F",
+      "calendarUid": "DD270DE9-149F-4962-A801-52F79934E34F",
+      "date": "2026-05-10",
+      "month": "2026-05",
+      "source": "私下接單",
+      "amount": 6090,
+      "summary": "熱氣球 私廚按摩",
+      "description": "2026/05/10 徐先生預訂熱氣球房一晚，住宿費 NT$5,800 未稅，含稅 NT$6,090，已於 2026/05/04 付訂金 NT$1,800，當天尾款 NT$4,290，需開立發票，抬頭為「無限科技影音有限公司」，統編 93687173。實際入住 3 人，當天現場約 7 人含嬰兒，包含私廚 2 人、按摩師 1 人、助理 1 人。客人希望安排私廚料理、按摩、戶外用餐。已告知現場可提供廚具、廚房熱水、房間熱水，無佈置服務。",
+      "note": null
+    },
+    {
+      "id": "2BA10B35-9273-4266-8D57-F8A1BAA606FA",
+      "calendarUid": "2BA10B35-9273-4266-8D57-F8A1BAA606FA",
+      "date": "2026-05-14",
+      "month": "2026-05",
+      "source": "私下接單",
+      "amount": 3800,
+      "summary": "熱氣球房平日兩人",
+      "description": "",
+      "note": null
+    },
+    {
+      "id": "6A75EACE-4DE6-4AB7-906E-A36AD2B6C875",
+      "calendarUid": "6A75EACE-4DE6-4AB7-906E-A36AD2B6C875",
+      "date": "2026-05-16",
+      "month": "2026-05",
+      "source": "私下接單",
+      "amount": 5000,
+      "summary": "雲朵房2大3小",
+      "description": "",
+      "note": null
+    },
+    {
+      "id": "892828C6-38E7-4C4E-8029-8AB226C15580",
+      "calendarUid": "892828C6-38E7-4C4E-8029-8AB226C15580",
+      "date": "2026-05-21",
+      "month": "2026-05",
+      "source": "私下接單",
+      "amount": 3800,
+      "summary": "雲朵房2人 平常日方案",
+      "description": "",
+      "note": null
+    },
+    {
+      "id": "ACE9AA9F-CDA3-46F1-9DFF-AF057396CD7B",
+      "calendarUid": "ACE9AA9F-CDA3-46F1-9DFF-AF057396CD7B",
+      "date": "2026-05-22",
+      "month": "2026-05",
+      "source": "私下接單",
+      "amount": 3400,
+      "summary": "露營區熱氣球 淑君 私下 五人包場",
+      "description": "",
+      "note": null
+    },
+    {
+      "id": "AC730BF3-9EDE-460D-B5CF-2C8BC851F76D",
+      "calendarUid": "AC730BF3-9EDE-460D-B5CF-2C8BC851F76D",
+      "date": "2026-05-23",
+      "month": "2026-05",
+      "source": "私下接單",
+      "amount": 5800,
+      "summary": "熱氣球 Emma Chien露營區",
+      "description": "《預訂資料確認》\n• 入住日期：5/23\n• 時間：下午三點入住，隔天中午12點退房\n• 房型：熱氣球房\n• 方案：假日包區\n• 住宿晚數：1晚\n• 入住人數：6人\n• 是否攜帶寵物：否\n• 費用：5800\n• 訂金：2500 👌\n\n《請補充以下資料》\n• 訂房人姓名：錢欣妍\n• 聯絡電話：0987780385\n• 特別需求備注：無\n\n《訂金匯款方式》\n• Line Pay",
+      "note": null
+    },
+    {
+      "id": "37CDDC55-7E00-4BA1-A96A-BDAFC3FF5AC8",
+      "calendarUid": "37CDDC55-7E00-4BA1-A96A-BDAFC3FF5AC8",
+      "date": "2026-05-30",
+      "month": "2026-05",
+      "source": "私下接單",
+      "amount": 4800,
+      "summary": "雲朵房Kao露營區",
+      "description": "《預訂資料確認》\n• 入住日期：5月30六\n• 時間：下午三點入住，中午12點退房\n• 房型：雲朵房\n• 方案：假日包區\n• 住宿晚數：1晚\n• 入住人數：2大\n• 費用：4800\n• 訂金：2400\n\n《請補充以下資料》\n• 訂房人姓名：郭庭嘉\n• 聯絡電話：0986180328\n• 特別需求備注：無\n• 是否攜帶寵物：否",
+      "note": null
+    },
+    {
+      "id": "F2304174-7842-4183-994C-C58A5EA04648",
+      "calendarUid": "F2304174-7842-4183-994C-C58A5EA04648",
+      "date": "2026-06-19",
+      "month": "2026-06",
+      "source": "私下接單",
+      "amount": 4800,
+      "summary": "熱氣球5 露營區 佳燁-黃怡甄",
+      "description": "《預訂資料確認》\n• 入住日期：6月19號\n• 住宿晚數：1晚\n• 時間：早上九點入住，隔天早上九點退房\n• 房型：熱氣球房\n• 方案：假日包區\n• 停車車輛（台）：1台\n• 入住人數：3大2小（3歲.1歲）\n• 是否攜帶寵物：否\n• 費用：4800\n• 訂金：1800\n\n《請補充以下資料》\n• 訂房人姓名：黃怡甄\n• 聯絡電話：0920039766\n• 特別需求備注：",
+      "note": null
+    },
+    {
+      "id": "88890EA5-D897-4CF6-B0F0-A370C6742A43",
+      "calendarUid": "88890EA5-D897-4CF6-B0F0-A370C6742A43",
+      "date": "2026-06-22",
+      "month": "2026-06",
+      "source": "私下接單",
+      "amount": 5600,
+      "summary": "熱氣球 雲朵房 包場露營區 Sam同事Yumi❤️",
+      "description": "• 入住日期：6/22\n• 時間：下午三點入住，中午12點退房\n• 房型：熱氣球房+雲朵房\n• 方案：包場\n• 住宿晚數：1晚\n• 入住人數：6人\n• 是否攜帶寵物：否\n• 費用： 3800+1800 = 5,600 \n• 訂金：1600\n\n《請補充以下資料》\n• 訂房人姓名：鄧靜怡\n• 聯絡電話：0955904383\n• 特別需求備注：無\n\n匯款完成後，再麻煩提供：\n• 匯款金額：1600\n• 匯款時間：5/16 20:49\n• 帳號末五碼：22011",
+      "note": null
+    },
+    {
+      "id": "1425CA02-2B4F-4223-A944-4AE3402EEBA6-15",
+      "calendarUid": "1425CA02-2B4F-4223-A944-4AE3402EEBA6",
+      "date": "2026-07-03",
+      "month": "2026-07",
+      "source": "私下接單",
+      "amount": 9600,
+      "summary": "熱氣球房 露營區求婚 銘（熱氣球房兩晚）",
+      "description": "高先生您好，這邊先幫您整理本次「揪好森 Joyforest 求婚活動＋住宿」預訂內容：\n\n預訂日期：2026/7/3（五）－2026/7/5（日）  \n活動內容：求婚活動＋親友住宿  \n預計人數：10人以內  \n\n預訂房型／區域如下：\n\n1. 熱氣球房  \n使用日期：7/3（五）－7/5（日）  \n費用：NT$3,800＋NT$5,800  \n小計：NT$9,600\n\n2. 雲朵房  \n使用日期：7/4（六）－7/5（日）  \n費用：NT$4,800  \n小計：NT$4,800\n\n本次場地與住宿費用合計：NT$14,400  \n訂金為總費用 50%：NT$7,200  👌\n尾款：NT$7,200",
+      "note": "熱氣球房兩晚"
+    },
+    {
+      "id": "1425CA02-2B4F-4223-A944-4AE3402EEBA6-16",
+      "calendarUid": "1425CA02-2B4F-4223-A944-4AE3402EEBA6",
+      "date": "2026-07-03",
+      "month": "2026-07",
+      "source": "私下接單",
+      "amount": 4800,
+      "summary": "熱氣球房 露營區求婚 銘（雲朵房一晚）",
+      "description": "高先生您好，這邊先幫您整理本次「揪好森 Joyforest 求婚活動＋住宿」預訂內容：\n\n預訂日期：2026/7/3（五）－2026/7/5（日）  \n活動內容：求婚活動＋親友住宿  \n預計人數：10人以內  \n\n預訂房型／區域如下：\n\n1. 熱氣球房  \n使用日期：7/3（五）－7/5（日）  \n費用：NT$3,800＋NT$5,800  \n小計：NT$9,600\n\n2. 雲朵房  \n使用日期：7/4（六）－7/5（日）  \n費用：NT$4,800  \n小計：NT$4,800\n\n本次場地與住宿費用合計：NT$14,400  \n訂金為總費用 50%：NT$7,200  👌\n尾款：NT$7,200",
+      "note": "雲朵房一晚"
+    },
+    {
+      "id": "5E9E751B-B87C-4EAD-9C77-8A4C66B1DF8D",
+      "calendarUid": "5E9E751B-B87C-4EAD-9C77-8A4C66B1DF8D",
+      "date": "2026-07-17",
+      "month": "2026-07",
+      "source": "私下接單",
+      "amount": 5000,
+      "summary": "熱氣球私訂 2黃彥蓉",
+      "description": "《預訂資料確認》\n• 入住日期：7/17禮拜五\n• 住宿晚數：1晚\n• 時間：下午三點入住，中午12點退房\n• 房型：熱氣球房\n• 停車車輛（台）：1輛\n• 入住人數：2人\n• 是否攜帶寵物：1狗\n• 費用：5000\n• 訂金：2500\n\n《請補充以下資料》\n• 訂房人姓名：黃彥蓉\n• 聯絡電話：0975337253\n• 特別需求備注：帶寵物",
+      "note": null
+    },
+    {
+      "id": "165BD415-18FF-4D3C-8DF1-FB8A315A0413",
+      "calendarUid": "165BD415-18FF-4D3C-8DF1-FB8A315A0413",
+      "date": "2026-08-02",
+      "month": "2026-08",
+      "source": "私下接單",
+      "amount": 19600,
+      "summary": "露營區包場 熱氣球5人 雲朵4人 Queena（品惟.文智媽咪）",
+      "description": "《預訂資料確認》\n• 入住日期：8月2號禮拜天到8月4號禮拜二。\n• 時間：下午三點入住，中午12點退房\n• 房型：熱氣球房 雲朵房 包場\n• 住宿晚數：兩晚\n• 入住人數：5大4小（小朋友年齡10×2.12.15歲）\n• 是否攜帶寵物：無\n• 費用：19600\n• 訂金：8600\n\n《請補充以下資料》\n• 訂房人姓名：林茹瑩\n• 聯絡電話：0952772719\n• 特別需求備注：目前沒有",
+      "note": null
+    },
+    {
+      "id": "5E847E8D-946C-409A-B887-CB44ECF235AF",
+      "calendarUid": "5E847E8D-946C-409A-B887-CB44ECF235AF",
+      "date": "2026-08-07",
+      "month": "2026-08",
+      "source": "私下接單",
+      "amount": 16840,
+      "summary": "露營區包場熱氣球5人雲朵5人 shmily 私訂",
+      "description": "• 入住日期：8月7號8月8號\n• 住宿晚數：2晚\n• 時間：下午三點入住，中午12點退房\n• 房型：包場，熱氣球房+雲朵房\n• 停車車輛（台）：2台\n• 入住人數：9人\n• 是否攜帶寵物：小型臘腸犬1隻\n• 費用： 9800+8800*0.8 = 16,840 \n• 訂金：5840 已匯款\n\n《請補充以下資料》\n• 訂房人姓名：劉美岑\n• 聯絡電話：0932056938\n• 特別需求備注：",
+      "note": null
+    },
+    {
+      "id": "1D6059E4-D064-4133-95DA-042B91A03555",
+      "calendarUid": "1D6059E4-D064-4133-95DA-042B91A03555",
+      "date": "2026-08-09",
+      "month": "2026-08",
+      "source": "私下接單",
+      "amount": 13400,
+      "summary": "露營區包場+攝影 芮 私訂 熱氣球4人 雲朵3人",
+      "description": "《預訂資料確認》\n• 入住日期：8/9\n• 住宿晚數：1晚\n• 時間：下午三點入住，中午12點退房\n• 房型：包場，熱氣球房+雲朵房\n• 方案：住宿加攝影方案，攝影優惠5800（攝影時間約一個小時，會與入住時開始拍攝）\n• 停車車輛（台）：3台\n• 入住人數：4大2小\n• 是否攜帶寵物：有/三隻貴賓狗\n• 費用：13,400 （3800+3800+5800）\n• 訂金：3400\n\n《請補充以下資料》\n• 訂房人姓名：洪芮婧\n• 聯絡電話：0973037775\n• 特別需求備注：\n活動與拍照人數6大3小\n夜晚時入住人數為4大2小\n狗狗只會參與活動不入住\n\n\n匯款完成後，再麻煩提供：\n• 匯款金額 $3400\n• 匯款時間 7/2 9:50\n• 帳號末五碼 42778",
+      "note": null
+    },
+    {
+      "id": "AC8600AB-1B19-4687-A777-413529C0D8E8",
+      "calendarUid": "AC8600AB-1B19-4687-A777-413529C0D8E8",
+      "date": "2026-08-10",
+      "month": "2026-08",
+      "source": "私下接單",
+      "amount": 5800,
+      "summary": "露營區包場𝒫𝑒𝑔𝑔𝓎❥ 平日一帳篷包場 熱氣球雲朵",
+      "description": "《預訂資料確認》\n• 入住日期：8月10號禮拜一\n• 住宿晚數：1晚\n• 時間：下午三點入住，隔天中午12點退房\n• 房型：包場任選\n• 方案：平日一帳篷包場\n• 停車車輛（台）：2台\n• 入住人數：2大4小\n• 是否攜帶寵物：一隻狗\n• 費用：5800\n• 訂金：2800\n\n《請補充以下資料》\n• 訂房人姓名：李佩琪\n• 聯絡電話：0989187031\n• 特別需求備注：\n\n匯款完成後，再麻煩提供：\n• 匯款金額：2800\n• 匯款時間：6/29 20:34\n• 帳號末五碼：65793",
+      "note": null
+    },
+    {
+      "id": "DB55D144-696E-4BD5-9413-1C5C13799B10",
+      "calendarUid": "DB55D144-696E-4BD5-9413-1C5C13799B10",
+      "date": "2026-08-12",
+      "month": "2026-08",
+      "source": "私下接單",
+      "amount": 9000,
+      "summary": "熱氣球2晚6人私定 Chu n z",
+      "description": "• 入住日期：2026.8.12 /8.13\n• 住宿晚數：2晚\n• 時間：下午三點入住，中午12點退房\n• 房型：熱氣球房\n• 停車車輛（台）：1車 2機車\n• 入住人數：6\n• 是否攜帶寵物：否  《請補充以下資料》\n• 訂房人姓名：朱恩志\n• 聯絡電話：0963639515\n• 特別需求備注：無\n\n《費用》\n• 費用：4000+5000\n• 訂金：3000 👌\n• 方案：打卡優惠原價一晚7800 優惠4000+5000",
+      "note": null
+    },
+    {
+      "id": "8BBD535A-76CC-4D32-91A8-DA33B55E16E3",
+      "calendarUid": "8BBD535A-76CC-4D32-91A8-DA33B55E16E3",
+      "date": "2026-08-14",
+      "month": "2026-08",
+      "source": "私下接單",
+      "amount": 5000,
+      "summary": "熱氣球5人 私訂 靖豪Burnett",
+      "description": "《預訂資料確認》\n• 入住日期：2026.8.14\n• 住宿晚數：1晚\n• 時間：下午三點入住，中午12點退房\n• 房型：熱氣球房\n• 停車車輛（台）：1\n• 入住人數：5\n• 是否攜帶寵物：《否》\n《請補充以下資料》\n• 訂房人姓名：邱靖豪\n• 聯絡電話：0931280072\n• 特別需求備注：《費用》\n• 費用：5000\n• 訂金：2500",
+      "note": null
+    },
+    {
+      "id": "A9100789-8040-4E65-AFD7-8825F85DA5B6",
+      "calendarUid": "A9100789-8040-4E65-AFD7-8825F85DA5B6",
+      "date": "2026-08-15",
+      "month": "2026-08",
+      "source": "私下接單",
+      "amount": 10000,
+      "summary": "熱氣球4 吳亞倫 私定",
+      "description": "《預訂資料確認》\n• 入住日期：8月15日到8月17日\n• 住宿晚數：兩晚\n• 時間：下午三點入住，中午12點退房\n• 房型：熱氣球房\n• 停車車輛（台）：一輛\n• 入住人數：4\n• 是否攜帶寵物：否  《請補充以下資料》\n• 訂房人姓名：吳亞倫\n• 聯絡電話：0986718359\n• 特別需求備注：無  《費用》\n• 費用：10000\n• 訂金：5000\n• 方案：打卡優惠原價一晚7800 優惠一晚5000 請於以下平台兩則圖片+文字打卡tag評價 FB臉書粉專： https://www.facebook.com/profile.php?id=61589961877392\nIG： https://www.instagram.com/joyforest.tw?igsh=MTl2dXVpeHVud3ZncA%3D%3D&utm_source=qr\nGoogle地圖商家：  https://maps.app.goo.gl/3iqc1WhMtkVAdd5r8?g_st=ic",
+      "note": null
+    },
+    {
+      "id": "AFAC2D66-6C22-4C22-A867-805412C4243E",
+      "calendarUid": "AFAC2D66-6C22-4C22-A867-805412C4243E",
+      "date": "2026-08-16",
+      "month": "2026-08",
+      "source": "私下接單",
+      "amount": 9800,
+      "summary": "雲朵房4人 露營區Kelly chen兩天 私",
+      "description": "《預訂資料確認》\n• 入住日期：2026.8.16 到 8.18\n• 住宿晚數：2晚\n• 時間：下午三點入住，中午12點退房\n• 房型：第一晚雲朵房假日包區，第二晚熱氣球房平常日包場\n• 停車車輛（台）：1台車\n• 入住人數：2大2小\n• 是否攜帶寵物：兔子一隻  《請補充以下資料》\n• 訂房人姓名：陳卉霖\n• 聯絡電話：0988991298\n• 特別需求備注：  《費用》\n• 費用：9800\n• 訂金：3800\n• 方案：打卡優惠原價13800 優惠9800 請於以下平台兩則圖片+文字打卡tag評價 FB臉書粉專： https://www.facebook.com/profile.php?id=61589961877392\nIG： https://www.instagram.com/joyforest.tw?igsh=MTl2dXVpeHVud3ZncA%3D%3D&utm_source=qr\nGoogle地圖商家：  https://maps.app.goo.gl/3iqc1WhMtkVAdd5r8?g_st=ic",
+      "note": null
+    },
+    {
+      "id": "BD06C89B-83BA-4577-83B1-048D0E9A14DF",
+      "calendarUid": "BD06C89B-83BA-4577-83B1-048D0E9A14DF",
+      "date": "2026-08-19",
+      "month": "2026-08",
+      "source": "私下接單",
+      "amount": 5800,
+      "summary": "熱氣球平日包場Le 熱氣球",
+      "description": "《預訂資料確認》\n• 入住日期：8月19日\n• 住宿晚數：1晚\n• 時間：下午三點入住，中午12點退房\n• 房型：熱氣球房（平日包場另外一帳不會接待客人）\n• 停車車輛（台）： ㄧ台\n• 入住人數：3大3小（12.9.6y）\n• 是否攜帶寵物： 否\n• 費用：5800\n• 訂金：2500\n• 開發票 ：入住付清餘額開5800含稅發票。\n\n\n《請補充以下資料》\n• 訂房人姓名：黃曦樂\n• 聯絡電話：0981-683-804\n• 特別需求備注：\n發票統編：18490492\n抬頭：佳邦科技股份有限公司職工福利委員會\n\n\n《訂金匯款方式》\n• Line Pay： 2500",
+      "note": null
+    },
+    {
+      "id": "C7A4652C-C1B6-4E7A-98E9-2D96935EC88C",
+      "calendarUid": "C7A4652C-C1B6-4E7A-98E9-2D96935EC88C",
+      "date": "2026-08-20",
+      "month": "2026-08",
+      "source": "私下接單",
+      "amount": 5000,
+      "summary": "雲朵平日包場陳威境 私訂",
+      "description": "《預訂資料確認》\n• 入住日期：2026.8.20\n• 住宿晚數：1晚\n• 時間：下午三點入住，中午12點退房\n• 房型：雲朵房 （平常日一帳包場 不會有其他客人）\n• 停車車輛（台）：一台\n• 入住人數：2\n• 是否攜帶寵物：不攜帶寵物\n《請補充以下資料》\n• 訂房人姓名：陳威境\n• 聯絡電話：0966781117\n• 特別需求備注：\n《費用》\n• 費用：5000\n• 訂金：1500\n• 方案：打卡優惠原價7800 優惠5000\n請於以下平台兩則圖片+文字打卡tag評價\nFB臉書粉專： https://www.facebook.com/profile.php?id=61589961877392\nIG： https://www.instagram.com/joyforest.tw?igsh=MTl2dXVpeHVud3ZncA%3D%3D&utm_source=qr\nGoogle地圖商家：  https://maps.app.goo.gl/3iqc1WhMtkVAdd5r8?g_st=ic",
+      "note": null
+    },
+    {
+      "id": "BA8A30EF-DE43-43B0-B8B1-BE0CC017C693",
+      "calendarUid": "BA8A30EF-DE43-43B0-B8B1-BE0CC017C693",
+      "date": "2026-08-21",
+      "month": "2026-08",
+      "source": "私下接單",
+      "amount": 5000,
+      "summary": "雲朵4人 🌙佳其🌙 私",
+      "description": "《預訂資料確認》\n• 入住日期：2026.8.21\n• 住宿晚數：1晚\n• 時間：下午三點入住，中午12點退房\n• 房型：雲朵房\n• 停車車輛（台）：1\n• 入住人數：2大2小\n• 是否攜帶寵物：否《請補充以下資料》\n• 訂房人姓名：陳佳其\n• 聯絡電話：0917680901\n• 特別需求備注：\n\n• 費用：5000\n• 訂金：2500\n• 方案：打卡優惠原價7800 優惠5000請於以下平台兩則圖片+文字打卡tag評價FB臉書粉專： https://www.facebook.com/profile.php?id=61589961877392\nIG： https://www.instagram.com/joyforest.tw?igsh=MTl2dXVpeHVud3ZncA%3D%3D&utm_source=qr\nGoogle地圖商家：  https://maps.app.goo.gl/3iqc1WhMtkVAdd5r8?g_st=ic",
+      "note": null
+    },
+    {
+      "id": "A2AFA8F4-CBB5-455C-A343-CDD1EE0D897C",
+      "calendarUid": "A2AFA8F4-CBB5-455C-A343-CDD1EE0D897C",
+      "date": "2026-08-23",
+      "month": "2026-08",
+      "source": "私下接單",
+      "amount": 5000,
+      "summary": "熱氣球𝒮𝒽𝒶𝓇𝑜𝓃曉筠 6 人私接",
+      "description": "《預訂資料確認》\n• 入住日期：2026.8.23\n• 住宿晚數：1晚\n• 時間：下午三點入住，中午12點退房\n• 房型：熱氣球房\n• 停車車輛（台）：1\n• 入住人數：6\n• 是否攜帶寵物：小小馬爾濟斯\n\n《請補充以下資料》\n• 訂房人姓名：張曉筠\n• 聯絡電話：0926686248\n• 特別需求備注：\n\n《費用》\n• 費用：5000\n• 訂金：2500\n• 方案：打卡優惠原價7800 優惠5000",
+      "note": null
+    },
+    {
+      "id": "842F5EEE-1244-4D24-B734-4B6C39A4A717",
+      "calendarUid": "842F5EEE-1244-4D24-B734-4B6C39A4A717",
+      "date": "2026-08-23",
+      "month": "2026-08",
+      "source": "私下接單",
+      "amount": 5000,
+      "summary": "雲朵房 4人 私 菲",
+      "description": "",
+      "note": "依同月雲朵房私單價估列"
+    },
+    {
+      "id": "0D4E85E9-B6BC-4DB2-A0CE-2B81E151C041",
+      "calendarUid": "0D4E85E9-B6BC-4DB2-A0CE-2B81E151C041",
+      "date": "2026-08-27",
+      "month": "2026-08",
+      "source": "私下接單",
+      "amount": 10000,
+      "summary": "2晚雲朵房5人 平日包場1天 假日包區1天雅津 私定",
+      "description": "• 入住日期：8月27號8月28\n• 住宿晚數：2晚（第一晚為平常日一個帳篷包場，第二晚雲朵房包區）\n• 時間：下午三點入住，（8/29）中午12點退房\n• 房型：雲朵房 \n\n• 停車車輛（台）：2輛\n• 入住人數：5人\n• 是否攜帶寵物：否  《請補充以下資料》\n• 訂房人姓名：張雅津\n• 聯絡電話：0986-192-253\n• 特別需求備注：加床  《費用》\n• 費用：10000\n• 訂金：3000\n• 方案：打卡優惠原價7800*2 優惠10000 請於以下平台兩則圖片+文字打卡tag評價 FB臉書粉專： https://www.facebook.com/profile.php?id=61589961877392\nIG： https://www.instagram.com/joyforest.tw?igsh=MTl2dXVpeHVud3ZncA%3D%3D&utm_source=qr\nGoogle地圖商家：  https://maps.app.goo.gl/3iqc1WhMtkVAdd5r8?g_st=ic",
+      "note": null
+    },
+    {
+      "id": "BF4198B0-93A4-4C39-B117-DE019C33F80E",
+      "calendarUid": "BF4198B0-93A4-4C39-B117-DE019C33F80E",
+      "date": "2026-08-28",
+      "month": "2026-08",
+      "source": "私下接單",
+      "amount": 5000,
+      "summary": "熱氣球6人line ching_wang 私",
+      "description": "《預訂資料確認》\n• 入住日期：2026.8.28\n• 住宿晚數：1晚\n• 時間：下午三點入住，中午12點退房\n• 房型：熱氣球房\n• 停車車輛（台）：一台\n• 入住人數：四大三小（4、2、1歲）\n• 是否攜帶寵物：否\n\n《請補充以下資料》\n• 訂房人姓名：王菁\n• 聯絡電話：0983652416\n• 特別需求備注：無\n\n《費用》\n• 費用：5000\n• 訂金：2500\n• 方案：打卡優惠原價7800 優惠5000\n請於以下平台兩則圖片+文字打卡tag評價\nFB臉書粉專： https://www.facebook.com/profile.php?id=61589961877392\nIG： https://www.instagram.com/joyforest.tw?igsh=MTl2dXVpeHVud3ZncA%3D%3D&utm_source=qr\nGoogle地圖商家：  https://maps.app.goo.gl/3iqc1WhMtkVAdd5r8?g_st=ic",
+      "note": null
+    },
+    {
+      "id": "7A6A554A-ABC9-4AD9-8694-3AD57E300858",
+      "calendarUid": "7A6A554A-ABC9-4AD9-8694-3AD57E300858",
+      "date": "2026-08-31",
+      "month": "2026-08",
+      "source": "私下接單",
+      "amount": 5000,
+      "summary": "雲朵平日包場Qi  私定",
+      "description": "《預訂資料確認》\n• 入住日期：2026.8.31 一2026.9.1\n• 住宿晚數：1晚\n• 時間：下午三點入住，中午12點退房\n• 房型：雲朵房 平日一帳包場\n• 停車車輛（台）：1台\n• 入住人數：2人\n• 是否攜帶寵物：否\n\n《請補充以下資料》\n• 訂房人姓名：陳淇虹\n• 聯絡電話：0903961961\n• 特別需求備注：\n\n《費用》\n• 費用：5000\n• 訂金：2000\n• 方案：打卡優惠原價7800 優惠5000\n請於以下平台兩則圖片+文字打卡tag評價\nFB臉書粉專： https://www.facebook.com/profile.php?id=61589961877392\nIG： https://www.instagram.com/joyforest.tw?igsh=MTl2dXVpeHVud3ZncA%3D%3D&utm_source=qr\nGoogle地圖商家：  https://maps.app.goo.gl/3iqc1WhMtkVAdd5r8?g_st=ic",
+      "note": null
+    },
+    {
+      "id": "185A86C6-ED31-4CE8-A0F8-C9F823DAFBFD",
+      "calendarUid": "185A86C6-ED31-4CE8-A0F8-C9F823DAFBFD",
+      "date": "2026-09-01",
+      "month": "2026-09",
+      "source": "私下接單",
+      "amount": 5000,
+      "summary": "熱氣球平日包場 私訂 林芯瑀",
+      "description": "《預訂資料確認》\n• 入住日期：2026.9.1 週二\n• 住宿晚數：1晚\n• 時間：下午三點入住，中午12點退房\n• 房型：熱氣球房 （平常日一帳包場）\n• 停車車輛（台）：3台機車\n• 入住人數：6\n• 是否攜帶寵物：否  《請補充以下資料》\n• 訂房人姓名：高千涵\n• 聯絡電話：0937567601\n• 特別需求備注：需提供第三張雙人床給第五位、第六位  《費用》\n• 費用：5000\n• 訂金：2500\n• 方案：打卡優惠原價7800 優惠5000 請於以下平台兩則圖片+文字打卡tag評價 FB臉書粉專： https://www.facebook.com/profile.php?id=61589961877392\nIG： https://www.instagram.com/joyforest.tw?igsh=MTl2dXVpeHVud3ZncA%3D%3D&utm_source=qr\nGoogle地圖商家：  https://maps.app.goo.gl/3iqc1WhMtkVAdd5r8?g_st=ic",
+      "note": null
+    },
+    {
+      "id": "02500ABB-6729-44AF-9C52-356234B49F0D",
+      "calendarUid": "02500ABB-6729-44AF-9C52-356234B49F0D",
+      "date": "2026-09-06",
+      "month": "2026-09",
+      "source": "私下接單",
+      "amount": 6800,
+      "summary": "下午 派對包場YiCheng pm1-5",
+      "description": "《預訂資料確認》\n• 日期：9/6 下午一點半到六點半\n• 方案：包場活動\n• 停車車輛（台）：6台車\n• 人數：16-20\n• 是否攜帶寵物：是，2狗狗\n• 費用：6800\n• 訂金：2800\n\n《請補充以下資料》\n• 訂位人姓名：陳怡成\n• 聯絡電話：0928670334\n• 特別需求備注：無特別需求\n\n匯款後5碼:55702",
+      "note": null
+    },
+    {
+      "id": "8E09FB39-C067-44BD-B232-2B6753F6B49E",
+      "calendarUid": "8E09FB39-C067-44BD-B232-2B6753F6B49E",
+      "date": "2026-09-11",
+      "month": "2026-09",
+      "source": "私下接單",
+      "amount": 9800,
+      "summary": "包場 雲朵熱氣球 汝",
+      "description": "• 入住日期：2026.9.11\n• 住宿晚數：1晚\n• 時間：下午三點入住，中午12點退房\n• 房型：熱氣球房+雲朵 包場\n• 停車車輛（台）：1-2台\n• 入住人數：7\n• 是否攜帶寵物：否\n《請補充以下資料》\n• 訂房人姓名：郭美汝\n• 聯絡電話：0921268261\n• 特別需求備注：《費用》\n• 費用：9800\n• 訂金：2500",
+      "note": null
+    },
+    {
+      "id": "0B84137D-58D9-406A-AE1A-F5435BC3B26B",
+      "calendarUid": "0B84137D-58D9-406A-AE1A-F5435BC3B26B",
+      "date": "2026-09-12",
+      "month": "2026-09",
+      "source": "私下接單",
+      "amount": 9800,
+      "summary": "包場雲朵8人熱氣球8人永雯",
+      "description": "《預訂資料確認》\n• 入住日期：2026.9.12\n• 住宿晚數：1晚\n• 時間：下午三點入住，中午12點退房\n• 房型：熱氣球房+雲朵房 包場\n• 停車車輛（台）：預計2台汽車\n• 入住人數：8\n• 是否攜帶寵物：否  《請補充以下資料》\n• 訂房人姓名：黃永雯\n• 聯絡電話：0956034019\n• 特別需求備注：無  《費用》\n• 費用：9800\n• 訂金：4800\n• 方案：打卡優惠原價13800 優惠9800 請於以下平台兩則圖片+文字打卡tag評價 FB臉書粉專： https://www.facebook.com/profile.php?id=61589961877392\nIG： https://www.instagram.com/joyforest.tw?igsh=MTl2dXVpeHVud3ZncA%3D%3D&utm_source=qr\nGoogle地圖商家：  https://maps.app.goo.gl/3iqc1WhMtkVAdd5r8?g_st=ic",
+      "note": null
+    },
+    {
+      "id": "25FFF769-65EC-46B6-AF05-3D3D9E170F97",
+      "calendarUid": "25FFF769-65EC-46B6-AF05-3D3D9E170F97",
+      "date": "2026-09-16",
+      "month": "2026-09",
+      "source": "私下接單",
+      "amount": 5000,
+      "summary": "熱氣球平日包場熱氣球四人 私 真Salara",
+      "description": "【客人】\n許芃真｜0903082051\nLINE：熱氣球房四人 私 真Salara\n\n【預訂】\n入住：2026/9/16（三）下午 3 點\n退房：2026/9/17（四）中午 12 點\n晚數：1 晚\n房型：熱氣球房\n入住：4 位（三大一小）\n停車：1 台\n寵物：無\n\n【特殊需求】\n小朋友慶生、需烤肉、氣墊床\n\n【費用／訂金】\n總費用：NT$5,000\n訂金：NT$2,000（已確認入帳）\n方案：平常日一個帳篷包場方案｜打卡優惠原價 NT$7,800，優惠 NT$5,000\n匯款：2026/9/7 20:39｜帳號末五碼 60456\n\n【付款與入住】\n尾款請於入住前一天 20:00 前完成付款；確認尾款後提供導航、停車、電子鎖與入住注意事項。\n\n【取消規定】\n當日／未通知 100%；1～6 天 80%；7～13 天 50%；14 天以上 10% 手續費。\n不提供改期；政府公告不可抗力全額退訂金，私人因素依取消規定。",
+      "note": null
+    },
+    {
+      "id": "DFF10E8E-A663-4DB3-A982-61D55A698A4C",
+      "calendarUid": "DFF10E8E-A663-4DB3-A982-61D55A698A4C",
+      "date": "2026-09-19",
+      "month": "2026-09",
+      "source": "私下接單",
+      "amount": 5000,
+      "summary": "熱氣球 Wu 6人 私訂",
+      "description": "😄您好 以下為預訂資訊，麻煩您確認是否正確，空白處請填寫後回覆：\n\n《預訂資料確認》\n• 入住日期：九月19日\n• 住宿晚數：1晚\n• 時間：下午三點入住，中午12點退房\n• 房型：熱氣球房\n• 方案：假日包區\n• 停車車輛（台）：1\n• 入住人數：5\n• 是否攜帶寵物：否\n• 費用：5000\n• 訂金：2000\n\n《請補充以下資料》\n• 訂房人姓名：吳孟璇\n• 聯絡電話：0918220100\n• 特別需求備注：\n\n匯款完成後，再麻煩提供：\n• 匯款金額：2000\n• 匯款時間：6/22 10:21\n• 帳號末五碼：47724\n\n《訂金與取消說明》\n• 一般日：收取總金額約 30% 作為訂金\n• 連續假期／熱門日期：收取總金額 50% 作為訂金\n※ 請確認行程無誤後再進行預約與匯款\n\n《取消與退費規定》\n• 出發當日取消或未通知者：扣除 100% 訂金\n• 出發日前 1～6 天內取消：扣除 80% 訂金\n• 出發日前 7～13 天內取消：扣除 50% 訂金\n• 出發日前 14 天以上取消：酌收 10% 手續費\n\n《改期與特殊狀況說明》\n• 本服務不提供改期，如需更改日期，請依取消規定辦理後重新預約\n• 如遇颱風、天然災害或政府公告之不可抗力事件，將全額退還訂金\n• 若因私人因素無法如期入住，恕不適用免費取消條款，敬請見諒\n\n匯款完成後，再麻煩提供：\n• 匯款金額\n• 匯款時間\n• 帳號末五碼\n\n收到訂金後就會為您保留檔期，謝謝您。",
+      "note": null
+    },
+    {
+      "id": "E3793AB4-D4D4-4FBF-88B5-0BD6FC1BD4E1",
+      "calendarUid": "E3793AB4-D4D4-4FBF-88B5-0BD6FC1BD4E1",
+      "date": "2026-09-19",
+      "month": "2026-09",
+      "source": "私下接單",
+      "amount": 5000,
+      "summary": "雲朵5人私定Ga",
+      "description": "《預訂資料確認》\n• 入住日期：9月19日\n• 住宿晚數：1晚\n• 時間：下午三點入住，中午12點退房\n• 房型：雲朵房\n• 停車車輛（台）：1\n• 入住人數：5\n• 是否攜帶寵物：否\n• 費用：5000\n• 訂金：2500\n\n《請補充以下資料》\n• 訂房人姓名：蔡佳伶\n• 聯絡電話：0936130139\n• 特別需求備注：無\n\n《訂金匯款方式》\n• Line Pay：可加 Line ID：0911252302\n• 銀行匯款：\n台新銀行（代碼 812）\n帳號：20081000109398\n戶名：陳在紳\n\n《訂金與取消說明》\n• 一般日：收取總金額約 30% 作為訂金\n• 連續假期／熱門日期：收取總金額 50% 作為訂金\n※ 請確認行程無誤後再進行預約與匯款\n\n《取消與退費規定》\n• 出發當日取消或未通知者：扣除 100% 訂金\n• 出發日前 1～6 天內取消：扣除 80% 訂金\n• 出發日前 7～13 天內取消：扣除 50% 訂金\n• 出發日前 14 天以上取消：酌收 10% 手續費\n\n《改期與特殊狀況說明》\n• 本服務不提供改期，如需更改日期，請依取消規定辦理後重新預約\n• 如遇颱風、天然災害或政府公告之不可抗力事件，將全額退還訂金\n• 若因私人因素無法如期入住，恕不適用免費取消條款，敬請見諒\n\n匯款完成後，再麻煩提供：\n• 匯款金額：2500\n• 匯款時間：7/6 13:10\n• 帳號末五碼：01722\n\n收到訂金後就會為您保留檔期，謝謝您。",
+      "note": null
+    },
+    {
+      "id": "A8B2F0E4-8CD1-4184-8FC2-94841D3875FC",
+      "calendarUid": "A8B2F0E4-8CD1-4184-8FC2-94841D3875FC",
+      "date": "2026-09-21",
+      "month": "2026-09",
+      "source": "私下接單",
+      "amount": 10000,
+      "summary": "包場7人 婉瑜",
+      "description": "【客人】婉瑜（LINE：包場7人 婉瑜）\n【預訂】2026/9/21、9/22 入住兩晚\n【房型】包場\n【入住人數】7 位\n【方案】平常日包場方案\n【費用】兩晚合計 NT$10,000\n【訂金】NT$3,000，已確認入帳\n【付款】尾款請於入住前一天 20:00 前完成；確認後提供導航、停車、電子鎖及入住注意事項。\n【入住】自助入住；入住當天入住時間後可自行入場。\n【取消】當日或未通知扣 100% 訂金；1～6 天扣 80%；7～13 天扣 50%；14 天以上酌收 10% 手續費。不提供改期；政府公告不可抗力全額退訂金，私人因素依取消規定。\n【訪客】會邀請住附近的朋友一起晚餐烤肉，訪客不住宿；人數待客人回覆。一般訪客清潔費每人 NT$100；推廣期間每位訪客完成 Google 地圖商家五星評論，並附照片及文字，可折抵該位訪客 NT$100 清潔費。",
+      "note": null
+    },
+    {
+      "id": "D5047A65-BAAD-460B-A03A-6BD4787297C6",
+      "calendarUid": "D5047A65-BAAD-460B-A03A-6BD4787297C6",
+      "date": "2026-09-26",
+      "month": "2026-09",
+      "source": "私下接單",
+      "amount": 5000,
+      "summary": "雲朵房4人私定 卡文Carven",
+      "description": "• 入住日期：2026.9.26\n• 住宿晚數：1晚\n• 時間：下午三點入住，中午12點退房\n• 房型：雲朵房\n• 停車車輛（台）：\n• 入住人數：3\n• 是否攜帶寵物：1 自備床\n\n• 訂房人姓名：梁育文\n• 聯絡電話：0989254959\n• 特別需求備注：無\n• 費用：5000\n• 訂金：2500 ＯＫ",
+      "note": null
+    },
+    {
+      "id": "BA50CAA8-AA02-4582-964F-024655D5F411",
+      "calendarUid": "BA50CAA8-AA02-4582-964F-024655D5F411",
+      "date": "2026-09-27",
+      "month": "2026-09",
+      "source": "私下接單",
+      "amount": 5000,
+      "summary": "雲朵5人 ShaSha莎莎",
+      "description": "《預訂資料確認》\n• 入住日期：2026.9.27\n• 住宿晚數：1晚\n• 時間：下午三點入住，中午12點退房\n• 房型：雲朵房\n• 停車車輛（台）：1\n• 入住人數：5\n• 是否攜帶寵物：\n\n《請補充以下資料》\n• 訂房人姓名：李羽涵\n• 聯絡電話：0922177455\n• 特別需求備注：加床跟烤肉架\n\n《費用》\n• 費用：5000\n• 訂金：2500 ＯＫ\n• 方案：打卡優惠原價7800 優惠5000\n請於以下平台兩則圖片+文字打卡tag評價\nFB臉書粉專： https://www.facebook.com/profile.php?id=61589961877392\nIG： https://www.instagram.com/joyforest.tw?igsh=MTl2dXVpeHVud3ZncA%3D%3D&utm_source=qr\nGoogle地圖商家：  https://maps.app.goo.gl/3iqc1WhMtkVAdd5r8?g_st=ic",
+      "note": null
+    },
+    {
+      "id": "51E23142-C8CF-4CDB-A9AC-03E859EC75E9",
+      "calendarUid": "51E23142-C8CF-4CDB-A9AC-03E859EC75E9",
+      "date": "2026-09-28",
+      "month": "2026-09",
+      "source": "私下接單",
+      "amount": 5000,
+      "summary": "雲朵6人平日一帳包場Jean Lin",
+      "description": "《預訂資料確認》\n• 入住日期：2026.9.28\n• 住宿晚數：1晚\n• 時間：下午三點入住，中午12點退房\n• 房型：雲朵房 平日一帳包場\n• 停車車輛（台）：1\n• 入住人數：6\n• 是否攜帶寵物：否\n\n《請補充以下資料》\n• 訂房人姓名：林賢甄\n• 聯絡電話：0912556882\n• 特別需求備注：三日內壽星1位\n\n《費用》\n• 費用：5000\n• 訂金：2000\n• 方案：打卡優惠原價7800 優惠5000\n請於以下平台兩則圖片+文字打卡tag評價\nFB臉書粉專： https://www.facebook.com/profile.php?id=61589961877392\nIG： https://www.instagram.com/joyforest.tw?igsh=MTl2dXVpeHVud3ZncA%3D%3D&utm_source=qr\nGoogle地圖商家：  https://maps.app.goo.gl/3iqc1WhMtkVAdd5r8?g_st=ic",
+      "note": null
+    },
+    {
+      "id": "94D792E2-8F3A-4A0F-A585-EFA2A245EC4F",
+      "calendarUid": "94D792E2-8F3A-4A0F-A585-EFA2A245EC4F",
+      "date": "2026-09-29",
+      "month": "2026-09",
+      "source": "私下接單",
+      "amount": 5000,
+      "summary": "平日包場雲朵2人Kelly私",
+      "description": "《預訂資料確認》\n• 入住日期：2026.9.29\n• 住宿晚數：1晚\n• 時間：下午三點入住，中午12點退房\n• 房型：雲朵房 平日包場\n• 停車車輛（台）：\n• 入住人數：2\n• 是否攜帶寵物：  《請補充以下資料》\n• 訂房人姓名：徐巧恩\n• 聯絡電話：0909803609\n• 特別需求備注：能烤肉嗎  \n• 特別需求備注：能烤肉嗎   《費用》\n• 費用：5000\n• 訂金：2500 已收到\n• 方案：打卡優惠原價7800 優惠5000 請於以下平台兩則圖片+文字打卡tag評價 FB臉書粉專： https://www.facebook.com/profile.php?id=61589961877392\nIG： https://www.instagram.com/joyforest.tw?igsh=MTl2dXVpeHVud3ZncA%3D%3D&utm_source=qr\nGoogle地圖商家：  https://maps.app.goo.gl/3iqc1WhMtkVAdd5r8?g_st=ic",
+      "note": null
+    },
+    {
+      "id": "7F4C6C73-B0B0-4052-97A8-CF9039E3329A",
+      "calendarUid": "7F4C6C73-B0B0-4052-97A8-CF9039E3329A",
+      "date": "2026-10-04",
+      "month": "2026-10",
+      "source": "私下接單",
+      "amount": 9800,
+      "summary": "包場雲朵四人熱氣球四人 私 周廷耀",
+      "description": "【客人】\n周廷耀｜0975665069\nLINE：包場雲朵4人熱氣球4人 私 周廷耀\n\n【預訂】\n入住：2026/10/4（日）下午 3 點\n退房：2026/10/5（一）中午 12 點\n晚數：1 晚\n房型：雲朵房＋熱氣球房（包場）\n入住：8 位\n停車：2 台\n寵物：1 隻狗\n特殊需求：生日派對\n\n【費用／訂金】\n總費用：NT$9,800\n訂金：NT$4,900（已確認入帳）\n方案：假日包場住宿方案\n客人填寫匯款時間：10/10 21:30\n帳號末五碼：76019\n\n【付款與入住】\n尾款請於入住前一天 20:00 前完成付款；確認尾款後提供導航、停車、電子鎖與入住注意事項。\n\n【取消規定】\n當日／未通知 100%；1～6 天 80%；7～13 天 50%；14 天以上 10% 手續費。\n不提供改期；政府公告不可抗力全額退訂金，私人因素依取消規定。",
+      "note": null
+    },
+    {
+      "id": "71385B3E-6339-4484-97B3-552C35DDC24B",
+      "calendarUid": "71385B3E-6339-4484-97B3-552C35DDC24B",
+      "date": "2026-10-08",
+      "month": "2026-10",
+      "source": "私下接單",
+      "amount": 5000,
+      "summary": "雲朵三人熱氣球兩人 平日包場 Sunny",
+      "description": "【暫訂資料】\nLINE：雲朵3人熱氣球2人 平日包場Sunny\n入住：2026/10/8（四）15:00\n退房：2026/10/9（五）12:00\n住宿晚數：1晚\n房型：兩個帳篷包場（雲朵房三人＋熱氣球房兩人）\n入住人數：5人\n停車、寵物、訂房人姓名、電話、特別需求：待客人補充\n\n【費用】\n平日五人包場優惠：5,000元\n訂金：2,000元 ok\n尾款：3,000元\n確認訂金入帳後才正式保留檔期。\n\n【方案】\n平日五人包場優惠，雲朵房三人＋熱氣球房兩人，兩房包場使用。\n打卡條件：於FB、IG、Google地圖任選完成兩則圖片＋文字打卡tag評價。\n\n【取消規定】\n當日取消或未通知扣100%訂金；1～6日前扣80%；7～13日前扣50%；14日以上酌收10%手續費。不提供改期；政府公告不可抗力全額退還訂金，私人因素仍依取消規定辦理。",
+      "note": null
+    },
+    {
+      "id": "58218E2B-8F6E-4536-AD85-4C69A8C93A9D",
+      "calendarUid": "58218E2B-8F6E-4536-AD85-4C69A8C93A9D",
+      "date": "2026-10-09",
+      "month": "2026-10",
+      "source": "私下接單",
+      "amount": 5800,
+      "summary": "熱氣球7 Ava Huang 黃詠榆 私定",
+      "description": "《預訂資料確認》\n• 入住日期：10/9\n• 住宿晚數：1晚\n• 時間：下午三點入住，中午12點退房\n• 房型：熱氣球房\n• 方案：假日包區\n• 停車車輛（台）：2台\n• 入住人數：6\n• 是否攜帶寵物：否\n• 費用：5800\n• 訂金：2500\n\n《請補充以下資料》\n• 訂房人姓名：黃詠榆\n• 聯絡電話：0968-111-435\n• 特別需求備注：無\n\n《訂金匯款方式》\n• Line Pay：可加 Line ID：0911252302\n\n匯款完成後，再麻煩提供：\n• 匯款金額2,500\n• 匯款時間2026/6/25 12:39\n• 手機末三碼435",
+      "note": null
+    },
+    {
+      "id": "95EF06E4-783B-4B1F-A675-984D3EE12222",
+      "calendarUid": "95EF06E4-783B-4B1F-A675-984D3EE12222",
+      "date": "2026-10-10",
+      "month": "2026-10",
+      "source": "私下接單",
+      "amount": 6000,
+      "summary": "熱氣球5人 私 汪 連假 ",
+      "description": "《預訂資料確認》\n• 入住日期：2026.10.10\n• 住宿晚數：1晚\n• 時間：下午三點入住，中午12點退房\n• 房型：熱氣球房\n• 停車車輛（台）：1\n• 入住人數：4大1小\n• 是否攜帶寵物：是\n\n《請補充以下資料》\n• 訂房人姓名：汪家萱\n• 聯絡電話：0903085818\n• 特別需求備注：\n\n《費用》\n• 費用：6000\n• 訂金：3000 ＯＫ",
+      "note": null
+    },
+    {
+      "id": "D9E3D666-8024-4B06-87E1-B9FD98A2B8F1",
+      "calendarUid": "D9E3D666-8024-4B06-87E1-B9FD98A2B8F1",
+      "date": "2026-10-11",
+      "month": "2026-10",
+      "source": "私下接單",
+      "amount": 5000,
+      "summary": "雲朵房Cathy Lin",
+      "description": "《預訂資料確認》\n• 入住日期：2026.10.11\n• 住宿晚數：1晚\n• 時間：下午三點入住，中午12點退房\n• 房型：雲朵房\n• 停車車輛（台）：1\n• 入住人數：2\n• 是否攜帶寵物：否\n《請補充以下資料》\n• 訂房人姓名：林映瑄\n• 聯絡電話：0903116632\n• 特別需求備注：  《費用》\n• 費用：5000\n• 訂金：2500 ＯＫ\n\n匯款完成後，再麻煩提供：\n• 匯款金額：$2500\n• 匯款時間：9/29\n• 帳號末五碼：54596",
+      "note": null
+    },
+    {
+      "id": "3413AA31-46D5-46D1-A074-25BA3D5262D1",
+      "calendarUid": "3413AA31-46D5-46D1-A074-25BA3D5262D1",
+      "date": "2026-10-14",
+      "month": "2026-10",
+      "source": "私下接單",
+      "amount": 4640,
+      "summary": "平日熱氣球2人Kelly私4640",
+      "description": "【預訂狀態】\n正式預訂／全額款項已確認收到\n\n【訂房人資料】\nLINE 名稱：平日熱氣球2人Kelly私\n訂房人姓名：徐巧恩\n聯絡電話：0909803609\n匯款帳號末五碼：45763\n\n【入住資訊】\n入住：2026/10/14（三）下午 3:00\n退房：2026/10/15（四）中午 12:00\n住宿晚數：1 晚\n房型：熱氣球房\n入住人數：2 人\n方案：平日一帳包場，當天不安排其他住宿客人\n停車車輛：待客人確認\n是否攜帶寵物：待客人確認\n\n【費用】\n熱氣球房現價：5,800 元\n舊客優惠：8 折\n實收總額：4,640 元\n付款狀態：已全額付清\n尾款：0 元\n\n【使用需求】\n可烤肉、唱歌\n現場另有麻將桌及 Switch 可使用\n\n【現場狀況】\n雲朵房當天不開放住宿，可能進行內部整理或施工。\n老闆當天可能會在現場處理作業，但住宿僅接待此組客人，不會安排其他住宿客人。\n\n【取消規定】\n出發當日取消或未通知：扣除 100% 訂金\n出發日前 1～6 天取消：扣除 80% 訂金\n出發日前 7～13 天取消：扣除 50% 訂金\n出發日前 14 天以上取消：酌收 10% 手續費\n本服務不提供改期；如需更改日期，依取消規定辦理後重新預約。\n如遇政府公告之不可抗力事件，全額退還訂金；私人因素仍依取消規定辦理。",
+      "note": null
+    },
+    {
+      "id": "3A234A78-A3FB-4D5B-AFB6-3F8E2C0CE47F",
+      "calendarUid": "3A234A78-A3FB-4D5B-AFB6-3F8E2C0CE47F",
+      "date": "2026-10-18",
+      "month": "2026-10",
+      "source": "私下接單",
+      "amount": 5000,
+      "summary": "雲朵房四人 私 曾小婷🤍",
+      "description": "【預訂狀態】\n預訂完成，檔期已正式保留\n訂金：NT$2,500（2026/09/13 已確認入帳；客人提供匯款成功截圖）\n\n【訂房人資料】\n訂房人姓名：曾雨婷\nLINE 名稱：雲朵房4人 私 曾小婷🤍\n聯絡電話：0962097210\n\n【住宿資訊】\n入住日期時間：2026/10/18（日）下午 3:00\n退房日期時間：2026/10/19（一）中午 12:00\n住宿晚數：1 晚\n房型：雲朵房\n入住人數：4 人\n停車：2 台\n寵物：3 隻貓咪\n早餐：待客人補充\n特別需求：待客人補充\n\n【費用與方案】\n原價：NT$7,800\n打卡優惠價／總費用：NT$5,000\n訂金：NT$2,500（已確認入帳）\n尾款：NT$2,500，須於入住前一天 20:00 前付清\n\n【打卡優惠條件】\n入住期間於以下平台任選至少兩則，完成圖片＋文字打卡並標記／評價：\nFB：https://www.facebook.com/profile.php?id=61589961877392\nIG：https://www.instagram.com/joyforest.tw?igsh=MTI2dXVpeHVud3ZncA%3D%3D&utm_source=qr\nGoogle 地圖：https://maps.app.goo.gl/3iqc1WhMtkVAdd5r8?g_st=ic\n\n【尾款與自助入住】\n確認尾款後提供完整自助入住資訊，包含導航位置、停車方式、電子鎖密碼與入住注意事項。\n入住當天於入住時間後可自行入場，不需另外辦理 Check-in。\n\n【住宿設備與備品】\n食材需自行準備。\n房內獨立衛浴、冷暖空調；卡式爐、瓦斯罐 1 罐、木炭 1 份；完整餐具、鍋具、烤肉用具、基本調味料；冰箱、微波爐、熱水壺、飲水機、吹風機。\n提供浴巾、洗髮精、沐浴乳及一次性牙刷。\n每個帳篷可免費停放 2 台車。\n戶外廚房與用餐空間建議攜帶方便穿脫的拖鞋；自然環境可能有灰塵、落葉或蚊蟲，現場提供基本防蚊措施，易招蚊者建議自備慣用防蚊用品。\n周邊車程約 8 分鐘內有交流道、火車站、全聯、便利商店、速食店、飲料店、夜市及餐廳，亦可使用外送平台。\n\n【取消與退費規定】\n一般日收取總金額約 30% 作為訂金；連續假期／熱門日期收取總金額 50% 作為訂金。\n出發當日取消或未通知：扣除 100% 訂金。\n出發日前 1～6 天內取消：扣除 80% 訂金。\n出發日前 7～13 天內取消：扣除 50% 訂金。\n出發日前 14 天以上取消：酌收 10% 手續費。\n\n【取消與特殊狀況說明】\n本服務不提供改期；如需更改日期，請依取消規定辦理後重新預約。\n如遇政府公告不可抗力事件（如颱風停班停課、天然災害、交通中斷等），將全額退還訂金。\n私人因素（如生病、工作、家庭因素、行程變更等）不屬於不可抗力，仍依取消規定辦理。\n不可抗力事件以政府公告為準。",
+      "note": null
+    },
+    {
+      "id": "8684FF5F-070B-44EA-B241-B15C0752A688",
+      "calendarUid": "8684FF5F-070B-44EA-B241-B15C0752A688",
+      "date": "2026-10-19",
+      "month": "2026-10",
+      "source": "私下接單",
+      "amount": 3000,
+      "summary": "熱氣球房兩人 私定粉專 Nina Hsueh",
+      "description": "《預訂資料確認》\n• 入住日期：10月19號禮拜一\n• 住宿晚數：1晚\n• 時間：下午三點入住，中午12點退房\n• 房型：熱氣球房（包區）\n• 停車車輛（台）：1台\n• 入住人數：2人\n• 是否攜帶寵物：有\n• 費用：3000\n• 訂金：1000 ＯＫ\n\n《請補充以下資料》\n• 訂房人姓名：薛喬云\n• 聯絡電話：0913825559\n• 特別需求備注：無",
+      "note": null
+    },
+    {
+      "id": "F82381DE-C12B-47F1-BA17-1CE0C1D9B4BE",
+      "calendarUid": "F82381DE-C12B-47F1-BA17-1CE0C1D9B4BE",
+      "date": "2026-10-25",
+      "month": "2026-10",
+      "source": "私下接單",
+      "amount": 9800,
+      "summary": "包場 熱氣球3 雲朵4 Susan 私",
+      "description": "訂房｜😄請提供以下資訊，麻煩您確認是否正確，空白處請填寫後回覆：  《預訂資料確認》\n• 入住日期：2026.10.25\n• 住宿晚數：1晚\n• 時間：下午三點入住，中午12點退房\n• 房型：熱氣球房+雲朵房 包場\n• 停車車輛（台）：2台\n• 入住人數：4-8人\n• 是否攜帶寵物：（還不確定）  《請補充以下資料》\n• 訂房人姓名：陳巧紓\n• 聯絡電話：0921531498  《費用》\n• 費用：9800\n• 訂金：4800\n• 方案：打卡優惠原價13800 優惠9800 請於以下平台兩則圖片+文字打卡tag評價 FB臉書粉專： https://www.facebook.com/profile.php?id=61589961877392\nIG： https://www.instagram.com/joyforest.tw?igsh=MTl2dXVpeHVud3ZncA%3D%3D&utm_source=qr\nGoogle地圖商家：  https://maps.app.goo.gl/3iqc1WhMtkVAdd5r8?g_st=ic",
+      "note": null
+    },
+    {
+      "id": "6CEEEA45-ADBC-43A4-8BF1-9BACC0BA8A52",
+      "calendarUid": "6CEEEA45-ADBC-43A4-8BF1-9BACC0BA8A52",
+      "date": "2026-10-26",
+      "month": "2026-10",
+      "source": "私下接單",
+      "amount": 10800,
+      "summary": "雲朵房2熱氣球房2 包場 樂派國際笑笑",
+      "description": "訂房｜😄請提供以下資訊，麻煩您確認是否正確，空白處請填寫後回覆：\n\n《預訂資料確認》\n• 入住日期：2026.10.26\n• 住宿晚數：1晚\n• 時間：下午三點入住，中午12點退房\n• 房型：雲朵房＋熱氣球房（兩個帳篷包場）\n• 停車車輛（台）：1\n• 入住人數：4人\n• 是否攜帶寵物：還沒決定\n\n《請補充以下資料》\n• 訂房人姓名：蔡佩芸\n• 聯絡電話：0989040804\n• 特別需求備注：各2\n\n《費用》\n• 費用：雲朵房5,000元＋熱氣球房5,800元＝共10,800元\n• 訂金：5000 已收到\n• 方案：雲朵房＋熱氣球房兩個帳篷包場\n\n請於以下平台兩則圖片+文字打卡tag評價\n\nFB臉書粉專：https://www.facebook.com/profile.php?id=61589961877392\nIG：https://www.instagram.com/joyforest.tw?igsh=MTl2dXVpeHVud3ZncA%3D%3D&utm_source=qr\nGoogle地圖商家：https://maps.app.goo.gl/3iqc1WhMtkVAdd5r8?g_st=ic",
+      "note": null
+    },
+    {
+      "id": "7A498D74-4414-4A4F-A893-A36CD4D84F19",
+      "calendarUid": "7A498D74-4414-4A4F-A893-A36CD4D84F19",
+      "date": "2026-10-27",
+      "month": "2026-10",
+      "source": "私下接單",
+      "amount": 5000,
+      "summary": "雲朵房包區 沒包場Annie",
+      "description": "訂房｜😄請提供以下資訊，麻煩您確認是否正確，空白處請填寫後回覆：\n\n《預訂資料確認》\n• 入住日期：2026.10.27\n• 住宿晚數：1晚\n• 時間：下午三點入住，中午12點退房\n• 房型：雲朵房 包區\n• 停車車輛（台）：一台\n• 入住人數：2位\n• 是否攜帶寵物：有 25公斤米克斯  《請補充以下資料》\n• 訂房人姓名：宋詠潔\n• 聯絡電話：0933015301\n• 特別需求備注：因為狗狗親人不親狗，所以需要是包場的狀態！謝謝😊  《費用》\n• 費用：5000\n• 訂金：2500\n• 方案：打卡優惠（原價一間7800） 請於以下平台兩則圖片+文字打卡tag評價 FB臉書粉專： https://www.facebook.com/profile.php?id=61589961877392\nIG： https://www.instagram.com/joyforest.tw?igsh=MTl2dXVpeHVud3ZncA%3D%3D&utm_source=qr\nGoogle地圖商家：  https://maps.app.goo.gl/3iqc1WhMtkVAdd5r8?g_st=ic \n《訂金匯款方式》\n• Line Pay：可加 Line ID：0911252302\n• 銀行匯款：\n台新銀行（代碼 812）\n帳號：20081000109398\n戶名：陳在紳\n\n《訂金與取消說明》\n• 一般日：收取總金額約 30% 作為訂金\n• 連續假期／熱門日期：收取總金額 50% 作為訂金\n※ 請確認行程無誤後再進行預約與匯款\n\n《取消與退費規定》\n• 出發當日取消或未通知者：扣除 100% 訂金\n• 出發日前 1～6 天內取消：扣除 80% 訂金\n• 出發日前 7～13 天內取消：扣除 50% 訂金\n• 出發日前 14 天以上取消：酌收 10% 手續費\n\n《取消與特殊狀況說明》\n• 本服務不提供改期，如需更改日期，請依取消規定辦理後重新預約。\n• 如遇政府公告之不可抗力事件（如颱風停班停課、天然災害、交通中斷等），將全額退還訂金。\n• 私人因素（如生病、工作、家庭因素、行程變更等）不屬於不可抗力，仍依取消規定辦理。\n• 不可抗力事件以政府公告為準。\n\n匯款完成後，再麻煩提供：\n• 匯款金額\n• 匯款時間\n• 帳號末五碼\n\n收到訂金後就會為您保留檔期，謝謝您（請於24小時內匯款）",
+      "note": null
+    },
+    {
+      "id": "AD229192-25C7-445D-9221-59FE6C8514FC",
+      "calendarUid": "AD229192-25C7-445D-9221-59FE6C8514FC",
+      "date": "2026-10-29",
+      "month": "2026-10",
+      "source": "私下接單",
+      "amount": 5800,
+      "summary": "派對活動+攝影Carina 不過夜",
+      "description": "狀態：正式預訂，訂金已確認入帳\nLINE名稱：派對活動+攝影Carina\n訂房人：葉舒庭\n聯絡電話：0985074407\n活動日期：2026年10月29日（四）\n活動時間：15:00～24:00\n方案：活動場地租借＋家庭寵物攝影1小時\n使用空間：熱氣球房室內空間＋戶外草地空間\n人數：4人\n停車：1台\n寵物：1隻老狗，行動較緩慢\n攝影需求：留下家人與狗狗的紀念\n攝影時間：15:00開始，拍攝1小時\n攝影方式：利用現場帳篷及戶外草地進行家庭寵物紀實拍攝；不提供白背景及造型師\n照片交付：拍攝照片全數提供\n場地費：5800元\n攝影費：4,800元\n訂金：4,000元，已於2026年10月19日17:40確認入帳\n匯款辨識：行動卡帳末五碼61711／存摺帳號末五碼66498\n活動當日尾款：9,130元\n取消規定：出發當日取消或未通知扣100%訂金；出發前1～6日扣80%；7～13日扣50%；14日以上酌收10%手續費。不提供改期；政府公告不可抗力全額退還訂金，私人因素仍依取消規定辦理。",
+      "note": "僅列露營區場地費；攝影費不列露營區營收"
+    }
+  ],
+  "futureBookings": [
+    {
+      "id": "71245418-A2F7-481E-A193-1F0BEC710BEE",
+      "date": "2026-11-01",
+      "month": "2026-11",
+      "source": "Agoda",
+      "amount": 4559.09,
+      "nights": 1,
+      "summary": "雲朵房兩人Agoda T E L A O",
+      "tentative": false,
+      "estimated": true,
+      "note": null
+    },
+    {
+      "id": "1DEBE376-78AC-4558-B06D-5FC8CFA6CFAC",
+      "date": "2026-11-03",
+      "month": "2026-11",
+      "source": "私下接單",
+      "amount": 5800,
+      "nights": 1,
+      "summary": "熱氣球房6人 私 馮相偉（BB）",
+      "tentative": false,
+      "estimated": false,
+      "note": null
+    },
+    {
+      "id": "8CE3E58B-3E02-495C-A0ED-2019FECCDE7F",
+      "date": "2026-11-05",
+      "month": "2026-11",
+      "source": "私下接單",
+      "amount": 5000,
+      "nights": 1,
+      "summary": "雲朵 line官方 安佳 🍄",
+      "tentative": false,
+      "estimated": false,
+      "note": null
+    },
+    {
+      "id": "F0805788-94FC-4337-A4A3-C193D7524B69",
+      "date": "2026-11-06",
+      "month": "2026-11",
+      "source": "Airbnb",
+      "amount": 4061.31,
+      "nights": 1,
+      "summary": "雲朵房六人Airbnb治安",
+      "tentative": false,
+      "estimated": true,
+      "note": null
+    },
+    {
+      "id": "DB0ED4B5-E6D9-44FE-BA3F-088A5348F2A2",
+      "date": "2026-11-07",
+      "month": "2026-11",
+      "source": "私下接單",
+      "amount": 3500,
+      "nights": 1,
+      "summary": "雲朵5人soully網紅合作",
+      "tentative": false,
+      "estimated": false,
+      "note": "付費合作，非免費互惠"
+    },
+    {
+      "id": "FD61EA6D-CF45-4781-8775-7085DE5DF31A",
+      "date": "2026-11-08",
+      "month": "2026-11",
+      "source": "私下接單",
+      "amount": 10800,
+      "nights": 1,
+      "summary": "包場熱氣球3雲朵4人 私 Hank.Lee",
+      "tentative": false,
+      "estimated": false,
+      "note": null
+    },
+    {
+      "id": "32EA9ED8-9417-46DD-9606-38A8E9EF2C2A",
+      "date": "2026-11-10",
+      "month": "2026-11",
+      "source": "Agoda",
+      "amount": 4559.09,
+      "nights": 1,
+      "summary": "熱氣球房五人Agoda C H I N G P I N G F E N G",
+      "tentative": false,
+      "estimated": true,
+      "note": null
+    },
+    {
+      "id": "FD88F47F-DF3B-4FD1-A2FE-112DE4CC918C",
+      "date": "2026-11-12",
+      "month": "2026-11",
+      "source": "私下接單",
+      "amount": 10800,
+      "nights": 1,
+      "summary": "包場熱氣球2雲朵3 Line官方慈仔",
+      "tentative": false,
+      "estimated": false,
+      "note": null
+    },
+    {
+      "id": "82703A47-8B38-49B1-8594-E5DAAAE29A4A",
+      "date": "2026-11-14",
+      "month": "2026-11",
+      "source": "私下接單",
+      "amount": 9800,
+      "nights": 1,
+      "summary": "包場雲朵熱氣球 慶生 私 JuJu",
+      "tentative": false,
+      "estimated": true,
+      "note": "活動名稱明載私；金額依同月假日包場估列"
+    },
+    {
+      "id": "10FA19F4-CACC-4FAA-B44E-44D08E95D8A7",
+      "date": "2026-11-15",
+      "month": "2026-11",
+      "source": "私下接單",
+      "amount": 9800,
+      "nights": 1,
+      "summary": "包場雲朵3熱氣球4人 ŸŸüññ",
+      "tentative": false,
+      "estimated": false,
+      "note": null
+    },
+    {
+      "id": "D2BFBC9B-B67D-440D-A100-519671E0E694",
+      "date": "2026-11-18",
+      "month": "2026-11",
+      "source": "私下接單",
+      "amount": 5000,
+      "nights": 1,
+      "summary": "雲朵房4人 包區  劉思妤",
+      "tentative": false,
+      "estimated": false,
+      "note": null
+    },
+    {
+      "id": "B762ABE1-3487-43DD-8B84-AFD455F55445",
+      "date": "2026-11-21",
+      "month": "2026-11",
+      "source": "私下接單",
+      "amount": 5000,
+      "nights": 1,
+      "summary": "熱氣球房五人 私 陳冠潔",
+      "tentative": false,
+      "estimated": false,
+      "note": null
+    },
+    {
+      "id": "EF595747-5EE3-4731-89F9-2D7C00E7D151",
+      "date": "2026-11-21",
+      "month": "2026-11",
+      "source": "Airbnb",
+      "amount": 4061.31,
+      "nights": 1,
+      "summary": "雲朵房四人Airbnb永劫",
+      "tentative": false,
+      "estimated": true,
+      "note": null
+    },
+    {
+      "id": "DB22CACB-1EB6-4F7D-AFD2-6C9EECC7233A",
+      "date": "2026-11-22",
+      "month": "2026-11",
+      "source": "Agoda",
+      "amount": 4559.09,
+      "nights": 1,
+      "summary": "雲朵房兩人Agoda Y I G U N C H E N",
+      "tentative": false,
+      "estimated": true,
+      "note": null
+    },
+    {
+      "id": "57482933-4FFD-4C44-8FBF-21C783BF57B8",
+      "date": "2026-11-24",
+      "month": "2026-11",
+      "source": "Airbnb",
+      "amount": 4061.31,
+      "nights": 1,
+      "summary": "一帳包場六人Airbnb K A T I E",
+      "tentative": false,
+      "estimated": true,
+      "note": null
+    },
+    {
+      "id": "ABD6F418-A0AD-4792-A302-AA53DAB15111",
+      "date": "2026-11-25",
+      "month": "2026-11",
+      "source": "私下接單",
+      "amount": 5000,
+      "nights": 1,
+      "summary": "雲朵房3 平日包場曾霖庭",
+      "tentative": false,
+      "estimated": false,
+      "note": null
+    },
+    {
+      "id": "2556A463-4A4F-4A69-9E68-4F84AA45BD27",
+      "date": "2026-11-27",
+      "month": "2026-11",
+      "source": "私下接單",
+      "amount": 10800,
+      "nights": 1,
+      "summary": "包場雲朵2熱氣球2 小邱Teresa",
+      "tentative": false,
+      "estimated": false,
+      "note": null
+    },
+    {
+      "id": "3776C664-715E-43E5-9D3C-CDEF1AA6560C",
+      "date": "2026-11-28",
+      "month": "2026-11",
+      "source": "Airbnb",
+      "amount": 4061.31,
+      "nights": 1,
+      "summary": "雲朵房五人Airbnb品楊",
+      "tentative": false,
+      "estimated": true,
+      "note": null
+    },
+    {
+      "id": "10A9DC31-643E-4325-8957-A69A53262DBF",
+      "date": "2026-11-29",
+      "month": "2026-11",
+      "source": "私下接單",
+      "amount": 9800,
+      "nights": 1,
+      "summary": "包場 雲朵+熱氣球 梁佳榆",
+      "tentative": false,
+      "estimated": false,
+      "note": null
+    },
+    {
+      "id": "FCE219BD-3218-4D3F-9540-3CB1FBB393CA",
+      "date": "2026-12-05",
+      "month": "2026-12",
+      "source": "私下接單",
+      "amount": 9800,
+      "nights": 1,
+      "summary": "包場雲朵熱氣球6人Meng 私",
+      "tentative": false,
+      "estimated": false,
+      "note": null
+    },
+    {
+      "id": "A46E0FEB-D2C8-4FBA-913F-19802BDD29DE",
+      "date": "2026-12-06",
+      "month": "2026-12",
+      "source": "私下接單",
+      "amount": 10800,
+      "nights": 1,
+      "summary": "包場雲朵4熱氣球2 許禕庭",
+      "tentative": false,
+      "estimated": false,
+      "note": null
+    },
+    {
+      "id": "C7CADFDE-B3EC-4557-92F4-339EBE4D0483",
+      "date": "2026-12-09",
+      "month": "2026-12",
+      "source": "私下接單",
+      "amount": 10800,
+      "nights": 1,
+      "summary": "包場雲朵熱氣球四人 私 start",
+      "tentative": false,
+      "estimated": false,
+      "note": null
+    },
+    {
+      "id": "FAC074B9-CFC0-42C8-8F5A-B894332FDEB3",
+      "date": "2026-12-12",
+      "month": "2026-12",
+      "source": "私下接單",
+      "amount": 9800,
+      "nights": 1,
+      "summary": "包場私訂 露營區包場Evan 雲朵熱氣球6人",
+      "tentative": false,
+      "estimated": false,
+      "note": null
+    },
+    {
+      "id": "F7AFBF38-BD5F-4782-96A2-B9F90FF85DF9",
+      "date": "2026-12-18",
+      "month": "2026-12",
+      "source": "私下接單",
+      "amount": 13800,
+      "nights": 1,
+      "summary": "露營區場地租借 湯尼徐",
+      "tentative": false,
+      "estimated": false,
+      "note": null
+    },
+    {
+      "id": "F11D3181-BD6F-4363-8249-2EA7C018F479",
+      "date": "2026-12-19",
+      "month": "2026-12",
+      "source": "私下接單",
+      "amount": 9800,
+      "nights": 1,
+      "summary": "包場雲朵四人熱氣球四人 私 Vivian",
+      "tentative": false,
+      "estimated": false,
+      "note": null
+    },
+    {
+      "id": "D237D559-928D-4FD6-87A0-1B7318892568",
+      "date": "2026-12-20",
+      "month": "2026-12",
+      "source": "私下接單",
+      "amount": 10800,
+      "nights": 1,
+      "summary": "包場雲朵3熱氣球2 私 Angus",
+      "tentative": false,
+      "estimated": false,
+      "note": null
+    },
+    {
+      "id": "55FB22D3-49B4-4A34-9FC0-6FA4E28B458E",
+      "date": "2026-12-21",
+      "month": "2026-12",
+      "source": "Airbnb",
+      "amount": 8122.62,
+      "nights": 2,
+      "summary": "熱氣球房4人Airbnb Christina新加坡",
+      "tentative": false,
+      "estimated": true,
+      "note": null
+    },
+    {
+      "id": "210C2941-B421-4687-AEF3-FAE25E435212",
+      "date": "2026-12-21",
+      "month": "2026-12",
+      "source": "Airbnb",
+      "amount": 8122.62,
+      "nights": 2,
+      "summary": "雲朵房3人Airbnb W YNN",
+      "tentative": false,
+      "estimated": true,
+      "note": null
+    },
+    {
+      "id": "43AE3061-AF72-49C1-907C-B80376BC8170",
+      "date": "2026-12-23",
+      "month": "2026-12",
+      "source": "Airbnb",
+      "amount": 4061.31,
+      "nights": 1,
+      "summary": "雲朵房5人B N B  J I E",
+      "tentative": false,
+      "estimated": true,
+      "note": null
+    },
+    {
+      "id": "4845277F-90BF-4323-AF1C-635997545008",
+      "date": "2026-12-24",
+      "month": "2026-12",
+      "source": "私下接單",
+      "amount": 10800,
+      "nights": 1,
+      "summary": "包場雲朵6熱氣球5 私 蔡耀峻",
+      "tentative": false,
+      "estimated": false,
+      "note": null
+    },
+    {
+      "id": "720A807B-5510-4CDA-8104-2D445D91BACA",
+      "date": "2026-12-25",
+      "month": "2026-12",
+      "source": "私下接單",
+      "amount": 24000,
+      "nights": 2,
+      "summary": "包場雲朵熱氣球 江",
+      "tentative": false,
+      "estimated": false,
+      "note": null
+    },
+    {
+      "id": "E10B71AD-6892-4435-B0EA-156903D8D350",
+      "date": "2026-12-27",
+      "month": "2026-12",
+      "source": "私下接單",
+      "amount": 5000,
+      "nights": 1,
+      "summary": "？雲朵房六人 LINE官方 鄭普怡",
+      "tentative": true,
+      "estimated": false,
+      "note": "待訂金，尚未正式保留"
+    },
+    {
+      "id": "F5493818-CF8F-4C02-8462-3B6381C28C97",
+      "date": "2026-12-31",
+      "month": "2026-12",
+      "source": "Airbnb",
+      "amount": 4061.31,
+      "nights": 1,
+      "summary": "熱氣球房六人Airbnb妍寧",
+      "tentative": false,
+      "estimated": true,
+      "note": null
+    },
+    {
+      "id": "9E5FCF9E-BE05-487F-AB02-D5842008E8C5",
+      "date": "2026-12-31",
+      "month": "2026-12",
+      "source": "私下接單",
+      "amount": 7000,
+      "nights": 1,
+      "summary": "雲朵跨年芸瑄",
+      "tentative": false,
+      "estimated": false,
+      "note": null
+    },
+    {
+      "id": "59B30FC9-8F05-4D77-8B5F-991440AFD08C",
+      "date": "2027-01-01",
+      "month": "2027-01",
+      "source": "私下接單",
+      "amount": 13600,
+      "nights": 1,
+      "summary": "包場雲朵+熱氣球Elaine",
+      "tentative": false,
+      "estimated": false,
+      "note": null
+    },
+    {
+      "id": "2817C1A9-39D4-4DDD-A811-749630BC634B",
+      "date": "2027-01-02",
+      "month": "2027-01",
+      "source": "私下接單",
+      "amount": 11800,
+      "nights": 1,
+      "summary": "雲朵房六人熱氣球房六人 私 想想拾花",
+      "tentative": false,
+      "estimated": false,
+      "note": null
+    },
+    {
+      "id": "4C4C4F58-1D42-4C31-A9FF-3D295413DB4A",
+      "date": "2027-01-09",
+      "month": "2027-01",
+      "source": "Agoda",
+      "amount": 4559.09,
+      "nights": 1,
+      "summary": "熱氣球房五人Agoda P O H S I A N G C H E N",
+      "tentative": false,
+      "estimated": true,
+      "note": null
+    },
+    {
+      "id": "129ECDCB-4149-4163-AF2D-F872DD17CDDA",
+      "date": "2027-01-16",
+      "month": "2027-01",
+      "source": "私下接單",
+      "amount": 10800,
+      "nights": 1,
+      "summary": "雲朵房4人熱氣球房4人包場TENGYAO",
+      "tentative": true,
+      "estimated": false,
+      "note": "等待訂金，尚未正式保留"
+    },
+    {
+      "id": "F7A71BAD-0F44-444C-96BB-EC70E3C77117",
+      "date": "2027-01-23",
+      "month": "2027-01",
+      "source": "私下接單",
+      "amount": 21600,
+      "nights": 2,
+      "summary": "包場 雲朵房4熱氣球房2 WEI",
+      "tentative": false,
+      "estimated": false,
+      "note": null
+    },
+    {
+      "id": "14C986C2-A55A-4828-94D2-5F73E6BB7C54",
+      "date": "2027-01-26",
+      "month": "2027-01",
+      "source": "私下接單",
+      "amount": 9800,
+      "nights": 1,
+      "summary": "包場雲朵4人熱氣球3人 私 研究所同學Emily",
+      "tentative": false,
+      "estimated": false,
+      "note": null
+    },
+    {
+      "id": "3B2B820E-A642-4939-898D-840D1159C5B9",
+      "date": "2027-01-30",
+      "month": "2027-01",
+      "source": "私下接單",
+      "amount": 5800,
+      "nights": 1,
+      "summary": "熱氣球房4人 私 吳明純（杰恩/至恩）",
+      "tentative": false,
+      "estimated": true,
+      "note": "描述未寫金額，依熱氣球房現行單晚價估列"
+    },
+    {
+      "id": "BF6834DE-CC78-4766-BA77-5BBE4A44552E",
+      "date": "2027-02-06",
+      "month": "2027-02",
+      "source": "Airbnb",
+      "amount": 4061.31,
+      "nights": 1,
+      "summary": "熱氣球房四人 Airbnb 韓瑜",
+      "tentative": false,
+      "estimated": true,
+      "note": null
+    },
+    {
+      "id": "378DE3EF-3E32-48AC-870D-2549F61DA5E0",
+      "date": "2027-02-07",
+      "month": "2027-02",
+      "source": "私下接單",
+      "amount": 28080,
+      "nights": 2,
+      "summary": "包場雲朵+熱氣球房🐧Yve",
+      "tentative": false,
+      "estimated": false,
+      "note": null
+    },
+    {
+      "id": "DBD7DF68-620C-4964-A7BC-BB9073DB2645",
+      "date": "2027-02-09",
+      "month": "2027-02",
+      "source": "私下接單",
+      "amount": 8800,
+      "nights": 1,
+      "summary": "熱氣球房6人Bobo 波波",
+      "tentative": false,
+      "estimated": false,
+      "note": null
+    },
+    {
+      "id": "A287ECD5-6170-4389-97A3-814BE45DA5A6",
+      "date": "2027-02-09",
+      "month": "2027-02",
+      "source": "私下接單",
+      "amount": 7800,
+      "nights": 1,
+      "summary": "雲朵房五人 子茵Ponnie Hsu",
+      "tentative": true,
+      "estimated": false,
+      "note": "待訂金，尚未正式保留"
+    },
+    {
+      "id": "F0470462-787F-4743-9647-DA02392FF8F4",
+      "date": "2027-02-10",
+      "month": "2027-02",
+      "source": "Airbnb",
+      "amount": 13217.85,
+      "nights": 3,
+      "summary": "雲朵房六人Airbnb J O Y 三晚 $14700",
+      "tentative": false,
+      "estimated": true,
+      "note": "活動名稱金額為平台售價，另估扣平台費"
+    },
+    {
+      "id": "B4518FCA-CC1D-4C87-AFE3-E2E6472052DB",
+      "date": "2027-02-13",
+      "month": "2027-02",
+      "source": "私下接單",
+      "amount": 10800,
+      "nights": 1,
+      "summary": "包場雲朵熱氣球Michelle",
+      "tentative": false,
+      "estimated": false,
+      "note": null
+    },
+    {
+      "id": "27DD4762-7651-42EF-8D39-1B368F19F9A8",
+      "date": "2027-02-20",
+      "month": "2027-02",
+      "source": "私下接單",
+      "amount": 9800,
+      "nights": 1,
+      "summary": "雲朵房熱氣球房包場 私 妍妍",
+      "tentative": false,
+      "estimated": false,
+      "note": null
+    },
+    {
+      "id": "259E39B4-B8D0-4FD2-9F06-0877BA421C76",
+      "date": "2027-02-27",
+      "month": "2027-02",
+      "source": "私下接單",
+      "amount": 31200,
+      "nights": 2,
+      "summary": "包場雲朵房熱氣球房十一人 私 呂盼芸",
+      "tentative": false,
+      "estimated": false,
+      "note": null
+    }
+  ],
+  "unresolvedFuture": [
+    {
+      "date": "2026-11-06",
+      "endDate": "2026-11-07",
+      "uid": "2AD1BDAA-4249-4421-82D0-76CABDCA9933",
+      "summary": "熱氣球5人連續兩天 王",
+      "description": "",
+      "reason": "活動名稱未寫平台／私接，描述與金額皆空白"
+    },
+    {
+      "date": "2026-11-28",
+      "endDate": "2026-11-28",
+      "uid": "E0294BE8-0535-45C9-8942-7BB0FD7A1675",
+      "summary": "熱氣球 宜恩",
+      "description": "",
+      "reason": "活動名稱未寫平台／私接，描述與金額皆空白"
+    }
+  ],
+  "futureTotals": {
+    "airbnb": 57892.26,
+    "agoda": 18236.36,
+    "direct": 359780,
+    "airbnbCases": 10,
+    "agodaCases": 4,
+    "directCases": 32,
+    "total": 435908.62,
+    "tentativeCases": 3,
+    "tentativeRevenue": 23600
+  },
+  "correctionSummary": {
+    "priorActualTotal": 711932.47,
+    "revisedActualTotal": 808772.47,
+    "difference": 96840,
+    "percent": 13.6,
+    "priorDirectCases": 43,
+    "revisedDirectCases": 58,
+    "newlyRecoveredDirectCases": 16,
+    "removedStaleDirectCases": 1,
+    "netDirectCaseIncrease": 15
+  },
+  "campervanBookings": [
+    {
+      "id": "31DBEDF4-31DD-48C5-B773-83C9A9C03FB4",
+      "date": "2026-01-20",
+      "endDate": "2026-01-22",
+      "month": "2026-01",
+      "nights": 2,
+      "amount": 11800,
+      "summary": "露營車 彤🥀 粉專Bunny ye",
+      "description": "日期／時間：1月20號早上九點到1月22號早上九點\n\n到府取／還車地點：台北市信義區光復南路421巷106號1樓\n👤 預約人姓名：葉彤\n聯絡電話：0960842121\n身分證字號：F22771p718\n\n三天兩夜（48 小時）租金：平常日優惠11800\n超時費用：每小時 $300\n訂金：$3,800（付款訂金保留檔期）",
+      "note": "平常日優惠三天兩夜"
+    },
+    {
+      "id": "51FFA2AF-81B7-46BD-9190-4D7B22ADC519",
+      "date": "2026-01-26",
+      "endDate": "2026-01-31",
+      "month": "2026-01",
+      "nights": 5,
+      "amount": 22200,
+      "summary": "露營車 謝圻章（阿桂）2277",
+      "description": "《📅 租車資訊與方案費用》\n日期／時間：\n2026年1月26號早上八點到1月31號晚上八點\n取車地點：桃園市中壢區自立五街30號（A10)社區  \n姓名：謝圻章 \n電話：0907864579 \n身份證字號：G121541021 \n駕照：職業大貨車駕照\n\n租金：六天五夜13800 +3×2800\n總共$22200\n超時費用：每小時 $300\n訂金：$3,800（收到）\n押金：$5000",
+      "note": "六天五夜 13,800＋3×2,800"
+    },
+    {
+      "id": "A7E1DD27-3EC9-48A3-9B05-36C2221BD796",
+      "date": "2026-02-01",
+      "endDate": "2026-02-03",
+      "month": "2026-02",
+      "nights": 2,
+      "amount": 13800,
+      "summary": "露營車 郭冠良",
+      "description": "2月1號上午11點到2月3號上午11點這樣子是13800 ，一樣的費用\n就是三天兩夜，48小時\n\n時間：2月1號上午11點到2月3號上午11點\n到府取/還車地點：台北市中正區紹興南街18-15號2樓之1\n姓名：郭冠良\n聯絡電話：0919278666\n身分證字號：A126153598\n\n方案費用：三天兩夜48小時\n$13800（加時費每小時300）",
+      "note": "三天兩夜"
+    },
+    {
+      "id": "8969B89C-C518-4DC0-820E-4F9436B221DA",
+      "date": "2026-02-06",
+      "endDate": "2026-02-08",
+      "month": "2026-02",
+      "nights": 2,
+      "amount": 13800,
+      "summary": "露營車 小瑜 /粉專李珈瑜",
+      "description": "《📅 租車資訊與方案費用》\n日期／時間：2月6號下午三點到2月8號下午三點\n到府取／還車地點：\n桃園市龜山區文三二街52 巷35 號4 樓\n👤 預約人姓名/聯絡電話/身分證字號：李珈瑜 0955130905\n\n三天兩夜（48 小時）租金：$13,800\n超時費用：每小時 $300\n訂金：$3,800（已收到）",
+      "note": "三天兩夜"
+    },
+    {
+      "id": "30276A6D-B094-41AF-BA49-82B185E7726F",
+      "date": "2026-02-12",
+      "endDate": "2026-02-15",
+      "month": "2026-02",
+      "nights": 3,
+      "amount": 18600,
+      "summary": "露營車 蒙大慶",
+      "description": "《📅 租車資訊與方案費用》\n日期／時間：\n2026年2月12日早上八點到2月15日晚上八點\n到府取／還車地點：\n桃園市龍潭區民族路395號\n\n👤 預約人姓名/蒙大慶\n聯絡電話/0977314573\n身分證字號：Q122602799\n\n租金：$18600\n訂金：$3,800（付款訂金保留檔期）",
+      "note": "四天三夜"
+    },
+    {
+      "id": "D69E091F-EA33-4757-9A03-9FB5D6D484C3",
+      "date": "2026-02-17",
+      "endDate": "2026-02-21",
+      "month": "2026-02",
+      "nights": 4,
+      "amount": 35200,
+      "summary": "露營車 尊翊🍎梓暘.晨睿.晨恩.梓瑄媽",
+      "description": "《📅 租車資訊與方案費用》\n日期／時間：2026年2月17號早上10點到2月21號早上10點\n到府取／還車地點：（請提供明確地址）\n👤 預約人姓名/聯絡電話/身分證字號：\n\n五天四夜租金：8800×4\n超時費用：每小時 $300\n訂金：$5,800（付款訂金保留檔期）",
+      "note": "五天四夜 8,800×4"
+    },
+    {
+      "id": "88DC6601-0701-49D1-B2C3-24210839B60B",
+      "date": "2026-02-27",
+      "endDate": "2026-03-01",
+      "month": "2026-02",
+      "nights": 2,
+      "amount": 15300,
+      "summary": "露營車 IG 封卓穎",
+      "description": "《📅 租車資訊與方案費用》\n日期／時間：\n2月27號早上九點到3月1號下午兩點\n到府取／還車地點：新北市永和區環河東路四段88號\n👤 預約人姓名/聯絡電話/身分證字號：\n\n三天兩夜（48 小時）租金：13800 +5×300\n超時費用：每小時 $300\n訂金：$3,800（已付款）",
+      "note": "13,800＋超時 5×300"
+    },
+    {
+      "id": "53CD2892-AEEF-4DBA-88A7-12AD241BDEC3",
+      "date": "2026-03-06",
+      "endDate": "2026-03-09",
+      "month": "2026-03",
+      "nights": 3,
+      "amount": 16600,
+      "summary": "露營車 宛螢Bless",
+      "description": "《📅 租車資訊與方案費用》\n日期／時間：\n3月6號的晚上七點到3月9號晚上七點\n到府取／還車地點：新北市公有停車場 特專三平面停車場\n👤 預約人姓名/聯絡電話/身分證字號：\n\n三天兩夜（48 小時）租金：$13,800+2800\n超時費用：每小時 $300\n訂金：$3,800（付款訂金保留檔期）",
+      "note": "13,800＋延長日 2,800"
+    },
+    {
+      "id": "DA8A7698-25F4-4B7D-9B7F-45E20B958478",
+      "date": "2026-03-20",
+      "endDate": "2026-03-22",
+      "month": "2026-03",
+      "nights": 2,
+      "amount": 13800,
+      "summary": "露營車Ewa🌺",
+      "description": "《📅 租車資訊與方案費用》\n日期／時間：2026年3月20號中午12點到3月22號中午12點\n到府取／還車地點：（請提供明確地址）\n👤 預約人姓名/聯絡電話/身分證字號：\n\n三天兩夜（48 小時）租金：$13,800\n超時費用：每小時 $300\n訂金：$3,800（付款訂金保留檔期）\n\n台北市士林區中山北路六段405巷69號\n蔡珮紜\n0925120902\nA225141498",
+      "note": "三天兩夜"
+    },
+    {
+      "id": "BFA9F5E3-5007-4460-9A14-5999B11ABA55",
+      "date": "2026-04-05",
+      "endDate": "2026-04-07",
+      "month": "2026-04",
+      "nights": 2,
+      "amount": 17600,
+      "summary": "露營車🐟亞蓓",
+      "description": "《📅 租車資訊與方案費用》\n日期／時間：\n4月5號早上11點到4月7號下午五點\n到府取／還車地點：南港高工大門旁\n👤 預約人姓名/聯絡電話/身分證字號：\n\n三天兩夜（48 小時）租金：$15,800+ 6×300\n超時費用：每小時 $300\n訂金：$3,800（付款訂金保留檔期）",
+      "note": "15,800＋超時 6×300"
+    },
+    {
+      "id": "31FDFC18-ABDD-406D-B742-113F6747AD88",
+      "date": "2026-04-18",
+      "endDate": "2026-04-20",
+      "month": "2026-04",
+      "nights": 2,
+      "amount": 11800,
+      "summary": "露營車 鄭昌傑",
+      "description": "《📅 租車資訊與方案費用》\n日期／時間：\n4月18晚上八點到4月20號晚上八點\n交車地址，桃園市大園區民安路342號\n還車地址，桃園市蘆竹區大新路380巷166號\n👤 預約人姓名/聯絡電話/身分證字號：\n\n三天兩夜（48 小時）租金：11800優惠\n超時費用：每小時 $300\n訂金：$3,800（👌收到）",
+      "note": "優惠三天兩夜"
+    }
+  ],
+  "campervanMonthlyRevenue": [
+    {
+      "month": "2026-01",
+      "cases": 2,
+      "revenue": 34000
+    },
+    {
+      "month": "2026-02",
+      "cases": 5,
+      "revenue": 96700
+    },
+    {
+      "month": "2026-03",
+      "cases": 2,
+      "revenue": 30400
+    },
+    {
+      "month": "2026-04",
+      "cases": 2,
+      "revenue": 29400
+    }
+  ],
+  "campervanTotals": {
+    "cases": 11,
+    "revenue": 190500,
+    "unresolved": 2
+  },
+  "unresolvedCampervan": [
+    {
+      "date": "2026-03-23",
+      "endDate": "2026-03-24",
+      "uid": "076CEE65-90FC-4E52-AF47-7D83CC03C144",
+      "summary": "JEAN露營車 11-28\\n自取",
+      "description": "",
+      "reason": "活動日期與名稱中的 11-28 不一致，沒有費用，暫不列帳"
+    },
+    {
+      "date": "2026-04-13",
+      "endDate": "2026-04-16",
+      "uid": "97D0D38E-6E6B-41A6-AFFD-9E063B79D688",
+      "summary": "露營車日月潭 可欣",
+      "description": "",
+      "reason": "只有活動名稱，沒有租金、訂金或客戶資料，暫不列帳"
+    },
+    {
+      "date": "2026-04-19",
+      "endDate": "2026-04-19",
+      "uid": "0AE8410B-D2BB-484F-9A40-734FBE0CC0F0",
+      "summary": "pm4視訊教學隔週環島露營車",
+      "description": "露營車環島Cheryl Tan",
+      "reason": "教學提醒，不是租車收入"
+    }
+  ],
   "notes": [
-    "Airbnb 兩筆糾紛調整合計 -NT$4,380，已扣回 7 月與 8 月。",
-    "Agoda 2026/10/30 已確認取消；2026/11/1 仍保留為未來行事曆訂單，金額採歷史平均淨額估算。",
-    "未來 Airbnb 與 Agoda 尚無正式結算金額，預估採截至 2026/10/29 各平台每案平均淨額。"
+    "行事曆 App 直接匯出 278 筆活動，取代先前不完整的後台／舊行事曆快照。",
+    "2026/7/3 與 7/4 求婚案為同一組客人連住兩天，依使用者確認拆列兩筆收入。",
+    "2026/8/16 與 8/17 Kelly 為同一組兩日預訂，總額只列一次 NT$9,800。",
+    "2026/10/29 Carina 案只列露營區場地費 NT$5,800，攝影費不列入露營區營收。",
+    "未來平台收入為估值；私單以行事曆金額為主，三筆待訂金案件另列暫訂，不放進已確認比例。",
+    "露營車另依行事曆 App 對帳 11 筆、NT$190,500，不混入露營區 Airbnb／Agoda／私單來源比例。"
   ]
 }

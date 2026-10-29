@@ -163,13 +163,19 @@
 
     <section class="admin-month-breakdown" aria-labelledby="future-source-title">
       <h2 id="future-source-title" class="admin-panel-title">未來已預訂來源</h2>
-      <p class="admin-analysis-note">私下接單採行事曆已寫明金額；Airbnb 只因未來訂單尚未結算，暫以今年正式報表的平均每筆淨額估算。Agoda 未出現在正式報表的行事曆提醒不列入。</p>
+      <p class="admin-analysis-note">私下接單採行事曆 App 已寫明金額；Airbnb、Agoda 尚未結算的未來訂單依今年每房晚平均淨額估算。待訂金暫訂另列，不放進已確認比例。</p>
       <div id="future-source-summary" class="admin-chart-wrap" aria-live="polite"></div>
+    </section>
+
+    <section class="admin-month-breakdown" aria-labelledby="campervan-reconciliation-title">
+      <h2 id="campervan-reconciliation-title" class="admin-panel-title">露營車收入對帳</h2>
+      <p class="admin-analysis-note">露營車沒有訂房平台，以 macOS 行事曆 App「Joyforest露營區」中的租金、加日與超時費為準，獨立列帳，不混入露營區三種訂單來源比例。</p>
+      <div id="campervan-reconciliation" class="admin-month-table-wrap" aria-live="polite"></div>
     </section>
 
     <section class="admin-month-breakdown" aria-labelledby="revenue-growth-title">
       <h2 id="revenue-growth-title" class="admin-panel-title">每月營收成長與修正</h2>
-      <p class="admin-analysis-note">截至2026/10/29為正式對帳；11月、12月及2027年1月、2月另以淡色列出目前已預訂金額。未來平台金額採歷史平均淨額估算。</p>
+      <p class="admin-analysis-note">截至2026/10/29為正式對帳；11月、12月及2027年1月、2月另以淡色列出已確認預訂金額。未來平台金額採歷史每房晚平均淨額估算。</p>
       <div id="revenue-growth-table" class="admin-month-table-wrap" aria-live="polite"></div>
     </section>
 
@@ -194,7 +200,7 @@
           <span>露營車</span>
         </li>
       </ul>
-      <p class="admin-revenue-hint">自<strong>今年二月</strong>起列出全部月份。Agoda 與 Airbnb 已套用正式訂單扣費後淨額<span class="admin-revenue-source-chip admin-revenue-source-chip--calendar">正式對帳</span>；私下接單以行事曆描述內的實際金額為準<span class="admin-revenue-source-chip admin-revenue-source-chip--calendar">行事曆實收</span>。互惠保留在行事曆，但收入為 0 元且不列入營收比例；同筆訂房的重複提醒也不重複計帳。未來平台訂單在正式結算前仍屬估算，會標成<span class="admin-revenue-source-chip admin-revenue-source-chip--estimate">平台估算</span>；格子內修改則為<span class="admin-revenue-source-chip admin-revenue-source-chip--manual">手動確定</span>。</p>
+      <p class="admin-revenue-hint">自<strong>今年一月</strong>起列出全部月份。Agoda 與 Airbnb 已套用正式訂單扣費後淨額<span class="admin-revenue-source-chip admin-revenue-source-chip--calendar">正式對帳</span>；私下接單以行事曆描述內的實際金額為準<span class="admin-revenue-source-chip admin-revenue-source-chip--calendar">行事曆實收</span>。互惠保留在行事曆，但收入為 0 元且不列入營收比例；同筆訂房的重複提醒也不重複計帳。未來平台訂單在正式結算前仍屬估算，會標成<span class="admin-revenue-source-chip admin-revenue-source-chip--estimate">平台估算</span>；格子內修改則為<span class="admin-revenue-source-chip admin-revenue-source-chip--manual">手動確定</span>。</p>
       <p id="revenue-status" class="staff-status" aria-live="polite"></p>
       <p id="revenue-fetch-error" class="staff-error" role="alert" hidden></p>
       <div id="revenue-events" class="staff-events"></div>
@@ -203,6 +209,6 @@
   <script src="../assets/js/stated-price.js"></script>
   <script src="../assets/js/revenue-rules.js?v=20261004-history"></script>
   <script src="../assets/js/admin-gate.js?v=20261023-private"></script>
-  <script src="../assets/js/admin-revenue.js?v=20261029-future-pipeline"></script>
+  <script src="../assets/js/admin-revenue.js?v=20261029-calendar-app-audit-v3"></script>
 </body>
 </html>
