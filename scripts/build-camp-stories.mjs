@@ -47,6 +47,20 @@ function required(data, field, file) {
   }
 }
 
+function searchTags(tags = []) {
+  const result = [...new Set(tags.map(String))];
+  for (const tag of ["揪好森", "森林故事", "桃園楊梅"]) {
+    if (result.length >= 5) break;
+    if (!result.includes(tag)) result.push(tag);
+  }
+  return result;
+}
+
+function keywordSection(tags) {
+  const links = searchTags(tags).slice(0, 10).map(tag => `<a href="/pages/stories.html?tag=${encodeURIComponent(tag)}#latest-stories">#${escapeHtml(tag.replace(/^#+|\s+/g, ""))}</a>`).join("");
+  return `<section class="story-article-keywords" aria-label="文章關鍵字"><h2>延伸搜尋關鍵字</h2><div class="hashtags">${links}</div></section>`;
+}
+
 function isoDate(value, field, file) {
   const text = String(value || "");
   if (!/^\d{4}-\d{2}-\d{2}$/.test(text)) throw new Error(`${file}: ${field} 必須是 YYYY-MM-DD`);
@@ -100,11 +114,11 @@ function loadArticles() {
     articles.push({
       ...parsed.data,
       status,
-      tags: Array.isArray(parsed.data.tags) ? parsed.data.tags.map(String) : [],
+      tags: searchTags(Array.isArray(parsed.data.tags) ? parsed.data.tags : []),
       featured: Boolean(parsed.data.featured),
       videos: Array.isArray(parsed.data.videos) ? parsed.data.videos : [],
       collaborators: Array.isArray(parsed.data.collaborators) ? parsed.data.collaborators : [],
-      readingTime: parsed.data.readingTime || `${Math.max(1, Math.ceil(parsed.content.length / 650))} 分鐘`,
+      readingTime: parsed.data.readingTime || `${Math.max(1, Math.ceil(parsed.content.replace(/<[^>]*>/g, "").length / 650))} 分鐘`,
       bodyHtml: marked.parse(parsed.content, { gfm: true, breaks: false }),
       sourceFile: file,
     });
@@ -146,8 +160,8 @@ function articlePage(article, related) {
   const modified = `${article.modifiedDate || article.publishedDate}T09:00:00+08:00`;
   const tagHref = (tag) => `/pages/stories.html?tag=${encodeURIComponent(tag)}#latest-stories`;
   const tags = article.tags.map((tag) => `<a class="story-card__tag" href="${tagHref(tag)}">${escapeHtml(tag)}</a>`).join("");
-  const hashtags = article.tags
-    .map((tag) => `<a href="${tagHref(tag)}">#${escapeHtml(String(tag).replace(/^#+/, ""))}</a>`)
+  const hashtags = article.tags.slice(0, 10)
+    .map((tag) => `<a href="${tagHref(tag)}">#${escapeHtml(String(tag).replace(/^#+|\s+/g, ""))}</a>`)
     .join("");
   const relatedHtml = related.length ? `
     <section class="section section-alt" aria-labelledby="related-stories-title">
@@ -214,7 +228,8 @@ function articlePage(article, related) {
   <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${escapeHtml(article.title)}"><meta name="twitter:description" content="${escapeHtml(article.description)}"><meta name="twitter:image" content="${SITE}${escapeHtml(article.coverImage)}">
   <script type="application/ld+json">${schema}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="preload" as="image" href="${escapeHtml(article.coverImage)}"><link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="preload" as="image" href="${escapeHtml(article.coverImage)}"><link rel="stylesheet" href="/assets/css/main.css?v=20261031-stories">
+  <link rel="stylesheet" href="/assets/css/contact-priority.css?v=20261024">
 </head>
 <body class="site-wrap page-story-article" data-base="../../">
   <div id="site-header"></div>
@@ -257,7 +272,7 @@ if (!fs.existsSync(contentDir) && !explicitContentDir) {
 
 if (!fs.existsSync(contentDir)) throw new Error(`找不到文章來源資料夾：${contentDir}`);
 const previousArticles = fs.existsSync(DATA_PATH)
-  ? JSON.parse(fs.readFileSync(DATA_PATH, "utf8")).articles || []
+  ? (JSON.parse(fs.readFileSync(DATA_PATH, "utf8")).articles || []).map(item => ({...item, tags: searchTags(item.tags)}))
   : [];
 const sourceArticles = loadArticles();
 const sourceSlugs = new Set(sourceArticles.map((item) => item.slug));
@@ -287,4 +302,13 @@ for (const previous of mergeExisting ? [] : previousArticles) {
   }
 }
 ensureHubInSitemap(publicArticles);
+for (const article of preservedArticles) {
+  const file = path.join(STORIES_DIR, article.slug, "index.html");
+  if (!fs.existsSync(file)) continue;
+  let html = fs.readFileSync(file, "utf8");
+  const section = keywordSection(article.tags);
+  const pattern = /<section class="story-article-keywords"[\s\S]*?<\/section>/;
+  html = pattern.test(html) ? html.replace(pattern, section) : html.replace(/<\/article>/, `${section}</article>`);
+  fs.writeFileSync(file, html);
+}
 console.log(`森林故事建置完成：新增／更新 ${sourceArticles.length} 篇，公開共 ${publicArticles.length} 篇，來源 ${contentDir}`);

@@ -8,6 +8,7 @@
   const tagCloud = document.querySelector("[data-story-tag-cloud]");
   const base = document.body.dataset.base || "./";
   const discoveryTags = [
+    "親子寫真", "家庭寫真", "家庭照", "寵物攝影", "寵物寫真", "毛小孩寫真", "棚拍", "外拍", "森林外拍", "白背景棚拍", "三代同堂", "生日攝影",
     "戶外電影院", "景觀浴缸", "美式瓦斯烤肉", "戶外燈光", "KTV 歡唱",
     "圓頂帳篷", "私人草地", "森林景觀", "戶外料理", "免裝備露營", "場地租借",
     "寵物友善", "親子友善", "好友包場", "家庭包場", "情侶旅行", "一個人旅行",
