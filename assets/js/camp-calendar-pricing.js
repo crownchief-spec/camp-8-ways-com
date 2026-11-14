@@ -43,7 +43,7 @@
     return x;
   }
   function holidayBlockToPriceOverrideDates(block) {
-    const rawStart = parseYmdLocal(block.start);
+    const rawStart = addLocalDays(parseYmdLocal(block.start), -1);
     const rawEnd = parseYmdLocal(block.end);
     const priceEnd = addLocalDays(rawEnd, -1);
     return enumerateInclusiveLocalYmd(rawStart, priceEnd);
@@ -80,7 +80,7 @@
       shortLabel: "\u71B1\u6C23\u7403",
       originalPrice: 6800,
       weekday: 5800,
-      weekend: 5800,
+      weekend: 6800,
       longHoliday: 7800,
       showPrice: true
     },
@@ -89,8 +89,8 @@
       shortLabel: "\u96F2\u6735",
       originalPrice: 7800,
       weekday: 5e3,
-      weekend: 5e3,
-      longHoliday: 7800,
+      weekend: 6e3,
+      longHoliday: 6800,
       showPrice: true
     },
     rv: {
@@ -101,9 +101,7 @@
   };
 
   // src/data/calendar/calendarSpecialNightlyPrices.ts
-  var calendarSpecialNightlyPrices = {
-    "2027-02-03": 7800
-  };
+  var calendarSpecialNightlyPrices = {};
 
   // src/lib/date/datePricingUtils.ts
   var BOOKING_WINDOW_MONTHS = 6;
@@ -115,7 +113,7 @@
     return "$" + amount.toLocaleString("zh-TW");
   }
   function formatDiscountPriceDisplay(_original, discount) {
-    return '<span class="availability-line__promo-label">\u5B98\u7DB2\u76F4\u8A02</span> <strong>' + formatPriceNt(discount) + "</strong>";
+    return '<span class="availability-line__promo-label">\u5B98\u7DB2\u6253\u5361\u512A\u60E0</span> <strong>' + formatPriceNt(discount) + "</strong>";
   }
   function resolveResourceRowDisplay(resourceId, y, m, d, isBooked, holidayOverrideSet) {
     const cfg = calendarResourcePricing[resourceId];

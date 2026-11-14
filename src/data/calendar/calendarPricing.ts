@@ -15,7 +15,7 @@ export interface PricedCalendarResource {
   weekday: number;
   /** 一般週末住宿日 */
   weekend: number;
-  /** 官方連假前 N−1 晚與每年 12/31 跨年夜 */
+  /** 官方連假每一天所對應的前一住宿晚，以及每年 12/31 跨年夜 */
   longHoliday: number;
   showPrice: true;
 }
@@ -36,7 +36,7 @@ export const calendarResourcePricing: {
     shortLabel: "熱氣球",
     originalPrice: 6800,
     weekday: 5800,
-    weekend: 5800,
+    weekend: 6800,
     longHoliday: 7800,
     showPrice: true,
   },
@@ -45,8 +45,8 @@ export const calendarResourcePricing: {
     shortLabel: "雲朵",
     originalPrice: 7800,
     weekday: 5000,
-    weekend: 5000,
-    longHoliday: 7800,
+    weekend: 6000,
+    longHoliday: 6800,
     showPrice: true,
   },
   rv: {

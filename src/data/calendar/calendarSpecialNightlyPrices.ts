@@ -1,7 +1,5 @@
 /**
  * 特殊日期直接預訂價；優先於一般日期與連假價格。
- * 此處價格同時適用於熱氣球房與雲朵房。
+ * 目前沒有覆蓋價格；連假依各房型的 longHoliday 價格計算。
  */
-export const calendarSpecialNightlyPrices: Readonly<Record<string, number>> = {
-  "2027-02-03": 7800,
-};
+export const calendarSpecialNightlyPrices: Readonly<Record<string, number>> = {};
