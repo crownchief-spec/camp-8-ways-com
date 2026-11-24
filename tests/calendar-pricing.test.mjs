@@ -19,7 +19,7 @@ function displayedPrice(room, ymd) {
   return match ? Number(match[1].replace(/,/g, "")) : null;
 }
 
-test("2027 官方連假收費晚數，兩房各為 7,800 元", () => {
+test("2027 官方連假依各房型價格，春節指定期間優先", () => {
   const holidayNights = [
     "2027-01-01", "2027-01-02",
     "2027-02-04", "2027-02-05", "2027-02-06", "2027-02-07", "2027-02-08", "2027-02-09",
@@ -34,13 +34,14 @@ test("2027 官方連假收費晚數，兩房各為 7,800 元", () => {
 
   for (const ymd of holidayNights) {
     assert.equal(displayedPrice("balloon", ymd), 7800, `${ymd} 熱氣球房`);
-    assert.equal(displayedPrice("cloud", ymd), 7800, `${ymd} 雲朵房`);
+    const cloudPrice = ymd >= "2027-02-04" && ymd <= "2027-02-10" ? 7800 : 6800;
+    assert.equal(displayedPrice("cloud", ymd), cloudPrice, `${ymd} 雲朵房`);
   }
 });
 
 test("官方連假最後一天回到各房型一般價格", () => {
   const finalDates = [
-    "2027-01-03", "2027-02-10", "2027-03-01", "2027-04-06", "2027-05-02",
+    "2027-01-03", "2027-02-11", "2027-03-01", "2027-04-06", "2027-05-02",
     "2027-10-11", "2027-10-25", "2027-12-26", "2028-01-02"
   ];
 
@@ -50,7 +51,20 @@ test("官方連假最後一天回到各房型一般價格", () => {
   }
 });
 
-test("春節前夕 2027-02-03 維持兩房各 7,800 元", () => {
+test("春節前夕 2027-02-03 維持各房型原有連假價格", () => {
   assert.equal(displayedPrice("balloon", "2027-02-03"), 7800);
-  assert.equal(displayedPrice("cloud", "2027-02-03"), 7800);
+  assert.equal(displayedPrice("cloud", "2027-02-03"), 6800);
+});
+
+test("2027 春節 2/4～2/10 每晚兩房均為 7,800 元，已預訂優先", () => {
+  for (let day = 4; day <= 10; day++) {
+    const ymd = `2027-02-${String(day).padStart(2, "0")}`;
+    for (const room of ["balloon", "cloud"]) {
+      assert.equal(displayedPrice(room, ymd), 7800, `${ymd} ${room}`);
+      const booked = pricing.resolveResourceRowDisplay(room, 2027, 1, day, true);
+      assert.equal(booked.kind, "booked", `${ymd} ${room} 已預訂`);
+      assert.equal("formattedPrice" in booked, false);
+    }
+    assert.equal(pricing.resolveResourceRowDisplay("rv", 2027, 1, day, false).kind, "hidden");
+  }
 });

@@ -1,5 +1,13 @@
 /**
  * 特殊日期直接預訂價；優先於一般日期與連假價格。
- * 目前沒有覆蓋價格；連假依各房型的 longHoliday 價格計算。
+ * 2027 年春節 2/4～2/10 入住晚：熱氣球房、雲朵房皆為 7,800 元。
  */
-export const calendarSpecialNightlyPrices: Readonly<Record<string, number>> = {};
+export const calendarSpecialNightlyPrices: Readonly<Record<string, number>> = {
+  "2027-02-04": 7800,
+  "2027-02-05": 7800,
+  "2027-02-06": 7800,
+  "2027-02-07": 7800,
+  "2027-02-08": 7800,
+  "2027-02-09": 7800,
+  "2027-02-10": 7800,
+};

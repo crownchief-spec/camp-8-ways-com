@@ -101,7 +101,15 @@
   };
 
   // src/data/calendar/calendarSpecialNightlyPrices.ts
-  var calendarSpecialNightlyPrices = {};
+  var calendarSpecialNightlyPrices = {
+    "2027-02-04": 7800,
+    "2027-02-05": 7800,
+    "2027-02-06": 7800,
+    "2027-02-07": 7800,
+    "2027-02-08": 7800,
+    "2027-02-09": 7800,
+    "2027-02-10": 7800
+  };
 
   // src/lib/date/datePricingUtils.ts
   var BOOKING_WINDOW_MONTHS = 6;
